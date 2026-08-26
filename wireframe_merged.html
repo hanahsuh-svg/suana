@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Morph Token Factory - Integrated Wireframes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f8fafc; color: #334155; scroll-behavior: smooth; margin: 0; }
+    .wf-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .wf-card { background-color: #ffffff; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 2rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); scroll-margin-top: 2rem; }
+    .wf-header { background-color: #f1f5f9; padding: 12px 16px; border-bottom: 2px solid #cbd5e1; font-weight: bold; color: #0f172a; display: flex; align-items: center; justify-content: space-between; }
+    .wf-badge { background-color: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 9999px; font-size: 11px; }
+    
+    /* M 시리즈 전용 콘텐츠 영역 */
+    .wf-content-m { padding: 0; display: flex; flex-direction: column; min-height: 400px; }
+    
+    /* A 시리즈 전용 콘텐츠 영역 */
+    .wf-content-a { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; background-color: #f8fafc; }
+
+    /* C 시리즈 전용 스타일 */
+    .console-layout { display: flex; min-height: 700px; background-color: #f1f5f9; border-radius: 0 0 8px 8px; }
+    .sidebar { width: 220px; background-color: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 12px; flex-shrink: 0; }
+    .sidebar-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; padding-left: 8px; }
+    .sidebar-menu { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 13px; font-weight: 500; color: #475569; text-decoration: none; border-radius: 6px; transition: all 0.15s; }
+    .sidebar-item:hover, .sidebar-item.active { background-color: #f1f5f9; color: #0f172a; font-weight: 600; }
+    .content-container { flex-grow: 1; padding: 24px; max-width: 960px; margin: 0 auto; }
+    .screen-section { display: flex; flex-direction: column; justify-content: flex-start; margin-bottom: 40px; scroll-margin-top: 80px; }
+    .state-toggle-btn { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid #cbd5e1; background: #f1f5f9; color: #475569; }
+    .state-toggle-btn.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
+    
+    .wf-btn { border: 1px solid #cbd5e1; background-color: #ffffff; padding: 8px 16px; border-radius: 4px; font-size: 13px; font-weight: 500; text-align: center; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; width: 100%; gap: 8px; }
+    .wf-btn-primary, .wf-btn-dark { background-color: #0f172a; color: white; border: none; }
+    .wf-btn-dark:hover { background-color: #1e293b; }
+    
+    /* 공통 UI 요소 */
+    .mock-gnb { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; background-color: #ffffff; }
+    .mock-footer { border-top: 1px solid #e2e8f0; padding: 24px; background-color: #f8fafc; font-size: 11px; color: #64748b; }
+
+    /* Auth & Form Styles */
+    .auth-box { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; width: 100%; max-width: 400px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .auth-box-sm { max-width: 320px; padding: 24px; }
+    .wf-input { border: 1px solid #cbd5e1; background-color: #ffffff; border-radius: 6px; padding: 10px 12px; width: 100%; font-size: 13px; margin-bottom: 12px; transition: border-color 0.2s; outline: none; }
+    .wf-input:focus { border-color: #0f172a; }
+    .wf-label { display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+    .wf-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    .wf-table th { background-color: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 16px; font-weight: 600; color: #475569; }
+    .wf-table td { border-bottom: 1px solid #f1f5f9; padding: 14px 16px; color: #334155; }
+    
+    .divider { display: flex; align-items: center; text-align: center; margin: 20px 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #e2e8f0; }
+    .divider:not(:empty)::before { margin-right: .5em; }
+    .divider:not(:empty)::after { margin-left: .5em; }
+
+    /* 흐름도 스타일 */
+    .flow-node { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .flow-node a { color: #2563eb; text-decoration: underline; font-weight: 600; }
+    .flow-node-decision { background: #f8fafc; border: 2px dashed #94a3b8; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; color: #334155; }
+    .flow-node-action { background: #0f172a; color: #ffffff; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; }
+    .flow-arrow { color: #94a3b8; font-weight: bold; font-size: 14px; text-align: center; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="wf-container">
+    
+    <!-- 상단 타이틀 및 탭 네비게이션 -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-slate-800 mb-6">🔥 Morph Token Factory</h1>
+      <div class="flex gap-2 border-b-2 border-slate-200">
+        <button data-target="tab-m" onclick="openTab('tab-m', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-slate-800 text-slate-800 transition-colors">
+          M 시리즈 (서비스 메인 영역)
+        </button>
+        <button data-target="tab-a" onclick="openTab('tab-a', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          A 시리즈 (온보딩 및 인증 영역)
+        </button>
+        <button data-target="tab-c" onclick="openTab('tab-c', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          C 시리즈 (콘솔 영역)
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 1: M 시리즈 (서비스 메인 영역)
+         ========================================== -->
+    <div id="tab-m" class="tab-content block">
+
+      <!-- M-01: 서비스 메인 -->
+      <div id="m-01" class="wf-card">
+        <div class="wf-header">
+          <span>M-01 서비스 메인 (랜딩 페이지)</span>
+          <span class="wf-badge">GNB [Playground / Docs / 로그인·프로필 / 언어] · 배너 · Footer</span>
+        </div>
+        <div class="wf-content-m relative">
+          <div class="bg-blue-100 text-blue-800 text-xs font-bold text-center py-2">
+            📢 [공지] Motif 3 OBT 사전 예약 안내 (어드민 On/Off)
+          </div>
+          
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <div id="gnb-auth-state" class="flex items-center gap-4">
+                <div id="gnb-before-login" class="flex items-center gap-4">
+                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인</a>
+                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
+                </div>
+                <div id="gnb-after-login" class="hidden items-center gap-4">
+                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
+                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
+                </div>
+              </div>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50">
+                <option>KO</option>
+                <option>EN</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex-grow flex flex-col items-center justify-center text-center p-12 bg-slate-50">
+            <h2 class="text-4xl font-bold mb-4">가장 강력한 국산 LLM을<br/>단 하나의 API로</h2>
+            <p class="text-slate-500 mb-8 max-w-lg text-sm">
+              Motif 3 모델을 코딩 에이전트에 쉽게 통합하세요. 계정, 키 관리, 과금까지 하나의 플랫폼에서 완벽하게 통제할 수 있습니다.
+            </p>
+            <div class="flex gap-4">
+              <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary px-8 py-3 w-auto no-underline text-white flex items-center justify-center">무료로 시작하기</a>
+              <a href="#m-02" class="wf-btn px-8 py-3 w-auto no-underline text-slate-800 flex items-center justify-center">문서 보기</a>
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+              <p>통신판매업신고번호: 제2026-서울강남-0000호</p>
+              <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morph.com | 연락처: 02-000-0000</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관 (M-03)</a>
+              <a href="#m-04" class="hover:underline font-bold text-slate-700">개인정보처리방침 (M-04)</a>
+              <a href="#m-05" class="hover:underline">Status (M-05)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-02: Docs -->
+      <div id="m-02" class="wf-card">
+        <div class="wf-header">
+          <span>M-02 Docs (개발자 문서)</span>
+          <span class="wf-badge">검색창 추가 · 퀵스타트 · 인증 · 에러 코드 · 엔드포인트</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="text-blue-600 font-bold no-underline">Docs</a>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+            </div>
+          </div>
+
+          <div class="flex flex-row flex-grow">
+            <div class="w-64 bg-slate-50 border-r border-slate-200 p-6 space-y-6 flex-shrink-0">
+              <div>
+                <input type="text" placeholder="🔍 Search documentation..." class="w-full text-xs p-2 border rounded bg-white border-slate-300 mb-4">
+                <div class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">Getting Started</div>
+                <ul class="space-y-2 text-sm">
+                  <li class="font-medium text-blue-600 bg-blue-50 p-2 rounded -mx-2">Quickstart</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Authentication</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Context Limits</li>
+                </ul>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">API Reference</div>
+                <ul class="space-y-2 text-sm">
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Chat Completions</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Models Catalog</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Error Codes (7종)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="p-8 flex-grow overflow-y-auto bg-white">
+              <div class="text-sm text-slate-500 mb-2">Getting Started > Quickstart</div>
+              <h1 class="text-2xl font-bold mb-6">Quickstart</h1>
+              <p class="text-sm text-slate-600 mb-6">Morph API는 OpenAI 표준 규격을 완벽하게 지원합니다. 기존 코드에서 Base URL과 API Key만 변경하여 즉시 사용할 수 있습니다.</p>
+              
+              <h3 class="font-bold mb-3 border-b pb-2">1. API Key 발급</h3>
+              <p class="text-sm text-slate-600 mb-4">콘솔에 로그인하여 <code>API Keys (C-02)</code> 메뉴에서 Bearer 인증에 사용할 Secret Key를 발급받습니다.</p>
+
+              <h3 class="font-bold mb-3 border-b pb-2">2. cURL 예제 (Chat Completions)</h3>
+              <div class="bg-slate-800 text-slate-300 p-4 rounded-md font-mono text-xs overflow-x-auto leading-relaxed mb-6">
+                <span class="text-green-400">curl</span> -X POST https://api.morph.com/v1/chat/completions \<br/>
+                &nbsp;&nbsp;-H <span class="text-yellow-300">"Authorization: Bearer $MORPH_API_KEY"</span> \<br/>
+                &nbsp;&nbsp;-H <span class="text-yellow-300">"Content-Type: application/json"</span> \<br/>
+                &nbsp;&nbsp;-d '{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"model": "motif-3",<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"messages": [<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "system", "content": "You are a helpful assistant."},\br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "user", "content": "Hello!"}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;],<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"stream": true<br/>
+                &nbsp;&nbsp;}'
+              </div>
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-03: 이용약관 -->
+      <div id="m-03" class="wf-card">
+        <div class="wf-header">
+          <span>M-03 이용약관</span>
+          <span class="wf-badge">버전 표기 · 개정 이력 · 본문</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white max-w-4xl mx-auto w-full flex-grow">
+            <div class="flex justify-between items-end border-b pb-4 mb-6">
+              <h1 class="text-2xl font-bold">서비스 이용약관</h1>
+              <select class="border border-slate-300 rounded p-1 text-sm bg-slate-50">
+                <option>v1.0 (시행일: 2026.09.01) - 현재</option>
+              </select>
+            </div>
+            
+            <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2">제 1조 (목적)</h3>
+                <p>본 약관은 (주)모프컴퍼니(이하 "회사")가 제공하는 Morph Token Factory 서비스(이하 "서비스")의 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+              </section>
+              
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2">제 2조 (용어의 정의)</h3>
+                <p>① "회원"이란 본 약관에 동의하고 가입 절차를 거쳐 회사가 제공하는 서비스를 이용하는 자를 말합니다.<br/>
+                   ② "크레딧"이란 서비스 내에서 API 호출 비용 등을 결제하기 위해 사용되는 가상의 선불/후불 결제 수단을 의미합니다.</p>
+              </section>
+
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2">제 3조 (약관의 게시와 개정)</h3>
+                <p>① 회사는 본 약관의 내용을 회원이 쉽게 알 수 있도록 서비스 초기 화면이나 연결 화면을 통하여 게시합니다.<br/>
+                   ② 회사가 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행 약관과 함께 제1항의 방식에 따라 그 개정약관의 적용일자 7일 전부터 적용일자 전일까지 공지합니다.</p>
+              </section>
+              
+              <div class="h-32 bg-slate-50 border border-dashed border-slate-300 flex items-center justify-center text-slate-400 mt-8">
+                [약관 본문 전체 영역 스크롤]
+              </div>
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-04: 개인정보처리방침 -->
+      <div id="m-04" class="wf-card">
+        <div class="wf-header">
+          <span>M-04 개인정보처리방침</span>
+          <span class="wf-badge">수집항목 · 쿠키(자동수집) · 파기</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white max-w-4xl mx-auto w-full flex-grow">
+            <div class="flex justify-between items-end border-b pb-4 mb-6">
+              <h1 class="text-2xl font-bold">개인정보 처리방침</h1>
+              <select class="border border-slate-300 rounded p-1 text-sm bg-slate-50">
+                <option>v1.0 (시행일: 2026.09.01) - 현재</option>
+              </select>
+            </div>
+            
+            <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
+              <p>(주)모프컴퍼니는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법령에 따라 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2 border-l-4 border-slate-400 pl-2">1. 수집하는 개인정보 항목 및 수집방법</h3>
+                <table class="w-full border-collapse border border-slate-300 text-xs text-left mt-2">
+                  <tr class="bg-slate-100"><th class="border p-2">수집 시점</th><th class="border p-2">필수/선택</th><th class="border p-2">수집 항목</th></tr>
+                  <tr><td class="border p-2">회원 가입 시</td><td class="border p-2 font-bold text-red-500">필수</td><td class="border p-2">이메일 주소, 비밀번호 (소셜 연동 시 식별값)</td></tr>
+                  <tr><td class="border p-2">유료 결제 시</td><td class="border p-2 font-bold text-red-500">필수</td><td class="border p-2">결제 기록, 결제 수단 정보(카드사, 토큰 등)</td></tr>
+                </table>
+              </section>
+
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2 border-l-4 border-slate-400 pl-2">2. 개인정보의 보유 및 이용기간</h3>
+                <p>회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 아래와 같이 보관합니다.</p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                  <li>대금결제 및 재화 등의 공급에 관한 기록: 5년</li>
+                  <li>소비자의 불만 또는 분쟁처리에 관한 기록: 3년</li>
+                  <li>회원 탈퇴 시: 5일 영업일 이내 API 키 및 로그 기록 완전 파기</li>
+                </ul>
+              </section>
+              
+              <section>
+                <h3 class="font-bold text-slate-800 mb-2 border-l-4 border-slate-400 pl-2">3. 자동 수집 장치 (쿠키)의 설치 및 거부</h3>
+                <p>회사는 이용자에게 맞춤형 서비스를 제공하기 위해 쿠키(cookie)를 사용합니다. 브라우저 설정을 통해 쿠키 저장을 거부할 수 있습니다.</p>
+              </section>
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-05: 서비스 Status -->
+      <div id="m-05" class="wf-card">
+        <div class="wf-header">
+          <span>M-05 서비스 Status</span>
+          <span class="wf-badge">시스템 상태 · 가동률 · 인시던트 내역</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+            </div>
+          </div>
+
+          <div class="p-12 bg-slate-50 flex flex-col items-center flex-grow">
+            <div class="w-full max-w-3xl space-y-8">
+              
+              <div class="bg-white border-2 border-green-500 rounded-lg p-6 flex items-center justify-between shadow-sm">
+                <div>
+                  <h2 class="text-2xl font-bold text-slate-800 mb-1">All Systems Operational</h2>
+                  <p class="text-sm text-slate-500">Last updated: 2 mins ago</p>
+                </div>
+                <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+              </div>
+
+              <div class="bg-white border rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-4">Uptime (Last 30 Days)</h3>
+                <div class="space-y-4">
+                  <div>
+                    <div class="flex justify-between text-sm mb-2 font-medium">
+                      <span>API Gateway (Morph)</span>
+                      <span class="text-green-600">99.99%</span>
+                    </div>
+                    <div class="flex gap-1">
+                      <script>
+                        for(let i=0; i<30; i++) {
+                          document.write('<div class="h-8 flex-grow bg-green-400 rounded-sm hover:opacity-75 cursor-pointer" title="No downtime"></div>');
+                        }
+                      </script>
+                    </div>
+                  </div>
+                  
+                  <div class="pt-4">
+                    <div class="flex justify-between text-sm mb-2 font-medium">
+                      <span>Inference Engine (Motif 3)</span>
+                      <span class="text-green-600">99.95%</span>
+                    </div>
+                    <div class="flex gap-1">
+                      <script>
+                        for(let i=0; i<30; i++) {
+                          if(i === 22) {
+                             document.write('<div class="h-8 flex-grow bg-yellow-400 rounded-sm" title="Partial Outage"></div>');
+                          } else {
+                             document.write('<div class="h-8 flex-grow bg-green-400 rounded-sm"></div>');
+                          }
+                        }
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-bold text-lg mb-4">Past Incidents</h3>
+                <div class="border-l-2 border-slate-300 ml-3 space-y-6">
+                  <div class="relative pl-6">
+                    <div class="absolute w-3 h-3 bg-slate-400 rounded-full -left-[7px] top-1.5"></div>
+                    <div class="font-bold text-sm">Aug 20, 2026</div>
+                    <p class="text-sm text-slate-500 mt-1">No incidents reported.</p>
+                  </div>
+                  <div class="relative pl-6">
+                    <div class="absolute w-3 h-3 bg-yellow-500 rounded-full -left-[7px] top-1.5"></div>
+                    <div class="font-bold text-sm">Aug 19, 2026</div>
+                    <div class="mt-2 bg-white border p-4 rounded text-sm space-y-2 shadow-sm">
+                      <div class="font-bold text-yellow-700">Elevated Latency on Motif 3 Endpoint</div>
+                      <p class="text-slate-600"><strong>Resolved</strong> - The issue with elevated latency has been resolved. (14:30 KST)</p>
+                      <p class="text-slate-600"><strong>Investigating</strong> - We are currently investigating reports of slower than usual response times. (14:15 KST)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==========================================
+         TAB 2: A 시리즈 (온보딩 및 인증 영역)
+         ========================================== -->
+    <div id="tab-a" class="tab-content hidden">
+
+      <!-- 서브 탭 (1안 / 2안 전환) -->
+      <div class="w-full mb-6 flex gap-2 border-b border-slate-200 pb-2">
+        <button onclick="switchSubTab('sub-flow-1')" id="btn-flow-1" class="px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all">
+          [1안] 인증 프로세스 흐름도 (수동 연동)
+        </button>
+        <button onclick="switchSubTab('sub-flow-2')" id="btn-flow-2" class="px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all">
+          [2안] 인증 프로세스 흐름도 (연동 불가)
+        </button>
+      </div>
+
+      <!-- 서브 1안 흐름도 -->
+      <div id="sub-flow-1" class="sub-flow-content w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
+          📊 [1안] 인증 프로세스 흐름도 (HTML Architecture)
+        </h2>
+        <p class="text-xs text-slate-500 mb-6">소셜/이메일 가입 및 연동 전체 흐름도입니다. 소셜 가입 흐름 내에 약관 버전 저장이 포함되며, 하단에서 온보딩 설문으로 공통 합류합니다.</p>
+        
+        <div class="max-w-3xl mx-auto flex flex-col items-center space-y-2">
+          <div class="flow-node w-full max-w-sm"><a href="#a-02">[A-02] 회원가입 페이지 진입</a></div>
+          <div class="flow-arrow">↓</div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
+              <div class="font-bold text-xs text-blue-600 mb-2">[소셜 회원가입 흐름]</div>
+              <div class="flow-node-action w-full"><a href="#a-02" class="text-white underline">소셜 가입 버튼 클릭</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node w-full">OAuth 콜백 검증</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full">1. provider + sub 일치 여부?</div>
+              <div class="flow-arrow text-[11px]">예 (이미 가입됨) ➔ <a href="#a-01">로그인 (A-01)</a><br/>아니오 (신규) ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
+              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-amber-50">2. email_verified = true?</div>
+              <div class="flow-arrow text-[11px]">아니오 ➔ <a href="#a-10">A-10 (이메일 미인증 종료 화면)</a><br/>예 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-blue-50">3. 해당 이메일 계정 존재?</div>
+              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-09">A-09 (계정 연동 팝업)</a><br/>아니오 ➔ <a href="#a-08">A-08 (소셜 약관 동의)</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+            </div>
+
+            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
+              <div class="font-bold text-xs text-slate-700 mb-2">[이메일 회원가입 흐름]</div>
+              <div class="flow-node w-full"><a href="#a-02">이메일 가입 폼 작성</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
+              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-blue-50">3. 이미 가입된 이메일?</div>
+              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-01">로그인 유도 안내</a><br/>아니오 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-action w-full bg-slate-800 text-white"><a href="#a-03" class="text-white underline">A-03 OTP 인증 (6자리)</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+            </div>
+          </div>
+
+          <div class="w-full border-t my-4"></div>
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">[ 공통 완료 파이프라인 ]</div>
+          <div class="flow-node w-full max-w-sm"><a href="#a-04">A-04 온보딩 설문 (2문항)</a></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node-action w-full max-w-sm bg-emerald-700"><a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-white underline">가입 완료 메일 발송 ➔ 콘솔 대시보드 (C-01)</a></div>
+        </div>
+      </div>
+
+      <!-- 서브 2안 흐름도 -->
+      <div id="sub-flow-2" class="sub-flow-content hidden w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
+        <h2 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
+          📊 [2안] 인증 프로세스 흐름도 (연동 불가 정책)
+        </h2>
+        <p class="text-xs text-slate-500 mb-6">소셜 가입 시 이미 가입된 이메일이 존재하면 연동 없이 기존 로그인 안내 후 로그인 페이지(A-01)로 유도하는 전체 흐름도입니다.</p>
+        
+        <div class="max-w-3xl mx-auto flex flex-col items-center space-y-2">
+          <div class="flow-node w-full max-w-sm"><a href="#a-02">[A-02] 회원가입 페이지 진입</a></div>
+          <div class="flow-arrow">↓</div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
+              <div class="font-bold text-xs text-blue-600 mb-2">[소셜 회원가입 흐름]</div>
+              <div class="flow-node-action w-full"><a href="#a-02" class="text-white underline">소셜 가입 버튼 클릭</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node w-full">OAuth 콜백 검증</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full">1. provider + sub 일치 여부?</div>
+              <div class="flow-arrow text-[11px]">예 (이미 가입됨) ➔ <a href="#a-01">로그인 (A-01)</a><br/>아니오 (신규) ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
+              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-amber-50">2. email_verified = true?</div>
+              <div class="flow-arrow text-[11px]">아니오 ➔ <a href="#a-10">A-10 (이메일 미인증 종료 화면)</a><br/>예 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-blue-50">3. 해당 이메일 계정 존재?</div>
+              <div class="flow-arrow text-[11px]">예 (기존 계정 존재) ➔ <a href="#a-09">"이미 가입된 이메일입니다.<br/>기존 이메일/비밀번호로 로그인해 주세요."</a><br/>아니오 (신규) ➔ <a href="#a-08">A-08 (소셜 약관 동의)</a></div>
+              <div class="flow-arrow">↓ (예 인 경우)</div>
+              <div class="flow-node w-full bg-slate-100 mb-2"><a href="#a-01">A-01 로그인 페이지로 이동</a></div>
+              <div class="flow-arrow">↓ (아니오 인 경우)</div>
+              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+            </div>
+
+            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
+              <div class="font-bold text-xs text-slate-700 mb-2">[이메일 회원가입 흐름]</div>
+              <div class="flow-node w-full"><a href="#a-02">이메일 가입 폼 작성</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
+              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full bg-blue-50">3. 이미 가입된 이메일?</div>
+              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-01">로그인 유도 안내</a><br/>아니오 ➔ 다음 단계</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-action w-full bg-slate-800 text-white"><a href="#a-03" class="text-white underline">A-03 OTP 인증 (6자리)</a></div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+            </div>
+          </div>
+
+          <div class="w-full border-t my-4"></div>
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">[ 공통 완료 파이프라인 ]</div>
+          <div class="flow-node w-full max-w-sm"><a href="#a-04">A-04 온보딩 설문 (2문항)</a></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node-action w-full max-w-sm bg-emerald-700"><a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-white underline">가입 완료 메일 발송 ➔ 콘솔 대시보드 (C-01)</a></div>
+        </div>
+      </div>
+
+      <!-- A-01: 로그인 -->
+      <div id="a-01" class="wf-card">
+        <div class="wf-header">
+          <span>A-01 로그인 (Sign In)</span>
+          <span class="wf-badge">이메일+소셜 · 실패 5회 차단 · 재설정 링크</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl font-bold">Welcome back</h2>
+              <p class="text-xs text-slate-500 mt-2">Morph Token Factory에 로그인하세요</p>
+            </div>
+            
+            <button class="wf-btn mb-2">Continue with Google</button>
+            <button class="wf-btn mb-3">Continue with GitHub</button>
+            
+            <div class="divider text-xs text-slate-400">OR EMAIL</div>
+
+            <div>
+              <label class="wf-label">Email Address</label>
+              <input type="email" class="wf-input" placeholder="user@example.com">
+              
+              <label class="wf-label">Password</label>
+              <input type="password" class="wf-input" placeholder="••••••••">
+              
+              <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary">Sign In</button>
+            </div>
+
+            <div class="flex justify-between items-center text-[11px] font-medium text-slate-500 mt-6 pt-4 border-t">
+              <a href="#a-05" class="hover:text-slate-800 underline text-blue-600">Forgot password? (A-05)</a>
+              <a href="#a-02" class="hover:text-slate-800 underline text-blue-600">Sign Up (A-02)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-02: 회원가입 -->
+      <div id="a-02" class="wf-card">
+        <div class="wf-header">
+          <span>A-02 회원가입 (Sign Up)</span>
+          <span class="wf-badge">가입 폼 · 약관 동의 · 소셜 가입</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box">
+            <div class="text-center mb-6">
+              <h2 class="text-2xl font-bold">Create Account</h2>
+              <p class="text-xs text-slate-500 mt-2">API 사용을 위한 계정을 생성합니다</p>
+            </div>
+            
+            <a href="#a-08" class="wf-btn mb-2 no-underline text-slate-800 block">Sign up with Google (A-08 이동)</a>
+            <a href="#a-08" class="wf-btn mb-3 no-underline text-slate-800 block">Sign up with GitHub (A-08 이동)</a>
+            
+            <div class="divider text-xs text-slate-400">OR EMAIL</div>
+
+            <div>
+              <label class="wf-label">Email Address</label>
+              <input type="email" class="wf-input" placeholder="user@example.com">
+              
+              <label class="wf-label">Password</label>
+              <input type="password" class="wf-input" placeholder="12자 이상 + 영문/숫자 조합">
+              
+              <div class="bg-slate-50 border p-3 rounded-md mb-4 space-y-2 text-[11px] text-slate-600">
+                <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800 border-b pb-2 mb-2">
+                  <input type="checkbox" class="w-3 h-3"> 모두 동의합니다.
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관 동의
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-3 h-3"> [필수] 개인정보 수집 및 이용 동의
+                </label>
+              </div>
+
+              <a href="#a-03" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">Continue</a>
+            </div>
+            
+            <div class="text-center text-[11px] font-medium text-slate-500 mt-6 pt-4 border-t">
+              Already have an account? <a href="#a-01" class="hover:text-slate-800 underline text-blue-600">Log in (A-01)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-03: OTP 인증 -->
+      <div id="a-03" class="wf-card">
+        <div class="wf-header">
+          <span>A-03 OTP 인증 (회원가입용)</span>
+          <span class="wf-badge">6자리 · 10분 · 5회 제한 · 재발송</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box text-center">
+            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 border">✉️</div>
+            <h2 class="text-xl font-bold mb-2">Check your email</h2>
+            <p class="text-xs text-slate-500 mb-6">
+              <span class="font-bold text-slate-800">user@example.com</span>으로<br/>발송된 6자리 인증번호를 입력해 주세요.
+            </p>
+            
+            <div class="flex justify-center gap-2 mb-4">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-300 rounded focus:border-slate-800 focus:outline-none" value="8">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-300 rounded focus:border-slate-800 focus:outline-none" value="4">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-300 rounded focus:border-slate-800 focus:outline-none" value="2">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-200 rounded focus:border-slate-800 focus:outline-none">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-200 rounded focus:border-slate-800 focus:outline-none">
+              <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border-2 border-slate-200 rounded focus:border-slate-800 focus:outline-none">
+            </div>
+
+            <div class="text-[11px] font-medium text-slate-500 mb-6">남은 시간: <span class="text-red-500 font-bold">09:54</span></div>
+            <a href="#a-04" class="wf-btn wf-btn-primary mb-3 no-underline text-white flex items-center justify-center">Verify Email</a>
+            
+            <div class="text-[11px] text-slate-500">
+              이메일을 받지 못하셨나요? <a href="#" class="underline font-bold text-slate-700">인증번호 재발송</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-04: 온보딩 설문 -->
+      <div id="a-04" class="wf-card">
+        <div class="wf-header">
+          <span>A-04 온보딩 설문</span>
+          <span class="wf-badge">2문항 · 완료 시 크레딧 지급 · Skip 가능</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box">
+            <h2 class="text-xl font-bold mb-2">거의 다 되었습니다!</h2>
+            <p class="text-xs text-slate-500 mb-6">
+              아래 설문을 완료하시면 계정에 즉시 <span class="font-bold text-blue-600">$20 무료 크레딧</span>이 지급됩니다.
+            </p>
+
+            <div class="space-y-4 mb-6">
+              <div>
+                <label class="wf-label">1. Morph를 주로 어떤 목적으로 사용하실 계획인가요?</label>
+                <select class="wf-input mb-0">
+                  <option value="" disabled selected>선택해 주세요</option>
+                  <option>사내 코딩 에이전트 연동</option>
+                  <option>개인 프로젝트 개발</option>
+                  <option>LLM 서비스 프로덕션 서빙</option>
+                  <option>단순 테스트 및 검토</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="wf-label">2. 현재 소속된 조직의 규모는 어떻게 되나요?</label>
+                <select class="wf-input mb-0">
+                  <option value="" disabled selected>선택해 주세요</option>
+                  <option>개인 (소속 없음)</option>
+                  <option>스타트업 (1~50명)</option>
+                  <option>중소/중견기업 (51~500명)</option>
+                  <option>대기업 (500명 이상)</option>
+                </select>
+              </div>
+            </div>
+
+            <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary mb-3">제출하고 $20 크레딧 받기</button>
+            <button onclick="switchToCTab('#c-01')" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">Skip for now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-05 / OTP / A-06: 비밀번호 재설정 파이프라인 -->
+      <div id="a-05" class="wf-card">
+        <div class="wf-header">
+          <span>A-05 재설정 요청 ➔ OTP 인증 ➔ A-06 비밀번호 재설정</span>
+          <span class="wf-badge">비밀번호 찾기 전체 플로우</span>
+        </div>
+        <div class="wf-content-a flex flex-col lg:flex-row gap-4 w-full items-center lg:items-stretch justify-center">
+          
+          <div class="auth-box auth-box-sm border-slate-300">
+            <div class="text-[10px] font-bold text-white bg-slate-800 inline-block px-2 py-1 rounded mb-4">STEP 1. 요청 (A-05)</div>
+            <h2 class="text-lg font-bold mb-2">Reset Password</h2>
+            <p class="text-[11px] text-slate-500 mb-4">가입하신 이메일을 입력하시면 비밀번호 재설정을 위한 인증번호(OTP)를 보내드립니다.</p>
+            
+            <label class="wf-label">Email Address</label>
+            <input type="email" class="wf-input" placeholder="user@example.com">
+            
+            <button class="wf-btn wf-btn-primary mb-3">Send Reset Code</button>
+            <a href="#a-01" class="block text-center text-[11px] underline text-blue-600">Back to Login</a>
+          </div>
+
+          <div class="flex items-center text-slate-300 rotate-90 lg:rotate-0 my-2 lg:my-0">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+
+          <div class="auth-box auth-box-sm border-blue-200 bg-blue-50">
+            <div class="text-[10px] font-bold text-white bg-blue-600 inline-block px-2 py-1 rounded mb-4">STEP 2. 인증 (OTP)</div>
+            <h2 class="text-lg font-bold mb-2">Enter OTP</h2>
+            <p class="text-[11px] text-slate-500 mb-4">이메일로 발송된 6자리 인증번호를 입력해 주세요.</p>
+            
+            <div class="flex justify-between gap-1 mb-2">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="1">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="2">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="3">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="">
+              <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="">
+            </div>
+            <div class="text-[10px] text-slate-400 mb-4 text-right">남은 시간: 04:59</div>
+            
+            <button class="wf-btn bg-blue-600 text-white border-none">Verify Code</button>
+          </div>
+
+          <div class="flex items-center text-slate-300 rotate-90 lg:rotate-0 my-2 lg:my-0">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+
+          <div class="auth-box auth-box-sm border-slate-300">
+            <div class="text-[10px] font-bold text-white bg-slate-800 inline-block px-2 py-1 rounded mb-4">STEP 3. 재설정 (A-06)</div>
+            <h2 class="text-lg font-bold mb-2">Set New Password</h2>
+            <p class="text-[10px] text-red-600 font-medium mb-4">※ 변경 완료 시 접속 중인 모든 기기에서 자동 로그아웃 됩니다.</p>
+            
+            <label class="wf-label">New Password</label>
+            <input type="password" class="wf-input" placeholder="새 비밀번호 입력">
+            
+            <label class="wf-label">Confirm New Password</label>
+            <input type="password" class="wf-input mb-4" placeholder="비밀번호 재입력">
+            
+            <a href="#a-01" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">Update Password</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- A-07: 가입 제한 안내 -->
+      <div id="a-07" class="wf-card">
+        <div class="wf-header">
+          <span>A-07 가입 제한 안내</span>
+          <span class="wf-badge">어드민 통제 · 폼 대체 화면</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box text-center py-12">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl">🚧</div>
+            <h2 class="text-xl font-bold mb-2">신규 가입 일시 제한 안내</h2>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+              현재 서비스 안정성 확보를 위해<br/>일시적으로 신규 회원가입을 제한하고 있습니다.
+            </p>
+            
+            <div class="flex gap-2 justify-center">
+              <a href="#m-01" onclick="switchToMTab()" class="wf-btn max-w-[140px] no-underline text-slate-700">홈으로 가기</a>
+              <a href="#a-01" class="wf-btn wf-btn-primary max-w-[140px] no-underline text-white">로그인 하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-08: 소셜 가입 약관 동의 -->
+      <div id="a-08" class="wf-card">
+        <div class="wf-header">
+          <span>A-08 소셜 가입 약관 동의</span>
+          <span class="wf-badge">소셜 가입 전용 · 명시적 약관 동의</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box">
+            <div class="text-center mb-6">
+              <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 border text-xl">🤝</div>
+              <h2 class="text-2xl font-bold">환영합니다!</h2>
+              <p class="text-xs text-slate-500 mt-2">서비스 시작을 위해 약관 동의가 필요합니다.</p>
+            </div>
+            
+            <div class="flex items-center gap-3 p-3 mb-6 bg-slate-50 border rounded-lg">
+              <div class="w-8 h-8 bg-white border rounded flex items-center justify-center text-xs font-bold">G</div>
+              <div class="text-xs">
+                <div class="font-bold text-slate-700">소셜 계정으로 가입 진행 중</div>
+                <div class="text-slate-500">user@example.com</div>
+              </div>
+            </div>
+
+            <div class="bg-white border p-4 rounded-md mb-6 space-y-3 text-xs text-slate-600">
+              <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800 border-b pb-3 mb-1">
+                <input type="checkbox" class="w-4 h-4 rounded text-slate-800 cursor-pointer"> 모두 동의합니다.
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관 동의 <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 개인정보 수집 및 이용 동의 <a href="#m-04" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+              </label>
+            </div>
+
+            <a href="#a-04" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">가입 완료하기</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- A-09: 소셜 ↔ 이메일 계정 연동 안내 -->
+      <div id="a-09" class="wf-card">
+        <div class="wf-header">
+          <span>A-09 소셜 ↔ 이메일 계정 연동 안내 (이미 가입된 이메일)</span>
+          <span class="wf-badge">1안(수동 연동) · 2안(연동 불가) 얼럿/팝업</span>
+        </div>
+        <div class="wf-content-a flex flex-col lg:flex-row gap-6 w-full items-center lg:items-stretch justify-center">
+          
+          <div class="auth-box auth-box-sm border-slate-300 text-center flex flex-col justify-between">
+            <div>
+              <div class="text-[10px] font-bold text-white bg-blue-600 inline-block px-2 py-1 rounded mb-4">1안 — 수동 연동 (팝업/얼럿)</div>
+              <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">🔗</div>
+              <h2 class="text-base font-bold mb-1">이미 가입된 이메일입니다</h2>
+              <p class="text-xs text-slate-500 mb-6">
+                <span class="font-bold text-slate-800">a@gmail.com</span> 계정에<br/>소셜 로그인을 추가할까요?
+              </p>
+            </div>
+            <div class="space-y-2 pt-4 border-t">
+              <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary">연결하고 로그인</button>
+              <button class="wf-btn bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200">취소</button>
+            </div>
+          </div>
+
+          <div class="auth-box auth-box-sm border-slate-300 text-center flex flex-col justify-between">
+            <div>
+              <div class="text-[10px] font-bold text-white bg-slate-700 inline-block px-2 py-1 rounded mb-4">2안 — 연동 불가 (팝업/얼럿)</div>
+              <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">⚠️</div>
+              <h2 class="text-base font-bold mb-1">이미 가입된 이메일입니다</h2>
+              <p class="text-xs text-slate-500 mb-6">
+                기존 이메일과 비밀번호로<br/>로그인해 주세요.
+              </p>
+            </div>
+            <div class="space-y-2 pt-4 border-t">
+              <a href="#a-01" class="wf-btn wf-btn-primary no-underline text-white block">로그인하러 가기</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- A-10: 이메일 미인증 종료 화면 -->
+      <div id="a-10" class="wf-card">
+        <div class="wf-header">
+          <span>A-10 이메일 미인증 종료 안내 (신규 화면)</span>
+          <span class="wf-badge">소셜 계정 이메일 미인증 시 가입 중단 화면</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="auth-box text-center py-12">
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl">🔒</div>
+            <h2 class="text-xl font-bold mb-2">이메일 인증이 필요합니다</h2>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+              사용 중인 소셜 계정에서 이메일 인증이 완료되지 않았습니다.<br/>해당 제공자(Google/GitHub 등)에서 이메일 인증 후 다시 시도해 주세요.
+            </p>
+            
+            <div class="flex gap-2 justify-center">
+              <a href="#a-01" class="wf-btn max-w-[140px] no-underline text-slate-700">로그인으로 가기</a>
+              <a href="#a-02" class="wf-btn wf-btn-primary max-w-[140px] no-underline text-white">돌아가기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==========================================
+         TAB 3: C 시리즈 (콘솔 영역)
+         ========================================== -->
+    <div id="tab-c" class="tab-content hidden">
+      <div class="wf-card border-none shadow-none bg-transparent">
+        
+        <!-- C시리즈 상단 Mock GNB -->
+        <div class="mock-gnb rounded-t-lg border">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg tracking-tight text-slate-900">Morph Token Factory Console</span>
+          </div>
+          <div class="flex gap-6 text-sm font-medium items-center relative">
+            <a href="#c-07" class="hover:text-blue-600 no-underline text-slate-700">⚡ 플레이그라운드</a>
+            <a href="#m-02" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">문서</a>
+            
+            <div class="relative">
+              <button onclick="toggleProfileModal(event)" class="flex items-center gap-2 text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-2 rounded-full border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors">
+                <span>👤 프로필 (김모프님)</span>
+                <svg class="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+
+              <div id="profile-modal" class="hidden absolute right-0 top-12 w-64 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-50 text-slate-700">
+                <div class="px-3 py-2 border-b border-slate-100 mb-1">
+                  <div class="font-bold text-slate-900 text-xs">김모프 (Hanah Suh)</div>
+                  <div class="text-[11px] text-slate-400">user@morph.com</div>
+                </div>
+                <a href="javascript:void(0)" onclick="openSettingModal('c-09'); closeProfileModal();" class="flex items-center gap-2 px-3 py-2 text-xs hover:bg-slate-50 rounded-lg no-underline text-slate-700 font-medium">
+                  🔒 계정 설정 – 비밀번호 변경 (C-09)
+                </a>
+                <a href="javascript:void(0)" onclick="openSettingModal('c-10'); closeProfileModal();" class="flex items-center gap-2 px-3 py-2 text-xs hover:bg-red-50 text-red-600 rounded-lg no-underline font-medium mt-1">
+                  ⚠️ 계정 설정 – 회원 탈퇴 (C-10)
+                </a>
+              </div>
+            </div>
+
+            <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50 cursor-pointer">
+              <option>KO</option>
+              <option>EN</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="console-layout border-x border-b border-slate-300">
+          <!-- 좌측 고정 사이드바 -->
+          <div class="sidebar">
+            <div class="sidebar-title">메뉴</div>
+            <div class="sidebar-menu">
+              <a href="#c-01" class="sidebar-item active">📊 대시보드</a>
+              <a href="#c-02" class="sidebar-item">🔑 API 키</a>
+              <a href="#c-03" class="sidebar-item">💳 크레딧 및 충전</a>
+              <a href="#c-07" class="sidebar-item">⚡ 플레이그라운드</a>
+              <a href="#c-08" class="sidebar-item">📜 요청 로그</a>
+            </div>
+          </div>
+
+          <!-- 우측 메인 컨테이너 -->
+          <div class="content-container">
+
+            <!-- C-01 대시보드 -->
+            <div id="c-01" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>C-01 대시보드</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-500 font-normal">상태 전환:</span>
+                    <button onclick="switchDashboardState('depleted')" id="dash-btn-depleted" class="state-toggle-btn active">잔액 소진</button>
+                    <button onclick="switchDashboardState('normal')" id="dash-btn-normal" class="state-toggle-btn">정상</button>
+                    <button onclick="switchDashboardState('empty')" id="dash-btn-empty" class="state-toggle-btn">빈 상태 (가이드)</button>
+                  </div>
+                </div>
+                
+                <div class="wf-body p-6">
+                  <div id="dash-banner-depleted" class="bg-slate-900 text-white p-5 rounded-xl mb-6 flex justify-between items-center shadow-md">
+                    <div>
+                      <div class="font-bold text-base mb-1">크레딧이 모두 소진되었습니다</div>
+                      <div class="text-xs text-slate-300">충전 후 API 요청과 플레이그라운드를 다시 사용할 수 있습니다.</div>
+                    </div>
+                    <a href="#c-03" class="bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-100 no-underline">충전하기</a>
+                  </div>
+                  
+                  <div id="dash-banner-normal" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl mb-6 flex justify-between items-center text-xs">
+                    <span>정상 상태 메시지 표출 영역</span>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
+                      <div class="text-xs font-semibold text-slate-400 uppercase">크레딧 잔액</div>
+                      <div id="dash-val-balance" class="text-2xl font-extrabold text-slate-900 mt-1">$0.00</div>
+                    </div>
+                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
+                      <div class="text-xs font-semibold text-slate-400 uppercase">사용한 크레딧</div>
+                      <div id="dash-val-used" class="text-2xl font-extrabold text-slate-900 mt-1">$20.00</div>
+                    </div>
+                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
+                      <div class="text-xs font-semibold text-slate-400 uppercase">사용 토큰 수</div>
+                      <div id="dash-val-tokens" class="text-2xl font-extrabold text-slate-900 mt-1">12.4M</div>
+                    </div>
+                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
+                      <div class="text-xs font-semibold text-slate-400 uppercase">요청 횟수</div>
+                      <div id="dash-val-requests" class="text-2xl font-extrabold text-slate-900 mt-1">1,842</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div id="dash-graph-container">
+                      <div class="flex justify-between items-center mb-3">
+                        <span class="font-bold text-sm text-slate-800">일별 사용량</span>
+                        <div id="dash-date-tabs" class="flex gap-1 bg-slate-100 p-1 rounded-lg text-xs font-bold">
+                          <span class="bg-white px-3 py-1 rounded shadow-2xs">지난 7일</span>
+                          <span class="text-slate-500 px-3 py-1">지난 30일</span>
+                        </div>
+                      </div>
+                      <div id="dash-graph-area" class="border rounded-xl h-48 flex items-center justify-center text-slate-400 text-xs bg-slate-50">
+                        [일별 막대그래프 영역 · 마우스 오버 시 날짜 및 값 표시]
+                      </div>
+                    </div>
+
+                    <div id="dash-empty-guide" class="hidden text-center py-12 border rounded-xl bg-slate-50/50">
+                      <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl font-bold">🚀</div>
+                      <h3 class="text-base font-bold text-slate-900 mb-1">첫 번째 API 키를 발급받고 시작하세요!</h3>
+                      <p class="text-xs text-slate-500 max-w-sm mx-auto mb-6">
+                        아직 사용 기록이 없습니다. API 키를 생성하고 첫 호출을 시도해 보세요.
+                      </p>
+                      <div class="flex justify-center gap-3">
+                        <a href="#c-02" class="wf-btn wf-btn-dark text-xs no-underline w-auto">API 키 관리로 이동</a>
+                        <a href="#c-07" class="wf-btn text-xs no-underline w-auto">플레이그라운드 체험</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- C-02 API 키 관리 -->
+            <div id="c-02" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>C-02 API 키 관리</span>
+                  <span class="wf-badge">만료일 및 크레딧 제한 설정 포함</span>
+                </div>
+                <div class="wf-body p-6">
+                  <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs text-slate-500">보안을 위해 발급된 키의 비밀 키(Secret Key)는 최초 1회만 표시됩니다.</span>
+                    <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 API 키 발급</button>
+                  </div>
+                  <table class="wf-table border rounded-lg overflow-hidden">
+                    <thead>
+                      <tr><th>키 이름</th><th>비밀 키 식별자</th><th>상태</th><th>만료일</th><th>크레딧 제한</th><th class="text-right">관리</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold">Production Key</td>
+                        <td><code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono">morph-sk-9f82...</code></td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold border border-emerald-200">활성</span></td>
+                        <td class="text-slate-500 text-xs">90일 후</td>
+                        <td class="text-slate-500 text-xs">$50.00</td>
+                        <td class="text-right space-x-2">
+                          <button class="text-xs text-amber-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">비활성화</button>
+                          <button onclick="confirm('이 API 키를 정말 삭제하시겠습니까? 삭제된 키는 복구할 수 없습니다.')" class="text-xs text-red-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">삭제</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- C-07 플레이그라운드 -->
+            <div id="c-07" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>C-07 플레이그라운드</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-500 font-normal">상태 전환:</span>
+                    <button onclick="switchPlaygroundState('empty')" id="pg-btn-empty" class="state-toggle-btn active">크레딧 없음</button>
+                    <button onclick="switchPlaygroundState('has')" id="pg-btn-has" class="state-toggle-btn">크레딧 있음</button>
+                  </div>
+                </div>
+                <div class="wf-body p-6">
+                  <div id="pg-banner-empty" class="bg-red-50 border border-red-200 p-3 rounded-lg text-xs text-red-700 mb-6 flex justify-between items-center">
+                    <span>⚠️ 잔액 소진으로 플레이그라운드 실행이 제한되었습니다.</span>
+                    <a href="#c-03" class="font-bold underline">충전하러 가기</a>
+                  </div>
+
+                  <div class="space-y-4 max-w-2xl mx-auto w-full">
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">모델 선택</label>
+                      <select class="wf-input mb-0"><option>motif-3 (기본)</option></select>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">시스템 프롬프트</label>
+                      <textarea class="wf-input h-32 mb-0">You are a helpful coding assistant.</textarea>
+                    </div>
+                    <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none">잔액 소진으로 실행 불가</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- C-08 로그 -->
+            <div id="c-08" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>C-08 API 요청 로그</span>
+                  <span class="wf-badge">동일 화면</span>
+                </div>
+                <div class="wf-body p-6">
+                  <table class="wf-table border rounded-lg overflow-hidden">
+                    <thead><tr><th>일시</th><th>모델</th><th>상태</th><th>토큰 수</th><th>지연 시간</th></tr></thead>
+                    <tbody>
+                      <tr><td>2026-08-26 14:20:12</td><td>motif-3</td><td><span class="text-emerald-600 font-bold">200 성공 (OK)</span></td><td>1,240</td><td>320ms</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- C-03 크레딧 관리 + C-04 충전 -->
+            <div id="c-03" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>C-03 크레딧 관리 및 충전</span>
+                  <span class="wf-badge">잔액 조회 · 크레딧 충전 · 자동 충전 설정 통합 화면</span>
+                </div>
+                <div class="wf-body p-6 space-y-8">
+                  
+                  <div class="bg-slate-900 text-white p-6 rounded-xl shadow-sm">
+                    <div class="text-xs uppercase font-bold text-slate-400 mb-1 tracking-wider">총 사용 가능 잔액</div>
+                    <div class="text-4xl font-extrabold mb-1">$7.11</div>
+                    <div class="text-xs text-slate-300">종량제 잔액 (유료 $0.45 / 무료 $6.66)</div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
+                      <div>
+                        <h3 class="font-bold text-base text-slate-900 mb-4">크레딧 충전</h3>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">충전 금액 ($ USD)</label>
+                        <input type="number" class="wf-input mb-3" value="10">
+                        <div class="flex justify-between text-xs text-slate-500 mb-6">
+                          <span>총 결제 예상 금액 (적용 환율 기준)</span>
+                          <span class="font-bold text-slate-900">13,500 KRW ($10.00)</span>
+                        </div>
+                      </div>
+                      <div>
+                        <button onclick="openTossPaymentModal()" class="wf-btn bg-lime-400 text-slate-900 font-bold hover:bg-lime-500 w-full py-3 border-none">결제하기</button>
+                      </div>
+                    </div>
+
+                    <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
+                      <div>
+                        <h3 class="font-bold text-base text-slate-900 mb-4">자동 충전 설정</h3>
+                        <div class="border border-dashed border-slate-300 rounded-xl p-8 text-center bg-slate-50 mb-4">
+                          <button onclick="openAutoTopUpModal()" class="wf-btn wf-btn-dark text-xs mb-2">결제 수단 등록 및 설정</button>
+                          <div class="text-[11px] text-slate-500">자동 충전을 활성화하려면 등록된 카드가 필요합니다.</div>
+                        </div>
+                      </div>
+                      <div class="text-[11px] text-slate-400">설정된 잔액 임계값 도달 시 자동으로 충전됩니다.</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="font-bold text-sm text-slate-900 mb-3">최근 거래 내역</div>
+                    <table class="wf-table border rounded-lg overflow-hidden">
+                      <thead><tr><th>일시</th><th>구분</th><th>금액</th><th class="text-right">상태</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-slate-600">2026-08-26 13:21:00</td>
+                          <td>신용카드 충전</td>
+                          <td class="font-bold">$10.00</td>
+                          <td class="text-right"><span class="text-emerald-600 font-bold text-xs">완료</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- C 시리즈 지원 모달 레이어 -->
+  <!-- 토스페이먼츠 카드 번호 입력 위젯 모달 -->
+  <div id="toss-payment-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-slate-200 relative text-slate-800">
+      <div class="flex justify-between items-center mb-6 pb-2 border-b">
+        <h3 class="font-bold text-base text-slate-900">💳 카드 번호 입력</h3>
+        <button onclick="closeTossPaymentModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 mb-1">카드번호 (Card Number)</label>
+          <div class="flex gap-2 items-center bg-slate-50 border border-slate-300 rounded-lg p-2 font-mono text-sm">
+            <span class="font-bold">5387</span>
+            <span>2082</span>
+            <span class="text-slate-400">••••</span>
+            <span class="text-slate-400">••••</span>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-1/2">
+            <label class="block text-xs font-bold text-slate-500 mb-1">유효기간 (MMYY)</label>
+            <input type="text" class="wf-input font-mono text-center mb-0" value="08/28">
+          </div>
+          <div class="w-1/2">
+            <label class="block text-xs font-bold text-slate-500 mb-1">비밀번호 앞 2자리</label>
+            <input type="password" class="wf-input font-mono text-center mb-0" value="••">
+          </div>
+        </div>
+        <div class="bg-blue-50 border border-blue-100 p-2.5 rounded-lg text-[11px] text-blue-700">
+          토스페이먼츠 안전결제 모듈을 통해 암호화 처리됩니다.
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="closeTossPaymentModal()" class="wf-btn text-xs w-1/2">취소</button>
+        <button onclick="alert('결제가 정상적으로 완료되었습니다!'); closeTossPaymentModal();" class="wf-btn wf-btn-dark text-xs w-1/2 font-bold">결제 승인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- API 키 발급 모달 -->
+  <div id="api-key-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900">🔑 새 API 키 발급</h3>
+        <button onclick="closeCreateApiKeyModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 mb-6 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">키 이름 (식별용)</label>
+          <input type="text" id="api-key-name-input" class="wf-input mb-0" placeholder="예: 프로덕션 서버 키">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">만료일 (Expiration)</label>
+          <select class="wf-input mb-0">
+            <option>기한 없음 (무제한)</option>
+            <option>1시간 후</option>
+            <option>1일 후</option>
+            <option>7일 후</option>
+            <option>30일 후</option>
+            <option>90일 후</option>
+            <option>180일 후</option>
+            <option>1년 후</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">크레딧 제한 (Credit Limit, $ USD)</label>
+          <input type="number" class="wf-input mb-0" placeholder="예: 50 (미입력 시 제한 없음)">
+          <p class="text-[11px] text-slate-400 mt-1">지정한 금액 이상 소모 시 해당 키의 호출이 일시 차단됩니다.</p>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeCreateApiKeyModal()" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('API 키가 성공적으로 발급되었습니다. (비밀 키는 보안상 최초 1회만 노출됩니다)'); closeCreateApiKeyModal();" class="wf-btn wf-btn-dark text-xs w-auto">발급 생성</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오토 탑업 설정 모달 -->
+  <div id="autotopup-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900">🔄 자동 충전 설정</h3>
+        <button onclick="closeAutoTopUpModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 mb-6 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">결제 카드 정보</label>
+          <div class="p-3 border rounded-lg bg-slate-50 flex justify-between items-center">
+            <span>신한카드 (****-****-****-1234)</span>
+            <button class="text-blue-600 font-semibold underline border-none bg-transparent cursor-pointer">변경</button>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">충전 임계값 (잔액 기준)</label>
+          <select class="wf-input mb-0"><option>잔액이 $5 미만으로 떨어질 때</option><option>잔액이 $10 미만으로 떨어질 때</option></select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">자동 충전 금액</label>
+          <select class="wf-input mb-0"><option>$20 충전하기</option><option>$50 충전하기</option></select>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">월 최대 충전 한도</label>
+          <select class="wf-input mb-0"><option>최대 $100 / 월</option><option>최대 $200 / 월</option></select>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeAutoTopUpModal()" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('자동 충전 설정이 저장되었습니다.'); closeAutoTopUpModal();" class="wf-btn wf-btn-dark text-xs w-auto">설정 저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 계정 설정 모달 -->
+  <div id="setting-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
+    <div id="modal-c-09" class="hidden bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900">🔒 비밀번호 변경 (C-09)</h3>
+        <button onclick="closeSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 mb-6">
+        <div><label class="block text-xs font-bold text-slate-700 mb-1">현재 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="••••••••"></div>
+        <div><label class="block text-xs font-bold text-slate-700 mb-1">새 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="12자 이상 영문/숫자 조합"></div>
+        <div><label class="block text-xs font-bold text-slate-700 mb-1">새 비밀번호 확인</label><input type="password" class="wf-input mb-0" placeholder="비밀번호 재입력"></div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeSettingModal()" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('비밀번호가 변경되었습니다.'); closeSettingModal();" class="wf-btn wf-btn-dark text-xs w-auto">변경 사항 저장</button>
+      </div>
+    </div>
+
+    <div id="modal-c-10" class="hidden bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-red-200">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-red-600">⚠️ 회원 탈퇴 및 환불 안내 (C-10)</h3>
+        <button onclick="closeSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+        탈퇴 시 등록된 모든 API 키는 즉시 삭제되며 복구할 수 없습니다.<br/>
+        현재 환불 가능한 유료 잔액 <strong class="text-slate-900 font-bold">$0.45</strong>가 남아있으며, 환불 신청 시 등록된 계좌로 3영업일 내 처리됩니다.
+      </p>
+      <div class="space-y-3 mb-6 bg-red-50/50 p-3 rounded-xl border border-red-100">
+        <label class="flex items-center gap-2 text-xs text-slate-700 cursor-pointer">
+          <input type="checkbox" class="accent-red-600"> 안내사항을 모두 확인했으며 탈퇴에 동의합니다.
+        </label>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button onclick="closeSettingModal()" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('회원 탈퇴 및 환불 신청이 완료되었습니다.'); closeSettingModal();" class="wf-btn bg-red-600 text-white text-xs hover:bg-red-700 border-none w-auto">회원 탈퇴 및 환불 신청</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 통합 스크립트 -->
+  <script>
+    function openTab(tabId, btnElement) {
+      document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.remove('block');
+        el.classList.add('hidden');
+      });
+      const targetTab = document.getElementById(tabId);
+      if(targetTab) {
+        targetTab.classList.remove('hidden');
+        targetTab.classList.add('block');
+      }
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-slate-800', 'text-slate-800', 'border-b-4');
+        btn.classList.add('text-slate-500', 'border-transparent');
+      });
+
+      if(btnElement) {
+        btnElement.classList.remove('text-slate-500', 'border-transparent');
+        btnElement.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+      } else {
+        const targetBtn = document.querySelector(`[data-target="${tabId}"]`);
+        if(targetBtn) {
+          targetBtn.classList.remove('text-slate-500', 'border-transparent');
+          targetBtn.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+        }
+      }
+    }
+
+    function switchSubTab(subFlowId) {
+      document.querySelectorAll('.sub-flow-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(subFlowId).classList.remove('hidden');
+
+      const btn1 = document.getElementById('btn-flow-1');
+      const btn2 = document.getElementById('btn-flow-2');
+      if(subFlowId === 'sub-flow-1') {
+        btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
+        btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
+      } else {
+        btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
+        btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
+      }
+    }
+
+    function switchToATab() { openTab('tab-a'); }
+    function switchToMTab() { openTab('tab-m'); }
+    function switchToCTab(targetHash) {
+      openTab('tab-c');
+      if(targetHash) {
+        setTimeout(() => {
+          const el = document.querySelector(targetHash);
+          if(el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      }
+    }
+
+    function toggleGnbState() {
+      const beforeLogin = document.getElementById('gnb-before-login');
+      const afterLogin = document.getElementById('gnb-after-login');
+      if (beforeLogin && afterLogin) {
+        if (beforeLogin.classList.contains('hidden')) {
+          beforeLogin.classList.remove('hidden'); beforeLogin.classList.add('flex');
+          afterLogin.classList.remove('flex'); afterLogin.classList.add('hidden');
+        } else {
+          beforeLogin.classList.remove('flex'); beforeLogin.classList.add('hidden');
+          afterLogin.classList.remove('hidden'); afterLogin.classList.add('flex');
+        }
+      }
+    }
+
+    /* C 시리즈 제어 함수들 */
+    function switchDashboardState(state) {
+      const bannerDepleted = document.getElementById('dash-banner-depleted');
+      const bannerNormal = document.getElementById('dash-banner-normal');
+      const valBalance = document.getElementById('dash-val-balance');
+      const valUsed = document.getElementById('dash-val-used');
+      const valTokens = document.getElementById('dash-val-tokens');
+      const valRequests = document.getElementById('dash-val-requests');
+      
+      const graphContainer = document.getElementById('dash-graph-container');
+      const emptyGuide = document.getElementById('dash-empty-guide');
+      
+      const btnDepleted = document.getElementById('dash-btn-depleted');
+      const btnNormal = document.getElementById('dash-btn-normal');
+      const btnEmpty = document.getElementById('dash-btn-empty');
+
+      [btnDepleted, btnNormal, btnEmpty].forEach(b => b.classList.remove('active'));
+
+      if(state === 'depleted') {
+        bannerDepleted.classList.remove('hidden');
+        bannerNormal.classList.add('hidden');
+        graphContainer.classList.remove('hidden');
+        emptyGuide.classList.add('hidden');
+        valBalance.innerText = '$0.00';
+        valUsed.innerText = '$20.00';
+        valTokens.innerText = '12.4M';
+        valRequests.innerText = '1,842';
+        btnDepleted.classList.add('active');
+      } else if(state === 'normal') {
+        bannerDepleted.classList.add('hidden');
+        bannerNormal.classList.remove('hidden');
+        graphContainer.classList.remove('hidden');
+        emptyGuide.classList.add('hidden');
+        valBalance.innerText = '$12.50';
+        valUsed.innerText = '$32.10';
+        valTokens.innerText = '28.9M';
+        valRequests.innerText = '4,120';
+        btnNormal.classList.add('active');
+      } else {
+        bannerDepleted.classList.add('hidden');
+        bannerNormal.classList.add('hidden');
+        graphContainer.classList.add('hidden');
+        emptyGuide.classList.remove('hidden');
+        valBalance.innerText = '$0.00';
+        valUsed.innerText = '$0.00';
+        valTokens.innerText = '0';
+        valRequests.innerText = '0';
+        btnEmpty.classList.add('active');
+      }
+    }
+
+    function switchPlaygroundState(state) {
+      const bannerEmpty = document.getElementById('pg-banner-empty');
+      const actionBtn = document.getElementById('pg-action-btn');
+      const btnEmpty = document.getElementById('pg-btn-empty');
+      const btnHas = document.getElementById('pg-btn-has');
+
+      if(state === 'empty') {
+        bannerEmpty.classList.remove('hidden');
+        actionBtn.disabled = true;
+        actionBtn.className = "wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none";
+        actionBtn.innerText = "잔액 소진으로 실행 불가";
+        btnEmpty.classList.add('active');
+        btnHas.classList.remove('active');
+      } else {
+        bannerEmpty.classList.add('hidden');
+        actionBtn.disabled = false;
+        actionBtn.className = "wf-btn wf-btn-dark text-xs w-full py-3 font-bold hover:bg-slate-800";
+        actionBtn.innerText = "실행하기";
+        btnHas.classList.add('active');
+        btnEmpty.classList.remove('active');
+      }
+    }
+
+    function openTossPaymentModal() { document.getElementById('toss-payment-modal').classList.remove('hidden'); }
+    function closeTossPaymentModal() { document.getElementById('toss-payment-modal').classList.add('hidden'); }
+
+    function toggleProfileModal(e) { 
+      if(e) e.stopPropagation();
+      document.getElementById('profile-modal').classList.toggle('hidden'); 
+    }
+    function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
+
+    function openCreateApiKeyModal() { document.getElementById('api-key-modal').classList.remove('hidden'); }
+    function closeCreateApiKeyModal() { document.getElementById('api-key-modal').classList.add('hidden'); }
+    function openAutoTopUpModal() { document.getElementById('autotopup-modal').classList.remove('hidden'); }
+    function closeAutoTopUpModal() { document.getElementById('autotopup-modal').classList.add('hidden'); }
+
+    function openSettingModal(type) {
+      const overlay = document.getElementById('setting-modal');
+      const box09 = document.getElementById('modal-c-09');
+      const box10 = document.getElementById('modal-c-10');
+      
+      overlay.classList.remove('hidden');
+      box09.classList.add('hidden');
+      box10.classList.add('hidden');
+
+      if(type === 'c-09') box09.classList.remove('hidden');
+      if(type === 'c-10') box10.classList.remove('hidden');
+    }
+    function closeSettingModal() { document.getElementById('setting-modal').classList.add('hidden'); }
+
+    window.addEventListener('click', function(e) {
+      const profileModal = document.getElementById('profile-modal');
+      if (profileModal && !profileModal.classList.contains('hidden')) {
+        if (!e.target.closest('#profile-modal') && !e.target.closest('button[onclick*="toggleProfileModal"]')) {
+          profileModal.classList.add('hidden');
+        }
+      }
+    });
+
+    /* C시리즈 사이드바 스크롤 동기화 */
+    const navItems = document.querySelectorAll('.sidebar-item');
+    const contentContainer = document.querySelector('.content-container');
+    if(contentContainer) {
+      window.addEventListener('scroll', () => {
+        let scrollPos = window.scrollY + 120;
+        document.querySelectorAll('.screen-section').forEach(section => {
+          if(section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+            navItems.forEach(item => {
+              item.classList.remove('active');
+              if(item.getAttribute('href') === '#' + section.id) {
+                item.classList.add('active');
+              }
+            });
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
