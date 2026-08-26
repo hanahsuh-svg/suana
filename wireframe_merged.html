@@ -17,15 +17,37 @@
     /* A 시리즈 전용 콘텐츠 영역 */
     .wf-content-a { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; background-color: #f8fafc; }
 
-    /* C 시리즈 전용 스타일 */
-    .console-layout { display: flex; min-height: 700px; background-color: #f1f5f9; border-radius: 0 0 8px 8px; }
-    .sidebar { width: 220px; background-color: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 12px; flex-shrink: 0; }
+    /* C 시리즈 전용 레이아웃 스타일 */
+    .console-layout { display: flex; min-height: calc(100vh - 160px); background-color: #f1f5f9; border-radius: 0 0 8px 8px; border: 1px solid #cbd5e1; border-top: none; }
+    .sidebar { width: 220px; background-color: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 12px; flex-shrink: 0; position: sticky; top: 0; height: fit-content; }
     .sidebar-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; padding-left: 8px; }
     .sidebar-menu { display: flex; flex-direction: column; gap: 4px; }
     .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 13px; font-weight: 500; color: #475569; text-decoration: none; border-radius: 6px; transition: all 0.15s; }
     .sidebar-item:hover, .sidebar-item.active { background-color: #f1f5f9; color: #0f172a; font-weight: 600; }
+    
+    /* 우측 콘텐츠 컨테이너 영역 */
     .content-container { flex-grow: 1; padding: 24px; max-width: 960px; margin: 0 auto; }
-    .screen-section { display: flex; flex-direction: column; justify-content: flex-start; margin-bottom: 40px; scroll-margin-top: 80px; }
+    
+    /* ⭐ 개별 와이어프레임 카드 및 섹션 최소 높이(min-height) 고정 설정 ⭐ */
+    .screen-section { 
+      min-height: 600px; /* 각 섹션 최소 높이 확보 */
+      display: flex; 
+      flex-direction: column; 
+      margin-bottom: 40px; 
+      scroll-margin-top: 20px; 
+    }
+    .screen-section .wf-card {
+      min-height: 580px; /* 카드가 상자 형태로 일정 높이 이상을 유지하도록 설정 */
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+    .screen-section .wf-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     .state-toggle-btn { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid #cbd5e1; background: #f1f5f9; color: #475569; }
     .state-toggle-btn.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
     
@@ -930,10 +952,10 @@
     </div>
 
     <!-- ==========================================
-         TAB 3: C 시리즈 (콘솔 영역)
+         TAB 3: C 시리즈 (콘솔 영역 - 카드 최소 높이 고정)
          ========================================== -->
     <div id="tab-c" class="tab-content hidden">
-      <div class="wf-card border-none shadow-none bg-transparent">
+      <div class="wf-card border-none shadow-none bg-transparent mb-0">
         
         <!-- C시리즈 상단 Mock GNB -->
         <div class="mock-gnb rounded-t-lg border">
@@ -941,7 +963,7 @@
             <span class="font-bold text-lg tracking-tight text-slate-900">Morph Token Factory Console</span>
           </div>
           <div class="flex gap-6 text-sm font-medium items-center relative">
-            <a href="#c-07" class="hover:text-blue-600 no-underline text-slate-700">⚡ 플레이그라운드</a>
+            <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-blue-600 no-underline text-slate-700">⚡ 플레이그라운드</a>
             <a href="#m-02" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">문서</a>
             
             <div class="relative">
@@ -971,16 +993,16 @@
           </div>
         </div>
 
-        <div class="console-layout border-x border-b border-slate-300">
+        <div class="console-layout">
           <!-- 좌측 고정 사이드바 -->
           <div class="sidebar">
             <div class="sidebar-title">메뉴</div>
             <div class="sidebar-menu">
-              <a href="#c-01" class="sidebar-item active">📊 대시보드</a>
-              <a href="#c-02" class="sidebar-item">🔑 API 키</a>
-              <a href="#c-03" class="sidebar-item">💳 크레딧 및 충전</a>
-              <a href="#c-07" class="sidebar-item">⚡ 플레이그라운드</a>
-              <a href="#c-08" class="sidebar-item">📜 요청 로그</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="sidebar-item active">📊 대시보드</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="sidebar-item">🔑 API 키</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="sidebar-item">💳 크레딧 및 충전</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="sidebar-item">⚡ 플레이그라운드</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-08')" class="sidebar-item">📜 요청 로그</a>
             </div>
           </div>
 
@@ -1006,7 +1028,7 @@
                       <div class="font-bold text-base mb-1">크레딧이 모두 소진되었습니다</div>
                       <div class="text-xs text-slate-300">충전 후 API 요청과 플레이그라운드를 다시 사용할 수 있습니다.</div>
                     </div>
-                    <a href="#c-03" class="bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-100 no-underline">충전하기</a>
+                    <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-100 no-underline">충전하기</a>
                   </div>
                   
                   <div id="dash-banner-normal" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl mb-6 flex justify-between items-center text-xs">
@@ -1032,7 +1054,7 @@
                     </div>
                   </div>
 
-                  <div>
+                  <div class="flex-grow flex flex-col justify-center">
                     <div id="dash-graph-container">
                       <div class="flex justify-between items-center mb-3">
                         <span class="font-bold text-sm text-slate-800">일별 사용량</span>
@@ -1041,7 +1063,7 @@
                           <span class="text-slate-500 px-3 py-1">지난 30일</span>
                         </div>
                       </div>
-                      <div id="dash-graph-area" class="border rounded-xl h-48 flex items-center justify-center text-slate-400 text-xs bg-slate-50">
+                      <div id="dash-graph-area" class="border rounded-xl h-52 flex items-center justify-center text-slate-400 text-xs bg-slate-50">
                         [일별 막대그래프 영역 · 마우스 오버 시 날짜 및 값 표시]
                       </div>
                     </div>
@@ -1053,8 +1075,8 @@
                         아직 사용 기록이 없습니다. API 키를 생성하고 첫 호출을 시도해 보세요.
                       </p>
                       <div class="flex justify-center gap-3">
-                        <a href="#c-02" class="wf-btn wf-btn-dark text-xs no-underline w-auto">API 키 관리로 이동</a>
-                        <a href="#c-07" class="wf-btn text-xs no-underline w-auto">플레이그라운드 체험</a>
+                        <a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="wf-btn wf-btn-dark text-xs no-underline w-auto">API 키 관리로 이동</a>
+                        <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn text-xs no-underline w-auto">플레이그라운드 체험</a>
                       </div>
                     </div>
                   </div>
@@ -1063,36 +1085,43 @@
               </div>
             </div>
 
-            <!-- C-02 API 키 관리 -->
+            <!-- C-02 API 키 관리 (높이 넉넉하게 확보됨) -->
             <div id="c-02" class="screen-section">
               <div class="wf-card">
                 <div class="wf-header">
                   <span>C-02 API 키 관리</span>
                   <span class="wf-badge">만료일 및 크레딧 제한 설정 포함</span>
                 </div>
-                <div class="wf-body p-6">
-                  <div class="flex justify-between items-center mb-4">
-                    <span class="text-xs text-slate-500">보안을 위해 발급된 키의 비밀 키(Secret Key)는 최초 1회만 표시됩니다.</span>
-                    <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 API 키 발급</button>
+                <div class="wf-body p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="flex justify-between items-center mb-4">
+                      <span class="text-xs text-slate-500">보안을 위해 발급된 키의 비밀 키(Secret Key)는 최초 1회만 표시됩니다.</span>
+                      <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 API 키 발급</button>
+                    </div>
+                    <table class="wf-table border rounded-lg overflow-hidden">
+                      <thead>
+                        <tr><th>키 이름</th><th>비밀 키 식별자</th><th>상태</th><th>만료일</th><th>크레딧 제한</th><th class="text-right">관리</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="font-bold">Production Key</td>
+                          <td><code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono">morph-sk-9f82...</code></td>
+                          <td><span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold border border-emerald-200">활성</span></td>
+                          <td class="text-slate-500 text-xs">90일 후</td>
+                          <td class="text-slate-500 text-xs">$50.00</td>
+                          <td class="text-right space-x-2">
+                            <button class="text-xs text-amber-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">비활성화</button>
+                            <button onclick="confirm('이 API 키를 정말 삭제하시겠습니까? 삭제된 키는 복구할 수 없습니다.')" class="text-xs text-red-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">삭제</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <table class="wf-table border rounded-lg overflow-hidden">
-                    <thead>
-                      <tr><th>키 이름</th><th>비밀 키 식별자</th><th>상태</th><th>만료일</th><th>크레딧 제한</th><th class="text-right">관리</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="font-bold">Production Key</td>
-                        <td><code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono">morph-sk-9f82...</code></td>
-                        <td><span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold border border-emerald-200">활성</span></td>
-                        <td class="text-slate-500 text-xs">90일 후</td>
-                        <td class="text-slate-500 text-xs">$50.00</td>
-                        <td class="text-right space-x-2">
-                          <button class="text-xs text-amber-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">비활성화</button>
-                          <button onclick="confirm('이 API 키를 정말 삭제하시겠습니까? 삭제된 키는 복구할 수 없습니다.')" class="text-xs text-red-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">삭제</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <!-- 카드 아래쪽 여백 및 균형을 위한 영문 안내 -->
+                  <div class="border-t border-dashed pt-4 mt-8 text-[11px] text-slate-400 flex justify-between items-center">
+                    <span>💡 Tip: API 키 보안을 위해 주기적으로 키를 교체(Rotate)하는 것을 권장합니다.</span>
+                    <span>개인 키 한도: 최대 10개</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1108,20 +1137,20 @@
                     <button onclick="switchPlaygroundState('has')" id="pg-btn-has" class="state-toggle-btn">크레딧 있음</button>
                   </div>
                 </div>
-                <div class="wf-body p-6">
+                <div class="wf-body p-6 flex flex-col justify-between">
                   <div id="pg-banner-empty" class="bg-red-50 border border-red-200 p-3 rounded-lg text-xs text-red-700 mb-6 flex justify-between items-center">
                     <span>⚠️ 잔액 소진으로 플레이그라운드 실행이 제한되었습니다.</span>
-                    <a href="#c-03" class="font-bold underline">충전하러 가기</a>
+                    <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="font-bold underline">충전하러 가기</a>
                   </div>
 
-                  <div class="space-y-4 max-w-2xl mx-auto w-full">
+                  <div class="space-y-4 max-w-2xl mx-auto w-full my-auto">
                     <div>
                       <label class="block text-xs font-bold text-slate-700 mb-1">모델 선택</label>
                       <select class="wf-input mb-0"><option>motif-3 (기본)</option></select>
                     </div>
                     <div>
                       <label class="block text-xs font-bold text-slate-700 mb-1">시스템 프롬프트</label>
-                      <textarea class="wf-input h-32 mb-0">You are a helpful coding assistant.</textarea>
+                      <textarea class="wf-input h-40 mb-0">You are a helpful coding assistant.</textarea>
                     </div>
                     <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none">잔액 소진으로 실행 불가</button>
                   </div>
@@ -1136,13 +1165,18 @@
                   <span>C-08 API 요청 로그</span>
                   <span class="wf-badge">동일 화면</span>
                 </div>
-                <div class="wf-body p-6">
-                  <table class="wf-table border rounded-lg overflow-hidden">
-                    <thead><tr><th>일시</th><th>모델</th><th>상태</th><th>토큰 수</th><th>지연 시간</th></tr></thead>
-                    <tbody>
-                      <tr><td>2026-08-26 14:20:12</td><td>motif-3</td><td><span class="text-emerald-600 font-bold">200 성공 (OK)</span></td><td>1,240</td><td>320ms</td></tr>
-                    </tbody>
-                  </table>
+                <div class="wf-body p-6 flex flex-col justify-between">
+                  <div>
+                    <table class="wf-table border rounded-lg overflow-hidden">
+                      <thead><tr><th>일시</th><th>모델</th><th>상태</th><th>토큰 수</th><th>지연 시간</th></tr></thead>
+                      <tbody>
+                        <tr><td>2026-08-26 14:20:12</td><td>motif-3</td><td><span class="text-emerald-600 font-bold">200 성공 (OK)</span></td><td>1,240</td><td>320ms</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="border-t border-dashed pt-4 mt-8 text-[11px] text-slate-400 text-right">
+                    최근 30일간의 호출 로그만 보관됩니다.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1154,7 +1188,7 @@
                   <span>C-03 크레딧 관리 및 충전</span>
                   <span class="wf-badge">잔액 조회 · 크레딧 충전 · 자동 충전 설정 통합 화면</span>
                 </div>
-                <div class="wf-body p-6 space-y-8">
+                <div class="wf-body p-6 space-y-6">
                   
                   <div class="bg-slate-900 text-white p-6 rounded-xl shadow-sm">
                     <div class="text-xs uppercase font-bold text-slate-400 mb-1 tracking-wider">총 사용 가능 잔액</div>
@@ -1217,8 +1251,8 @@
 
   </div>
 
-  <!-- C 시리즈 지원 모달 레이어 -->
-  <!-- 토스페이먼츠 카드 번호 입력 위젯 모달 -->
+  <!-- 모달 레이어 -->
+  <!-- 토스페이먼츠 모달 -->
   <div id="toss-payment-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50">
     <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-slate-200 relative text-slate-800">
       <div class="flex justify-between items-center mb-6 pb-2 border-b">
@@ -1368,7 +1402,7 @@
     </div>
   </div>
 
-  <!-- 통합 스크립트 -->
+  <!-- 스크립트 -->
   <script>
     function openTab(tabId, btnElement) {
       document.querySelectorAll('.tab-content').forEach(el => {
@@ -1415,12 +1449,15 @@
 
     function switchToATab() { openTab('tab-a'); }
     function switchToMTab() { openTab('tab-m'); }
+    
     function switchToCTab(targetHash) {
       openTab('tab-c');
       if(targetHash) {
         setTimeout(() => {
           const el = document.querySelector(targetHash);
-          if(el) el.scrollIntoView({ behavior: 'smooth' });
+          if(el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
         }, 50);
       }
     }
@@ -1550,24 +1587,21 @@
       }
     });
 
-    /* C시리즈 사이드바 스크롤 동기화 */
+    /* 스크롤 위치에 따른 사이드바 활성화 */
     const navItems = document.querySelectorAll('.sidebar-item');
-    const contentContainer = document.querySelector('.content-container');
-    if(contentContainer) {
-      window.addEventListener('scroll', () => {
-        let scrollPos = window.scrollY + 120;
-        document.querySelectorAll('.screen-section').forEach(section => {
-          if(section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
-            navItems.forEach(item => {
-              item.classList.remove('active');
-              if(item.getAttribute('href') === '#' + section.id) {
-                item.classList.add('active');
-              }
-            });
-          }
-        });
+    window.addEventListener('scroll', () => {
+      let scrollPos = window.scrollY + 120;
+      document.querySelectorAll('#tab-c .screen-section').forEach(section => {
+        if(section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if(item.getAttribute('onclick') && item.getAttribute('onclick').includes('#' + section.id)) {
+              item.classList.add('active');
+            }
+          });
+        }
       });
-    }
+    });
   </script>
 </body>
 </html>
