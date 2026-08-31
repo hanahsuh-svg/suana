@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Morph Token Factory - Integrated Wireframes</title>
+  <title>Morfac - Integrated Wireframes (History / M / A / C / O)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f8fafc; color: #334155; scroll-behavior: smooth; margin: 0; }
@@ -17,27 +17,29 @@
     /* A 시리즈 전용 콘텐츠 영역 */
     .wf-content-a { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; background-color: #f8fafc; }
 
-    /* C 시리즈 전용 레이아웃 스타일 */
-    .console-layout { display: flex; min-height: calc(100vh - 160px); background-color: #f1f5f9; border-radius: 0 0 8px 8px; border: 1px solid #cbd5e1; border-top: none; }
-    .sidebar { width: 220px; background-color: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 12px; flex-shrink: 0; position: sticky; top: 0; height: fit-content; }
-    .sidebar-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; padding-left: 8px; }
+    /* C/O 시리즈 전용 레이아웃 스타일 */
+    .console-layout, .admin-layout { display: flex; min-height: calc(100vh - 160px); background-color: #f1f5f9; border-radius: 0 0 8px 8px; border: 1px solid #cbd5e1; border-top: none; }
+    .sidebar { width: 240px; background-color: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 12px; flex-shrink: 0; position: sticky; top: 0; height: fit-content; display: flex; flex-direction: column; gap: 20px; }
+    .sidebar-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; padding-left: 8px; }
     .sidebar-menu { display: flex; flex-direction: column; gap: 4px; }
     .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 13px; font-weight: 500; color: #475569; text-decoration: none; border-radius: 6px; transition: all 0.15s; }
     .sidebar-item:hover, .sidebar-item.active { background-color: #f1f5f9; color: #0f172a; font-weight: 600; }
-    
+    .sidebar-subitem { display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 28px; font-size: 12px; font-weight: 500; color: #64748b; text-decoration: none; border-radius: 6px; transition: all 0.15s; }
+    .sidebar-subitem:hover, .sidebar-subitem.active { background-color: #f1f5f9; color: #0f172a; font-weight: 600; }
+
     /* 우측 콘텐츠 컨테이너 영역 */
     .content-container { flex-grow: 1; padding: 24px; max-width: 960px; margin: 0 auto; }
     
-    /* ⭐ 개별 와이어프레임 카드 및 섹션 최소 높이(min-height) 고정 설정 ⭐ */
+    /* 개별 와이어프레임 카드 및 섹션 고정 설정 */
     .screen-section { 
-      min-height: 600px; /* 각 섹션 최소 높이 확보 */
+      min-height: 600px;
       display: flex; 
       flex-direction: column; 
       margin-bottom: 40px; 
       scroll-margin-top: 20px; 
     }
     .screen-section .wf-card {
-      min-height: 580px; /* 카드가 상자 형태로 일정 높이 이상을 유지하도록 설정 */
+      min-height: 580px;
       display: flex;
       flex-direction: column;
       margin-bottom: 0;
@@ -64,6 +66,7 @@
     .auth-box-sm { max-width: 320px; padding: 24px; }
     .wf-input { border: 1px solid #cbd5e1; background-color: #ffffff; border-radius: 6px; padding: 10px 12px; width: 100%; font-size: 13px; margin-bottom: 12px; transition: border-color 0.2s; outline: none; }
     .wf-input:focus { border-color: #0f172a; }
+    .wf-input:disabled { background-color: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
     .wf-label { display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 6px; }
     .wf-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
     .wf-table th { background-color: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 16px; font-weight: 600; color: #475569; }
@@ -80,6 +83,14 @@
     .flow-node-decision { background: #f8fafc; border: 2px dashed #94a3b8; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; color: #334155; }
     .flow-node-action { background: #0f172a; color: #ffffff; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; }
     .flow-arrow { color: #94a3b8; font-weight: bold; font-size: 14px; text-align: center; margin: 4px 0; }
+
+    /* O 시리즈 토글 스위치 UI 스타일 */
+    .toggle-switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 9999px; }
+    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+    input:checked + .slider { background-color: #0f172a; }
+    input:checked + .slider:before { transform: translateX(22px); }
   </style>
 </head>
 <body>
@@ -88,9 +99,13 @@
     
     <!-- 상단 타이틀 및 탭 네비게이션 -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-slate-800 mb-6">🔥 Morph Token Factory</h1>
+      <h1 class="text-3xl font-bold text-slate-800 mb-6">🔥 Morfac Platform</h1>
       <div class="flex gap-2 border-b-2 border-slate-200">
-        <button data-target="tab-m" onclick="openTab('tab-m', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-slate-800 text-slate-800 transition-colors">
+        <button data-target="tab-history" onclick="openTab('tab-history', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-blue-600 text-blue-600 transition-colors flex items-center gap-1.5">
+          <span>📋 업데이트 히스토리</span>
+          <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">v2.0</span>
+        </button>
+        <button data-target="tab-m" onclick="openTab('tab-m', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
           M 시리즈 (서비스 메인 영역)
         </button>
         <button data-target="tab-a" onclick="openTab('tab-a', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
@@ -99,33 +114,121 @@
         <button data-target="tab-c" onclick="openTab('tab-c', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
           C 시리즈 (콘솔 영역)
         </button>
+        <button data-target="tab-o" onclick="openTab('tab-o', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-red-600 hover:text-red-700 transition-colors flex items-center gap-1.5">
+          <span>🛠️ O 시리즈 (어드민 영역)</span>
+          <span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">UPDATED</span>
+        </button>
       </div>
     </div>
 
     <!-- ==========================================
-         TAB 1: M 시리즈 (서비스 메인 영역)
+         ⭐ TAB 1: 업데이트 히스토리 (Update History) ⭐
          ========================================== -->
-    <div id="tab-m" class="tab-content block">
+    <div id="tab-history" class="tab-content block">
+      <div class="wf-card">
+        <div class="wf-header">
+          <span>📋 와이어프레임 버전 비교 및 업데이트 히스토리</span>
+          <span class="wf-badge bg-blue-100 text-blue-800 font-bold">wireframe_merged.html v2.0</span>
+        </div>
+        <div class="p-8 bg-white">
+          
+          <!-- v1.0 섹션 -->
+          <div class="mb-8 border border-slate-200 bg-slate-50/60 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-slate-700 text-white font-extrabold text-xs px-2.5 py-1 rounded">v1.0</span>
+              <h3 class="font-bold text-base text-slate-900">📌 초기 와이어프레임 버전</h3>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+              <li><strong>M 시리즈 (서비스 메인)</strong>: 기본 랜딩 UI 및 문서(Docs), 약관, 서비스 상태 페이지 구조 제공</li>
+              <li><strong>A 시리즈 (온보딩/인증)</strong>: 이메일/소셜 기본 가입, OTP 인증 및 온보딩 설문 화면 구축</li>
+              <li><strong>C 시리즈 (콘솔)</strong>: 대시보드 및 기본 API 키 발급/관리 화면 제공</li>
+            </ul>
+          </div>
 
-      <!-- M-01: 서비스 메인 -->
+          <!-- v2.0 섹션 -->
+          <div class="space-y-6">
+            <div class="flex items-center gap-2 border-b pb-2">
+              <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">v2.0</span>
+              <h2 class="text-lg font-bold text-slate-900">🚀 통합 고도화 및 어드민 개편 버전 (Current)</h2>
+            </div>
+
+            <!-- 1. GNB 서비스 소개 Static Page 신규 추가 -->
+            <div class="border border-emerald-200 bg-emerald-50/40 rounded-xl p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-emerald-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">NEW PAGE</span>
+                <h3 class="font-bold text-base text-slate-900">🌐 GNB 서비스 소개 Static Page (M-06) 신규 추가</h3>
+              </div>
+              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>GNB 메뉴 연동</strong>: 공통 상단 GNB 네비게이션에 <code class="bg-emerald-100 text-emerald-800 px-1 rounded font-bold">[서비스 소개]</code> 정적 페이지 링크 신규 배치</li>
+                <li><strong>게이트웨이 소개 화면</strong>: Morfac API 게이트웨이 핵심 기능(OpenAI 표준 호환, 무료 체험 크레딧 및 키 관리, 실시간 분석 & 로그)을 소개하는 전용 랜딩 UI 구축 및 콘솔 이동 CTA 유도</li>
+              </ul>
+            </div>
+
+            <!-- 2. O 시리즈 시스템 어드민 영역 신규 구축 -->
+            <div class="border border-red-200 bg-red-50/40 rounded-xl p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-red-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">NEW SYSTEM</span>
+                <h3 class="font-bold text-base text-slate-900">🛠️ O 시리즈 (시스템 어드민 영역) 전 화면 신규 구축</h3>
+              </div>
+              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>어드민 전 기능 통합</strong>: 어드민 대시보드(O-00), 계정 관리(O-01), 크레딧 지급(O-02), 배너 관리(O-05), 문의 메일 운영(O-06), 공지사항(O-07) 등 운영 관리 화면 일체 신규 구축</li>
+              </ul>
+            </div>
+
+            <!-- 3. C 시리즈 콘솔 사용자 설정 동선 강화 -->
+            <div class="border border-blue-200 bg-blue-50/40 rounded-xl p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">ENHANCED</span>
+                <h3 class="font-bold text-base text-slate-900">⚙️ C 시리즈 (콘솔 영역) 사용자 설정 및 동선 강화</h3>
+              </div>
+              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>👤 GNB 프로필 레이어 모달</strong>: 콘솔 상단 프로필 클릭 시 계정 정보 확인 및 계정 설정 진입이 가능한 레이어 모달 추가</li>
+                <li><strong>🔒 통합 계정 설정 모달</strong>: 모달 내 <code class="bg-blue-100 text-blue-800 px-1 rounded font-bold">[비밀번호 변경]</code> 및 <code class="bg-blue-100 text-blue-800 px-1 rounded font-bold">[회원 탈퇴]</code> 서브 탭 제공 (유의사항 동의 체크박스 선택 시 탈퇴 버튼이 활성화되는 인터랙션 포함)</li>
+                <li><strong>🎁 사이드바 설문 배너 연동</strong>: 온보딩 설문(A-04) 참여 여부(완료/스킵/닫기)에 따른 사이드바 보상 안내 배너 상태 동적 전환</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center pt-6 border-t flex gap-3 justify-center">
+            <button onclick="openTab('tab-m')" class="wf-btn text-xs w-auto px-6 py-2.5 border-slate-300">
+              <span>🌐 M-06 서비스 소개 확인하기</span>
+            </button>
+            <button onclick="openTab('tab-o')" class="wf-btn wf-btn-dark w-auto px-6 py-2.5 text-xs inline-flex items-center gap-2">
+              <span>🛠️ O 시리즈 (어드민 영역) 바로 둘러보기</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 2: M 시리즈 (서비스 메인 영역)
+         ========================================== -->
+    <div id="tab-m" class="tab-content hidden">
+
+      <!-- M-01: 서비스 메인 (Motif 모델 USP 중심 랜딩) -->
       <div id="m-01" class="wf-card">
         <div class="wf-header">
-          <span>M-01 서비스 메인 (랜딩 페이지)</span>
-          <span class="wf-badge">GNB [Playground / Docs / 로그인·프로필 / 언어] · 배너 · Footer</span>
+          <span>M-01 서비스 메인 (Motif 모델 USP 랜딩)</span>
+          <span class="wf-badge">GNB [서비스 소개 / Playground / Docs / 콘솔 / 로그인·가입 / 언어]</span>
         </div>
         <div class="wf-content-m relative">
           <div class="bg-blue-100 text-blue-800 text-xs font-bold text-center py-2">
-            📢 [공지] Motif 3 OBT 사전 예약 안내 (어드민 On/Off)
+            📢 [공지] Motif 3 모델 사전 체험 참가자 모집 (어드민 On/Off)
           </div>
           
           <div class="mock-gnb">
-            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900">Morph</a></div>
+            <div class="font-bold text-lg flex items-center gap-6">
+              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            </div>
             <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
               <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
               <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
               <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-4">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인</a>
+                <div id="gnb-before-login" class="flex items-center gap-2">
+                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
                   <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
                 </div>
                 <div id="gnb-after-login" class="hidden items-center gap-4">
@@ -141,27 +244,94 @@
           </div>
 
           <div class="flex-grow flex flex-col items-center justify-center text-center p-12 bg-slate-50">
-            <h2 class="text-4xl font-bold mb-4">가장 강력한 국산 LLM을<br/>단 하나의 API로</h2>
+            <span class="text-xs font-bold text-blue-600 bg-blue-100 px-3 py-1 rounded-full mb-4">NEXT-GEN KOREAN LLM</span>
+            <h2 class="text-4xl font-bold mb-4">가장 강력한 국산 LLM,<br/>Motif 3 모델을 만나보세요</h2>
             <p class="text-slate-500 mb-8 max-w-lg text-sm">
-              Motif 3 모델을 코딩 에이전트에 쉽게 통합하세요. 계정, 키 관리, 과금까지 하나의 플랫폼에서 완벽하게 통제할 수 있습니다.
+              한국어 맥락 이해도와 코딩 에이전트 연동 성능이 검증된 Motif 3 API를 지금 바로 경험하세요.
             </p>
             <div class="flex gap-4">
               <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary px-8 py-3 w-auto no-underline text-white flex items-center justify-center">무료로 시작하기</a>
-              <a href="#m-02" class="wf-btn px-8 py-3 w-auto no-underline text-slate-800 flex items-center justify-center">문서 보기</a>
+              <a href="#m-06" class="wf-btn px-8 py-3 w-auto no-underline text-slate-800 flex items-center justify-center">Morfac 서비스 소개</a>
             </div>
           </div>
 
           <div class="mock-footer flex justify-between items-start">
             <div class="space-y-1">
-              <div class="font-bold text-slate-700 text-xs mb-2">Morph Token Factory</div>
+              <div class="font-bold text-slate-700 text-xs mb-2">Morfac Platform</div>
               <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
-              <p>통신판매업신고번호: 제2026-서울강남-0000호</p>
-              <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morph.com | 연락처: 02-000-0000</p>
+              <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morfac.io | 연락처: 02-000-0000</p>
             </div>
             <div class="flex gap-4 font-medium text-slate-500">
               <a href="#m-03" class="hover:underline">이용약관 (M-03)</a>
               <a href="#m-04" class="hover:underline font-bold text-slate-700">개인정보처리방침 (M-04)</a>
               <a href="#m-05" class="hover:underline">Status (M-05)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-06: 서비스 소개 (Static Page - OBT 텍스트 최적화 및 CTA 변경) -->
+      <div id="m-06" class="wf-card">
+        <div class="wf-header">
+          <span>M-06 서비스 소개 (Morfac API Gateway Static Page)</span>
+          <span class="wf-badge">독립 게이트웨이 정적 설명 페이지</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="font-bold text-lg"><a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a></div>
+            <div class="flex gap-6 text-sm font-medium items-center">
+              <a href="#m-06" class="text-blue-600 font-bold no-underline">서비스 소개</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
+              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
+              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+            </div>
+          </div>
+
+          <div class="p-12 bg-white flex-grow max-w-4xl mx-auto w-full">
+            <div class="text-center mb-12">
+              <h1 class="text-3xl font-extrabold text-slate-900 mb-4">Morfac: Unified API Gateway Solution</h1>
+              <p class="text-slate-600 text-sm max-w-2xl mx-auto leading-relaxed">
+                Morfac은 복잡한 LLM 연동을 단일 게이트웨이로 통합하는 API 관리 플랫폼입니다. Motif 3 공개 베타 테스트 참여를 통해 가장 먼저 경험해 보세요.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
+                <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mb-4">⚡</div>
+                <h3 class="font-bold text-base mb-2 text-slate-900">OpenAI 표준 규격 호환</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">기존 OpenAI SDK와 100% 호환됩니다. 별도의 코드 개편 없이 Base URL과 API Key 변경만으로 Motif 3 모델에 바로 연결할 수 있습니다.</p>
+              </div>
+              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
+                <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center font-bold mb-4">🛡️</div>
+                <h3 class="font-bold text-base mb-2 text-slate-900">무료 크레딧 & 키 관리</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">사전 체험 기간 동안 테스트용 API 키를 즉시 발급받고 free 크레딧($20)을 지원받아 제약 없이 모델 인퍼런스를 테스트할 수 있습니다.</p>
+              </div>
+              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
+                <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold mb-4">📊</div>
+                <h3 class="font-bold text-base mb-2 text-slate-900">실시간 호출 분석 & 로그</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">응답 속도(Latency), 토큰 소모량, 실패 상태 코드를 실시간으로 트래킹하여 안정성을 검증합니다.</p>
+              </div>
+            </div>
+
+            <div class="text-center border-t pt-8 space-y-3">
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-dark w-auto px-10 py-3.5 text-sm font-bold inline-flex rounded-lg shadow-sm hover:shadow-md transition-all">Morfac 콘솔 시작하기 (무료 $20 크레딧 지급)</a>
+              <div class="text-xs text-slate-500 space-x-4">
+                <a href="#m-02" onclick="switchToMTab()" class="hover:text-slate-700 underline">Docs (개발자 가이드) 보기</a>
+                <span>|</span>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-slate-700 underline">Playground에서 테스트하기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morfac Platform</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500">
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
             </div>
           </div>
         </div>
@@ -203,12 +373,12 @@
                 </ul>
               </div>
             </div>
-            
+
             <div class="p-8 flex-grow overflow-y-auto bg-white">
               <div class="text-sm text-slate-500 mb-2">Getting Started > Quickstart</div>
               <h1 class="text-2xl font-bold mb-6">Quickstart</h1>
               <p class="text-sm text-slate-600 mb-6">Morph API는 OpenAI 표준 규격을 완벽하게 지원합니다. 기존 코드에서 Base URL과 API Key만 변경하여 즉시 사용할 수 있습니다.</p>
-              
+
               <h3 class="font-bold mb-3 border-b pb-2">1. API Key 발급</h3>
               <p class="text-sm text-slate-600 mb-4">콘솔에 로그인하여 <code>API Keys (C-02)</code> 메뉴에서 Bearer 인증에 사용할 Secret Key를 발급받습니다.</p>
 
@@ -265,13 +435,13 @@
                 <option>v1.0 (시행일: 2026.09.01) - 현재</option>
               </select>
             </div>
-            
+
             <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
               <section>
                 <h3 class="font-bold text-slate-800 mb-2">제 1조 (목적)</h3>
                 <p>본 약관은 (주)모프컴퍼니(이하 "회사")가 제공하는 Morph Token Factory 서비스(이하 "서비스")의 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
               </section>
-              
+
               <section>
                 <h3 class="font-bold text-slate-800 mb-2">제 2조 (용어의 정의)</h3>
                 <p>① "회원"이란 본 약관에 동의하고 가입 절차를 거쳐 회사가 제공하는 서비스를 이용하는 자를 말합니다.<br/>
@@ -283,7 +453,7 @@
                 <p>① 회사는 본 약관의 내용을 회원이 쉽게 알 수 있도록 서비스 초기 화면이나 연결 화면을 통하여 게시합니다.<br/>
                    ② 회사가 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행 약관과 함께 제1항의 방식에 따라 그 개정약관의 적용일자 7일 전부터 적용일자 전일까지 공지합니다.</p>
               </section>
-              
+
               <div class="h-32 bg-slate-50 border border-dashed border-slate-300 flex items-center justify-center text-slate-400 mt-8">
                 [약관 본문 전체 영역 스크롤]
               </div>
@@ -326,7 +496,7 @@
                 <option>v1.0 (시행일: 2026.09.01) - 현재</option>
               </select>
             </div>
-            
+
             <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
               <p>(주)모프컴퍼니는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법령에 따라 이용자의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
 
@@ -348,7 +518,7 @@
                   <li>회원 탈퇴 시: 5일 영업일 이내 API 키 및 로그 기록 완전 파기</li>
                 </ul>
               </section>
-              
+
               <section>
                 <h3 class="font-bold text-slate-800 mb-2 border-l-4 border-slate-400 pl-2">3. 자동 수집 장치 (쿠키)의 설치 및 거부</h3>
                 <p>회사는 이용자에게 맞춤형 서비스를 제공하기 위해 쿠키(cookie)를 사용합니다. 브라우저 설정을 통해 쿠키 저장을 거부할 수 있습니다.</p>
@@ -387,7 +557,7 @@
 
           <div class="p-12 bg-slate-50 flex flex-col items-center flex-grow">
             <div class="w-full max-w-3xl space-y-8">
-              
+
               <div class="bg-white border-2 border-green-500 rounded-lg p-6 flex items-center justify-between shadow-sm">
                 <div>
                   <h2 class="text-2xl font-bold text-slate-800 mb-1">All Systems Operational</h2>
@@ -414,7 +584,7 @@
                       </script>
                     </div>
                   </div>
-                  
+
                   <div class="pt-4">
                     <div class="flex justify-between text-sm mb-2 font-medium">
                       <span>Inference Engine (Motif 3)</span>
@@ -474,7 +644,7 @@
     </div>
 
     <!-- ==========================================
-         TAB 2: A 시리즈 (온보딩 및 인증 영역)
+         TAB 3: A 시리즈 (온보딩 및 인증 영역)
          ========================================== -->
     <div id="tab-a" class="tab-content hidden">
 
@@ -614,7 +784,7 @@
           <div class="auth-box">
             <div class="text-center mb-6">
               <h2 class="text-2xl font-bold">Welcome back</h2>
-              <p class="text-xs text-slate-500 mt-2">Morph Token Factory에 로그인하세요</p>
+              <p class="text-xs text-slate-500 mt-2">Morfac에 로그인하세요</p>
             </div>
             
             <button class="wf-btn mb-2">Continue with Google</button>
@@ -735,7 +905,7 @@
 
             <div class="space-y-4 mb-6">
               <div>
-                <label class="wf-label">1. Morph를 주로 어떤 목적으로 사용하실 계획인가요?</label>
+                <label class="wf-label">1. Morfac을 주로 어떤 목적으로 사용하실 계획인가요?</label>
                 <select class="wf-input mb-0">
                   <option value="" disabled selected>선택해 주세요</option>
                   <option>사내 코딩 에이전트 연동</option>
@@ -757,8 +927,8 @@
               </div>
             </div>
 
-            <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary mb-3">제출하고 $20 크레딧 받기</button>
-            <button onclick="switchToCTab('#c-01')" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">Skip for now</button>
+            <button onclick="completeSurveyAndRedirect()" class="wf-btn wf-btn-primary mb-3">제출하고 $20 크레딧 받기</button>
+            <button onclick="skipSurveyAndRedirect()" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">Skip for now</button>
           </div>
         </div>
       </div>
@@ -952,19 +1122,21 @@
     </div>
 
     <!-- ==========================================
-         TAB 3: C 시리즈 (콘솔 영역 - 카드 최소 높이 고정)
+         TAB 4: C 시리즈 (콘솔 영역)
          ========================================== -->
     <div id="tab-c" class="tab-content hidden">
       <div class="wf-card border-none shadow-none bg-transparent mb-0">
         
-        <!-- C시리즈 상단 Mock GNB -->
+        <!-- 콘솔 상단 GNB -->
         <div class="mock-gnb rounded-t-lg border">
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-lg tracking-tight text-slate-900">Morph Token Factory Console</span>
+          <div class="flex items-center gap-6">
+            <span class="font-bold text-xl tracking-tight text-slate-900">Morfac</span>
           </div>
           <div class="flex gap-6 text-sm font-medium items-center relative">
-            <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-blue-600 no-underline text-slate-700">⚡ 플레이그라운드</a>
-            <a href="#m-02" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">문서</a>
+            <a href="#m-06" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">서비스 소개</a>
+            <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-blue-600 no-underline text-slate-700">Playground</a>
+            <a href="#m-02" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">Docs</a>
+            <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-blue-600 font-bold no-underline">콘솔</a>
             
             <div class="relative">
               <button onclick="toggleProfileModal(event)" class="flex items-center gap-2 text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-2 rounded-full border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors">
@@ -975,14 +1147,11 @@
               <div id="profile-modal" class="hidden absolute right-0 top-12 w-64 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-50 text-slate-700">
                 <div class="px-3 py-2 border-b border-slate-100 mb-1">
                   <div class="font-bold text-slate-900 text-xs">김모프 (Hanah Suh)</div>
-                  <div class="text-[11px] text-slate-400">user@morph.com</div>
+                  <div class="text-[11px] text-slate-400">user@morfac.io</div>
                 </div>
-                <a href="javascript:void(0)" onclick="openSettingModal('c-09'); closeProfileModal();" class="flex items-center gap-2 px-3 py-2 text-xs hover:bg-slate-50 rounded-lg no-underline text-slate-700 font-medium">
-                  🔒 계정 설정 – 비밀번호 변경 (C-09)
-                </a>
-                <a href="javascript:void(0)" onclick="openSettingModal('c-10'); closeProfileModal();" class="flex items-center gap-2 px-3 py-2 text-xs hover:bg-red-50 text-red-600 rounded-lg no-underline font-medium mt-1">
-                  ⚠️ 계정 설정 – 회원 탈퇴 (C-10)
-                </a>
+                <button onclick="openAccountSettingModal(); closeProfileModal();" class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs hover:bg-slate-50 rounded-lg border-none bg-transparent cursor-pointer text-slate-700 font-medium">
+                  🔒 계정 설정 (비밀번호 변경 / 회원 탈퇴)
+                </button>
               </div>
             </div>
 
@@ -994,19 +1163,29 @@
         </div>
 
         <div class="console-layout">
-          <!-- 좌측 고정 사이드바 -->
+          <!-- 좌측 사이드바 -->
           <div class="sidebar">
-            <div class="sidebar-title">메뉴</div>
-            <div class="sidebar-menu">
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="sidebar-item active">📊 대시보드</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="sidebar-item">🔑 API 키</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="sidebar-item">💳 크레딧 및 충전</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="sidebar-item">⚡ 플레이그라운드</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-08')" class="sidebar-item">📜 요청 로그</a>
+            <div>
+              <div class="sidebar-title">메뉴</div>
+              <div class="sidebar-menu">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="sidebar-item active">📊 대시보드</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="sidebar-item">🔑 API 키</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="sidebar-item">🎁 크레딧 안내</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="sidebar-item">⚡ 플레이그라운드</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-08')" class="sidebar-item">📜 요청 로그</a>
+              </div>
+            </div>
+
+            <div id="sidebar-survey-banner" class="bg-gradient-to-br from-emerald-50 to-blue-50 border border-emerald-200 rounded-xl p-4 shadow-xs relative">
+              <button onclick="dismissSurveyBanner()" class="absolute top-2 right-2 text-slate-400 hover:text-slate-600 text-xs font-bold border-none bg-transparent cursor-pointer">&times;</button>
+              <div class="w-8 h-8 bg-emerald-500 text-white rounded-lg flex items-center justify-center font-bold text-sm mb-2 shadow-xs">✨</div>
+              <div class="font-bold text-xs text-slate-900 mb-1">설문 참여하고 $20 받기</div>
+              <p class="text-[11px] text-slate-500 leading-tight mb-3">간단한 설문을 완료하면 계정에 즉시 $20 크레딧을 추가해 드립니다.</p>
+              <a href="#a-04" onclick="switchToATab()" class="wf-btn bg-emerald-600 text-white font-bold text-xs border-none py-2 hover:bg-emerald-700 shadow-xs no-underline block text-center">설문 작성하기</a>
             </div>
           </div>
 
-          <!-- 우측 메인 컨테이너 -->
+          <!-- 메인 콘텐츠 -->
           <div class="content-container">
 
             <!-- C-01 대시보드 -->
@@ -1015,72 +1194,23 @@
                 <div class="wf-header">
                   <span>C-01 대시보드</span>
                   <div class="flex items-center gap-2">
+                    <span class="wf-badge">무료 체험 버전</span>
                     <span class="text-xs text-slate-500 font-normal">상태 전환:</span>
-                    <button onclick="switchDashboardState('depleted')" id="dash-btn-depleted" class="state-toggle-btn active">잔액 소진</button>
-                    <button onclick="switchDashboardState('normal')" id="dash-btn-normal" class="state-toggle-btn">정상</button>
-                    <button onclick="switchDashboardState('empty')" id="dash-btn-empty" class="state-toggle-btn">빈 상태 (가이드)</button>
+                    <button onclick="switchDashboardState('empty')" id="db-btn-empty" class="state-toggle-btn active">크레딧 없음</button>
+                    <button onclick="switchDashboardState('has')" id="db-btn-has" class="state-toggle-btn">크레딧 있음</button>
                   </div>
                 </div>
-                
                 <div class="wf-body p-6">
-                  <div id="dash-banner-depleted" class="bg-slate-900 text-white p-5 rounded-xl mb-6 flex justify-between items-center shadow-md">
-                    <div>
-                      <div class="font-bold text-base mb-1">크레딧이 모두 소진되었습니다</div>
-                      <div class="text-xs text-slate-300">충전 후 API 요청과 플레이그라운드를 다시 사용할 수 있습니다.</div>
-                    </div>
-                    <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-100 no-underline">충전하기</a>
+                  <div id="db-banner-empty" class="bg-blue-50 border border-blue-200 text-blue-900 p-4 rounded-xl mb-6 flex items-center gap-3 text-xs shadow-2xs">
+                    <span class="text-base">💡</span>
+                    <div>크레딧 추가 요청은 <a href="mailto:help@morphfactory.io" class="font-bold underline text-blue-700">help@morphfactory.io</a> 로 문의해 주세요.</div>
                   </div>
-                  
-                  <div id="dash-banner-normal" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl mb-6 flex justify-between items-center text-xs">
-                    <span>정상 상태 메시지 표출 영역</span>
-                  </div>
-
                   <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
-                      <div class="text-xs font-semibold text-slate-400 uppercase">크레딧 잔액</div>
-                      <div id="dash-val-balance" class="text-2xl font-extrabold text-slate-900 mt-1">$0.00</div>
-                    </div>
-                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
-                      <div class="text-xs font-semibold text-slate-400 uppercase">사용한 크레딧</div>
-                      <div id="dash-val-used" class="text-2xl font-extrabold text-slate-900 mt-1">$20.00</div>
-                    </div>
-                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
-                      <div class="text-xs font-semibold text-slate-400 uppercase">사용 토큰 수</div>
-                      <div id="dash-val-tokens" class="text-2xl font-extrabold text-slate-900 mt-1">12.4M</div>
-                    </div>
-                    <div class="border rounded-xl p-4 bg-white shadow-2xs">
-                      <div class="text-xs font-semibold text-slate-400 uppercase">요청 횟수</div>
-                      <div id="dash-val-requests" class="text-2xl font-extrabold text-slate-900 mt-1">1,842</div>
-                    </div>
+                    <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">남은 크레딧</div><div class="text-2xl font-extrabold text-slate-900 mt-1">$20.96</div></div>
+                    <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">사용한 크레딧</div><div class="text-2xl font-extrabold text-slate-900 mt-1">$0.04</div></div>
+                    <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">사용 토큰 수</div><div class="text-2xl font-extrabold text-slate-900 mt-1">12.4M</div></div>
+                    <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">요청 횟수</div><div class="text-2xl font-extrabold text-slate-900 mt-1">1,842</div></div>
                   </div>
-
-                  <div class="flex-grow flex flex-col justify-center">
-                    <div id="dash-graph-container">
-                      <div class="flex justify-between items-center mb-3">
-                        <span class="font-bold text-sm text-slate-800">일별 사용량</span>
-                        <div id="dash-date-tabs" class="flex gap-1 bg-slate-100 p-1 rounded-lg text-xs font-bold">
-                          <span class="bg-white px-3 py-1 rounded shadow-2xs">지난 7일</span>
-                          <span class="text-slate-500 px-3 py-1">지난 30일</span>
-                        </div>
-                      </div>
-                      <div id="dash-graph-area" class="border rounded-xl h-52 flex items-center justify-center text-slate-400 text-xs bg-slate-50">
-                        [일별 막대그래프 영역 · 마우스 오버 시 날짜 및 값 표시]
-                      </div>
-                    </div>
-
-                    <div id="dash-empty-guide" class="hidden text-center py-12 border rounded-xl bg-slate-50/50">
-                      <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl font-bold">🚀</div>
-                      <h3 class="text-base font-bold text-slate-900 mb-1">첫 번째 API 키를 발급받고 시작하세요!</h3>
-                      <p class="text-xs text-slate-500 max-w-sm mx-auto mb-6">
-                        아직 사용 기록이 없습니다. API 키를 생성하고 첫 호출을 시도해 보세요.
-                      </p>
-                      <div class="flex justify-center gap-3">
-                        <a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="wf-btn wf-btn-dark text-xs no-underline w-auto">API 키 관리로 이동</a>
-                        <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn text-xs no-underline w-auto">플레이그라운드 체험</a>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -1138,9 +1268,9 @@
                   </div>
                 </div>
                 <div class="wf-body p-6 flex flex-col justify-between">
-                  <div id="pg-banner-empty" class="bg-red-50 border border-red-200 p-3 rounded-lg text-xs text-red-700 mb-6 flex justify-between items-center">
-                    <span>⚠️ 잔액 소진으로 플레이그라운드 실행이 제한되었습니다.</span>
-                    <a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="font-bold underline">충전하러 가기</a>
+                  <div id="pg-banner-empty" class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-xs text-blue-700 mb-6 flex items-center gap-3">
+                    <span class="text-base">💡</span>
+                    <div>크레딧 추가 요청은 <a href="mailto:help@morphfactory.io" class="font-bold underline text-blue-700">help@morphfactory.io</a> 로 문의해 주세요.</div>
                   </div>
 
                   <div class="space-y-4 max-w-2xl mx-auto w-full my-auto">
@@ -1186,59 +1316,461 @@
               <div class="wf-card">
                 <div class="wf-header">
                   <span>C-03 크레딧 관리 및 충전</span>
-                  <span class="wf-badge">잔액 조회 · 크레딧 충전 · 자동 충전 설정 통합 화면</span>
-                </div>
-                <div class="wf-body p-6 space-y-6">
-                  
-                  <div class="bg-slate-900 text-white p-6 rounded-xl shadow-sm">
-                    <div class="text-xs uppercase font-bold text-slate-400 mb-1 tracking-wider">총 사용 가능 잔액</div>
-                    <div class="text-4xl font-extrabold mb-1">$7.11</div>
-                    <div class="text-xs text-slate-300">종량제 잔액 (유료 $0.45 / 무료 $6.66)</div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-500 font-normal">결제 제공:</span>
+                    <button onclick="switchC03State('before')" id="c03-btn-before" class="state-toggle-btn active">제공 전</button>
+                    <button onclick="switchC03State('after')" id="c03-btn-after" class="state-toggle-btn">제공 후</button>
                   </div>
+                </div>
 
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
-                      <div>
-                        <h3 class="font-bold text-base text-slate-900 mb-4">크레딧 충전</h3>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">충전 금액 ($ USD)</label>
-                        <input type="number" class="wf-input mb-3" value="10">
-                        <div class="flex justify-between text-xs text-slate-500 mb-6">
-                          <span>총 결제 예상 금액 (적용 환율 기준)</span>
-                          <span class="font-bold text-slate-900">13,500 KRW ($10.00)</span>
-                        </div>
-                      </div>
-                      <div>
-                        <button onclick="openTossPaymentModal()" class="wf-btn bg-lime-400 text-slate-900 font-bold hover:bg-lime-500 w-full py-3 border-none">결제하기</button>
+                <div class="wf-body p-6 space-y-6">
+                  <!-- 셀프 결제 제공 전 -->
+                  <div id="c03-content-before">
+                    <div class="border-l-4 border-slate-200 pl-6 py-4">
+                      <div class="text-xs text-slate-500 font-semibold uppercase mb-1 tracking-wider">남은 크레딧</div>
+                      <div class="text-5xl font-extrabold text-slate-900 mb-6">$20.00</div>
+                      <div class="border-b-2 border-slate-900 my-6"></div>
+                      <div class="text-sm text-slate-700">
+                        크레딧이 더 필요하신가요? <a href="mailto:help@morphfactory.io" class="font-bold text-emerald-600 underline">help@morphfactory.io</a>로 문의해 주세요.
                       </div>
                     </div>
 
-                    <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
-                      <div>
-                        <h3 class="font-bold text-base text-slate-900 mb-4">자동 충전 설정</h3>
-                        <div class="border border-dashed border-slate-300 rounded-xl p-8 text-center bg-slate-50 mb-4">
-                          <button onclick="openAutoTopUpModal()" class="wf-btn wf-btn-dark text-xs mb-2">결제 수단 등록 및 설정</button>
-                          <div class="text-[11px] text-slate-500">자동 충전을 활성화하려면 등록된 카드가 필요합니다.</div>
+                    <div>
+                      <div class="font-bold text-sm text-slate-900 mb-3">지금 내역</div>
+                      <table class="wf-table border rounded-lg overflow-hidden">
+                        <thead><tr><th>날짜</th><th>내용</th><th class="text-right">금액</th></tr></thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-xs text-slate-600">2026-08-11</td>
+                            <td class="text-sm">베타 테스트 최초 지급 · 관리자 발금</td>
+                            <td class="text-right"><span class="font-bold text-emerald-600">+$20.00</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- 셀프 결제 제공 후 -->
+                  <div id="c03-content-after" class="hidden">
+                    <div class="bg-slate-900 text-white p-6 rounded-xl shadow-sm">
+                      <div class="text-xs uppercase font-bold text-slate-400 mb-1 tracking-wider">총 사용 가능 잔액</div>
+                      <div class="text-4xl font-extrabold mb-1">$7.11</div>
+                      <div class="text-xs text-slate-300">종량제 잔액 (유료 $0.45 / 무료 $6.66)</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
+                        <div>
+                          <h3 class="font-bold text-base text-slate-900 mb-4">크레딧 충전</h3>
+                          <label class="block text-xs font-bold text-slate-700 mb-1">충전 금액 ($ USD)</label>
+                          <input type="number" class="wf-input mb-3" value="10">
+                          <div class="flex justify-between text-xs text-slate-500 mb-6">
+                            <span>총 결제 예상 금액 (적용 환율 기준)</span>
+                            <span class="font-bold text-slate-900">13,500 KRW ($10.00)</span>
+                          </div>
+                        </div>
+                        <div>
+                          <button onclick="openTossPaymentModal()" class="wf-btn bg-lime-400 text-slate-900 font-bold hover:bg-lime-500 w-full py-3 border-none">결제하기</button>
                         </div>
                       </div>
-                      <div class="text-[11px] text-slate-400">설정된 잔액 임계값 도달 시 자동으로 충전됩니다.</div>
+
+                      <div class="border rounded-xl p-6 bg-white shadow-2xs flex flex-col justify-between">
+                        <div>
+                          <h3 class="font-bold text-base text-slate-900 mb-4">자동 충전 설정</h3>
+                          <div class="border border-dashed border-slate-300 rounded-xl p-8 text-center bg-slate-50 mb-4">
+                            <button onclick="openAutoTopUpModal()" class="wf-btn wf-btn-dark text-xs mb-2">결제 수단 등록 및 설정</button>
+                            <div class="text-[11px] text-slate-500">자동 충전을 활성화하려면 등록된 카드가 필요합니다.</div>
+                          </div>
+                        </div>
+                        <div class="text-[11px] text-slate-400">설정된 잔액 임계값 도달 시 자동으로 충전됩니다.</div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="font-bold text-sm text-slate-900 mb-3">최근 거래 내역</div>
+                      <table class="wf-table border rounded-lg overflow-hidden">
+                        <thead><tr><th>일시</th><th>구분</th><th>금액</th><th class="text-right">상태</th></tr></thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-slate-600">2026-08-26 13:21:00</td>
+                            <td>신용카드 충전</td>
+                            <td class="font-bold">$10.00</td>
+                            <td class="text-right"><span class="text-emerald-600 font-bold text-xs">완료</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 5: O 시리즈 (어드민 영역)
+         ========================================== -->
+    <div id="tab-o" class="tab-content hidden">
+      <div class="wf-card border-none shadow-none bg-transparent mb-0">
+        
+        <!-- 어드민 상단 GNB -->
+        <div class="mock-gnb rounded-t-lg border">
+          <div class="flex items-center gap-3">
+            <span class="font-extrabold text-xl tracking-tight text-slate-900">Morfac Admin</span>
+            <span class="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-200">System Admin</span>
+          </div>
+          <div class="flex gap-4 text-xs font-medium items-center">
+            <span class="text-slate-600 font-bold">👤 최고 관리자 (admin@morfac.io)</span>
+            <button onclick="alert('로그아웃 되었습니다.')" class="text-slate-400 hover:text-slate-600 border-none bg-transparent cursor-pointer">로그아웃</button>
+          </div>
+        </div>
+
+        <div class="admin-layout">
+          
+          <!-- 사이드바 -->
+          <div class="sidebar">
+            <div>
+              <div class="sidebar-title">Main</div>
+              <div class="sidebar-menu">
+                <a href="#sec-dashboard" onclick="setAdminActiveMenu(this)" class="sidebar-item active">📊 대시보드</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="sidebar-title">계정/크레딧 관리</div>
+              <div class="sidebar-menu">
+                <a href="#o-01" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">👥 O-01 계정 관리</a>
+                <a href="#o-02" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🎁 O-02 크레딧 지급</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="sidebar-title">운영 관리</div>
+              <div class="sidebar-menu">
+                <a href="#o-05" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🖼️ O-05 배너 관리</a>
+                <a href="#o-06" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">✉️ O-06 문의 메일 운영</a>
+                <a href="#o-07" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">📢 O-07 공지사항</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 메인 콘텐츠 -->
+          <div class="content-container">
+
+            <!-- 1. 대시보드 -->
+            <div id="sec-dashboard" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span class="text-base font-bold text-slate-900">대시보드</span>
+                  <div class="flex items-center gap-2">
+                    <div class="inline-flex rounded-lg border border-slate-200 p-1 bg-slate-100 text-xs">
+                      <button class="px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 font-medium">오늘</button>
+                      <button class="px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 font-medium">지난 7일</button>
+                      <button class="px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 font-medium">지난 30일</button>
+                      <button class="px-3 py-1 rounded-md bg-white text-emerald-600 font-bold shadow-xs border border-slate-200">직접 선택</button>
+                    </div>
+                    <div class="flex items-center gap-1 text-xs font-mono">
+                      <input type="date" value="2026-08-11" class="border rounded-md px-2 py-1 bg-white text-slate-700 outline-none">
+                      <span class="text-slate-400">~</span>
+                      <input type="date" value="2026-08-17" class="border rounded-md px-2 py-1 bg-white text-slate-700 outline-none">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wf-body p-6 space-y-8 bg-slate-50/50">
+                  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="border rounded-xl p-5 bg-slate-50/80 shadow-2xs">
+                      <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs text-slate-500 font-medium">신규 가입자 수</span>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">선택 기간</span>
+                      </div>
+                      <div class="text-3xl font-extrabold text-slate-900">12명</div>
+                    </div>
+
+                    <div class="border rounded-xl p-5 bg-slate-50/80 shadow-2xs">
+                      <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs text-slate-500 font-medium">누적 가입자</span>
+                        <span class="text-[10px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-bold">전체 기간</span>
+                      </div>
+                      <div class="text-3xl font-extrabold text-slate-900">18명</div>
+                    </div>
+
+                    <div class="border rounded-xl p-5 bg-slate-50/80 shadow-2xs">
+                      <div class="text-xs text-slate-500 font-medium mb-2">부여된 무료 크레딧</div>
+                      <div class="text-3xl font-extrabold text-emerald-600">$405.00</div>
+                    </div>
+
+                    <div class="border rounded-xl p-5 bg-slate-50/80 shadow-2xs">
+                      <div class="text-xs text-slate-500 font-medium mb-2">사용된 크레딧</div>
+                      <div class="text-3xl font-extrabold text-slate-900">$77.67</div>
                     </div>
                   </div>
 
                   <div>
-                    <div class="font-bold text-sm text-slate-900 mb-3">최근 거래 내역</div>
-                    <table class="wf-table border rounded-lg overflow-hidden">
-                      <thead><tr><th>일시</th><th>구분</th><th>금액</th><th class="text-right">상태</th></tr></thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-slate-600">2026-08-26 13:21:00</td>
-                          <td>신용카드 충전</td>
-                          <td class="font-bold">$10.00</td>
-                          <td class="text-right"><span class="text-emerald-600 font-bold text-xs">완료</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="flex items-center gap-2 mb-3">
+                      <h3 class="font-bold text-sm text-slate-900">사용량 지표</h3>
+                      <span class="text-xs text-slate-400">전체 모델 합산</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">요청 수</div><div class="text-2xl font-bold text-slate-800">188건</div></div>
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">성공률</div><div class="text-2xl font-bold text-emerald-600">96.8%</div></div>
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">토큰량</div><div class="text-2xl font-bold text-slate-800">0.83M</div></div>
+                      <div class="border rounded-xl p-4 bg-slate-50/80 flex justify-between">
+                        <div><div class="text-xs text-slate-400 mb-1">레이턴시 (평균)</div><div class="text-2xl font-bold text-slate-800">1.4s</div></div>
+                        <div class="flex gap-3 text-right text-xs text-slate-500 self-end">
+                          <div><span class="block text-[10px] text-slate-400">p50</span><span class="font-bold text-slate-800">1.1s</span></div>
+                          <div><span class="block text-[10px] text-slate-400">p95</span><span class="font-bold text-slate-800">3.2s</span></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
+                  <div>
+                    <div class="flex justify-between items-center mb-3">
+                      <h3 class="font-bold text-sm text-slate-900">모델별 사용량</h3>
+                      <select class="wf-input w-auto text-xs py-1 font-bold"><option>Motif 3</option><option>Motif 2 Pro</option></select>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">사용된 토큰량</div><div class="text-2xl font-bold text-slate-800">1.82M</div></div>
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">요청 수</div><div class="text-2xl font-bold text-slate-800">412건</div></div>
+                      <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">평균 레이턴시</div><div class="text-2xl font-bold text-slate-800">1.4s</div></div>
+                    </div>
+                    <div class="border rounded-xl p-5 bg-slate-50/80">
+                      <div class="text-xs text-slate-400 font-medium mb-4">선택 기간 요청 추이</div>
+                      <div class="flex items-end gap-3 h-28 pt-4 border-b pb-1 justify-between px-2">
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[80%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[50%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[40%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[60%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[65%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[75%]"></div>
+                        <div class="w-full bg-emerald-600 rounded-t-sm h-[95%]"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center gap-2 mb-3">
+                      <h3 class="font-bold text-sm text-slate-900">오류 유형별 현황</h3>
+                      <span class="text-xs text-slate-400">선택 기간 · 발생한 유형만 표시</span>
+                    </div>
+                    <div class="border rounded-xl p-5 bg-slate-50/80 space-y-3">
+                      <div class="flex items-center gap-4 text-xs"><span class="w-28 font-semibold text-slate-700">Rate limit 초과</span><div class="flex-grow bg-slate-200 rounded-full h-2.5 overflow-hidden"><div class="bg-rose-500 h-2.5 rounded-full w-[85%]"></div></div><span class="w-8 text-right font-bold text-slate-800">2건</span></div>
+                      <div class="flex items-center gap-4 text-xs"><span class="w-28 font-semibold text-slate-700">잘못된 요청</span><div class="flex-grow bg-slate-200 rounded-full h-2.5 overflow-hidden"><div class="bg-rose-400 h-2.5 rounded-full w-[45%]"></div></div><span class="w-8 text-right font-bold text-slate-800">1건</span></div>
+                      <div class="flex items-center gap-4 text-xs"><span class="w-28 font-semibold text-slate-700">Context 초과</span><div class="flex-grow bg-slate-200 rounded-full h-2.5 overflow-hidden"><div class="bg-rose-400 h-2.5 rounded-full w-[45%]"></div></div><span class="w-8 text-right font-bold text-slate-800">1건</span></div>
+                      <div class="flex items-center gap-4 text-xs"><span class="w-28 font-semibold text-slate-700">인증 실패</span><div class="flex-grow bg-slate-200 rounded-full h-2.5 overflow-hidden"><div class="bg-rose-400 h-2.5 rounded-full w-[45%]"></div></div><span class="w-8 text-right font-bold text-slate-800">1건</span></div>
+                      <div class="flex items-center gap-4 text-xs"><span class="w-28 font-semibold text-slate-700">Timeout</span><div class="flex-grow bg-slate-200 rounded-full h-2.5 overflow-hidden"><div class="bg-rose-400 h-2.5 rounded-full w-[45%]"></div></div><span class="w-8 text-right font-bold text-slate-800">1건</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. O-01 계정 관리 -->
+            <div id="o-01" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>👥 O-01 계정 관리</span>
+                  <span class="wf-badge">이메일/가입유형/가입일/최근로그인/상태/관리</span>
+                </div>
+                <div class="wf-body p-6 space-y-4">
+                  <div class="flex justify-between items-center gap-4">
+                    <input type="text" class="wf-input max-w-xs mb-0" placeholder="🔍 이메일 주소로 검색...">
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs text-slate-500 font-bold">계정 상태:</span>
+                      <select class="wf-input w-auto text-xs font-semibold mb-0">
+                        <option value="all">전체 상태 보기</option>
+                        <option value="active">정상</option>
+                        <option value="pending">초대 대기 중</option>
+                        <option value="withdrawn">탈퇴</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <table class="wf-table border rounded-lg overflow-hidden">
+                    <thead>
+                      <tr><th>이메일</th><th>가입유형</th><th>가입일</th><th>최근 로그인</th><th>상태</th><th class="text-right">관리</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold">user@morfac.io</td>
+                        <td><span class="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded font-medium">Google</span></td>
+                        <td class="text-xs text-slate-500">2026-08-30 14:22</td>
+                        <td class="text-xs text-slate-700 font-medium">2026-08-31 11:45</td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">정상</span></td>
+                        <td class="text-right"><button onclick="alert('선택한 회원 정보 상세 레이어 열기')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-medium">상세</button></td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold">invited_dev@company.com</td>
+                        <td><span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">초대 메일</span></td>
+                        <td class="text-xs text-slate-500">2026-08-31 09:10</td>
+                        <td class="text-xs text-slate-400 italic">미접속</td>
+                        <td><span class="text-xs bg-amber-50 text-amber-800 font-bold px-2 py-0.5 rounded border border-amber-200">초대 대기 중</span></td>
+                        <td class="text-right space-x-2">
+                          <button onclick="alert('초대 메일을 재발송했습니다.')" class="text-xs text-blue-600 font-semibold hover:underline border-none bg-transparent cursor-pointer">초대 재발송</button>
+                          <button onclick="alert('초대를 취소했습니다.')" class="text-xs text-red-600 font-semibold hover:underline border-none bg-transparent cursor-pointer">초대 취소</button>
+                        </td>
+                      </tr>
+                      <tr class="bg-slate-50/50">
+                        <td class="font-mono text-slate-400 text-xs">usr_wth_99f82***</td>
+                        <td><span class="text-xs bg-slate-100 text-slate-400 px-2 py-0.5 rounded font-medium">이메일</span></td>
+                        <td class="text-xs text-slate-400">2026-07-12</td>
+                        <td class="text-xs text-slate-400">2026-08-28 16:02</td>
+                        <td><span class="text-xs bg-slate-200 text-slate-600 font-bold px-2 py-0.5 rounded border border-slate-300">탈퇴</span></td>
+                        <td class="text-right"><span class="text-xs text-slate-300 font-medium">-</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. O-02 크레딧 지급 -->
+            <div id="o-02" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header"><span>🎁 O-02 크레딧 지급</span><span class="wf-badge">수동 크레딧 부여 및 차감</span></div>
+                <div class="wf-body p-6 space-y-6">
+                  <div class="border rounded-xl p-6 bg-white space-y-4 max-w-lg">
+                    <h3 class="font-bold text-sm text-slate-900">수동 크레딧 지급/차감 폼</h3>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">대상 회원 이메일 <span class="text-red-500">*</span></label>
+                      <input type="email" class="wf-input" placeholder="user@example.com">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">구분 <span class="text-red-500">*</span></label>
+                        <select class="wf-input"><option>지급 (+)</option><option>차감 (-)</option></select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">금액 ($ USD) <span class="text-red-500">*</span></label>
+                        <input type="number" class="wf-input" value="20">
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">지급/차감 사유 <span class="text-red-500">*</span></label>
+                      <input type="text" class="wf-input" placeholder="예: 온보딩 설문 참여 보상 지급">
+                    </div>
+                    <button onclick="alert('크레딧이 정상적으로 처리되었습니다.')" class="wf-btn wf-btn-dark text-xs py-2.5">크레딧 처리 실행</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. O-05 배너 관리 ([배너 타이틀] 컬럼 반영) -->
+            <div id="o-05" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header"><span>🖼️ O-05 배너 관리</span></div>
+                <div class="wf-body p-6 space-y-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs text-slate-500 font-bold">노출 상태:</span>
+                      <select class="wf-input w-auto text-xs font-semibold mb-0">
+                        <option value="all">전체 보기</option>
+                        <option value="on" selected>노출중만 보기 (ON)</option>
+                        <option value="off">비노출만 보기 (OFF)</option>
+                      </select>
+                    </div>
+                    <button onclick="openAdminModal('banner-modal')" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 배너 등록</button>
+                  </div>
+                  
+                  <table class="wf-table border rounded-lg">
+                    <thead>
+                      <tr>
+                        <th>배너 타이틀</th>
+                        <th>배너 안내 문구 / 링크</th>
+                        <th>노출 여부</th>
+                        <th>노출 기간 설정</th>
+                        <th class="text-right">관리</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold text-xs text-slate-900">Motif 3 사전 모집 배너</td>
+                        <td class="text-xs text-slate-700">
+                          <span>Motif 3 모델 API 사전 체험을 시작합니다!</span> 
+                          <span class="underline text-blue-600 ml-1 font-semibold">[무료 체험하기]</span>
+                        </td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">ON (노출중)</span></td>
+                        <td class="text-xs text-slate-600">2026.09.01 ~ 2026.09.15</td>
+                        <td class="text-right">
+                          <button onclick="openAdminModal('banner-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-medium">수정</button>
+                        </td>
+                      </tr>
+                      <tr class="bg-slate-50/50">
+                        <td class="font-bold text-xs text-slate-500">신규 회원 $20 크레딧 프로모션</td>
+                        <td class="font-medium text-xs text-slate-400">
+                          <span>🎁 신규 회원 무료 $20 지급 이벤트</span>
+                          <span class="underline text-slate-400 ml-1">[자세히 보기]</span>
+                        </td>
+                        <td><span class="text-xs bg-slate-200 text-slate-600 font-bold px-2 py-0.5 rounded border border-slate-300">OFF (비노출)</span></td>
+                        <td class="text-xs text-slate-400">2026.08.01 ~ 2026.08.31</td>
+                        <td class="text-right">
+                          <button onclick="openAdminModal('banner-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-medium">수정</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. O-06 문의 메일 운영 -->
+            <div id="o-06" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header"><span>✉️ O-06 문의 메일 운영</span></div>
+                <div class="wf-body p-6 space-y-4">
+                  <table class="wf-table border rounded-lg">
+                    <thead><tr><th>접수일시</th><th>발신자</th><th>제목</th><th>처리 상태</th><th class="text-right">상세보기</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-xs text-slate-500">2026-08-31 10:15</td>
+                        <td>user@morfac.io</td>
+                        <td class="font-medium text-xs">크레딧 추가 한도 요청의 건</td>
+                        <td><span class="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-200">검토 대기</span></td>
+                        <td class="text-right">
+                          <button onclick="openAdminModal('inquiry-modal')" class="text-xs text-blue-600 font-bold hover:underline border-none bg-transparent cursor-pointer">문의 상세 및 답변</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. O-07 공지사항 -->
+            <div id="o-07" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header"><span>📢 O-07 공지사항</span></div>
+                <div class="wf-body p-6 space-y-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs text-slate-500 font-bold">노출 상태:</span>
+                      <select class="wf-input w-auto text-xs font-semibold mb-0">
+                        <option value="all">전체 보기</option>
+                        <option value="on" selected>노출중만 보기 (ON)</option>
+                        <option value="off">비노출만 보기 (OFF)</option>
+                      </select>
+                    </div>
+                    <button onclick="openAdminModal('notice-modal')" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 공지 작성</button>
+                  </div>
+                  <table class="wf-table border rounded-lg">
+                    <thead><tr><th>등록일</th><th>공지 제목</th><th>노출 기간</th><th>노출 여부</th><th class="text-right">관리</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-xs text-slate-500">2026-08-28</td>
+                        <td class="font-bold text-xs">Motif 3 모델 파이프라인 업데이트 안내</td>
+                        <td class="text-xs text-slate-600">2026.09.01 ~ 2026.09.30</td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">ON (노출중)</span></td>
+                        <td class="text-right">
+                          <button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -1251,46 +1783,83 @@
 
   </div>
 
-  <!-- 모달 레이어 -->
-  <!-- 토스페이먼츠 모달 -->
-  <div id="toss-payment-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-slate-200 relative text-slate-800">
-      <div class="flex justify-between items-center mb-6 pb-2 border-b">
-        <h3 class="font-bold text-base text-slate-900">💳 카드 번호 입력</h3>
-        <button onclick="closeTossPaymentModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+  <!-- C 시리즈: 계정 설정 통합 모달 (비밀번호 변경 / 회원 탈퇴) -->
+  <div id="account-setting-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+      
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900">🔒 계정 설정</h3>
+        <button onclick="closeAccountSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
-      <div class="space-y-4 mb-6">
+
+      <div class="flex gap-2 border-b border-slate-200 mb-6">
+        <button id="tab-btn-pw" onclick="switchAccountTab('pw')" class="px-4 py-2 text-xs font-bold border-b-2 border-slate-900 text-slate-900 bg-transparent cursor-pointer">
+          비밀번호 변경
+        </button>
+        <button id="tab-btn-withdraw" onclick="switchAccountTab('withdraw')" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-red-600 bg-transparent cursor-pointer">
+          회원 탈퇴
+        </button>
+      </div>
+
+      <!-- 1. 비밀번호 변경 탭 -->
+      <div id="account-tab-pw" class="space-y-4 text-xs">
         <div>
-          <label class="block text-xs font-bold text-slate-500 mb-1">카드번호 (Card Number)</label>
-          <div class="flex gap-2 items-center bg-slate-50 border border-slate-300 rounded-lg p-2 font-mono text-sm">
-            <span class="font-bold">5387</span>
-            <span>2082</span>
-            <span class="text-slate-400">••••</span>
-            <span class="text-slate-400">••••</span>
-          </div>
+          <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
+          <input type="password" class="wf-input mb-0" placeholder="••••••••">
         </div>
-        <div class="flex gap-2">
-          <div class="w-1/2">
-            <label class="block text-xs font-bold text-slate-500 mb-1">유효기간 (MMYY)</label>
-            <input type="text" class="wf-input font-mono text-center mb-0" value="08/28">
-          </div>
-          <div class="w-1/2">
-            <label class="block text-xs font-bold text-slate-500 mb-1">비밀번호 앞 2자리</label>
-            <input type="password" class="wf-input font-mono text-center mb-0" value="••">
-          </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
+          <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
         </div>
-        <div class="bg-blue-50 border border-blue-100 p-2.5 rounded-lg text-[11px] text-blue-700">
-          토스페이먼츠 안전결제 모듈을 통해 암호화 처리됩니다.
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
+          <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
+        </div>
+        
+        <div class="flex justify-end gap-2 pt-4 border-t">
+          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">취소</button>
+          <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.'); closeAccountSettingModal();" class="wf-btn wf-btn-dark text-xs w-auto">비밀번호 변경 저장</button>
         </div>
       </div>
-      <div class="flex gap-2">
-        <button onclick="closeTossPaymentModal()" class="wf-btn text-xs w-1/2">취소</button>
-        <button onclick="alert('결제가 정상적으로 완료되었습니다!'); closeTossPaymentModal();" class="wf-btn wf-btn-dark text-xs w-1/2 font-bold">결제 승인</button>
+
+      <!-- 2. 회원 탈퇴 탭 -->
+      <div id="account-tab-withdraw" class="hidden space-y-4 text-xs">
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-red-900 leading-relaxed space-y-2">
+          <div class="font-bold flex items-center gap-1.5 text-sm text-red-700">
+            <span>⚠️</span> 계정 삭제 전 필독 사항
+          </div>
+          <p class="text-[11px] text-red-800">
+            탈퇴 시 회원님의 소중한 프로젝트 데이터, 실행 로그, 잔여 크레딧 수량이 완전 삭제되어 복구할 수 없게 됩니다.
+          </p>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+          <p class="font-bold text-slate-800 text-[11px] leading-snug">
+            "탈퇴 시 등록된 모든 API 키는 즉시 삭제되며 복구할 수 없습니다."
+          </p>
+          <label class="flex items-start gap-2 cursor-pointer pt-2 border-t border-slate-200">
+            <input type="checkbox" id="withdraw-agree-check" onchange="toggleWithdrawButton()" class="mt-0.5 w-4 h-4 text-red-600 rounded border-slate-300">
+            <span class="font-bold text-slate-700 text-xs">안내사항을 모두 확인했으며 탈퇴에 동의합니다</span>
+          </label>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">본인 확인 비밀번호</label>
+          <input type="password" class="wf-input mb-0" placeholder="현재 비밀번호 입력">
+        </div>
+
+        <div class="flex justify-end gap-2 pt-4 border-t">
+          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">취소</button>
+          <button id="withdraw-submit-btn" disabled onclick="confirmWithdraw()" class="wf-btn bg-red-600 text-white border-none font-bold text-xs w-auto opacity-50 cursor-not-allowed">
+            회원 탈퇴 진행
+          </button>
+        </div>
       </div>
+
     </div>
   </div>
 
-  <!-- API 키 발급 모달 -->
+  <!-- C 시리즈: 새 API 키 발급 모달 -->
   <div id="api-key-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
       <div class="flex justify-between items-center mb-4 border-b pb-3">
@@ -1328,82 +1897,234 @@
     </div>
   </div>
 
-  <!-- 오토 탑업 설정 모달 -->
-  <div id="autotopup-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+  <!-- O 시리즈 상세 모달 3종 -->
+  <div id="banner-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 border border-slate-200 overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">🔄 자동 충전 설정</h3>
-        <button onclick="closeAutoTopUpModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">🖼️ 배너 등록 및 수정</h3>
+        <button onclick="closeAdminModal('banner-modal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
-      <div class="space-y-4 mb-6 text-xs">
+
+      <div class="space-y-4 text-xs">
+        <div class="flex justify-between items-center p-3 bg-slate-50 border rounded-xl">
+          <div>
+            <div class="font-bold text-slate-800">배너 게시 노출 여부 (ON/OFF) <span class="text-red-500">*</span></div>
+            <div class="text-[11px] text-slate-500">OFF로 설정 시 서비스 전체 영역에서 즉시 비노출됩니다.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
         <div>
-          <label class="block font-bold text-slate-700 mb-1">결제 카드 정보</label>
-          <div class="p-3 border rounded-lg bg-slate-50 flex justify-between items-center">
-            <span>신한카드 (****-****-****-1234)</span>
-            <button class="text-blue-600 font-semibold underline border-none bg-transparent cursor-pointer">변경</button>
+          <label class="block font-bold text-slate-700 mb-1">배너 식별 타이틀 <span class="text-red-500">*</span></label>
+          <input type="text" class="wf-input mb-0" value="Motif 3 사전 모집 배너" placeholder="어드민 관리 목록에서 식별할 타이틀">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">배너 안내 문구 (본문) <span class="text-red-500">*</span></label>
+          <input type="text" id="modal-banner-text" class="wf-input mb-0" value="Motif 3 모델 API 사전 체험을 시작합니다!" oninput="updateBannerPreview()">
+        </div>
+
+        <div class="p-3 bg-blue-50/60 border border-blue-200 rounded-xl space-y-3">
+          <span class="font-bold text-blue-900 block">🔗 링크버튼 및 URL 설정 (특정 텍스트 클릭 전용)</span>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">링크 텍스트 (선택)</label>
+            <input type="text" id="modal-link-text" class="wf-input mb-0" value="무료 체험하기" placeholder="예: 무료 체험하기 (미입력 시 문구만 표출)" oninput="updateBannerPreview()">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">이동 URL</label>
+            <input type="url" id="modal-link-url" class="wf-input mb-0" value="https://morfac.io/events/motif-3" placeholder="https://example.com">
           </div>
         </div>
+
         <div>
-          <label class="block font-bold text-slate-700 mb-1">충전 임계값 (잔액 기준)</label>
-          <select class="wf-input mb-0"><option>잔액이 $5 미만으로 떨어질 때</option><option>잔액이 $10 미만으로 떨어질 때</option></select>
+          <label class="block font-bold text-slate-700 mb-1">실시간 배너 미리보기</label>
+          <div id="modal-banner-preview" class="p-3 bg-indigo-500 text-white rounded-lg flex justify-between items-center text-xs font-medium">
+            <div class="flex items-center gap-1.5">
+              <span>ℹ️</span>
+              <span id="preview-text-body">Motif 3 모델 API 사전 체험을 시작합니다!</span>
+              <a id="preview-text-link" href="#" class="underline font-bold text-white hover:text-slate-200 ml-1">무료 체험하기</a>
+            </div>
+            <button id="modal-preview-close-btn" class="text-white opacity-80 hover:opacity-100 font-bold ml-2">&times;</button>
+          </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 bg-slate-50 border rounded-xl">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">노출 시작일시 <span class="text-red-500">*</span></label>
+            <input type="datetime-local" class="wf-input mb-0 bg-white" value="2026-09-01T00:00">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">노출 종료일시 <span class="text-red-500">*</span></label>
+            <input type="datetime-local" class="wf-input mb-0 bg-white" value="2026-09-15T23:59">
+          </div>
+        </div>
+
         <div>
-          <label class="block font-bold text-slate-700 mb-1">자동 충전 금액</label>
-          <select class="wf-input mb-0"><option>$20 충전하기</option><option>$50 충전하기</option></select>
+          <label class="block font-bold text-slate-700 mb-1">닫기 버튼 노출 방식 <span class="text-red-500">*</span></label>
+          <select id="modal-close-btn-option" class="wf-input mb-0 font-semibold" onchange="handleCloseOptionChange()">
+            <option value="show" selected>노출함 (X 버튼 표출)</option>
+            <option value="hide">노출 안 함 (닫기 버튼 없음)</option>
+          </select>
         </div>
+
         <div>
-          <label class="block font-bold text-slate-700 mb-1">월 최대 충전 한도</label>
-          <select class="wf-input mb-0"><option>최대 $100 / 월</option><option>최대 $200 / 월</option></select>
+          <div class="flex justify-between items-center mb-1">
+            <label class="font-bold text-slate-700">노출 재표시 주기 (다시 보지 않기 기준) <span class="text-red-500">*</span></label>
+            <span id="modal-cycle-notice" class="text-[11px] text-red-500 font-bold hidden">※ 닫기 버튼이 없으므로 '항상 노출'로 고정됩니다.</span>
+          </div>
+          <select id="modal-re-show-cycle" class="wf-input mb-0">
+            <option value="1">1일마다 노출 (오늘 하루 보지 않기)</option>
+            <option value="3">3일마다 노출</option>
+            <option value="7">7일마다 노출 (일주일간 보지 않기)</option>
+            <option value="30">30일마다 노출</option>
+            <option value="always">항상 노출 (닫기 미적용/매 방문시 표출)</option>
+          </select>
         </div>
+
+        <div class="space-y-2 border-t pt-3">
+          <label class="block font-bold text-slate-700">배경 컬러 지정 <span class="text-red-500">*</span></label>
+          <div class="flex gap-4 mb-2">
+            <label class="flex items-center gap-1.5 cursor-pointer font-medium">
+              <input type="radio" name="bg-type" value="solid" checked onclick="toggleColorPicker('solid')"> 단일 컬러
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer font-medium">
+              <input type="radio" name="bg-type" value="gradient" onclick="toggleColorPicker('gradient')"> 그라데이션
+            </label>
+          </div>
+
+          <div id="color-solid-box" class="flex items-center gap-2">
+            <input type="color" class="w-8 h-8 rounded border cursor-pointer p-0 bg-transparent" value="#6366F1">
+            <input type="text" class="wf-input mb-0 font-mono text-xs uppercase" value="#6366F1">
+          </div>
+
+          <div id="color-gradient-box" class="hidden space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] text-slate-400 w-12">시작색:</span>
+              <input type="color" class="w-8 h-8 rounded border cursor-pointer p-0 bg-transparent" value="#6366F1">
+              <input type="text" class="wf-input mb-0 font-mono text-xs uppercase" value="#6366F1">
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] text-slate-400 w-12">종료색:</span>
+              <input type="color" class="w-8 h-8 rounded border cursor-pointer p-0 bg-transparent" value="#9333EA">
+              <input type="text" class="wf-input mb-0 font-mono text-xs uppercase" value="#9333EA">
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="flex justify-end gap-2">
-        <button onclick="closeAutoTopUpModal()" class="wf-btn text-xs w-auto">취소</button>
-        <button onclick="alert('자동 충전 설정이 저장되었습니다.'); closeAutoTopUpModal();" class="wf-btn wf-btn-dark text-xs w-auto">설정 저장</button>
+
+      <div class="flex justify-end gap-2 pt-6 border-t mt-6">
+        <button onclick="closeAdminModal('banner-modal')" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('배너 설정이 저장되었습니다.'); closeAdminModal('banner-modal');" class="wf-btn wf-btn-dark text-xs w-auto">배너 저장하기</button>
       </div>
     </div>
   </div>
 
-  <!-- 계정 설정 모달 -->
-  <div id="setting-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
-    <div id="modal-c-09" class="hidden bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+  <div id="inquiry-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 border border-slate-200 overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">🔒 비밀번호 변경 (C-09)</h3>
-        <button onclick="closeSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+        <div class="flex items-center gap-2">
+          <h3 class="font-bold text-base text-slate-900">✉️ 문의 상세 내역 및 답변 작성</h3>
+          <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">검토 대기</span>
+        </div>
+        <button onclick="closeAdminModal('inquiry-modal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
-      <div class="space-y-4 mb-6">
-        <div><label class="block text-xs font-bold text-slate-700 mb-1">현재 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="••••••••"></div>
-        <div><label class="block text-xs font-bold text-slate-700 mb-1">새 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="12자 이상 영문/숫자 조합"></div>
-        <div><label class="block text-xs font-bold text-slate-700 mb-1">새 비밀번호 확인</label><input type="password" class="wf-input mb-0" placeholder="비밀번호 재입력"></div>
+      <div class="space-y-6 text-xs">
+        <div class="bg-slate-50 border rounded-xl p-4 space-y-3">
+          <div class="flex justify-between border-b pb-2 text-slate-500">
+            <div><span class="font-bold text-slate-700">발신자:</span> user@morfac.io (김모프)</div>
+            <div><span class="font-bold text-slate-700">접수일시:</span> 2026-08-31 10:15 KST</div>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-slate-900 mb-2">제목: 크레딧 추가 한도 요청의 건</div>
+            <div class="text-slate-700 leading-relaxed bg-white border p-3 rounded-lg min-h-[100px]">
+              안녕하세요, 서비스 테스트를 진행하던 중 기본 제공받은 무료 $20 크레딧을 모두 사용하였습니다.<br/><br/>
+              추가 호출 테스트가 필요한 상황인데, 혹시 $50 수준의 테스트 크레딧을 추가 지원 받아볼 수 있을지 문의드립니다. 감사합니다!
+            </div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label class="font-bold text-slate-800 text-sm">관리자 답변 메일 작성</label>
+            <span class="text-[11px] text-slate-400">발신 주소: help@morphfactory.io</span>
+          </div>
+          <textarea class="wf-input min-h-[140px] p-3 leading-relaxed mb-0" placeholder="답변 내용을 작성해 주세요..."></textarea>
+        </div>
+        <div class="border border-blue-100 bg-blue-50/50 rounded-xl p-3 flex items-center justify-between">
+          <label class="flex items-center gap-2 cursor-pointer font-bold text-blue-900">
+            <input type="checkbox" checked class="w-4 h-4 text-blue-600"> 답변 완료 시 대상 계정에 즉시 크레딧 자동 지급
+          </label>
+          <div class="flex items-center gap-1">
+            <span class="text-slate-500">$</span>
+            <input type="number" class="wf-input w-20 py-1 text-center font-bold mb-0" value="50">
+          </div>
+        </div>
       </div>
-      <div class="flex justify-end gap-2">
-        <button onclick="closeSettingModal()" class="wf-btn text-xs w-auto">취소</button>
-        <button onclick="alert('비밀번호가 변경되었습니다.'); closeSettingModal();" class="wf-btn wf-btn-dark text-xs w-auto">변경 사항 저장</button>
-      </div>
-    </div>
-
-    <div id="modal-c-10" class="hidden bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-red-200">
-      <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-red-600">⚠️ 회원 탈퇴 및 환불 안내 (C-10)</h3>
-        <button onclick="closeSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
-      </div>
-      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-        탈퇴 시 등록된 모든 API 키는 즉시 삭제되며 복구할 수 없습니다.<br/>
-        현재 환불 가능한 유료 잔액 <strong class="text-slate-900 font-bold">$0.45</strong>가 남아있으며, 환불 신청 시 등록된 계좌로 3영업일 내 처리됩니다.
-      </p>
-      <div class="space-y-3 mb-6 bg-red-50/50 p-3 rounded-xl border border-red-100">
-        <label class="flex items-center gap-2 text-xs text-slate-700 cursor-pointer">
-          <input type="checkbox" class="accent-red-600"> 안내사항을 모두 확인했으며 탈퇴에 동의합니다.
-        </label>
-      </div>
-      <div class="flex justify-end gap-2">
-        <button onclick="closeSettingModal()" class="wf-btn text-xs w-auto">취소</button>
-        <button onclick="alert('회원 탈퇴 및 환불 신청이 완료되었습니다.'); closeSettingModal();" class="wf-btn bg-red-600 text-white text-xs hover:bg-red-700 border-none w-auto">회원 탈퇴 및 환불 신청</button>
+      <div class="flex justify-end gap-2 pt-6 border-t mt-6">
+        <button onclick="closeAdminModal('inquiry-modal')" class="wf-btn text-xs w-auto">닫기</button>
+        <button onclick="alert('답변 메일이 발송되었습니다.'); closeAdminModal('inquiry-modal');" class="wf-btn wf-btn-dark text-xs w-auto">답변 메일 발송 및 처리완료</button>
       </div>
     </div>
   </div>
 
-  <!-- 스크립트 -->
+  <div id="notice-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-slate-200 overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">📢 공지사항 등록 및 수정</h3>
+        <button onclick="closeAdminModal('notice-modal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">공지 제목 <span class="text-red-500">*</span></label>
+          <input type="text" class="wf-input mb-0" placeholder="예: [안내] Motif 3 모델 파이프라인 업데이트 안내">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">공지 내용 <span class="text-red-500">*</span></label>
+          <div class="border border-slate-300 rounded-lg overflow-hidden">
+            <div class="bg-slate-100 border-b p-2 flex flex-wrap gap-2 items-center text-slate-700">
+              <button class="px-2 py-1 bg-white border rounded font-bold hover:bg-slate-50">B</button>
+              <button class="px-2 py-1 bg-white border rounded italic hover:bg-slate-50">I</button>
+              <button class="px-2 py-1 bg-white border rounded underline hover:bg-slate-50">U</button>
+              <span class="text-slate-300">|</span>
+              <button onclick="alert('이미지 첨부 파일 창 오픈')" class="px-2 py-1 bg-white border rounded font-medium hover:bg-slate-50 flex items-center gap-1">🖼️ 이미지 삽입</button>
+              <button class="px-2 py-1 bg-white border rounded font-medium hover:bg-slate-50">🔗 링크</button>
+            </div>
+            <textarea class="w-full h-48 p-3 outline-none resize-y border-none text-xs leading-relaxed" placeholder="공지사항 본문 내용을 입력해 주세요."></textarea>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">노출 시작일시 <span class="text-red-500">*</span></label>
+            <input type="datetime-local" class="wf-input mb-0" value="2026-09-01T00:00">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">노출 종료일시 <span class="text-red-500">*</span></label>
+            <input type="datetime-local" class="wf-input mb-0" value="2026-09-30T23:59">
+          </div>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-slate-50 border rounded-xl border-t">
+          <div>
+            <div class="font-bold text-slate-800">공지 게시판 노출 여부 (ON/OFF)</div>
+            <div class="text-[11px] text-slate-500">OFF로 설정 시 사용자는 해당 공지사항을 볼 수 없습니다.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-6 border-t mt-6">
+        <button onclick="closeAdminModal('notice-modal')" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('공지사항이 게시되었습니다.'); closeAdminModal('notice-modal');" class="wf-btn wf-btn-dark text-xs w-auto">공지사항 등록/저장</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* 메인 탭 전환 (History, M, A, C, O) */
     function openTab(tabId, btnElement) {
       document.querySelectorAll('.tab-content').forEach(el => {
         el.classList.remove('block');
@@ -1416,39 +2137,50 @@
       }
 
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('border-slate-800', 'text-slate-800', 'border-b-4');
+        btn.classList.remove('border-slate-800', 'text-slate-800', 'border-blue-600', 'text-blue-600', 'border-b-4');
         btn.classList.add('text-slate-500', 'border-transparent');
       });
 
       if(btnElement) {
         btnElement.classList.remove('text-slate-500', 'border-transparent');
-        btnElement.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+        if(tabId === 'tab-history') {
+          btnElement.classList.add('border-blue-600', 'text-blue-600', 'border-b-4');
+        } else {
+          btnElement.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+        }
       } else {
         const targetBtn = document.querySelector(`[data-target="${tabId}"]`);
         if(targetBtn) {
           targetBtn.classList.remove('text-slate-500', 'border-transparent');
-          targetBtn.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+          if(tabId === 'tab-history') {
+            targetBtn.classList.add('border-blue-600', 'text-blue-600', 'border-b-4');
+          } else {
+            targetBtn.classList.add('border-slate-800', 'text-slate-800', 'border-b-4');
+          }
         }
       }
     }
 
+    /* A 시리즈 서브 탭 제어 */
     function switchSubTab(subFlowId) {
       document.querySelectorAll('.sub-flow-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(subFlowId).classList.remove('hidden');
+      const targetSub = document.getElementById(subFlowId);
+      if (targetSub) targetSub.classList.remove('hidden');
 
       const btn1 = document.getElementById('btn-flow-1');
       const btn2 = document.getElementById('btn-flow-2');
       if(subFlowId === 'sub-flow-1') {
-        btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
-        btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
+        if (btn1) btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
+        if (btn2) btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
       } else {
-        btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
-        btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
+        if (btn2) btn2.className = "px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all";
+        if (btn1) btn1.className = "px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all";
       }
     }
 
     function switchToATab() { openTab('tab-a'); }
     function switchToMTab() { openTab('tab-m'); }
+    function switchToOTab() { openTab('tab-o'); }
     
     function switchToCTab(targetHash) {
       openTab('tab-c');
@@ -1460,6 +2192,23 @@
           }
         }, 50);
       }
+    }
+
+    function skipSurveyAndRedirect() {
+      const banner = document.getElementById('sidebar-survey-banner');
+      if(banner) banner.classList.remove('hidden');
+      switchToCTab('#c-01');
+    }
+
+    function completeSurveyAndRedirect() {
+      const banner = document.getElementById('sidebar-survey-banner');
+      if(banner) banner.classList.add('hidden');
+      switchToCTab('#c-01');
+    }
+
+    function dismissSurveyBanner() {
+      const banner = document.getElementById('sidebar-survey-banner');
+      if(banner) banner.classList.add('hidden');
     }
 
     function toggleGnbState() {
@@ -1476,82 +2225,74 @@
       }
     }
 
-    /* C 시리즈 제어 함수들 */
+    /* 대시보드 및 플레이그라운드 크레딧 상태 전환 */
     function switchDashboardState(state) {
-      const bannerDepleted = document.getElementById('dash-banner-depleted');
-      const bannerNormal = document.getElementById('dash-banner-normal');
-      const valBalance = document.getElementById('dash-val-balance');
-      const valUsed = document.getElementById('dash-val-used');
-      const valTokens = document.getElementById('dash-val-tokens');
-      const valRequests = document.getElementById('dash-val-requests');
-      
-      const graphContainer = document.getElementById('dash-graph-container');
-      const emptyGuide = document.getElementById('dash-empty-guide');
-      
-      const btnDepleted = document.getElementById('dash-btn-depleted');
-      const btnNormal = document.getElementById('dash-btn-normal');
-      const btnEmpty = document.getElementById('dash-btn-empty');
+      const emptyBtn = document.getElementById('db-btn-empty');
+      const hasBtn = document.getElementById('db-btn-has');
+      const banner = document.getElementById('db-banner-empty');
 
-      [btnDepleted, btnNormal, btnEmpty].forEach(b => b.classList.remove('active'));
-
-      if(state === 'depleted') {
-        bannerDepleted.classList.remove('hidden');
-        bannerNormal.classList.add('hidden');
-        graphContainer.classList.remove('hidden');
-        emptyGuide.classList.add('hidden');
-        valBalance.innerText = '$0.00';
-        valUsed.innerText = '$20.00';
-        valTokens.innerText = '12.4M';
-        valRequests.innerText = '1,842';
-        btnDepleted.classList.add('active');
-      } else if(state === 'normal') {
-        bannerDepleted.classList.add('hidden');
-        bannerNormal.classList.remove('hidden');
-        graphContainer.classList.remove('hidden');
-        emptyGuide.classList.add('hidden');
-        valBalance.innerText = '$12.50';
-        valUsed.innerText = '$32.10';
-        valTokens.innerText = '28.9M';
-        valRequests.innerText = '4,120';
-        btnNormal.classList.add('active');
+      if (state === 'empty') {
+        emptyBtn.classList.add('active');
+        hasBtn.classList.remove('active');
+        if (banner) banner.classList.remove('hidden');
       } else {
-        bannerDepleted.classList.add('hidden');
-        bannerNormal.classList.add('hidden');
-        graphContainer.classList.add('hidden');
-        emptyGuide.classList.remove('hidden');
-        valBalance.innerText = '$0.00';
-        valUsed.innerText = '$0.00';
-        valTokens.innerText = '0';
-        valRequests.innerText = '0';
-        btnEmpty.classList.add('active');
+        hasBtn.classList.add('active');
+        emptyBtn.classList.remove('active');
+        if (banner) banner.classList.add('hidden');
       }
     }
 
     function switchPlaygroundState(state) {
-      const bannerEmpty = document.getElementById('pg-banner-empty');
+      const emptyBtn = document.getElementById('pg-btn-empty');
+      const hasBtn = document.getElementById('pg-btn-has');
+      const banner = document.getElementById('pg-banner-empty');
       const actionBtn = document.getElementById('pg-action-btn');
-      const btnEmpty = document.getElementById('pg-btn-empty');
-      const btnHas = document.getElementById('pg-btn-has');
 
-      if(state === 'empty') {
-        bannerEmpty.classList.remove('hidden');
-        actionBtn.disabled = true;
-        actionBtn.className = "wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none";
-        actionBtn.innerText = "잔액 소진으로 실행 불가";
-        btnEmpty.classList.add('active');
-        btnHas.classList.remove('active');
+      if (state === 'empty') {
+        emptyBtn.classList.add('active');
+        hasBtn.classList.remove('active');
+        if (banner) banner.classList.remove('hidden');
+        if (actionBtn) {
+          actionBtn.disabled = true;
+          actionBtn.classList.add('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
+          actionBtn.classList.remove('bg-slate-900', 'text-white');
+          actionBtn.textContent = '잔액 소진으로 실행 불가';
+        }
       } else {
-        bannerEmpty.classList.add('hidden');
-        actionBtn.disabled = false;
-        actionBtn.className = "wf-btn wf-btn-dark text-xs w-full py-3 font-bold hover:bg-slate-800";
-        actionBtn.innerText = "실행하기";
-        btnHas.classList.add('active');
-        btnEmpty.classList.remove('active');
+        hasBtn.classList.add('active');
+        emptyBtn.classList.remove('active');
+        if (banner) banner.classList.add('hidden');
+        if (actionBtn) {
+          actionBtn.disabled = false;
+          actionBtn.classList.remove('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
+          actionBtn.classList.add('bg-slate-900', 'text-white');
+          actionBtn.textContent = '실행';
+        }
       }
     }
 
-    function openTossPaymentModal() { document.getElementById('toss-payment-modal').classList.remove('hidden'); }
-    function closeTossPaymentModal() { document.getElementById('toss-payment-modal').classList.add('hidden'); }
+    function switchC03State(state) {
+      const beforeBtn = document.getElementById('c03-btn-before');
+      const afterBtn = document.getElementById('c03-btn-after');
+      const contentBefore = document.getElementById('c03-content-before');
+      const contentAfter = document.getElementById('c03-content-after');
+
+      if (state === 'before') {
+        beforeBtn.classList.add('active');
+        afterBtn.classList.remove('active');
+        if (contentBefore) contentBefore.classList.remove('hidden');
+        if (contentAfter) contentAfter.classList.add('hidden');
+      } else {
+        afterBtn.classList.add('active');
+        beforeBtn.classList.remove('active');
+        if (contentBefore) contentBefore.classList.add('hidden');
+        if (contentAfter) contentAfter.classList.remove('hidden');
+      }
+    }
+
+    /* C 시리즈 전용 모달 스크립트 */
+    function openCreateApiKeyModal() { document.getElementById('api-key-modal').classList.remove('hidden'); }
+    function closeCreateApiKeyModal() { document.getElementById('api-key-modal').classList.add('hidden'); }
 
     function toggleProfileModal(e) { 
       if(e) e.stopPropagation();
@@ -1559,24 +2300,121 @@
     }
     function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
 
-    function openCreateApiKeyModal() { document.getElementById('api-key-modal').classList.remove('hidden'); }
-    function closeCreateApiKeyModal() { document.getElementById('api-key-modal').classList.add('hidden'); }
-    function openAutoTopUpModal() { document.getElementById('autotopup-modal').classList.remove('hidden'); }
-    function closeAutoTopUpModal() { document.getElementById('autotopup-modal').classList.add('hidden'); }
-
-    function openSettingModal(type) {
-      const overlay = document.getElementById('setting-modal');
-      const box09 = document.getElementById('modal-c-09');
-      const box10 = document.getElementById('modal-c-10');
-      
-      overlay.classList.remove('hidden');
-      box09.classList.add('hidden');
-      box10.classList.add('hidden');
-
-      if(type === 'c-09') box09.classList.remove('hidden');
-      if(type === 'c-10') box10.classList.remove('hidden');
+    function openAccountSettingModal() {
+      document.getElementById('account-setting-modal').classList.remove('hidden');
+      switchAccountTab('pw');
     }
-    function closeSettingModal() { document.getElementById('setting-modal').classList.add('hidden'); }
+    function closeAccountSettingModal() {
+      document.getElementById('account-setting-modal').classList.add('hidden');
+    }
+
+    function switchAccountTab(tabType) {
+      const tabPw = document.getElementById('account-tab-pw');
+      const tabWithdraw = document.getElementById('account-tab-withdraw');
+      const btnPw = document.getElementById('tab-btn-pw');
+      const btnWithdraw = document.getElementById('tab-btn-withdraw');
+
+      if(tabType === 'pw') {
+        tabPw.classList.remove('hidden');
+        tabWithdraw.classList.add('hidden');
+        btnPw.classList.add('border-slate-900', 'text-slate-900');
+        btnPw.classList.remove('border-transparent', 'text-slate-400');
+        btnWithdraw.classList.remove('border-red-600', 'text-red-600');
+        btnWithdraw.classList.add('border-transparent', 'text-slate-400');
+      } else {
+        tabPw.classList.add('hidden');
+        tabWithdraw.classList.remove('hidden');
+        btnWithdraw.classList.add('border-red-600', 'text-red-600');
+        btnWithdraw.classList.remove('border-transparent', 'text-slate-400');
+        btnPw.classList.remove('border-slate-900', 'text-slate-900');
+        btnPw.classList.add('border-transparent', 'text-slate-400');
+      }
+    }
+
+    function toggleWithdrawButton() {
+      const check = document.getElementById('withdraw-agree-check');
+      const btn = document.getElementById('withdraw-submit-btn');
+      if(check.checked) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    function confirmWithdraw() {
+      if(confirm('정말로 탈퇴하시겠습니까? 등록된 모든 API 키와 데이터가 완전히 삭제됩니다.')) {
+        alert('회원 탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.');
+        closeAccountSettingModal();
+        switchToMTab();
+      }
+    }
+
+    /* O 시리즈 전용 사이드바 & 모달 스크립트 */
+    function setAdminActiveMenu(element) {
+      document.querySelectorAll('#tab-o .sidebar-item, #tab-o .sidebar-subitem').forEach(item => {
+        item.classList.remove('active');
+      });
+      element.classList.add('active');
+    }
+
+    function openAdminModal(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+
+    function closeAdminModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    /* O 시리즈 배너 실시간 텍스트 연동 */
+    function updateBannerPreview() {
+      const bodyText = document.getElementById('modal-banner-text').value;
+      const linkText = document.getElementById('modal-link-text').value;
+      
+      document.getElementById('preview-text-body').textContent = bodyText || '안내 문구를 입력해 주세요.';
+      const previewLink = document.getElementById('preview-text-link');
+      
+      if (linkText.trim()) {
+        previewLink.textContent = linkText;
+        previewLink.classList.remove('hidden');
+      } else {
+        previewLink.classList.add('hidden');
+      }
+    }
+
+    /* O 시리즈 닫기 버튼 옵션에 따른 노출 주기 비활성화 스크립트 */
+    function handleCloseOptionChange() {
+      const closeOption = document.getElementById('modal-close-btn-option').value;
+      const reShowSelect = document.getElementById('modal-re-show-cycle');
+      const cycleNotice = document.getElementById('modal-cycle-notice');
+      const previewCloseBtn = document.getElementById('modal-preview-close-btn');
+
+      if (closeOption === 'hide') {
+        reShowSelect.value = 'always';
+        reShowSelect.disabled = true;
+        cycleNotice.classList.remove('hidden');
+        previewCloseBtn.classList.add('hidden');
+      } else {
+        reShowSelect.disabled = false;
+        cycleNotice.classList.add('hidden');
+        previewCloseBtn.classList.remove('hidden');
+      }
+    }
+
+    function toggleColorPicker(type) {
+      const solidBox = document.getElementById('color-solid-box');
+      const gradientBox = document.getElementById('color-gradient-box');
+      if (type === 'solid') {
+        solidBox.classList.remove('hidden');
+        solidBox.classList.add('flex');
+        gradientBox.classList.add('hidden');
+      } else {
+        solidBox.classList.add('hidden');
+        solidBox.classList.remove('flex');
+        gradientBox.classList.remove('hidden');
+      }
+    }
 
     window.addEventListener('click', function(e) {
       const profileModal = document.getElementById('profile-modal');
@@ -1585,22 +2423,6 @@
           profileModal.classList.add('hidden');
         }
       }
-    });
-
-    /* 스크롤 위치에 따른 사이드바 활성화 */
-    const navItems = document.querySelectorAll('.sidebar-item');
-    window.addEventListener('scroll', () => {
-      let scrollPos = window.scrollY + 120;
-      document.querySelectorAll('#tab-c .screen-section').forEach(section => {
-        if(section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
-          navItems.forEach(item => {
-            item.classList.remove('active');
-            if(item.getAttribute('onclick') && item.getAttribute('onclick').includes('#' + section.id)) {
-              item.classList.add('active');
-            }
-          });
-        }
-      });
     });
   </script>
 </body>
