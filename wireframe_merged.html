@@ -80,7 +80,12 @@
     /* 흐름도 스타일 */
     .flow-node { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
     .flow-node a { color: #2563eb; text-decoration: underline; font-weight: 600; }
-    .flow-node-decision { background: #f8fafc; border: 2px dashed #94a3b8; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; color: #334155; }
+    .flow-node-decision { background: #fef3c7; border: 3px solid #f59e0b; border-radius: 8px; padding: 12px 14px; font-size: 12px; text-align: center; font-weight: 600; color: #92400e; }
+    .flow-node-decision a { color: #92400e; }
+    .flow-node-decision.verified { background: #dcfce7; border-color: #22c55e; color: #166534; }
+    .flow-node-decision.verified a { color: #166534; }
+    .flow-node-decision.email-check { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
+    .flow-node-decision.email-check a { color: #1e40af; }
     .flow-node-action { background: #0f172a; color: #ffffff; border-radius: 6px; padding: 10px 14px; font-size: 12px; text-align: center; font-weight: 600; }
     .flow-arrow { color: #94a3b8; font-weight: bold; font-size: 14px; text-align: center; margin: 4px 0; }
 
@@ -118,6 +123,9 @@
           <span>🛠️ O 시리즈 (어드민 영역)</span>
           <span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">UPDATED</span>
         </button>
+        <button data-target="tab-e" onclick="openTab('tab-e', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          📧 E 시리즈 (자동 메일 발송)
+        </button>
       </div>
     </div>
 
@@ -149,53 +157,48 @@
           <div class="space-y-6">
             <div class="flex items-center gap-2 border-b pb-2">
               <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">v2.0</span>
-              <h2 class="text-lg font-bold text-slate-900">🚀 통합 고도화 및 어드민 개편 버전 (Current)</h2>
+              <h2 class="text-lg font-bold text-slate-900">🚀 통합 고도화, 어드민 개편 & 자동 이메일 시스템 버전 (Current)</h2>
             </div>
 
-            <!-- 1. GNB 서비스 소개 Static Page 신규 추가 -->
-            <div class="border border-emerald-200 bg-emerald-50/40 rounded-xl p-5">
+            <!-- 1. M-06 -->
+            <div onclick="openTab('tab-m')" class="border border-emerald-200 bg-emerald-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
               <div class="flex items-center gap-2 mb-3">
-                <span class="bg-emerald-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">NEW PAGE</span>
-                <h3 class="font-bold text-base text-slate-900">🌐 GNB 서비스 소개 Static Page (M-06) 신규 추가</h3>
+                <span class="bg-emerald-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">✅</span>
+                <h3 class="font-bold text-base text-slate-900">M-06 - GNB 서비스 소개 Static Page 추가</h3>
               </div>
-              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
-                <li><strong>GNB 메뉴 연동</strong>: 공통 상단 GNB 네비게이션에 <code class="bg-emerald-100 text-emerald-800 px-1 rounded font-bold">[서비스 소개]</code> 정적 페이지 링크 신규 배치</li>
-                <li><strong>게이트웨이 소개 화면</strong>: Morfac API 게이트웨이 핵심 기능(OpenAI 표준 호환, 무료 체험 크레딧 및 키 관리, 실시간 분석 & 로그)을 소개하는 전용 랜딩 UI 구축 및 콘솔 이동 CTA 유도</li>
-              </ul>
             </div>
 
-            <!-- 2. O 시리즈 시스템 어드민 영역 신규 구축 -->
-            <div class="border border-red-200 bg-red-50/40 rounded-xl p-5">
+            <!-- 2. O 시리즈 -->
+            <div onclick="openTab('tab-o')" class="border border-red-200 bg-red-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
               <div class="flex items-center gap-2 mb-3">
-                <span class="bg-red-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">NEW SYSTEM</span>
-                <h3 class="font-bold text-base text-slate-900">🛠️ O 시리즈 (시스템 어드민 영역) 전 화면 신규 구축</h3>
+                <span class="bg-red-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">✅</span>
+                <h3 class="font-bold text-base text-slate-900">O 시리즈 - 시스템 어드민 전체</h3>
               </div>
-              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
-                <li><strong>어드민 전 기능 통합</strong>: 어드민 대시보드(O-00), 계정 관리(O-01), 크레딧 지급(O-02), 배너 관리(O-05), 문의 메일 운영(O-06), 공지사항(O-07) 등 운영 관리 화면 일체 신규 구축</li>
-              </ul>
             </div>
 
-            <!-- 3. C 시리즈 콘솔 사용자 설정 동선 강화 -->
-            <div class="border border-blue-200 bg-blue-50/40 rounded-xl p-5">
+            <!-- 3. A 시리즈 -->
+            <div onclick="openTab('tab-a')" class="border border-purple-200 bg-purple-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
               <div class="flex items-center gap-2 mb-3">
-                <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">ENHANCED</span>
-                <h3 class="font-bold text-base text-slate-900">⚙️ C 시리즈 (콘솔 영역) 사용자 설정 및 동선 강화</h3>
+                <span class="bg-purple-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">✅</span>
+                <h3 class="font-bold text-base text-slate-900">A 시리즈 - 로그인 흐름도, 에러 케이스, 설문 보완, 소셜 계정 연동 강화</h3>
               </div>
-              <ul class="space-y-2 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
-                <li><strong>👤 GNB 프로필 레이어 모달</strong>: 콘솔 상단 프로필 클릭 시 계정 정보 확인 및 계정 설정 진입이 가능한 레이어 모달 추가</li>
-                <li><strong>🔒 통합 계정 설정 모달</strong>: 모달 내 <code class="bg-blue-100 text-blue-800 px-1 rounded font-bold">[비밀번호 변경]</code> 및 <code class="bg-blue-100 text-blue-800 px-1 rounded font-bold">[회원 탈퇴]</code> 서브 탭 제공 (유의사항 동의 체크박스 선택 시 탈퇴 버튼이 활성화되는 인터랙션 포함)</li>
-                <li><strong>🎁 사이드바 설문 배너 연동</strong>: 온보딩 설문(A-04) 참여 여부(완료/스킵/닫기)에 따른 사이드바 보상 안내 배너 상태 동적 전환</li>
-              </ul>
             </div>
-          </div>
 
-          <div class="mt-8 text-center pt-6 border-t flex gap-3 justify-center">
-            <button onclick="openTab('tab-m')" class="wf-btn text-xs w-auto px-6 py-2.5 border-slate-300">
-              <span>🌐 M-06 서비스 소개 확인하기</span>
-            </button>
-            <button onclick="openTab('tab-o')" class="wf-btn wf-btn-dark w-auto px-6 py-2.5 text-xs inline-flex items-center gap-2">
-              <span>🛠️ O 시리즈 (어드민 영역) 바로 둘러보기</span>
-            </button>
+            <!-- 4. C 시리즈 -->
+            <div onclick="openTab('tab-c')" class="border border-blue-200 bg-blue-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">✅</span>
+                <h3 class="font-bold text-base text-slate-900">C 시리즈 - 콘솔 사용자 설정 강화</h3>
+              </div>
+            </div>
+
+            <!-- 5. E 시리즈 -->
+            <div onclick="openTab('tab-e')" class="border border-cyan-200 bg-cyan-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-cyan-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">✅</span>
+                <h3 class="font-bold text-base text-slate-900">E 시리즈 - 자동 메일 발송 5종 템플릿</h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -648,20 +651,10 @@
          ========================================== -->
     <div id="tab-a" class="tab-content hidden">
 
-      <!-- 서브 탭 (1안 / 2안 전환) -->
-      <div class="w-full mb-6 flex gap-2 border-b border-slate-200 pb-2">
-        <button onclick="switchSubTab('sub-flow-1')" id="btn-flow-1" class="px-4 py-2 font-bold text-xs rounded bg-slate-900 text-white transition-all">
-          [1안] 인증 프로세스 흐름도 (수동 연동)
-        </button>
-        <button onclick="switchSubTab('sub-flow-2')" id="btn-flow-2" class="px-4 py-2 font-bold text-xs rounded bg-slate-200 text-slate-700 transition-all">
-          [2안] 인증 프로세스 흐름도 (연동 불가)
-        </button>
-      </div>
-
-      <!-- 서브 1안 흐름도 -->
-      <div id="sub-flow-1" class="sub-flow-content w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
+      <!-- 인증 프로세스 흐름도 -->
+      <div class="w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
         <h2 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
-          📊 [1안] 인증 프로세스 흐름도 (HTML Architecture)
+          📊 인증 프로세스 흐름도
         </h2>
         <p class="text-xs text-slate-500 mb-6">소셜/이메일 가입 및 연동 전체 흐름도입니다. 소셜 가입 흐름 내에 약관 버전 저장이 포함되며, 하단에서 온보딩 설문으로 공통 합류합니다.</p>
         
@@ -670,40 +663,58 @@
           <div class="flow-arrow">↓</div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
-              <div class="font-bold text-xs text-blue-600 mb-2">[소셜 회원가입 흐름]</div>
-              <div class="flow-node-action w-full"><a href="#a-02" class="text-white underline">소셜 가입 버튼 클릭</a></div>
+            <div class="flex flex-col items-center bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <div class="font-bold text-xs text-blue-700 mb-3">[소셜 회원가입 흐름]</div>
+              <div class="flow-node-action w-full text-sm"><a href="#a-02" class="text-white underline">소셜 가입 버튼 클릭</a></div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node w-full">OAuth 콜백 검증</div>
+              <div class="flow-node w-full text-xs">OAuth 콜백 검증</div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full">1. provider + sub 일치 여부?</div>
-              <div class="flow-arrow text-[11px]">예 (이미 가입됨) ➔ <a href="#a-01">로그인 (A-01)</a><br/>아니오 (신규) ➔ 다음 단계</div>
+              <div class="flow-node-decision w-full max-w-sm">1️⃣ provider + sub 일치 여부?</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-green-700 font-bold">✓ 예</span> (이미 가입) ➔ <a href="#a-01" class="text-blue-600">로그인 (A-01)</a><br/>
+                <span class="text-red-700 font-bold">✗ 아니오</span> (신규) ➔ 다음
+              </div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
-              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-node w-full max-w-sm text-xs bg-yellow-50 border-2 border-yellow-400">🔒 가입 가능 여부?<br/>(O-01 어드민 설정)</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-red-700 font-bold">차단</span> ➔ <a href="#a-07" class="text-blue-600">A-07 제한</a><br/>
+                <span class="text-green-700 font-bold">✓ 정상</span> ➔ 다음
+              </div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-amber-50">2. email_verified = true?</div>
-              <div class="flow-arrow text-[11px]">아니오 ➔ <a href="#a-10">A-10 (이메일 미인증 종료 화면)</a><br/>예 ➔ 다음 단계</div>
+              <div class="flow-node-decision verified w-full max-w-sm">2️⃣ email_verified = true?</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-red-700 font-bold">✗ 아니오</span> ➔ <a href="#a-10" class="text-blue-600">A-10 미인증</a><br/>
+                <span class="text-green-700 font-bold">✓ 예</span> ➔ 다음
+              </div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-blue-50">3. 해당 이메일 계정 존재?</div>
-              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-09">A-09 (계정 연동 팝업)</a><br/>아니오 ➔ <a href="#a-08">A-08 (소셜 약관 동의)</a></div>
+              <div class="flow-node-decision email-check w-full max-w-sm">3️⃣ 해당 이메일 계정 존재?</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-green-700 font-bold">✓ 예</span> ➔ <a href="#a-09" class="text-blue-600">A-09 연동</a><br/>
+                <span class="text-blue-700 font-bold">✗ 아니오</span> ➔ <a href="#a-08" class="text-blue-600">A-08 약관</a>
+              </div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+              <div class="flow-node bg-emerald-50 w-full text-xs border border-emerald-200"><a href="#a-08" class="text-emerald-700">계정 생성 & 약관 버전 저장</a></div>
             </div>
 
             <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
               <div class="font-bold text-xs text-slate-700 mb-2">[이메일 회원가입 흐름]</div>
               <div class="flow-node w-full"><a href="#a-02">이메일 가입 폼 작성</a></div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
-              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
+              <div class="flow-node w-full text-xs bg-blue-50 border-2 border-blue-300 rounded">📋 <a href="#a-02" class="text-blue-600 underline">A-02 이메일 검증</a><br/>(중복 확인)</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-red-700 font-bold">이메일 중복</span> ➔ A-02 폼 에러 표시<br/>
+                <span class="text-green-700 font-bold">✓ 신규 이메일</span> ➔ 다음
+              </div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-blue-50">3. 이미 가입된 이메일?</div>
-              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-01">로그인 유도 안내</a><br/>아니오 ➔ 다음 단계</div>
+              <div class="flow-node w-full max-w-sm text-xs bg-yellow-50 border-2 border-yellow-400">🔒 가입 가능 여부?<br/>(O-01 어드민 설정)</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-red-700 font-bold">차단</span> ➔ <a href="#a-07" class="text-blue-600">A-07 제한</a><br/>
+                <span class="text-green-700 font-bold">✓ 정상</span> ➔ 다음
+              </div>
               <div class="flow-arrow">↓</div>
               <div class="flow-node-action w-full bg-slate-800 text-white"><a href="#a-03" class="text-white underline">A-03 OTP 인증 (6자리)</a></div>
               <div class="flow-arrow">↓</div>
-              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
+              <div class="flow-node bg-emerald-50 w-full text-xs border border-emerald-200"><a href="#a-08" class="text-emerald-700">계정 생성 & 약관 버전 저장</a></div>
             </div>
           </div>
 
@@ -715,62 +726,51 @@
         </div>
       </div>
 
-      <!-- 서브 2안 흐름도 -->
-      <div id="sub-flow-2" class="sub-flow-content hidden w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
+      <!-- A-01 로그인 플로우도 -->
+      <div class="w-full bg-white border-2 border-slate-300 rounded-lg p-6 mb-8 shadow-sm">
         <h2 class="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
-          📊 [2안] 인증 프로세스 흐름도 (연동 불가 정책)
+          📊 A-01 로그인 (Sign In) 흐름도
         </h2>
-        <p class="text-xs text-slate-500 mb-6">소셜 가입 시 이미 가입된 이메일이 존재하면 연동 없이 기존 로그인 안내 후 로그인 페이지(A-01)로 유도하는 전체 흐름도입니다.</p>
-        
-        <div class="max-w-3xl mx-auto flex flex-col items-center space-y-2">
-          <div class="flow-node w-full max-w-sm"><a href="#a-02">[A-02] 회원가입 페이지 진입</a></div>
-          <div class="flow-arrow">↓</div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
-              <div class="font-bold text-xs text-blue-600 mb-2">[소셜 회원가입 흐름]</div>
-              <div class="flow-node-action w-full"><a href="#a-02" class="text-white underline">소셜 가입 버튼 클릭</a></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node w-full">OAuth 콜백 검증</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full">1. provider + sub 일치 여부?</div>
-              <div class="flow-arrow text-[11px]">예 (이미 가입됨) ➔ <a href="#a-01">로그인 (A-01)</a><br/>아니오 (신규) ➔ 다음 단계</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
-              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-amber-50">2. email_verified = true?</div>
-              <div class="flow-arrow text-[11px]">아니오 ➔ <a href="#a-10">A-10 (이메일 미인증 종료 화면)</a><br/>예 ➔ 다음 단계</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-blue-50">3. 해당 이메일 계정 존재?</div>
-              <div class="flow-arrow text-[11px]">예 (기존 계정 존재) ➔ <a href="#a-09">"이미 가입된 이메일입니다.<br/>기존 이메일/비밀번호로 로그인해 주세요."</a><br/>아니오 (신규) ➔ <a href="#a-08">A-08 (소셜 약관 동의)</a></div>
-              <div class="flow-arrow">↓ (예 인 경우)</div>
-              <div class="flow-node w-full bg-slate-100 mb-2"><a href="#a-01">A-01 로그인 페이지로 이동</a></div>
-              <div class="flow-arrow">↓ (아니오 인 경우)</div>
-              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
-            </div>
+        <p class="text-xs text-slate-500 mb-6">이메일/비밀번호 로그인 및 계정 잠금 처리 흐름입니다. 5회 실패 시 15분간 계정이 잠금되며, 비밀번호 재설정으로 해제할 수 있습니다.</p>
 
-            <div class="flex flex-col items-center bg-slate-50 p-4 rounded-lg border">
-              <div class="font-bold text-xs text-slate-700 mb-2">[이메일 회원가입 흐름]</div>
-              <div class="flow-node w-full"><a href="#a-02">이메일 가입 폼 작성</a></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-slate-100 border-solid border-slate-400">가입 가능 여부 체크 (O-01 토글)</div>
-              <div class="flow-arrow text-[11px]">차단 설정 시 ➔ <a href="#a-07">A-07 (가입 제한 안내)</a><br/>정상 시 ➔ 다음 단계</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-decision w-full bg-blue-50">3. 이미 가입된 이메일?</div>
-              <div class="flow-arrow text-[11px]">예 ➔ <a href="#a-01">로그인 유도 안내</a><br/>아니오 ➔ 다음 단계</div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node-action w-full bg-slate-800 text-white"><a href="#a-03" class="text-white underline">A-03 OTP 인증 (6자리)</a></div>
-              <div class="flow-arrow">↓</div>
-              <div class="flow-node bg-slate-100 w-full"><a href="#a-08">계정 생성 및 동의 시점 약관 버전 저장</a></div>
-            </div>
+        <div class="max-w-2xl mx-auto flex flex-col items-center space-y-2">
+          <div class="flow-node w-full max-w-sm"><a href="#a-01">[A-01] 로그인 페이지</a></div>
+          <div class="flow-arrow">↓</div>
+
+          <div class="flow-node w-full max-w-sm">📧🔐 로그인 정보 입력</div>
+          <div class="flow-arrow">↓</div>
+
+          <div class="flow-node-decision w-full max-w-sm">1️⃣ 이메일/비밀번호<br/>일치 여부?</div>
+          <div class="flow-arrow text-[10px]">
+            <span class="text-green-700 font-bold">✓ 예</span> ➔ 다음<br/>
+            <span class="text-red-700 font-bold">✗ 아니오</span> ➔ 에러 표시
           </div>
 
-          <div class="w-full border-t my-4"></div>
-          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">[ 공통 완료 파이프라인 ]</div>
-          <div class="flow-node w-full max-w-sm"><a href="#a-04">A-04 온보딩 설문 (2문항)</a></div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-node-action w-full max-w-sm bg-emerald-700"><a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-white underline">가입 완료 메일 발송 ➔ 콘솔 대시보드 (C-01)</a></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            <!-- 성공 경로 -->
+            <div class="flex flex-col items-center bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+              <div class="font-bold text-xs text-emerald-700 mb-3">[성공 경로]</div>
+              <div class="flow-node-action w-full bg-emerald-700"><a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-white underline">로그인 완료 ➔ 콘솔 대시보드 (C-01)</a></div>
+            </div>
+
+            <!-- 실패 경로 -->
+            <div class="flex flex-col items-center bg-red-50 p-4 rounded-lg border border-red-200">
+              <div class="font-bold text-xs text-red-700 mb-3">[실패 경로]</div>
+              <a href="#a-01" class="flow-node w-full bg-red-100 border-2 border-red-300 text-xs text-red-700 no-underline hover:bg-red-150 cursor-pointer">
+                ⚠️ 이메일 또는 비밀번호가<br/>일치하지 않습니다
+              </a>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-node-decision w-full max-w-sm">2️⃣ 실패 횟수<br/>≥ 5회?</div>
+              <div class="flow-arrow text-[10px]">
+                <span class="text-red-700 font-bold">✓ 5회 이상</span> ➔ 잠금<br/>
+                <span class="text-yellow-700 font-bold">미만</span> ➔ <a href="#a-01" class="text-blue-600 underline">A-01 재시도</a>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <a href="#a-01" class="flow-node w-full bg-red-100 border-2 border-red-400 text-xs text-red-700 font-bold no-underline hover:bg-red-150 cursor-pointer">
+                🔒 계정 1분 잠금
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -783,28 +783,52 @@
         <div class="wf-content-a">
           <div class="auth-box">
             <div class="text-center mb-6">
-              <h2 class="text-2xl font-bold">Welcome back</h2>
+              <h2 class="text-2xl font-bold">로그인</h2>
               <p class="text-xs text-slate-500 mt-2">Morfac에 로그인하세요</p>
             </div>
-            
-            <button class="wf-btn mb-2">Continue with Google</button>
-            <button class="wf-btn mb-3">Continue with GitHub</button>
-            
-            <div class="divider text-xs text-slate-400">OR EMAIL</div>
+
+            <button class="wf-btn mb-2">Google로 계속하기</button>
+            <button class="wf-btn mb-3">GitHub로 계속하기</button>
+
+            <div class="divider text-xs text-slate-400">또는 이메일로</div>
 
             <div>
-              <label class="wf-label">Email Address</label>
-              <input type="email" class="wf-input" placeholder="user@example.com">
-              
-              <label class="wf-label">Password</label>
-              <input type="password" class="wf-input" placeholder="••••••••">
-              
-              <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary">Sign In</button>
+              <div class="mb-4">
+                <label class="wf-label flex items-center justify-between">
+                  <span>이메일 주소</span>
+                  <button onclick="toggleA01ErrorState()" class="text-[10px] px-2 py-1 bg-slate-200 text-slate-700 rounded hover:bg-slate-300">에러 테스트</button>
+                </label>
+                <input type="email" class="wf-input" placeholder="user@example.com">
+                <div id="a01-error-invalid-email" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>유효하지 않은 이메일 형식입니다</span>
+                </div>
+                <div id="a01-error-not-found" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>등록되지 않은 이메일입니다. 가입하세요</span>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="wf-label">비밀번호</label>
+                <input type="password" class="wf-input" placeholder="••••••••">
+                <div id="a01-error-wrong-password" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>비밀번호가 일치하지 않습니다 (남은 시도: 3회)</span>
+                </div>
+                <div id="a01-error-account-locked" class="hidden mt-2 p-3 rounded text-xs bg-red-50 text-red-700 border border-red-200 space-y-2">
+                  <div class="font-bold flex items-center gap-1">🔒 계정 잠금</div>
+                  <p>비밀번호 입력 실패 5회 이상으로 1분간 잠금됩니다.</p>
+                  <p>비밀번호를 잊으셨다면 <a href="#a-05" class="underline text-red-600 hover:text-red-700">비밀번호 찾기</a>를 이용하세요</p>
+                </div>
+              </div>
+
+              <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary">로그인</button>
             </div>
 
             <div class="flex justify-between items-center text-[11px] font-medium text-slate-500 mt-6 pt-4 border-t">
-              <a href="#a-05" class="hover:text-slate-800 underline text-blue-600">Forgot password? (A-05)</a>
-              <a href="#a-02" class="hover:text-slate-800 underline text-blue-600">Sign Up (A-02)</a>
+              <a href="#a-05" class="hover:text-slate-800 underline text-blue-600">비밀번호를 잊으셨나요? (A-05)</a>
+              <a href="#a-02" class="hover:text-slate-800 underline text-blue-600">회원가입 (A-02)</a>
             </div>
           </div>
         </div>
@@ -819,22 +843,59 @@
         <div class="wf-content-a">
           <div class="auth-box">
             <div class="text-center mb-6">
-              <h2 class="text-2xl font-bold">Create Account</h2>
+              <h2 class="text-2xl font-bold">계정 만들기</h2>
               <p class="text-xs text-slate-500 mt-2">API 사용을 위한 계정을 생성합니다</p>
             </div>
-            
-            <a href="#a-08" class="wf-btn mb-2 no-underline text-slate-800 block">Sign up with Google (A-08 이동)</a>
-            <a href="#a-08" class="wf-btn mb-3 no-underline text-slate-800 block">Sign up with GitHub (A-08 이동)</a>
-            
-            <div class="divider text-xs text-slate-400">OR EMAIL</div>
+
+            <a href="#a-08" class="wf-btn mb-2 no-underline text-slate-800 block">Google로 가입 (A-08 이동)</a>
+            <a href="#a-08" class="wf-btn mb-3 no-underline text-slate-800 block">GitHub로 가입 (A-08 이동)</a>
+
+            <div class="divider text-xs text-slate-400">또는 이메일로</div>
 
             <div>
-              <label class="wf-label">Email Address</label>
-              <input type="email" class="wf-input" placeholder="user@example.com">
-              
-              <label class="wf-label">Password</label>
-              <input type="password" class="wf-input" placeholder="12자 이상 + 영문/숫자 조합">
-              
+              <div class="mb-4">
+                <label class="wf-label flex items-center justify-between">
+                  <span>이메일 주소</span>
+                  <button onclick="toggleA02EmailErrorState()" class="text-[10px] px-2 py-1 bg-slate-200 text-slate-700 rounded hover:bg-slate-300">에러 테스트</button>
+                </label>
+                <input type="email" class="wf-input" placeholder="user@example.com">
+                <div id="a02-error-invalid-email" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>유효하지 않은 이메일 형식입니다</span>
+                </div>
+                <div id="a02-error-duplicate-email" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>이미 사용 중인 이메일입니다. 다른 이메일을 입력하세요</span>
+                </div>
+                <div id="a02-error-cooldown" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>탈퇴 후 30일 쿨다운 중입니다 (남은 기간: 25일)</span>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="wf-label">비밀번호</label>
+                <input type="password" class="wf-input" placeholder="8자 이상 + 영문/숫자/특수문자 조합">
+                <div id="a02-error-weak-password" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200">
+                  <div class="font-bold mb-1">❌ 비밀번호 요구사항 미충족</div>
+                  <ul class="space-y-1 ml-4">
+                    <li>✓ 8자 이상</li>
+                    <li>✗ 영문 포함 필수</li>
+                    <li>✓ 숫자 포함</li>
+                    <li>✗ 특수문자 포함 필수 (!@#$%^&*)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="wf-label">비밀번호 확인</label>
+                <input type="password" class="wf-input" placeholder="비밀번호 다시 입력">
+                <div id="a02-error-password-mismatch" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                  <span>⚠️</span>
+                  <span>비밀번호가 일치하지 않습니다</span>
+                </div>
+              </div>
+
               <div class="bg-slate-50 border p-3 rounded-md mb-4 space-y-2 text-[11px] text-slate-600">
                 <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800 border-b pb-2 mb-2">
                   <input type="checkbox" class="w-3 h-3"> 모두 동의합니다.
@@ -847,11 +908,11 @@
                 </label>
               </div>
 
-              <a href="#a-03" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">Continue</a>
+              <a href="#a-03" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">계속하기</a>
             </div>
-            
+
             <div class="text-center text-[11px] font-medium text-slate-500 mt-6 pt-4 border-t">
-              Already have an account? <a href="#a-01" class="hover:text-slate-800 underline text-blue-600">Log in (A-01)</a>
+              이미 계정이 있으신가요? <a href="#a-01" class="hover:text-slate-800 underline text-blue-600">로그인 (A-01)</a>
             </div>
           </div>
         </div>
@@ -866,7 +927,7 @@
         <div class="wf-content-a">
           <div class="auth-box text-center">
             <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 border">✉️</div>
-            <h2 class="text-xl font-bold mb-2">Check your email</h2>
+            <h2 class="text-xl font-bold mb-2">이메일 확인</h2>
             <p class="text-xs text-slate-500 mb-6">
               <span class="font-bold text-slate-800">user@example.com</span>으로<br/>발송된 6자리 인증번호를 입력해 주세요.
             </p>
@@ -881,8 +942,9 @@
             </div>
 
             <div class="text-[11px] font-medium text-slate-500 mb-6">남은 시간: <span class="text-red-500 font-bold">09:54</span></div>
-            <a href="#a-04" class="wf-btn wf-btn-primary mb-3 no-underline text-white flex items-center justify-center">Verify Email</a>
-            
+            <a href="#a-04" class="wf-btn wf-btn-primary mb-2 no-underline text-white flex items-center justify-center">이메일 인증</a>
+            <a href="#a-02" class="wf-btn bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200 mb-3 no-underline flex items-center justify-center">뒤로 가기</a>
+
             <div class="text-[11px] text-slate-500">
               이메일을 받지 못하셨나요? <a href="#" class="underline font-bold text-slate-700">인증번호 재발송</a>
             </div>
@@ -894,41 +956,130 @@
       <div id="a-04" class="wf-card">
         <div class="wf-header">
           <span>A-04 온보딩 설문</span>
-          <span class="wf-badge">2문항 · 완료 시 크레딧 지급 · Skip 가능</span>
+          <span class="wf-badge">6문항 · 완료 시 크레딧 지급 · Skip 가능</span>
         </div>
         <div class="wf-content-a">
-          <div class="auth-box">
+          <div class="auth-box max-w-2xl">
             <h2 class="text-xl font-bold mb-2">거의 다 되었습니다!</h2>
             <p class="text-xs text-slate-500 mb-6">
               아래 설문을 완료하시면 계정에 즉시 <span class="font-bold text-blue-600">$20 무료 크레딧</span>이 지급됩니다.
             </p>
 
-            <div class="space-y-4 mb-6">
+            <div class="space-y-6 mb-6">
+              <!-- 1. 주로 어떤 용도로 사용하실 예정인가요? -->
               <div>
-                <label class="wf-label">1. Morfac을 주로 어떤 목적으로 사용하실 계획인가요?</label>
-                <select class="wf-input mb-0">
-                  <option value="" disabled selected>선택해 주세요</option>
-                  <option>사내 코딩 에이전트 연동</option>
-                  <option>개인 프로젝트 개발</option>
-                  <option>LLM 서비스 프로덕션 서빙</option>
-                  <option>단순 테스트 및 검토</option>
-                </select>
+                <label class="wf-label"><span class="text-red-500">*</span> 주로 어떤 용도로 사용하실 예정인가요?</label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="usage" value="personal" class="w-3 h-3"> 개인 사이드 프로젝트
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="usage" value="work" class="w-3 h-3"> 회사 업무
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="usage" value="research" class="w-3 h-3"> 학습 리서치
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="usage" value="other" class="w-3 h-3"> Other:
+                  </label>
+                  <input type="text" class="wf-input flex-1 mb-0 h-8" placeholder="">
+                </div>
               </div>
-              
+
+              <!-- 2. 가장 중요하게 보시는 것은? -->
               <div>
-                <label class="wf-label">2. 현재 소속된 조직의 규모는 어떻게 되나요?</label>
-                <select class="wf-input mb-0">
-                  <option value="" disabled selected>선택해 주세요</option>
-                  <option>개인 (소속 없음)</option>
-                  <option>스타트업 (1~50명)</option>
-                  <option>중소/중견기업 (51~500명)</option>
-                  <option>대기업 (500명 이상)</option>
-                </select>
+                <label class="wf-label"><span class="text-red-500">*</span> 가장 중요하게 보시는 것은?</label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="priority" value="speed" class="w-3 h-3"> 응답 속도
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="priority" value="cost" class="w-3 h-3"> 비용 절감
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="priority" value="quality" class="w-3 h-3"> 코드 품질
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="priority" value="performance" class="w-3 h-3"> 프롬프터 모델 대비 성능 비교
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="priority" value="other" class="w-3 h-3"> Other:
+                  </label>
+                  <input type="text" class="wf-input flex-1 mb-0 h-8" placeholder="">
+                </div>
+              </div>
+
+              <!-- 3. 연령대 -->
+              <div>
+                <label class="wf-label"><span class="text-red-500">*</span> 연령대</label>
+                <div class="flex flex-wrap gap-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="age" value="10" class="w-3 h-3"> 10대
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="age" value="20" class="w-3 h-3"> 20대
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-800 bg-slate-800 text-white rounded-full cursor-pointer text-sm">
+                    <input type="radio" name="age" value="30" class="w-3 h-3" checked> 30대
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="age" value="40" class="w-3 h-3"> 40대
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="age" value="50" class="w-3 h-3"> 50대 이상
+                  </label>
+                </div>
+              </div>
+
+              <!-- 4. 직업/직무 -->
+              <div>
+                <label class="wf-label"><span class="text-red-500">*</span> 직업/직무</label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="job" value="dev" class="w-3 h-3"> 개발자/엔지니어
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="job" value="pm" class="w-3 h-3"> PM/기획자
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="job" value="analyst" class="w-3 h-3"> 데이터 분석가
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-800 bg-slate-800 text-white rounded-full cursor-pointer text-sm">
+                    <input type="radio" name="job" value="marketing" class="w-3 h-3" checked> 마케터
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="job" value="student" class="w-3 h-3"> 학생
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="radio" name="job" value="other" class="w-3 h-3"> Other:
+                  </label>
+                  <input type="text" class="wf-input flex-1 mb-0 h-8" placeholder="">
+                </div>
+              </div>
+
+              <!-- 5. 회사명 -->
+              <div>
+                <label class="wf-label">회사명</label>
+                <p class="text-xs text-slate-500 mb-2">회사 이름을 입력해 주세요</p>
+                <input type="text" class="wf-input" placeholder="Your answer">
+              </div>
+
+              <!-- 6. 직책/직급 -->
+              <div>
+                <label class="wf-label">직책/직급</label>
+                <p class="text-xs text-slate-500 mb-2">예) CTO, 시니어 엔지니어, 대표이사</p>
+                <input type="text" class="wf-input" placeholder="Your answer">
               </div>
             </div>
 
             <button onclick="completeSurveyAndRedirect()" class="wf-btn wf-btn-primary mb-3">제출하고 $20 크레딧 받기</button>
-            <button onclick="skipSurveyAndRedirect()" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">Skip for now</button>
+            <button onclick="skipSurveyAndRedirect()" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">나중에 하기</button>
           </div>
         </div>
       </div>
@@ -943,14 +1094,26 @@
           
           <div class="auth-box auth-box-sm border-slate-300">
             <div class="text-[10px] font-bold text-white bg-slate-800 inline-block px-2 py-1 rounded mb-4">STEP 1. 요청 (A-05)</div>
-            <h2 class="text-lg font-bold mb-2">Reset Password</h2>
-            <p class="text-[11px] text-slate-500 mb-4">가입하신 이메일을 입력하시면 비밀번호 재설정을 위한 인증번호(OTP)를 보내드립니다.</p>
-            
-            <label class="wf-label">Email Address</label>
-            <input type="email" class="wf-input" placeholder="user@example.com">
-            
-            <button class="wf-btn wf-btn-primary mb-3">Send Reset Code</button>
-            <a href="#a-01" class="block text-center text-[11px] underline text-blue-600">Back to Login</a>
+            <h2 class="text-lg font-bold mb-2">비밀번호 재설정</h2>
+
+            <div class="mb-4">
+              <label class="wf-label flex items-center justify-between">
+                <span>이메일 주소</span>
+                <button onclick="toggleA05ErrorState()" class="text-[10px] px-2 py-1 bg-slate-200 text-slate-700 rounded hover:bg-slate-300">에러 테스트</button>
+              </label>
+              <input type="email" class="wf-input" placeholder="example@example.com">
+              <div id="a05-error-invalid-email" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                <span>⚠️</span>
+                <span>유효하지 않은 이메일 형식입니다</span>
+              </div>
+              <div id="a05-error-rate-limit" class="hidden mt-2 p-2 rounded text-xs bg-red-50 text-red-700 border border-red-200 flex items-start gap-2">
+                <span>⚠️</span>
+                <span>너무 많은 요청을 보내셨습니다. 5분 후 다시 시도하세요</span>
+              </div>
+            </div>
+
+            <button class="wf-btn wf-btn-primary mb-3">재설정 코드 발송</button>
+            <a href="#a-01" class="block text-center text-[11px] underline text-blue-600">로그인으로 돌아가기</a>
           </div>
 
           <div class="flex items-center text-slate-300 rotate-90 lg:rotate-0 my-2 lg:my-0">
@@ -959,10 +1122,12 @@
 
           <div class="auth-box auth-box-sm border-blue-200 bg-blue-50">
             <div class="text-[10px] font-bold text-white bg-blue-600 inline-block px-2 py-1 rounded mb-4">STEP 2. 인증 (OTP)</div>
-            <h2 class="text-lg font-bold mb-2">Enter OTP</h2>
-            <p class="text-[11px] text-slate-500 mb-4">이메일로 발송된 6자리 인증번호를 입력해 주세요.</p>
-            
-            <div class="flex justify-between gap-1 mb-2">
+            <h2 class="text-lg font-bold mb-2">인증번호 입력</h2>
+            <p class="text-[11px] text-slate-500 mb-3">
+              <span class="font-bold text-slate-800">example@example.com</span>으로<br/>발송된 6자리 인증번호를 입력해 주세요.
+            </p>
+
+            <div class="flex justify-between gap-1 mb-3">
               <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="1">
               <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="2">
               <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="3">
@@ -970,9 +1135,10 @@
               <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="">
               <input type="text" class="w-8 h-10 text-center font-bold border border-slate-300 rounded focus:border-blue-500" value="">
             </div>
-            <div class="text-[10px] text-slate-400 mb-4 text-right">남은 시간: 04:59</div>
-            
-            <button class="wf-btn bg-blue-600 text-white border-none">Verify Code</button>
+            <div class="text-[10px] text-slate-400 mb-3 text-right">남은 시간: <span class="text-red-600 font-bold">04:59</span></div>
+
+            <button class="wf-btn wf-btn-primary mb-2">인증</button>
+            <button class="wf-btn text-slate-700 bg-white border-slate-300 text-[11px]">뒤로 가기</button>
           </div>
 
           <div class="flex items-center text-slate-300 rotate-90 lg:rotate-0 my-2 lg:my-0">
@@ -981,16 +1147,19 @@
 
           <div class="auth-box auth-box-sm border-slate-300">
             <div class="text-[10px] font-bold text-white bg-slate-800 inline-block px-2 py-1 rounded mb-4">STEP 3. 재설정 (A-06)</div>
-            <h2 class="text-lg font-bold mb-2">Set New Password</h2>
-            <p class="text-[10px] text-red-600 font-medium mb-4">※ 변경 완료 시 접속 중인 모든 기기에서 자동 로그아웃 됩니다.</p>
-            
-            <label class="wf-label">New Password</label>
-            <input type="password" class="wf-input" placeholder="새 비밀번호 입력">
-            
-            <label class="wf-label">Confirm New Password</label>
-            <input type="password" class="wf-input mb-4" placeholder="비밀번호 재입력">
-            
-            <a href="#a-01" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">Update Password</a>
+            <h2 class="text-lg font-bold mb-2">새 비밀번호 설정</h2>
+
+            <div class="mb-4">
+              <label class="wf-label">새 비밀번호</label>
+              <input type="password" class="wf-input" placeholder="8자 이상 + 영문/숫자/특수문자 조합">
+            </div>
+
+            <div class="mb-4">
+              <label class="wf-label">새 비밀번호 확인</label>
+              <input type="password" class="wf-input" placeholder="비밀번호 재입력">
+            </div>
+
+            <a href="#a-01" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">비밀번호 변경</a>
           </div>
 
         </div>
@@ -1009,12 +1178,204 @@
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
               현재 서비스 안정성 확보를 위해<br/>일시적으로 신규 회원가입을 제한하고 있습니다.
             </p>
-            
+
             <div class="flex gap-2 justify-center">
               <a href="#m-01" onclick="switchToMTab()" class="wf-btn max-w-[140px] no-underline text-slate-700">홈으로 가기</a>
               <a href="#a-01" class="wf-btn wf-btn-primary max-w-[140px] no-underline text-white">로그인 하기</a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- 에러 케이스 갤러리 -->
+      <div id="error-gallery" class="wf-card">
+        <div class="wf-header">
+          <span>🎨 에러 케이스 갤러리 (모든 상태 한눈에 보기)</span>
+          <span class="wf-badge">A-01 · A-02 · A-05 에러 모음</span>
+        </div>
+        <div class="p-8 bg-white">
+
+          <!-- A-01 로그인 에러 케이스 -->
+          <div class="mb-12">
+            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <span>A-01 로그인 에러 케이스</span>
+              <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600">4가지 상태</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+              <!-- 정상 상태 -->
+              <div class="border-2 border-slate-300 rounded-lg p-4 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-3">✓ 정상 상태</div>
+                <div class="space-y-3 text-xs">
+                  <div><label class="wf-label">Email Address</label><input type="email" class="wf-input mb-0" placeholder="user@example.com"></div>
+                  <div><label class="wf-label">Password</label><input type="password" class="wf-input mb-0" placeholder="••••••••"></div>
+                </div>
+              </div>
+
+              <!-- 이메일 형식 오류 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 이메일 형식 오류</div>
+                <div class="space-y-3 text-xs">
+                  <div><label class="wf-label text-red-700">Email Address</label><input type="email" class="wf-input mb-0" value="invalid-email" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">유효하지 않은 이메일 형식입니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 이메일/비밀번호 오류 (통합) -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 이메일/비밀번호 오류</div>
+                <div class="space-y-3 text-xs">
+                  <div><label class="wf-label text-red-700">Email Address</label><input type="email" class="wf-input mb-0" value="user@example.com" style="border-color: #fca5a5;"></div>
+                  <div><label class="wf-label text-red-700">Password</label><input type="password" class="wf-input mb-0" value="wrongpass" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">이메일 또는 비밀번호가 일치하지 않습니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 계정 잠금 -->
+              <div class="border-2 border-red-400 rounded-lg p-4 bg-red-100 md:col-span-2 lg:col-span-3">
+                <div class="text-xs font-bold text-red-700 mb-3">🔒 로그인 일시 잠금</div>
+                <div class="space-y-3 text-xs">
+                  <div class="flex gap-4">
+                    <div class="flex-1"><label class="wf-label">Email Address</label><input type="email" class="wf-input mb-0" value="user@example.com" disabled></div>
+                    <div class="flex-1"><label class="wf-label">Password</label><input type="password" class="wf-input mb-0" value="••••••••" disabled></div>
+                  </div>
+                  <div class="p-3 rounded bg-red-200 text-red-800 border border-red-400 space-y-2">
+                    <div class="font-bold flex items-center gap-1">🔒 로그인 일시 잠금</div>
+                    <p class="text-[11px]">일시적으로 로그인이 잠금되었습니다. <a href="#a-05" class="underline text-red-700">비밀번호를 다시 설정</a>하세요.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- A-02 가입 에러 케이스 -->
+          <div class="mb-12 border-t pt-8">
+            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <span>A-02 회원가입 에러 케이스</span>
+              <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600">6가지 상태</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+              <!-- 정상 상태 -->
+              <div class="border-2 border-slate-300 rounded-lg p-4 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-3">✓ 정상 상태</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label">Email</label><input type="email" class="wf-input mb-0" placeholder="user@example.com"></div>
+                  <div><label class="wf-label">Password</label><input type="password" class="wf-input mb-0" placeholder="8자 이상"></div>
+                  <div><label class="wf-label">Confirm</label><input type="password" class="wf-input mb-0" placeholder="비밀번호 확인"></div>
+                </div>
+              </div>
+
+              <!-- 이메일 형식 오류 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 이메일 형식 오류</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label text-red-700">Email</label><input type="email" class="wf-input mb-0" value="invalid" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">유효하지 않은 이메일 형식입니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 이메일 중복 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 이메일 중복</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label text-red-700">Email</label><input type="email" class="wf-input mb-0" value="existing@example.com" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">이미 사용 중인 이메일입니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 쿨다운 기간 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 쿨다운 기간</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label text-red-700">Email</label><input type="email" class="wf-input mb-0" value="cooldown@example.com" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">최근에 가입한 이메일로 재가입할 수 없습니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 약한 비밀번호 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 약한 비밀번호</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label text-red-700">Password</label><input type="password" class="wf-input mb-0" value="weak123" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 space-y-1">
+                    <div class="font-bold text-[11px]">❌ 요구사항 미충족</div>
+                    <ul class="text-[10px] ml-3 space-y-0.5">
+                      <li>✓ 8자 이상</li>
+                      <li>✗ 영문 포함 필수</li>
+                      <li>✓ 숫자 포함</li>
+                      <li>✗ 특수문자 필수</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 비밀번호 불일치 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ 비밀번호 불일치</div>
+                <div class="space-y-2 text-xs">
+                  <div><label class="wf-label">Password</label><input type="password" class="wf-input mb-0" value="SecurePass123!"></div>
+                  <div><label class="wf-label text-red-700">Confirm</label><input type="password" class="wf-input mb-0" value="SecurePass124" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">비밀번호가 일치하지 않습니다</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- A-05 비밀번호 찾기 에러 케이스 -->
+          <div class="border-t pt-8">
+            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <span>A-05 비밀번호 찾기 에러 케이스</span>
+              <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600">2가지 에러</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              <!-- STEP 1: 이메일 형식 오류 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ STEP 1 - 형식 오류</div>
+                <div class="space-y-3 text-xs">
+                  <h4 class="font-bold text-slate-700">비밀번호 재설정</h4>
+                  <div><label class="wf-label text-red-700">이메일 주소</label><input type="email" class="wf-input mb-0" value="notanemail" style="border-color: #fca5a5;"></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">유효하지 않은 이메일 형식입니다</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 1: 요청 제한 -->
+              <div class="border-2 border-red-300 rounded-lg p-4 bg-red-50">
+                <div class="text-xs font-bold text-red-700 mb-3">❌ STEP 1 - 요청 제한</div>
+                <div class="space-y-3 text-xs">
+                  <h4 class="font-bold text-slate-700">비밀번호 재설정</h4>
+                  <div><label class="wf-label">이메일 주소</label><input type="email" class="wf-input mb-0" value="example@example.com" disabled></div>
+                  <div class="p-2 rounded bg-red-100 text-red-700 border border-red-200 flex items-start gap-2">
+                    <span>⚠️</span>
+                    <span class="text-[11px]">너무 많은 요청을 보내셨습니다. 5분 후 다시 시도하세요</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1061,13 +1422,11 @@
       <div id="a-09" class="wf-card">
         <div class="wf-header">
           <span>A-09 소셜 ↔ 이메일 계정 연동 안내 (이미 가입된 이메일)</span>
-          <span class="wf-badge">1안(수동 연동) · 2안(연동 불가) 얼럿/팝업</span>
+          <span class="wf-badge">수동 연동 (얼럿/팝업)</span>
         </div>
-        <div class="wf-content-a flex flex-col lg:flex-row gap-6 w-full items-center lg:items-stretch justify-center">
-          
-          <div class="auth-box auth-box-sm border-slate-300 text-center flex flex-col justify-between">
+        <div class="wf-content-a">
+          <div class="auth-box auth-box-sm border-slate-300 text-center flex flex-col justify-between" style="max-width: 400px;">
             <div>
-              <div class="text-[10px] font-bold text-white bg-blue-600 inline-block px-2 py-1 rounded mb-4">1안 — 수동 연동 (팝업/얼럿)</div>
               <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">🔗</div>
               <h2 class="text-base font-bold mb-1">이미 가입된 이메일입니다</h2>
               <p class="text-xs text-slate-500 mb-6">
@@ -1079,21 +1438,6 @@
               <button class="wf-btn bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200">취소</button>
             </div>
           </div>
-
-          <div class="auth-box auth-box-sm border-slate-300 text-center flex flex-col justify-between">
-            <div>
-              <div class="text-[10px] font-bold text-white bg-slate-700 inline-block px-2 py-1 rounded mb-4">2안 — 연동 불가 (팝업/얼럿)</div>
-              <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">⚠️</div>
-              <h2 class="text-base font-bold mb-1">이미 가입된 이메일입니다</h2>
-              <p class="text-xs text-slate-500 mb-6">
-                기존 이메일과 비밀번호로<br/>로그인해 주세요.
-              </p>
-            </div>
-            <div class="space-y-2 pt-4 border-t">
-              <a href="#a-01" class="wf-btn wf-btn-primary no-underline text-white block">로그인하러 가기</a>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -1284,6 +1628,29 @@
                     </div>
                     <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none">잔액 소진으로 실행 불가</button>
                   </div>
+
+                  <!-- 추천 프롬프트 예시 -->
+                  <div class="border-t pt-6 mt-6">
+                    <div class="text-xs font-bold text-slate-700 mb-4">💡 추천 프롬프트</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <button onclick="document.querySelector('[class*=h-40]').value='코드 리뷰를 해줘. 성능, 보안, 가독성 관점에서 개선할 점을 지적해주고, 더 나은 구현 방식을 제안해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
+                        <div class="font-semibold text-slate-900">코드 리뷰</div>
+                        <div class="text-slate-500 text-[11px] mt-1">성능·보안·가독성 분석</div>
+                      </button>
+                      <button onclick="document.querySelector('[class*=h-40]').value='이 기술 스택으로 아키텍처를 설계해줄래? 마이크로서비스 패턴을 고려해서 각 컴포넌트의 책임과 통신 방식을 명확히 해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
+                        <div class="font-semibold text-slate-900">아키텍처 설계</div>
+                        <div class="text-slate-500 text-[11px] mt-1">마이크로서비스 패턴</div>
+                      </button>
+                      <button onclick="document.querySelector('[class*=h-40]').value='기술 블로그 글을 작성해줘. 대상 독자는 중급 개발자이고, 실제 프로젝트 예시와 함께 설명해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
+                        <div class="font-semibold text-slate-900">기술 블로그 작성</div>
+                        <div class="text-slate-500 text-[11px] mt-1">중급 개발자 대상</div>
+                      </button>
+                      <button onclick="document.querySelector('[class*=h-40]').value='API 문서를 작성해줄래? OpenAPI 3.0 스펙으로 명확하고 이해하기 쉽게 정리해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
+                        <div class="font-semibold text-slate-900">API 문서화</div>
+                        <div class="text-slate-500 text-[11px] mt-1">OpenAPI 3.0 스펙</div>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1454,6 +1821,7 @@
                 <a href="#o-05" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🖼️ O-05 배너 관리</a>
                 <a href="#o-06" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">✉️ O-06 문의 메일 운영</a>
                 <a href="#o-07" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">📢 O-07 공지사항</a>
+                <a href="#o-08" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">💡 O-08 추천 프롬프트</a>
               </div>
             </div>
           </div>
@@ -1775,84 +2143,484 @@
               </div>
             </div>
 
+            <!-- O-08 추천 프롬프트 관리 -->
+            <div id="o-08" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>💡 O-08 추천 프롬프트 관리</span>
+                  <button onclick="openAdminModal('prompt-modal')" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 프롬프트 추가</button>
+                </div>
+                <div class="wf-body p-6 space-y-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs text-slate-500 font-bold">노출 상태:</span>
+                      <select class="wf-input w-auto text-xs font-semibold mb-0">
+                        <option value="all">전체 보기</option>
+                        <option value="on" selected>노출중만 보기 (ON)</option>
+                        <option value="off">비노출만 보기 (OFF)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <table class="wf-table border rounded-lg">
+                    <thead><tr><th>제목</th><th>프롬프트 내용</th><th>노출 여부</th><th class="text-right">관리</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td class="font-bold text-xs">코드 리뷰</td>
+                        <td class="text-xs text-slate-600">코드 리뷰를 해줘. 성능, 보안, 가독성 관점에서...</td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">ON</span></td>
+                        <td class="text-right">
+                          <button onclick="alert('프롬프트 수정')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold text-xs">아키텍처 설계</td>
+                        <td class="text-xs text-slate-600">이 기술 스택으로 아키텍처를 설계해줄래?...</td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">ON</span></td>
+                        <td class="text-right">
+                          <button onclick="alert('프롬프트 수정')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold text-xs">기술 블로그 작성</td>
+                        <td class="text-xs text-slate-600">기술 블로그 글을 작성해줘. 대상 독자는...</td>
+                        <td><span class="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-200">OFF</span></td>
+                        <td class="text-right">
+                          <button onclick="alert('프롬프트 수정')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="font-bold text-xs">API 문서화</td>
+                        <td class="text-xs text-slate-600">API 문서를 작성해줄래? OpenAPI 3.0...</td>
+                        <td><span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">ON</span></td>
+                        <td class="text-right">
+                          <button onclick="alert('프롬프트 수정')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
     </div>
 
+    <!-- ==========================================
+         TAB E: E 시리즈 (자동 메일 발송)
+         ========================================== -->
+    <div id="tab-e" class="tab-content hidden">
+
+      <!-- 이메일 템플릿 소개 -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>📧 E 시리즈 - 자동 메일 발송 (자동화된 이메일 템플릿)</span>
+          <span class="wf-badge bg-green-100 text-green-800 font-bold">6가지 이메일 템플릿</span>
+        </div>
+        <div class="p-6 bg-white text-sm text-slate-600 space-y-2">
+          <p>사용자 여정의 주요 단계에서 자동으로 발송되는 이메일 템플릿입니다.</p>
+          <p class="text-xs text-slate-500">각 이메일은 MorphFactory 브랜딩, 전문적인 레이아웃, 명확한 CTA를 포함합니다.</p>
+        </div>
+      </div>
+
+      <!-- E-01: 회원가입 이메일 인증 (OTP) -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-01 회원가입 이메일 인증 (OTP)</span>
+          <span class="wf-badge">신규 사용자</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <!-- 헤더 로고 영역 -->
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
+            </div>
+
+            <!-- 카테고리 태그 -->
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">회원가입 인증</span>
+            </div>
+
+            <!-- 메인 헤딩 -->
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">이메일 인증을 완료해 주세요</h1>
+            </div>
+
+            <!-- 서브 텍스트 -->
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">MorphFactory 회원가입을 환영합니다. 아래 인증번호를 입력하여 계정을 활성화하세요.</p>
+            </div>
+
+            <!-- OTP 코드 표시 영역 -->
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 12px 0; font-weight: 500;">인증번호</p>
+              <div style="font-size: 32px; font-weight: bold; color: #0f172a; letter-spacing: 6px; font-family: monospace;">123456</div>
+              <p style="font-size: 11px; color: #94a3b8; margin: 12px 0 0 0;">이 코드는 10분간 유효합니다</p>
+            </div>
+
+            <!-- 추가 정보 -->
+            <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #92400e; margin: 0; font-weight: 500;">💡 본인이 요청하지 않은 경우 이 메일을 무시하셔도 됩니다.</p>
+            </div>
+
+            <!-- 푸터 -->
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@morphfactory.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@morphfactory.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MorphFactory. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-02: 가입 완료 안내 -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-02 가입 완료 안내</span>
+          <span class="wf-badge">회원가입 완료</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">계정 활성화</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">환영합니다! 계정이 활성화되었습니다</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">이제 MorphFactory의 모든 기능을 이용할 수 있습니다.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">🚀 다음 단계</h3>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #475569; line-height: 1.8;">
+                <li style="margin-bottom: 8px;">콘솔에서 API 키 발급하기</li>
+                <li style="margin-bottom: 8px;">Playground에서 모델 테스트해보기</li>
+                <li>통합 가이드 문서 확인하기</li>
+              </ul>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <a href="#" style="display: inline-block; background-color: #10b981; color: white; padding: 12px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">콘솔로 이동하기</a>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@morphfactory.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@morphfactory.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MorphFactory. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-03: 비밀번호 재설정 OTP -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-03 비밀번호 재설정 OTP</span>
+          <span class="wf-badge">보안</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">보안</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호를 재설정해 주세요</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">아래 인증번호를 입력하여 새 비밀번호를 설정하세요.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 12px 0; font-weight: 500;">인증번호</p>
+              <div style="font-size: 32px; font-weight: bold; color: #0f172a; letter-spacing: 6px; font-family: monospace;">654321</div>
+              <p style="font-size: 11px; color: #94a3b8; margin: 12px 0 0 0;">이 코드는 10분간 유효합니다</p>
+            </div>
+
+            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@morphfactory.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@morphfactory.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MorphFactory. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-04: 비밀번호 재설정 알림 -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-04 비밀번호 재설정 알림</span>
+          <span class="wf-badge">보안</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">보안 알림</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호가 변경되었습니다</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">MorphFactory 계정의 비밀번호가 성공적으로 변경되었습니다.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">변경 정보</h3>
+              <div style="font-size: 13px; color: #475569; line-height: 1.8;">
+                <p style="margin: 0;"><strong>변경 시간:</strong> 2024년 8월 31일 14:30</p>
+              </div>
+            </div>
+
+            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@morphfactory.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@morphfactory.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MorphFactory. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-05: 소셜 계정 연동 완료 알림 -->
+      <div class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-05 소셜 계정 연동 완료 알림</span>
+          <span class="wf-badge">계정 연동</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">계정 설정</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">소셜 계정 연동이 완료되었습니다</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">이제 GitHub 또는 Google 계정으로 로그인할 수 있습니다.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 16px 0;">연동된 계정</h3>
+              <div style="space-y: 8px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 13px; color: #475569;">
+                  <span style="font-size: 20px;">🐙</span>
+                  <span>GitHub · suana-hub</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #475569;">
+                  <span style="font-size: 20px;">🔵</span>
+                  <span>Google · suana@morphfactory.io</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@morphfactory.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@morphfactory.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MorphFactory. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <!-- C 시리즈: 계정 설정 통합 모달 (비밀번호 변경 / 회원 탈퇴) -->
+  <!-- C 시리즈: 계정 설정 통합 모달 (프로필 / 보안) -->
   <div id="account-setting-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
-      
+
       <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">🔒 계정 설정</h3>
+        <h3 class="font-bold text-base text-slate-900">⚙️ 계정 설정</h3>
         <button onclick="closeAccountSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
 
+      <!-- 탭 버튼 -->
       <div class="flex gap-2 border-b border-slate-200 mb-6">
-        <button id="tab-btn-pw" onclick="switchAccountTab('pw')" class="px-4 py-2 text-xs font-bold border-b-2 border-slate-900 text-slate-900 bg-transparent cursor-pointer">
-          비밀번호 변경
+        <button id="tab-btn-profile" onclick="switchAccountTab('profile')" class="px-4 py-2 text-xs font-bold border-b-2 border-slate-900 text-slate-900 bg-transparent cursor-pointer">
+          프로필
         </button>
-        <button id="tab-btn-withdraw" onclick="switchAccountTab('withdraw')" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-red-600 bg-transparent cursor-pointer">
-          회원 탈퇴
+        <button id="tab-btn-security" onclick="switchAccountTab('security')" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-900 bg-transparent cursor-pointer">
+          보안
         </button>
       </div>
 
-      <!-- 1. 비밀번호 변경 탭 -->
-      <div id="account-tab-pw" class="space-y-4 text-xs">
+      <!-- 1. 프로필 탭 -->
+      <div id="account-tab-profile" class="space-y-4 text-xs">
+        <!-- 이름 -->
         <div>
-          <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
-          <input type="password" class="wf-input mb-0" placeholder="••••••••">
+          <label class="block font-bold text-slate-700 mb-2">이름</label>
+          <input type="text" class="wf-input mb-0" value="Hanah Suh" placeholder="이름을 입력하세요">
         </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
-          <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
-          <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
-        </div>
-        
-        <div class="flex justify-end gap-2 pt-4 border-t">
-          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">취소</button>
-          <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.'); closeAccountSettingModal();" class="wf-btn wf-btn-dark text-xs w-auto">비밀번호 변경 저장</button>
-        </div>
-      </div>
 
-      <!-- 2. 회원 탈퇴 탭 -->
-      <div id="account-tab-withdraw" class="hidden space-y-4 text-xs">
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-red-900 leading-relaxed space-y-2">
-          <div class="font-bold flex items-center gap-1.5 text-sm text-red-700">
-            <span>⚠️</span> 계정 삭제 전 필독 사항
+        <!-- 이메일 -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-2">이메일</label>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-600">
+            suana@morphfactory.io
           </div>
-          <p class="text-[11px] text-red-800">
-            탈퇴 시 회원님의 소중한 프로젝트 데이터, 실행 로그, 잔여 크레딧 수량이 완전 삭제되어 복구할 수 없게 됩니다.
-          </p>
+          <p class="text-[10px] text-slate-400 mt-1">확인용 (변경 불가)</p>
         </div>
 
-        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
-          <p class="font-bold text-slate-800 text-[11px] leading-snug">
-            "탈퇴 시 등록된 모든 API 키는 즉시 삭제되며 복구할 수 없습니다."
-          </p>
-          <label class="flex items-start gap-2 cursor-pointer pt-2 border-t border-slate-200">
-            <input type="checkbox" id="withdraw-agree-check" onchange="toggleWithdrawButton()" class="mt-0.5 w-4 h-4 text-red-600 rounded border-slate-300">
-            <span class="font-bold text-slate-700 text-xs">안내사항을 모두 확인했으며 탈퇴에 동의합니다</span>
-          </label>
+        <!-- 연결 계정 - 계정 있는 경우 -->
+        <div id="profile-connected-accounts" class="space-y-2">
+          <label class="block font-bold text-slate-700 mb-2">연결 계정</label>
+          <div class="space-y-2">
+            <!-- GitHub 연결됨 -->
+            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <span>🐙</span>
+                <span class="text-slate-600">GitHub · suana-hub</span>
+              </div>
+              <button onclick="confirmDisconnect('GitHub')" class="text-[11px] text-red-600 hover:text-red-700 font-bold border-none bg-transparent cursor-pointer underline">
+                연결 해제
+              </button>
+            </div>
+            <!-- Google 연결됨 -->
+            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+              <div class="flex items-center gap-2">
+                <span>🔵</span>
+                <span class="text-slate-600">Google · suana@morphfactory.io</span>
+              </div>
+              <button onclick="confirmDisconnect('Google')" class="text-[11px] text-red-600 hover:text-red-700 font-bold border-none bg-transparent cursor-pointer underline">
+                연결 해제
+              </button>
+            </div>
+          </div>
+          <button onclick="toggleConnectedAccountsState()" class="text-[11px] text-slate-500 hover:text-slate-700 font-bold border-none bg-transparent cursor-pointer underline">
+            상태 토글 (테스트)
+          </button>
         </div>
 
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">본인 확인 비밀번호</label>
-          <input type="password" class="wf-input mb-0" placeholder="현재 비밀번호 입력">
+        <!-- 연결 계정 - 계정 없는 경우 -->
+        <div id="profile-no-accounts" class="hidden space-y-2">
+          <label class="block font-bold text-slate-700 mb-2">연결 계정</label>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-3 text-center space-y-2">
+            <p class="text-slate-600 text-xs">연결된 계정이 없습니다.</p>
+            <p class="text-slate-400 text-[10px]">소셜 계정을 연결하면 더 편하게 로그인할 수 있습니다.</p>
+            <div class="flex gap-2 justify-center pt-1">
+              <button onclick="alert('GitHub 연결 진행...')" class="text-[11px] px-3 py-1.5 bg-slate-700 text-white rounded font-bold border-none cursor-pointer hover:bg-slate-800">
+                🐙 GitHub
+              </button>
+              <button onclick="alert('Google 연결 진행...')" class="text-[11px] px-3 py-1.5 bg-slate-700 text-white rounded font-bold border-none cursor-pointer hover:bg-slate-800">
+                🔵 Google
+              </button>
+            </div>
+          </div>
+          <button onclick="toggleConnectedAccountsState()" class="text-[11px] text-slate-500 hover:text-slate-700 font-bold border-none bg-transparent cursor-pointer underline">
+            상태 토글 (테스트)
+          </button>
         </div>
 
         <div class="flex justify-end gap-2 pt-4 border-t">
-          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">취소</button>
-          <button id="withdraw-submit-btn" disabled onclick="confirmWithdraw()" class="wf-btn bg-red-600 text-white border-none font-bold text-xs w-auto opacity-50 cursor-not-allowed">
-            회원 탈퇴 진행
+          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">닫기</button>
+        </div>
+      </div>
+
+      <!-- 2. 보안 탭 -->
+      <div id="account-tab-security" class="hidden space-y-2 text-xs">
+
+        <!-- 2-1. 비밀번호 변경 섹션 - Accordion -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden">
+          <button onclick="toggleSecuritySection('password')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
+            <span>🔑 비밀번호 변경</span>
+            <span id="password-toggle-icon">▼</span>
           </button>
+          <div id="security-section-password" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
+              <input type="password" class="wf-input mb-0" placeholder="••••••••">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
+              <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
+              <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+              <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">변경하기</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-2. 회원 탈퇴 섹션 - Accordion -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden">
+          <button onclick="toggleSecuritySection('withdraw')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-red-700 border-none cursor-pointer">
+            <span>⛔ 회원 탈퇴</span>
+            <span id="withdraw-toggle-icon">▼</span>
+          </button>
+          <div id="security-section-withdraw" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">본인 확인 비밀번호</label>
+              <input type="password" class="wf-input mb-0" placeholder="현재 비밀번호 입력">
+            </div>
+
+            <label class="flex items-start gap-2 cursor-pointer bg-slate-50 border border-slate-200 rounded-lg p-3">
+              <input type="checkbox" id="withdraw-agree-check" onchange="toggleWithdrawButton()" class="mt-0.5 w-4 h-4 text-red-600 rounded border-slate-300">
+              <span class="font-bold text-slate-700 text-xs leading-snug">안내사항을 모두 확인하였으며 탈퇴에 동의합니다</span>
+            </label>
+
+            <div class="bg-red-50 border border-red-200 rounded-lg p-3 text-red-900 leading-relaxed space-y-2">
+              <div class="font-bold flex items-center gap-1 text-xs text-red-700">
+                <span>⚠️</span> 탈퇴 전 필독 사항
+              </div>
+              <p class="text-[11px] text-red-800">
+                탈퇴 시 프로젝트 데이터, 실행 로그, 잔여 크레딧이 완전 삭제되어 복구할 수 없습니다.
+              </p>
+              <p class="text-[11px] text-red-800">
+                탈퇴 후 30일간 동일한 이메일로 재가입이 제한됩니다.
+              </p>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-2">
+              <button id="withdraw-submit-btn" disabled onclick="confirmWithdraw()" class="wf-btn bg-red-600 text-white border-none font-bold text-xs w-auto opacity-50 cursor-not-allowed">
+                탈퇴하기
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-4 border-t">
+          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">닫기</button>
         </div>
       </div>
 
@@ -2123,6 +2891,47 @@
     </div>
   </div>
 
+  <!-- O-08 추천 프롬프트 추가/수정 모달 -->
+  <div id="prompt-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-slate-200 overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">💡 추천 프롬프트 추가/수정</h3>
+        <button onclick="closeAdminModal('prompt-modal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
+      </div>
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">프롬프트 제목 <span class="text-red-500">*</span></label>
+          <input type="text" class="wf-input mb-0" placeholder="예: 코드 리뷰">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">프롬프트 내용 <span class="text-red-500">*</span></label>
+          <div class="border border-slate-300 rounded-lg overflow-hidden">
+            <div class="bg-slate-100 border-b p-2 flex flex-wrap gap-2 items-center text-slate-700">
+              <button class="px-2 py-1 bg-white border rounded font-bold hover:bg-slate-50">B</button>
+              <button class="px-2 py-1 bg-white border rounded italic hover:bg-slate-50">I</button>
+              <button class="px-2 py-1 bg-white border rounded underline hover:bg-slate-50">U</button>
+            </div>
+            <textarea class="w-full h-48 p-3 outline-none resize-y border-none text-xs leading-relaxed" placeholder="프롬프트 내용을 입력해 주세요."></textarea>
+          </div>
+        </div>
+        <div class="flex justify-between items-center p-3 bg-slate-50 border rounded-xl border-t">
+          <div>
+            <div class="font-bold text-slate-800">프롬프트 노출 여부 (ON/OFF)</div>
+            <div class="text-[11px] text-slate-500">OFF로 설정 시 사용자는 이 프롬프트를 볼 수 없습니다.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-6 border-t mt-6">
+        <button onclick="closeAdminModal('prompt-modal')" class="wf-btn text-xs w-auto">취소</button>
+        <button onclick="alert('프롬프트가 저장되었습니다.'); closeAdminModal('prompt-modal');" class="wf-btn wf-btn-dark text-xs w-auto">프롬프트 저장</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* 메인 탭 전환 (History, M, A, C, O) */
     function openTab(tabId, btnElement) {
@@ -2181,6 +2990,7 @@
     function switchToATab() { openTab('tab-a'); }
     function switchToMTab() { openTab('tab-m'); }
     function switchToOTab() { openTab('tab-o'); }
+    function switchToETab() { openTab('tab-e'); }
     
     function switchToCTab(targetHash) {
       openTab('tab-c');
@@ -2302,32 +3112,32 @@
 
     function openAccountSettingModal() {
       document.getElementById('account-setting-modal').classList.remove('hidden');
-      switchAccountTab('pw');
+      switchAccountTab('profile');
     }
     function closeAccountSettingModal() {
       document.getElementById('account-setting-modal').classList.add('hidden');
     }
 
     function switchAccountTab(tabType) {
-      const tabPw = document.getElementById('account-tab-pw');
-      const tabWithdraw = document.getElementById('account-tab-withdraw');
-      const btnPw = document.getElementById('tab-btn-pw');
-      const btnWithdraw = document.getElementById('tab-btn-withdraw');
+      const tabProfile = document.getElementById('account-tab-profile');
+      const tabSecurity = document.getElementById('account-tab-security');
+      const btnProfile = document.getElementById('tab-btn-profile');
+      const btnSecurity = document.getElementById('tab-btn-security');
 
-      if(tabType === 'pw') {
-        tabPw.classList.remove('hidden');
-        tabWithdraw.classList.add('hidden');
-        btnPw.classList.add('border-slate-900', 'text-slate-900');
-        btnPw.classList.remove('border-transparent', 'text-slate-400');
-        btnWithdraw.classList.remove('border-red-600', 'text-red-600');
-        btnWithdraw.classList.add('border-transparent', 'text-slate-400');
+      if(tabType === 'profile') {
+        tabProfile.classList.remove('hidden');
+        tabSecurity.classList.add('hidden');
+        btnProfile.classList.add('border-slate-900', 'text-slate-900');
+        btnProfile.classList.remove('border-transparent', 'text-slate-400');
+        btnSecurity.classList.remove('border-slate-900', 'text-slate-900');
+        btnSecurity.classList.add('border-transparent', 'text-slate-400');
       } else {
-        tabPw.classList.add('hidden');
-        tabWithdraw.classList.remove('hidden');
-        btnWithdraw.classList.add('border-red-600', 'text-red-600');
-        btnWithdraw.classList.remove('border-transparent', 'text-slate-400');
-        btnPw.classList.remove('border-slate-900', 'text-slate-900');
-        btnPw.classList.add('border-transparent', 'text-slate-400');
+        tabProfile.classList.add('hidden');
+        tabSecurity.classList.remove('hidden');
+        btnSecurity.classList.add('border-slate-900', 'text-slate-900');
+        btnSecurity.classList.remove('border-transparent', 'text-slate-400');
+        btnProfile.classList.remove('border-slate-900', 'text-slate-900');
+        btnProfile.classList.add('border-transparent', 'text-slate-400');
       }
     }
 
@@ -2424,6 +3234,124 @@
         }
       }
     });
+
+    // A-01 로그인 에러 상태 토글 (순환)
+    let a01ErrorState = 0;
+    function toggleA01ErrorState() {
+      const errors = [
+        'a01-error-invalid-email',
+        'a01-error-not-found',
+        'a01-error-wrong-password',
+        'a01-error-account-locked'
+      ];
+
+      // 모든 에러 숨기기
+      errors.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.add('hidden');
+      });
+
+      // 현재 상태의 에러 표시
+      const currentError = document.getElementById(errors[a01ErrorState]);
+      if(currentError) {
+        currentError.classList.remove('hidden');
+      }
+
+      // 다음 상태로 이동
+      a01ErrorState = (a01ErrorState + 1) % errors.length;
+    }
+
+    // A-02 이메일 에러 상태 토글 (순환)
+    let a02EmailErrorState = 0;
+    function toggleA02EmailErrorState() {
+      const errors = [
+        'a02-error-invalid-email',
+        'a02-error-duplicate-email',
+        'a02-error-cooldown'
+      ];
+
+      // 모든 에러 숨기기
+      errors.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.add('hidden');
+      });
+
+      // 현재 상태의 에러 표시
+      const currentError = document.getElementById(errors[a02EmailErrorState]);
+      if(currentError) {
+        currentError.classList.remove('hidden');
+      }
+
+      // 다음 상태로 이동
+      a02EmailErrorState = (a02EmailErrorState + 1) % errors.length;
+    }
+
+    // A-05 비밀번호 찾기 에러 상태 토글 (순환)
+    let a05ErrorState = 0;
+    function toggleA05ErrorState() {
+      const errors = [
+        'a05-error-invalid-email',
+        'a05-error-rate-limit'
+      ];
+
+      // 모든 에러 숨기기
+      errors.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.add('hidden');
+      });
+
+      // 현재 상태의 에러 표시
+      const currentError = document.getElementById(errors[a05ErrorState]);
+      if(currentError) {
+        currentError.classList.remove('hidden');
+      }
+
+      // 다음 상태로 이동
+      a05ErrorState = (a05ErrorState + 1) % errors.length;
+    }
+
+    // 보안 섹션 토글 (Accordion)
+    function toggleSecuritySection(sectionType) {
+      const section = document.getElementById(`security-section-${sectionType}`);
+      const icon = document.getElementById(`${sectionType}-toggle-icon`);
+
+      if(section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        icon.textContent = '▲';
+      } else {
+        section.classList.add('hidden');
+        icon.textContent = '▼';
+      }
+    }
+
+    // 연결 계정 상태 토글 (테스트용)
+    function toggleConnectedAccountsState() {
+      const connectedDiv = document.getElementById('profile-connected-accounts');
+      const noAccountsDiv = document.getElementById('profile-no-accounts');
+
+      if(connectedDiv.classList.contains('hidden')) {
+        connectedDiv.classList.remove('hidden');
+        noAccountsDiv.classList.add('hidden');
+      } else {
+        connectedDiv.classList.add('hidden');
+        noAccountsDiv.classList.remove('hidden');
+      }
+    }
+
+    // 연결 계정 연결 해제
+    function confirmDisconnect(provider) {
+      if(confirm(`${provider} 계정 연결을 해제하시겠습니까?`)) {
+        alert(`${provider} 계정이 연결 해제되었습니다.`);
+      }
+    }
+
+    // 회원 탈퇴 확인
+    function confirmWithdraw() {
+      if(confirm('정말로 회원 탈퇴하시겠습니까?')) {
+        alert('회원 탈퇴가 완료되었습니다.');
+        closeAccountSettingModal();
+      }
+    }
   </script>
 </body>
 </html>
