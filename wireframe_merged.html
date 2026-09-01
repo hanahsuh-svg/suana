@@ -1340,9 +1340,20 @@
                 <p class="text-xs text-slate-500 mb-2">예) CTO, 시니어 엔지니어, 대표이사</p>
                 <input type="text" class="wf-input" placeholder="Your answer">
               </div>
+
+              <!-- 7. 제3자 동의 -->
+              <div class="border-t pt-6 mt-6">
+                <label class="flex items-start gap-3 cursor-pointer p-3 bg-slate-50 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+                  <input type="checkbox" id="consent-checkbox" class="w-4 h-4 mt-0.5 rounded cursor-pointer" onchange="updateSubmitButtonState()">
+                  <span class="text-xs text-slate-600 leading-relaxed flex-1">
+                    서비스 개선을 위해 위 설문 응답을 제3자(모티프)에 제공하는 데 동의합니다.
+                    <span class="text-slate-500">(이메일 및 개인 식별 정보는 제공되지 않습니다)</span>
+                  </span>
+                </label>
+              </div>
             </div>
 
-            <button onclick="completeSurveyAndRedirect()" class="wf-btn wf-btn-primary mb-3">제출하고 $20 크레딧 받기</button>
+            <button id="submit-btn" onclick="checkConsentAndSubmit()" class="wf-btn wf-btn-primary mb-3 opacity-50 cursor-not-allowed" disabled>제출하고 $20 크레딧 받기</button>
             <button onclick="skipSurveyAndRedirect()" class="wf-btn border-none text-slate-400 bg-transparent shadow-none hover:bg-slate-50 text-[11px]">나중에 하기</button>
           </div>
         </div>
@@ -2867,7 +2878,10 @@
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
 
       <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">⚙️ 계정 설정</h3>
+        <div>
+          <h3 class="font-bold text-base text-slate-900">⚙️ 계정 설정</h3>
+          <p id="account-setting-label" class="text-[10px] text-slate-500 mt-0.5">C-09 • 프로필</p>
+        </div>
         <button onclick="closeAccountSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
 
@@ -2956,29 +2970,63 @@
       <!-- 2. 보안 탭 -->
       <div id="account-tab-security" class="hidden space-y-2 text-xs">
 
-        <!-- 2-1. 비밀번호 변경 섹션 - Accordion -->
+        <!-- 2-1. 비밀번호 섹션 - Accordion (2가지 시나리오) -->
         <div class="border border-slate-200 rounded-lg overflow-hidden">
-          <button onclick="toggleSecuritySection('password')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
-            <span>🔑 비밀번호 변경</span>
-            <span id="password-toggle-icon">▼</span>
-          </button>
-          <div id="security-section-password" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
-            <div>
-              <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
-              <input type="password" class="wf-input mb-0" placeholder="••••••••">
-            </div>
-            <div>
-              <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
-              <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
-            </div>
-            <div>
-              <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
-              <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
-            </div>
-            <div class="flex justify-end gap-2 pt-2">
-              <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">변경하기</button>
+          <!-- 시나리오 A: 비밀번호가 있는 경우 (비밀번호 변경) -->
+          <div id="password-has-section">
+            <button onclick="toggleSecuritySection('password')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
+              <span>🔑 비밀번호 변경</span>
+              <span id="password-toggle-icon">▼</span>
+            </button>
+            <div id="security-section-password" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
+                <input type="password" class="wf-input mb-0" placeholder="••••••••">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
+                <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
+                <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
+              </div>
+              <div class="flex justify-end gap-2 pt-2">
+                <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">변경하기</button>
+              </div>
             </div>
           </div>
+
+          <!-- 시나리오 B: 비밀번호가 없는 경우 (소셜 가입만 한 경우, 비밀번호 생성) -->
+          <div id="password-no-section" class="hidden">
+            <button onclick="toggleSecuritySection('password-create')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
+              <span>🔑 비밀번호 생성</span>
+              <span id="password-create-toggle-icon">▼</span>
+            </button>
+            <div id="security-section-password-create" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-900 leading-relaxed">
+                <p class="text-[11px] text-blue-800">
+                  소셜 계정으로 가입했으므로 비밀번호가 설정되어 있지 않습니다. 이메일로 로그인할 때 사용할 비밀번호를 생성해주세요.
+                </p>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
+                <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">비밀번호 확인</label>
+                <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
+              </div>
+              <div class="flex justify-end gap-2 pt-2">
+                <button onclick="alert('비밀번호가 성공적으로 생성되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">생성하기</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 테스트용: 비밀번호 상태 토글 -->
+          <button onclick="togglePasswordState()" class="text-[10px] text-slate-400 hover:text-slate-600 font-bold border-none bg-transparent cursor-pointer underline mt-2 ml-4">
+            비밀번호 상태 토글 (테스트)
+          </button>
         </div>
 
         <!-- 2-2. 회원 탈퇴 섹션 - Accordion -->
@@ -3419,6 +3467,30 @@
       switchToCTab('#c-01');
     }
 
+    /* 설문 제3자 동의 체크 함수 */
+    function updateSubmitButtonState() {
+      const checkbox = document.getElementById('consent-checkbox');
+      const submitBtn = document.getElementById('submit-btn');
+      if(checkbox && submitBtn) {
+        if(checkbox.checked) {
+          submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          submitBtn.removeAttribute('disabled');
+        } else {
+          submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          submitBtn.setAttribute('disabled', 'disabled');
+        }
+      }
+    }
+
+    function checkConsentAndSubmit() {
+      const checkbox = document.getElementById('consent-checkbox');
+      if(!checkbox || !checkbox.checked) {
+        alert('제3자 동의에 체크해주셔야 $20 크레딧을 받을 수 있습니다.');
+        return;
+      }
+      completeSurveyAndRedirect();
+    }
+
     function completeSurveyAndRedirect() {
       const banner = document.getElementById('sidebar-survey-banner');
       if(banner) banner.classList.add('hidden');
@@ -3566,6 +3638,7 @@
       const tabSecurity = document.getElementById('account-tab-security');
       const btnProfile = document.getElementById('tab-btn-profile');
       const btnSecurity = document.getElementById('tab-btn-security');
+      const settingLabel = document.getElementById('account-setting-label');
 
       if(tabType === 'profile') {
         tabProfile.classList.remove('hidden');
@@ -3574,6 +3647,7 @@
         btnProfile.classList.remove('border-transparent', 'text-slate-400');
         btnSecurity.classList.remove('border-slate-900', 'text-slate-900');
         btnSecurity.classList.add('border-transparent', 'text-slate-400');
+        if(settingLabel) settingLabel.textContent = 'C-09 • 프로필';
       } else {
         tabProfile.classList.add('hidden');
         tabSecurity.classList.remove('hidden');
@@ -3581,6 +3655,7 @@
         btnSecurity.classList.remove('border-transparent', 'text-slate-400');
         btnProfile.classList.remove('border-slate-900', 'text-slate-900');
         btnProfile.classList.add('border-transparent', 'text-slate-400');
+        if(settingLabel) settingLabel.textContent = 'C-10 • 보안';
       }
     }
 
@@ -3758,12 +3833,45 @@
       const section = document.getElementById(`security-section-${sectionType}`);
       const icon = document.getElementById(`${sectionType}-toggle-icon`);
 
-      if(section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        icon.textContent = '▲';
+      if(section && icon) {
+        if(section.classList.contains('hidden')) {
+          section.classList.remove('hidden');
+          icon.textContent = '▲';
+        } else {
+          section.classList.add('hidden');
+          icon.textContent = '▼';
+        }
+      }
+    }
+
+    // 비밀번호 상태 토글 (테스트용)
+    let userHasPassword = true;
+    function togglePasswordState() {
+      const hasSection = document.getElementById('password-has-section');
+      const noSection = document.getElementById('password-no-section');
+
+      userHasPassword = !userHasPassword;
+
+      if(userHasPassword) {
+        hasSection.classList.remove('hidden');
+        noSection.classList.add('hidden');
       } else {
-        section.classList.add('hidden');
-        icon.textContent = '▼';
+        hasSection.classList.add('hidden');
+        noSection.classList.remove('hidden');
+      }
+
+      // 섹션이 열려있으면 닫기
+      const passwordSection = document.getElementById('security-section-password');
+      const passwordCreateSection = document.getElementById('security-section-password-create');
+      if(passwordSection) {
+        passwordSection.classList.add('hidden');
+        const icon = document.getElementById('password-toggle-icon');
+        if(icon) icon.textContent = '▼';
+      }
+      if(passwordCreateSection) {
+        passwordCreateSection.classList.add('hidden');
+        const icon = document.getElementById('password-create-toggle-icon');
+        if(icon) icon.textContent = '▼';
       }
     }
 
