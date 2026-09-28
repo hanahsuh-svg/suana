@@ -199,6 +199,176 @@
     .c03-spec-item ul { margin: 0; padding-left: 16px; font-size: 11.5px; color: #64748b; line-height: 1.85; }
     .c03-spec-item b { color: #334155; }
     @media (max-width: 760px) { .c03-spec-grid { grid-template-columns: 1fr; } }
+    /* v4.0 멀티모델 */
+    .wf-card + .mm-note { margin: -20px 0 32px; }
+    .screen-section .wf-card + .mm-note { margin: 8px 0 0; }
+    .tbd-card { position: relative; }
+    .tbd-overlay { position: absolute; inset: 0; z-index: 25; background: rgba(15,23,42,.55); border-radius: 8px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(1px); }
+    .tbd-box { text-align: center; color: #fff; }
+    .tbd-badge { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .15em; background: #f59e0b; color: #1f2937; border-radius: 4px; padding: 3px 10px; margin-bottom: 10px; }
+    .tbd-title { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+    .tbd-sub { font-size: 13px; color: #e2e8f0; }
+    .wf-btn.w-auto { width: auto; }
+    #c-07 .wf-card { overflow: visible; }
+    .cn-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 460px; background: #fff; border-left: 1px solid #cbd5e1; box-shadow: -12px 0 28px rgba(15,23,42,.12); z-index: 40; display: flex; flex-direction: column; }
+    .cn-drawer.hidden { display: none; }
+    .cn-head { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 18px 12px; border-bottom: 1px solid #f1f5f9; }
+    .cn-vals { padding: 12px 18px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+    .cn-row { display: flex; align-items: center; gap: 8px; font-size: 11px; padding: 3px 0; }
+    .cn-fields .cn-k { width: 78px; }
+    .cn-k { width: 56px; color: #64748b; font-weight: 600; flex-shrink: 0; }
+    .cn-v { flex: 1; font-family: ui-monospace, monospace; font-size: 11px; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 3px 6px; color: #0f172a; }
+    .cn-issue { font-size: 10px; font-weight: 700; color: #2563eb; white-space: nowrap; }
+    .cn-tabs { display: flex; border-bottom: 1px solid #e2e8f0; padding: 0 12px; }
+    .cn-tab { border: none; background: none; padding: 10px 8px; font-size: 12px; font-weight: 600; color: #94a3b8; border-bottom: 2px solid transparent; cursor: pointer; }
+    .cn-tab.on { color: #0f172a; border-bottom-color: #0f172a; }
+    .cn-body { padding: 14px 18px; overflow-y: auto; flex: 1; }
+    .cn-desc { font-size: 11px; color: #475569; margin-bottom: 8px; line-height: 1.6; }
+    .cn-code { background: #1e293b; color: #e2e8f0; font-family: ui-monospace, monospace; font-size: 10.5px; line-height: 1.55; border-radius: 8px; padding: 12px; white-space: pre-wrap; word-break: break-all; margin: 0; }
+    .cn-chip { font-size: 11px; font-weight: 600; border: 1px solid #cbd5e1; background: #fff; color: #475569; border-radius: 9999px; padding: 3px 10px; cursor: pointer; }
+    .cn-chip.on { background: #0f172a; color: #fff; border-color: #0f172a; }
+    .cn-code-wrap { position: relative; }
+    .cn-copy { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border: 1px solid #475569; background: #334155; color: #e2e8f0; border-radius: 6px; font-size: 13px; cursor: pointer; line-height: 1; }
+    .cn-copy:hover { background: #475569; }
+    .cn-toast { position: absolute; top: 14px; right: 18px; font-size: 10px; font-weight: 700; background: #0f172a; color: #fff; border-radius: 6px; padding: 3px 8px; z-index: 2; }
+    .cn-meta { font-size: 10px; color: #94a3b8; margin-top: 8px; }
+    .cn-body .wf-btn { width: auto; padding: 6px 14px; }
+    .pg-rs-toggle { display: inline-flex; align-items: center; gap: 4px; border: none; background: none; padding: 0; margin-bottom: 6px; font-size: 11px; font-weight: 700; color: #475569; cursor: pointer; }
+    .pg-rs-toggle:hover { color: #0f172a; }
+    .pg-rs-body { border-left: 2px solid #e2e8f0; padding: 2px 0 2px 10px; margin: 0 0 8px 4px; font-size: 11px; color: #94a3b8; line-height: 1.6; }
+    .pg-meta-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin-top: 6px; color: #64748b; }
+    .pg-speed { border: none; background: none; padding: 0; cursor: pointer; font-size: 10px; font-style: italic; color: #ea580c; }
+    .pg-speed b { font-weight: 700; }
+    .pg-speed:hover { text-decoration: underline; }
+    .pg-bolt { font-style: normal; margin: 0 2px; }
+    .pg-act { border: none; background: none; padding: 0; color: #94a3b8; cursor: pointer; font-size: 10px; }
+    .pg-act:hover { color: #0f172a; text-decoration: underline; }
+    .pg-pop { position: absolute; left: 0; top: 100%; margin-top: 6px; width: 340px; background: #1e293b; color: #fff; border: 1px solid #475569; border-radius: 12px; box-shadow: 0 16px 32px rgba(15,23,42,.25); padding: 16px 18px; z-index: 30; }
+    .pg-pop-title { color: #fb923c; font-weight: 800; font-size: 14px; }
+    .pg-ss { font-size: 12px; font-weight: 800; margin: 10px 0 6px; }
+    .pg-sg { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+    .pg-sv { font-size: 18px; font-weight: 500; }
+    .pg-sv.strong { font-size: 22px; font-weight: 800; }
+    .pg-sl { font-size: 10px; color: #cbd5e1; }
+    .pg-sl.strong { color: #fff; font-weight: 700; }
+    .pg-pop-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155; font-size: 10px; color: #cbd5e1; }
+    .pg-pop-foot .mm-id { background: #334155; color: #e2e8f0; }
+    .sm-canvas { background: #f1f5f9; padding: 28px; overflow-x: auto; }
+    .sm-layout { display: flex; gap: 28px; align-items: flex-start; min-width: 1080px; }
+    .sm-main { flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; }
+    .sm-side { width: 220px; flex-shrink: 0; }
+    .sm-side-inner { background: #fff; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+    .sm-area-title { font-size: 11px; font-weight: 800; color: #64748b; margin-bottom: 12px; }
+    .sep-group { flex: 1; }
+    .sep-title { font-size: 10px; font-weight: 800; color: #7c3aed; margin-bottom: 8px; }
+    .pg { display: block; width: 116px; background: #fff; border: 1.5px solid #bfdbfe; border-radius: 6px; text-decoration: none; color: #0f172a; box-shadow: 0 1px 2px rgba(15,23,42,.05); transition: box-shadow .15s, border-color .15s; }
+    .pg:hover { border-color: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,.15); }
+    .pg.small { width: 112px; }
+    .pg-dots { display: flex; gap: 3px; padding: 4px 6px; background: #eff6ff; border-bottom: 1px solid #dbeafe; border-radius: 5px 5px 0 0; }
+    .pg-dots i { width: 4px; height: 4px; border-radius: 50%; background: #93c5fd; }
+    .pg-thumb { height: 70px; padding: 6px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+    .pg.small .pg-thumb { height: 46px; }
+    .pg-label { font-size: 11px; font-weight: 700; text-align: center; padding: 5px 4px 6px; border-top: 1px solid #f1f5f9; line-height: 1.35; }
+    .pg-note { font-size: 9px; color: #94a3b8; text-align: center; padding: 0 4px 6px; margin-top: -3px; }
+    .tb-hero { height: 26px; background: #dbeafe; border-radius: 3px; }
+    .tb-dark { height: 8px; background: #1e293b; border-radius: 2px; opacity: .7; }
+    .tb-title { height: 6px; width: 55%; background: #bfdbfe; border-radius: 2px; }
+    .tb-title.c { margin: 0 auto; }
+    .tb-line { height: 3px; background: #e2e8f0; border-radius: 2px; }
+    .tb-line.s { width: 60%; }
+    .tb-bar { height: 8px; border: 1px solid #bfdbfe; border-radius: 3px; }
+    .tb-row3, .tb-row4 { display: flex; gap: 3px; }
+    .tb-row3 i, .tb-row4 i { flex: 1; height: 12px; background: #eff6ff; border: 1px solid #dbeafe; border-radius: 2px; }
+    .tb-row3.tall i { height: 26px; }
+    .tb-table { display: flex; flex-direction: column; gap: 2px; }
+    .tb-table i { height: 5px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
+    .tb-split { display: flex; gap: 4px; height: 100%; }
+    .tb-side { width: 22%; background: #eff6ff; border-radius: 2px; }
+    .tb-side.dark { background: #e2e8f0; }
+    .tb-main { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .tb-code { height: 16px; background: #1e293b; border-radius: 2px; opacity: .75; }
+    .tb-bub { height: 7px; width: 60%; background: #e2e8f0; border-radius: 4px; }
+    .tb-bub.r { margin-left: auto; width: 45%; background: #334155; opacity: .6; }
+    .tb-input { height: 7px; border: 1px solid #cbd5e1; border-radius: 3px; margin-top: auto; }
+    .tb-form { width: 62%; margin: 0 auto; display: flex; flex-direction: column; gap: 4px; padding-top: 4px; }
+    .tb-field { height: 7px; border: 1px solid #cbd5e1; border-radius: 2px; }
+    .tb-btn { height: 8px; background: #1e293b; border-radius: 2px; opacity: .75; }
+    /* 트리 연결선 */
+    .tr-root { display: flex; justify-content: center; position: relative; padding-bottom: 22px; }
+    .tr-root::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 2px; height: 22px; background: #93c5fd; }
+    .tr-level { display: flex; justify-content: center; gap: 16px; position: relative; padding-top: 22px; }
+    .tr-level > .tr-col { position: relative; }
+    .tr-level > .tr-col::before { content: ''; position: absolute; top: -22px; left: 50%; width: 2px; height: 22px; background: #93c5fd; }
+    .tr-level > .tr-col::after { content: ''; position: absolute; top: -22px; height: 2px; background: #93c5fd; left: -8px; right: -8px; }
+    .tr-level > .tr-col:first-child::after { left: 50%; }
+    .tr-level > .tr-col:last-child::after { right: 50%; }
+    .tr-col { display: flex; flex-direction: column; align-items: center; }
+    .tr-kids { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; position: relative; padding-top: 0; }
+    .tr-kids::before { content: ''; position: absolute; top: -14px; bottom: 40px; left: 50%; width: 2px; background: #93c5fd; }
+    .tr-child { position: relative; }
+    .sm-footer { margin-top: 30px; padding-top: 16px; border-top: 1px dashed #cbd5e1; }
+    .sm-footer-row { display: flex; gap: 12px; }
+    .sm-side .tr-col { align-items: flex-start; }
+    .sm-side .pg { width: 150px; }
+    .sm-side .tr-kids::before { left: 75px; }
+    .sm-layout { position: relative; }
+    .sm-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
+    .sm-main, .sm-side, .sm-mail { position: relative; z-index: 1; }
+    .sm-main { background: rgba(255,255,255,.92); }
+    .sm-mail { width: 150px; flex-shrink: 0; }
+    .sm-mail-inner { display: flex; flex-direction: column; gap: 10px; }
+    .ml { display: block; background: #ecfeff; border: 1.5px solid #67e8f9; border-radius: 6px; padding: 6px 8px; text-decoration: none; color: #0f172a; }
+    .ml:hover { border-color: #0891b2; box-shadow: 0 4px 10px rgba(8,145,178,.15); }
+    .ml-head { display: flex; align-items: center; gap: 4px; }
+    .ml-ico { font-size: 11px; }
+    .ml-name { font-size: 11px; font-weight: 700; margin-top: 3px; }
+    .ml-trig { font-size: 9px; color: #64748b; margin-top: 1px; }
+    .sm-link { fill: none; stroke: #06b6d4; stroke-width: 1.5; stroke-dasharray: 5 4; transition: opacity .15s, stroke .15s; }
+    .sm-dot { fill: #06b6d4; transition: opacity .15s; }
+    .sm-hovering .sm-link, .sm-hovering .sm-dot { opacity: .12; }
+    .sm-hovering .sm-link.sm-hl { opacity: 1; stroke: #f97316; stroke-width: 2.5; stroke-dasharray: none; }
+    .sm-hovering .sm-dot.sm-hl { opacity: 1; fill: #f97316; }
+    .pg.sm-hl { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.2); }
+    .ml.sm-hl { border-color: #f97316; background: #fff7ed; box-shadow: 0 0 0 3px rgba(249,115,22,.2); }
+    .sm-legend { margin-top: 14px; font-size: 10px; color: #64748b; line-height: 1.6; display: flex; flex-direction: column; gap: 6px; }
+    .sm-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; align-items: start; }
+    @media (max-width: 1100px) { .sm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sm-col { border: 1px solid #e2e8f0; border-top: 4px solid var(--c); border-radius: 10px; padding: 12px; background: #fff; }
+    .sm-col-head { margin-bottom: 10px; }
+    .sm-col-title { font-weight: 800; font-size: 14px; color: #0f172a; }
+    .sm-col-sub { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+    .sm-group { margin-top: 10px; }
+    .sm-group-title { font-size: 10px; font-weight: 800; color: var(--c); letter-spacing: .05em; margin-bottom: 4px; }
+    .sm-node { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; padding: 5px 6px; border-radius: 6px; text-decoration: none; color: #0f172a; font-size: 12px; }
+    .sm-node:hover { background: #f1f5f9; }
+    .sm-node.sm-ref { color: #64748b; font-style: italic; }
+    .sm-id { font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; color: #475569; background: #f1f5f9; border-radius: 4px; padding: 1px 4px; }
+    .sm-name { font-weight: 600; }
+    .sm-note { width: 100%; font-size: 10px; color: #94a3b8; padding-left: 2px; }
+    .sm-branch { color: #cbd5e1; }
+    .sm-new { font-size: 9px; font-weight: 800; color: #6d28d9; background: #ede9fe; border-radius: 9999px; padding: 1px 5px; }
+    .sm-step { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 9999px; padding: 6px 12px; font-size: 12px; font-weight: 600; color: #0f172a; text-decoration: none; }
+    .sm-step:hover { background: #eef2ff; }
+    .sm-arrow { color: #94a3b8; font-size: 12px; padding: 0 2px; }
+    .lang-switch { position: relative; display: inline-flex; align-items: center; width: 58px; height: 22px; padding: 0; border: 1px solid #cbd5e1; border-radius: 9999px; background: #f1f5f9; cursor: pointer; font-size: 10px; font-weight: 800; }
+    .lang-switch .ls-knob { position: absolute; top: 2px; left: 2px; width: 27px; height: 16px; border-radius: 9999px; background: #0f172a; transition: left .2s; }
+    .lang-switch[data-lang="EN"] .ls-knob { left: 27px; }
+    .lang-switch .ls-lbl { position: relative; z-index: 1; flex: 1; text-align: center; color: #94a3b8; transition: color .2s; }
+    .lang-switch[data-lang="KO"] .ls-ko, .lang-switch[data-lang="EN"] .ls-en { color: #fff; }
+    .mm-note { margin: 12px 16px 0; padding: 10px 12px; border: 1px dashed #a78bfa; background: #f5f3ff; color: #4c1d95; border-radius: 8px; font-size: 11px; line-height: 1.6; }
+    .mm-chip { padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 9999px; font-size: 12px; font-weight: 600; background: #fff; color: #475569; cursor: pointer; }
+    .mm-chip.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+    .mm-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; background: #fff; transition: opacity .2s, box-shadow .2s; display: flex; flex-direction: column; gap: 10px; }
+    .mm-card.dim { opacity: .35; }
+    .mm-card.rec { box-shadow: 0 0 0 2px #7c3aed; }
+    .mm-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; background: #f1f5f9; color: #475569; }
+    .mm-id { font-family: ui-monospace, monospace; font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+    .mm-cmp th, .mm-cmp td { font-size: 12px; padding: 8px 10px; border-bottom: 1px solid #f1f5f9; text-align: left; vertical-align: top; }
+    .mm-cmp th:first-child, .mm-cmp td:first-child { color: #64748b; font-weight: 600; white-space: nowrap; }
+    .mm-dd { position: relative; }
+    .mm-dd-panel { position: absolute; left: 0; right: 0; top: 100%; margin-top: 4px; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,.08); z-index: 30; }
+    .mm-dd-item { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; font-size: 12px; cursor: pointer; }
+    .mm-dd-item:hover { background: #f8fafc; }
   </style>
 </head>
 <body>
@@ -209,25 +379,30 @@
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-slate-800 mb-6">🔥 Morfac Platform</h1>
       <div class="flex gap-2 border-b-2 border-slate-200">
-        <button data-target="tab-history" onclick="openTab('tab-history', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-blue-600 text-blue-600 transition-colors flex items-center gap-1.5">
-          <span>📋 업데이트 히스토리</span>
-          <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">v3.0</span>
+        <button data-target="tab-history" onclick="openTab('tab-history', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-blue-600 text-blue-600 transition-colors flex items-center gap-1.5">
+          <span>📋 히스토리</span>
+          <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">v4.0</span>
         </button>
-        <button data-target="tab-m" onclick="openTab('tab-m', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
-          M 시리즈 (서비스 메인 영역)
+        <button data-target="tab-sitemap" onclick="openTab('tab-sitemap', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          🗺️ 사이트맵
         </button>
-        <button data-target="tab-a" onclick="openTab('tab-a', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
-          A 시리즈 (온보딩 및 인증 영역)
+        <button data-target="tab-m" onclick="openTab('tab-m', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors flex items-center gap-1.5">
+          <span>M 공개 사이트</span>
+          <span class="bg-violet-100 text-violet-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">v4.0</span>
         </button>
-        <button data-target="tab-c" onclick="openTab('tab-c', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
-          C 시리즈 (콘솔 영역)
+        <button data-target="tab-a" onclick="openTab('tab-a', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          A 인증 · 온보딩
         </button>
-        <button data-target="tab-o" onclick="openTab('tab-o', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-red-600 hover:text-red-700 transition-colors flex items-center gap-1.5">
-          <span>🛠️ O 시리즈 (어드민 영역)</span>
+        <button data-target="tab-c" onclick="openTab('tab-c', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors flex items-center gap-1.5">
+          <span>C 콘솔</span>
+          <span class="bg-violet-100 text-violet-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">v4.0</span>
+        </button>
+        <button data-target="tab-o" onclick="openTab('tab-o', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-red-600 hover:text-red-700 transition-colors flex items-center gap-1.5">
+          <span>🛠️ O 어드민</span>
           <span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">UPDATED</span>
         </button>
-        <button data-target="tab-e" onclick="openTab('tab-e', this)" class="tab-btn px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
-          📧 E 시리즈 (자동 메일 발송)
+        <button data-target="tab-e" onclick="openTab('tab-e', this)" class="tab-btn px-4 py-3 whitespace-nowrap font-bold text-sm border-b-4 border-transparent text-slate-500 hover:text-slate-700 transition-colors">
+          📧 E 자동 메일
         </button>
       </div>
     </div>
@@ -239,15 +414,120 @@
       <div class="wf-card">
         <div class="wf-header">
           <span>📋 와이어프레임 버전 비교 및 업데이트 히스토리</span>
-          <span class="wf-badge bg-blue-100 text-blue-800 font-bold">wireframe_merged.html v3.0</span>
+          <span class="wf-badge bg-blue-100 text-blue-800 font-bold">wireframe_merged.html v4.0</span>
         </div>
         <div class="p-8 bg-white">
           
+
+          <!-- v4.0 섹션 -->
+          <div class="space-y-6 mb-10">
+            <div class="flex items-center gap-2 border-b pb-2">
+              <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">v4.0</span>
+              <h2 class="text-lg font-bold text-slate-900">🧩 멀티모델 반영 버전 (Current · 2026-09-28)</h2>
+            </div>
+            <p class="text-xs text-slate-500 -mt-3">OBT 라인업 3종(Motif · GLM 5.3 · Kimi)을 반영했습니다. 범위는 <strong>유저가 모델을 직접 고르는 것까지</strong>이고, 오토 라우팅(<code>morfac/auto</code>)은 화면에 노출하지 않습니다. 바뀐 화면 헤더에는 <span class="text-violet-700 font-bold">v4.0 멀티모델</span> 배지를 달고, 스펙 메모는 각 화면 카드 바로 아래(와이어프레임 밖)에 두었습니다. <strong>단가 · 컨텍스트 · 성능 수치는 전부 자리 표시(x)</strong>이며 사업 · 개발 확인 후 채웁니다.</p>
+
+            <div onclick="openTab('tab-m')" class="border border-violet-200 bg-violet-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🆕</span>
+                <h3 class="font-bold text-base text-slate-900">M-08 모델 카탈로그 · M-09 모델 상세 - 신규 공개 페이지</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li>GNB <strong>모델</strong> 메뉴 → 로그인 없이 보는 공개 페이지</li>
+                <li>필터 · 검색 대신 <strong>용도 선택 칩</strong>(추천 카드만 강조, 나머지는 흐리게) + <strong>3열 카드</strong> + <strong>비교표</strong></li>
+                <li>카드: 모델 ID 복사 · 입력/캐시/출력 단가 · 컨텍스트 · 실측 TTFT · tok/s · 기능 아이콘 · [써보기] [상세]</li>
+                <li>헤더 문구를 강점 방향(<strong>신뢰 + 가성비</strong>)으로: “같은 모델, 더 안전하고 더 싸게” (확정 전)</li>
+                <li><strong>M-09 모델 상세</strong> 신규: 상단 고정 요약 바 · 개요 · 사용 예시 · 가격 · 성능 · 지원 기능 · 데이터 처리 · Quick Start · FAQ</li>
+              </ul>
+            </div>
+
+            <div onclick="openTab('tab-m')" class="border border-violet-200 bg-violet-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🔄</span>
+                <h3 class="font-bold text-base text-slate-900">M-01 · M-06 · M-02 · M-05 - 메시지와 문서를 모델 3종 기준으로</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li>M-01 히어로: “Motif 3 단일 모델” → <strong>“모델 3종, API 하나”</strong></li>
+                <li>M-06 서비스 소개: <strong>홈(M-01)으로 통합하고 화면 삭제</strong>(9/28)</li>
+                <li>M-02 Docs: 사이드바에 <strong>Models</strong> 추가, 예시 코드에 모델 ID 3종과 <code>GET /v1/models</code> 안내</li>
+                <li>M-05 Status: 추론 엔진 가동률을 <strong>모델별 3줄</strong>로 분리</li>
+              </ul>
+            </div>
+
+            <div onclick="openTab('tab-c')" class="border border-violet-200 bg-violet-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🔄</span>
+                <h3 class="font-bold text-base text-slate-900">C-01 · C-07 · C-08 - 콘솔을 모델별로</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>C-01 대시보드 · C-08 요청 로그: 🚧 기획 중(TBD)</strong> 표시 — 화면 재검토 중, 확정 전 개발 착수 금지(9/28)</li>
+                <li>C-07 <strong>코드 보기</strong> 드로어(9/28): Python · TypeScript · cURL, 지금 설정과 대화 그대로 반영(연결하기 탭 3개안에서 축소). 추천 프롬프트 예시를 실제 내용으로</li>
+                <li>C-07 플레이그라운드(9/28): 응답 메타를 <strong>Groq식 한 줄(지연 ⚡ 속도 · 비용) + 상세 팝오버</strong>로, <strong>추론 과정 접기 · 펼치기</strong> 추가, 추천 프롬프트 선택 시 <strong>시스템 프롬프트도 함께 채움</strong>(역할 프리셋 칩 삭제), 저장 고지 · 비용 안내 문구 삭제</li>
+                <li>C-07 플레이그라운드: <strong>멀티턴 채팅</strong>으로 개편(정식 오픈 스펙 9/27 MVP) — 대화 누적 · 새 대화 · 복사/다시 생성 · 누적 토큰(80%부터 경고) · 우측 설정 패널(시스템 프롬프트 · 파라미터 2개) · [코드 보기]. 모델 드롭다운에 <strong>한 줄 용도 · 단가 3단 · 컨텍스트</strong>, 대화 중 모델 변경 시 응답마다 모델 라벨</li>
+                <li>C-08 요청 로그: <strong>모델 필터</strong> · 크레딧 컬럼 추가, 응답의 <code>model</code> = 실제 사용 모델</li>
+                <li>C-01 대시보드: <strong>모델별 사용량</strong> 표 추가</li>
+                <li>콘솔 사이드바에는 모델 메뉴를 두지 않음 — 모델은 상단 GNB “모델”로 이동(9/28)</li>
+              </ul>
+            </div>
+
+            <div onclick="openTab('tab-o')" class="border border-violet-200 bg-violet-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🆕</span>
+                <h3 class="font-bold text-base text-slate-900">O-09 모델 관리 · O 대시보드 · O-08 - 어드민</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li>O-09 모델 관리(신규 · 협의 필요): 노출 ON/OFF · 상태 배지 · 표시 이름 · 단가 · 용도 태그. <code>/v1/models</code>와 같은 데이터</li>
+                <li>O 대시보드: 모델 선택을 Motif 3 · GLM 5.3 · Kimi로 교체, <strong>모델별 비교 표</strong> 추가</li>
+                <li>O-08 추천 프롬프트: <strong>대상 모델</strong> 선택 필드 추가 </li>
+              </ul>
+            </div>
+
+            <div onclick="openTab('tab-a')" class="border border-purple-200 bg-purple-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-purple-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🔄</span>
+                <h3 class="font-bold text-base text-slate-900">A-02 · A-08 - 가입 동의 항목 2개 추가</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>[필수] 만 18세 이상입니다</strong></li>
+                <li><strong>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</strong> — 해제해도 가입 가능</li>
+                <li>이메일 가입(A-02)과 소셜 가입(A-08)에 똑같이 적용</li>
+              </ul>
+            </div>
+
+            <div onclick="openTab('tab-m')" class="border border-violet-200 bg-violet-50/40 rounded-xl p-5 cursor-pointer hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-violet-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">🆕</span>
+                <h3 class="font-bold text-base text-slate-900">M-01 홈 USP · M-10 요금 · GNB 정리</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li>M-01 홈: <strong>“같은 모델, 더 안전하고 더 싸게”</strong> USP 3칸 + 개발자 기능(구 M-06 통합) + 공식가 대비 가격 비교 + 하단 CTA</li>
+                <li>M-08 모델: 헤더를 <strong>“모델 3종, API 하나”</strong>로, 카드에 <strong>이럴 때 좋아요</strong> 3줄</li>
+                <li>M-10 요금 신규: 모델별 단가(공식 대비) · 월 예상 비용 · 충전 상품(적용 환율 표기) · FAQ</li>
+                <li>C-03 크레딧: 충전 영역에 <strong>적용 환율 · 기준일</strong>과 <strong>결제 금액 계산식(크레딧 × 환율 × 1.1)</strong> 고지</li>
+                <li><strong>🗺️ 사이트맵 탭</strong> 신규 — 사용자 기준 페이지 트리(홈 → GNB 페이지 → 하위 페이지, Footer 링크, 별도 인증 페이지). 자동 메일은 발송 화면과 점선으로 연결, 어드민 · 모달 · 상태 화면 제외, 페이지 클릭 시 해당 화면으로 이동</li>
+                <li>GNB: <strong>로고 옆 KO ⇄ EN 스위치</strong>(누를 때마다 전환 · 국기 없음) · 메뉴 3개(모델 / 요금 / Docs) · 로그인 + [무료로 시작하기], 로그인 후 [콘솔]. 서비스 소개 · Playground는 GNB에서 제외</li>
+              </ul>
+            </div>
+
+            <div class="border border-amber-200 bg-amber-50/60 rounded-xl p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-amber-500 text-white font-extrabold text-xs px-2.5 py-1 rounded">❓</span>
+                <h3 class="font-bold text-base text-slate-900">결정 필요 (와이어프레임에 가정값으로 들어간 것)</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>모델 ID 표기</strong> — 가정: <code>motif-3</code> · <code>glm-5.3</code> · <code>kimi-k3</code>. 버전 포함 vs 별칭(<code>kimi</code>), Kimi K3 / K2.6 확정 필요</li>
+                <li><strong>카드 실측 성능 공개</strong> — 가정: 최근 7일 p50 TTFT · tok/s, 측정 기준 툴팁</li>
+                <li><strong>용도 칩 → 추천 모델 매핑 근거</strong> — 가정: 국산 모델 → Motif / 코딩 에이전트 → GLM / 긴 문서·UI 코딩 → Kimi (내부 평가로 확인 전). Motif는 한국어 강점 메시지를 쓰지 않음(9/28)</li>
+                <li><strong>O-09 모델 관리 화면</strong> 필요 여부 — 모델 데이터를 어드민에서 고칠지, 설정 파일 배포로 갈지 개발과 협의</li>
+              </ul>
+            </div>
+          </div>
+
           <!-- v3.0 섹션 -->
           <div class="space-y-6">
             <div class="flex items-center gap-2 border-b pb-2">
               <span class="bg-blue-600 text-white font-extrabold text-xs px-2.5 py-1 rounded">v3.0</span>
-              <h2 class="text-lg font-bold text-slate-900">💳 결제·환불 체계 도입 버전 (Current)</h2>
+              <h2 class="text-lg font-bold text-slate-900">💳 결제·환불 체계 도입 버전</h2>
             </div>
             <p class="text-xs text-slate-500 -mt-3">유저 콘솔 · 운영 어드민 · 자동 메일 세 층에 결제와 환불 흐름을 새로 얹은 버전입니다. 유저 콘솔에는 환불 버튼을 두지 않고, 모든 환불은 문의로 접수해 어드민에서 처리합니다.</p>
 
@@ -303,7 +583,7 @@
               <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
                 <li>1크레딧 = US$1. <strong>잔액은 항상 $ 표기</strong>, 원화 환산 금지. 결제·환불 금액만 원화</li>
                 <li>크레딧 금액은 소수점 이하가 0이면 생략 ($20 · 잔액 $27.11)</li>
-                <li><strong>적용 환율 1,400원/크레딧은 공급가 기준</strong>, 부가세 포함 크레딧당 결제단가는 1,540원 — 환불 계산은 1,540원 기준</li>
+                <li><strong>적용 환율은 공급가 기준</strong>, 결제 금액 = 크레딧 수 × 적용 환율 × 1.1(부가세). 환불은 결제 건별 크레딧당 결제단가(결제금액 ÷ 크레딧) 기준 <span class="text-violet-700">(9/28: 환율 1,412원, 기준일과 계산식을 C-03 · M-10에 고지)</span></li>
                 <li>상태 표기는 버튼처럼 보이지 않는 텍스트형으로</li>
               </ul>
             </div>
@@ -374,6 +654,175 @@
     </div>
 
     <!-- ==========================================
+         TAB: 사이트맵 (v4.0)
+         ========================================== -->
+    <div id="tab-sitemap" class="tab-content hidden">
+      <div class="wf-card">
+        <div class="wf-header">
+          <span>🗺️ 사이트맵 · 사용자 기준</span>
+          <span class="wf-badge">페이지를 누르면 해당 화면으로 이동</span>
+        </div>
+        <div class="sm-canvas">
+          <div class="sm-layout" id="sm-layout">
+            <svg class="sm-links" id="sm-links"></svg>
+            <!-- 메인 트리 -->
+            <div class="sm-main">
+              <div class="sm-area-title">GNB에서 들어가는 페이지</div>
+              
+            <div class="tr-root"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="pg" data-pg="M-01">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-hero"></div><div class="tb-row3"><i></i><i></i><i></i></div><div class="tb-dark"></div></div>
+                <div class="pg-label"><span class="sm-id">M-01</span> 홈 </div>
+              </a></div>
+            <div class="tr-level">
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-m','m-08')" class="pg" data-pg="M-08">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-row3 tall"><i></i><i></i><i></i></div><div class="tb-line"></div><div class="tb-line s"></div></div>
+                <div class="pg-label"><span class="sm-id">M-08</span> 모델 <span class="sm-new">NEW</span></div>
+              </a><div class="tr-kids"><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-m','m-09')" class="pg" data-pg="M-09">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-bar"></div><div class="tb-line"></div><div class="tb-row4"><i></i><i></i><i></i><i></i></div><div class="tb-line s"></div></div>
+                <div class="pg-label"><span class="sm-id">M-09</span> 모델 상세 <span class="sm-new">NEW</span></div>
+              </a></div></div></div>
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-m','m-10')" class="pg" data-pg="M-10">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title c"></div><div class="tb-table"><i></i><i></i><i></i></div><div class="tb-row4"><i></i><i></i><i></i><i></i></div></div>
+                <div class="pg-label"><span class="sm-id">M-10</span> 요금 <span class="sm-new">NEW</span></div>
+              </a></div>
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-m','m-02')" class="pg" data-pg="M-02">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side"></div><div class="tb-main"><div class="tb-line"></div><div class="tb-code"></div><div class="tb-line s"></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">M-02</span> Docs </div>
+              </a></div>
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="pg" data-pg="C-01">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-row4"><i></i><i></i><i></i><i></i></div><div class="tb-table"><i></i><i></i></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">C-01</span> 콘솔 · 대시보드 </div><div class="pg-note">로그인 후</div>
+              </a><div class="tr-kids"><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-02')" class="pg" data-pg="C-02">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-title"></div><div class="tb-table"><i></i><i></i><i></i><i></i></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">C-02</span> API 키 </div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="pg" data-pg="C-03">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-title"></div><div class="tb-table"><i></i><i></i><i></i><i></i></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">C-03</span> 크레딧 </div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-07')" class="pg" data-pg="C-07">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-bub r"></div><div class="tb-bub"></div><div class="tb-bub r"></div><div class="tb-input"></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">C-07</span> 플레이그라운드 </div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-08')" class="pg" data-pg="C-08">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-title"></div><div class="tb-table"><i></i><i></i><i></i><i></i></div></div></div></div>
+                <div class="pg-label"><span class="sm-id">C-08</span> 요청 로그 </div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01'); setTimeout(openAccountSettingModal, 400)" class="pg" data-pg="ACCT">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-row3"><i></i><i></i><i></i></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">모달</span> 계정 설정</div><div class="pg-note">프로필 · 보안(비밀번호 · 탈퇴)</div>
+              </a></div></div></div>
+            </div>
+              <div class="sm-footer">
+                <div class="sm-area-title">Footer 링크</div>
+                <div class="sm-footer-row"><a href="javascript:void(0)" onclick="smGo('tab-m','m-07')" class="pg small" data-pg="M-07">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
+                <div class="pg-label"><span class="sm-id">M-07</span> 새 소식 </div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-m','m-03')" class="pg small" data-pg="M-03">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
+                <div class="pg-label"><span class="sm-id">M-03</span> 이용약관 </div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-m','m-04')" class="pg small" data-pg="M-04">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
+                <div class="pg-label"><span class="sm-id">M-04</span> 개인정보처리방침 </div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-m','m-05')" class="pg small" data-pg="M-05">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
+                <div class="pg-label"><span class="sm-id">M-05</span> Status </div>
+              </a></div>
+              </div>
+            </div>
+            <!-- 자동 메일 -->
+            <div class="sm-mail">
+              <div class="sm-area-title">자동 메일</div>
+              <div class="sm-mail-inner"><a href="javascript:void(0)" onclick="smGo('tab-e','e-05')" class="ml" data-mail="E-05">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-05</span></div>
+                <div class="ml-name">소셜 계정 연동 완료</div>
+                <div class="ml-trig">같은 이메일 연동(A-09) 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-01')" class="ml" data-mail="E-01">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-01</span></div>
+                <div class="ml-name">가입 인증 OTP</div>
+                <div class="ml-trig">이메일 가입 시 발송</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-02')" class="ml" data-mail="E-02">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-02</span></div>
+                <div class="ml-name">가입 완료 안내</div>
+                <div class="ml-trig">온보딩 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-07')" class="ml" data-mail="E-07">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-07</span></div>
+                <div class="ml-name">충전 완료 안내</div>
+                <div class="ml-trig">결제 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-08')" class="ml" data-mail="E-08">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-08</span></div>
+                <div class="ml-name">환불 완료 안내</div>
+                <div class="ml-trig">운영자 환불 처리(O-04) 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-03')" class="ml" data-mail="E-03">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-03</span></div>
+                <div class="ml-name">비밀번호 재설정 OTP</div>
+                <div class="ml-trig">재설정 요청 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-04')" class="ml" data-mail="E-04">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-04</span></div>
+                <div class="ml-name">비밀번호 변경 알림</div>
+                <div class="ml-trig">비밀번호 변경 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-06')" class="ml" data-mail="E-06">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-06</span></div>
+                <div class="ml-name">문의 답변</div>
+                <div class="ml-trig">운영자 답변(O-06) 시 · 연결 화면 없음</div>
+              </a></div>
+            </div>
+            <!-- 별도 페이지 -->
+            <div class="sm-side">
+              <div class="sm-area-title">별도 페이지 · 인증</div>
+              <div class="sm-side-inner">
+            <div class="sep-group">
+              <div class="sep-title">회원가입</div>
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-a','a-02')" class="pg" data-pg="A-02">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">A-02</span> 회원가입 </div><div class="pg-note">이메일 · 소셜</div>
+              </a><div class="tr-kids"><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-a','a-03')" class="pg" data-pg="A-03">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">A-03</span> OTP 인증 </div><div class="pg-note">소셜은 A-08 약관 동의</div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-a','a-04')" class="pg" data-pg="A-04">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">A-04</span> 온보딩 설문 </div><div class="pg-note">완료 시 $20 → 콘솔</div>
+              </a></div></div></div>
+            </div>
+            <div class="sep-group">
+              <div class="sep-title">로그인</div>
+              <div class="tr-col"><a href="javascript:void(0)" onclick="smGo('tab-a','a-01')" class="pg" data-pg="A-01">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">A-01</span> 로그인 </div>
+              </a><div class="tr-kids"><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-a','a-05')" class="pg" data-pg="A-05">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
+                <div class="pg-label"><span class="sm-id">A-05</span> 비밀번호 재설정 </div><div class="pg-note">요청 → OTP → 새 비밀번호</div>
+              </a></div></div></div>
+            </div>
+              </div>
+              <div class="sm-legend">
+                <div><span class="sm-new">NEW</span> v4.0에서 추가된 페이지</div>
+                <div>모달 · 상태 화면은 제외(계정 설정은 페이지급이라 포함) — API 키 발급, 소셜 약관 동의 · 계정 연동 · 미인증 · 가입 제한(A-07~A-10)</div>
+                <div><span style="color:#0891b2;font-weight:700">- - -</span> 페이지에서 발송되는 자동 메일 연결 · 페이지나 메일에 마우스를 올리면 해당 연결만 주황색으로 표시</div><div>운영 어드민(O)은 사용자 사이트맵에서 제외 — O 탭 참고</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
          TAB 2: M 시리즈 (서비스 메인 영역)
          ========================================== -->
     <div id="tab-m" class="tab-content hidden">
@@ -381,8 +830,8 @@
       <!-- M-01: 서비스 메인 (Motif 모델 USP 중심 랜딩) -->
       <div id="m-01" class="wf-card">
         <div class="wf-header">
-          <span>M-01 서비스 메인 (Motif 모델 USP 랜딩)</span>
-          <span class="wf-badge">GNB [서비스 소개 / Playground / Docs / 콘솔 / 로그인·가입 / 언어]</span>
+          <span class="flex items-center gap-2">M-01 서비스 메인 (USP 랜딩) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
+          <span class="wf-badge">GNB [로고 · 언어 / 모델 / 요금 / Docs / 로그인 · 무료로 시작하기]</span>
         </div>
         <div class="wf-content-m relative">
           <div class="bg-blue-100 text-blue-800 text-xs font-bold text-center py-2">
@@ -390,40 +839,134 @@
           </div>
           
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50">
-                <option>KO</option>
-                <option>EN</option>
-              </select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
-          <div class="flex-grow flex flex-col items-center justify-center text-center p-12 bg-slate-50">
-            <span class="text-xs font-bold text-blue-600 bg-blue-100 px-3 py-1 rounded-full mb-4">NEXT-GEN KOREAN LLM</span>
-            <h2 class="text-4xl font-bold mb-4">가장 강력한 국산 LLM,<br/>Motif 3 모델을 만나보세요</h2>
-            <p class="text-slate-500 mb-8 max-w-lg text-sm">
-              한국어 맥락 이해도와 코딩 에이전트 연동 성능이 검증된 Motif 3 API를 지금 바로 경험하세요.
-            </p>
-            <div class="flex gap-4">
-              <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary px-8 py-3 w-auto no-underline text-white flex items-center justify-center">무료로 시작하기</a>
-              <a href="#m-06" class="wf-btn px-8 py-3 w-auto no-underline text-slate-800 flex items-center justify-center">Morfac 서비스 소개</a>
+          <div class="flex-grow bg-white">
+
+            <!-- ① USP : 히어로 + 강점 3가지 (가장 강하게) -->
+            <div class="bg-slate-50 border-b px-12 pt-16 pb-12 text-center">
+              <div class="text-xs font-bold text-violet-700 mb-4">GLM · Kimi, 써보고 싶었지만 데이터가 걱정됐다면</div>
+              <h2 class="text-5xl font-extrabold text-slate-900 leading-tight mb-5">같은 모델,<br/>더 안전하고 더 싸게</h2>
+              <p class="text-slate-500 text-sm max-w-xl mx-auto leading-relaxed mb-8">GLM · Kimi 같은 최신 오픈 모델과 국산 모델 Motif를<br/>모르팩이 태국 데이터센터에서 직접 서빙해요.</p>
+              <div class="flex gap-3 justify-center mb-14">
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary px-8 py-3 w-auto no-underline text-white">무료로 시작하기 · $20 크레딧</a>
+                <a href="#m-10" class="wf-btn px-8 py-3 w-auto no-underline text-slate-800">요금 보기</a>
+              </div>
+              <div class="grid grid-cols-3 max-w-4xl mx-auto text-left divide-x divide-slate-200">
+                <div class="px-6">
+                  <div class="text-[11px] font-bold text-slate-400 mb-1">같은 모델</div>
+                  <div class="text-lg font-extrabold text-slate-900 leading-snug mb-2">GLM · Kimi 오픈웨이트 모델에<br/>국산 Motif까지</div>
+                  <a href="#m-08" class="text-xs text-blue-600 underline">모델 보기 →</a>
+                </div>
+                <div class="px-6">
+                  <div class="text-[11px] font-bold text-slate-400 mb-1">더 안전하게</div>
+                  <div class="text-lg font-extrabold text-slate-900 leading-snug mb-2">태국 데이터센터<br/>중국 서버 미경유</div>
+                  <a href="#md-data" class="text-xs text-blue-600 underline">데이터 처리 방식 →</a>
+                </div>
+                <div class="px-6">
+                  <div class="text-[11px] font-bold text-slate-400 mb-1">더 싸게</div>
+                  <div class="text-lg font-extrabold text-slate-900 leading-snug mb-2">공식 API 대비<br/>최대 <span class="text-emerald-600">x%</span> 저렴</div>
+                  <a href="#m-10" class="text-xs text-blue-600 underline">요금 보기 →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ② 가격 비교 (두 번째로 강하게 · 숫자 중심) -->
+            <div class="px-12 py-14">
+              <div class="flex justify-between items-end mb-6">
+                <h3 class="text-2xl font-extrabold text-slate-900">같은 모델인데, 왜 더 내세요?</h3>
+                <a href="#m-10" class="text-xs text-blue-600 underline">요금 전체 보기 →</a>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="rounded-2xl bg-slate-900 text-white p-7">
+                  <div class="text-sm font-bold text-slate-300 mb-4">GLM 5.3</div>
+                  <div class="text-[11px] text-slate-400 mb-1">월 예상 비용 · 코딩 에이전트 사용량 기준</div>
+                  <div class="flex items-end gap-4 mb-5">
+                    <div class="text-xl text-slate-500 line-through pb-1">$57.60</div>
+                    <div class="text-slate-500 text-xl pb-1">→</div>
+                    <div class="text-4xl font-extrabold">$x.xx</div>
+                    <div class="ml-auto text-3xl font-extrabold text-emerald-400">−x%</div>
+                  </div>
+                  <div class="text-xs">
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">입력</span><span><span class="text-slate-500 line-through mr-2">$1.40</span><span class="font-bold text-white">$x.xx</span></span></div>
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">캐시 입력</span><span><span class="text-slate-500 line-through mr-2">$0.26</span><span class="font-bold text-white">$x.xx</span></span></div>
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">출력</span><span><span class="text-slate-500 line-through mr-2">$4.40</span><span class="font-bold text-white">$x.xx</span></span></div>
+                  </div>
+                </div>
+                <div class="rounded-2xl bg-slate-900 text-white p-7">
+                  <div class="text-sm font-bold text-slate-300 mb-4">Kimi K3</div>
+                  <div class="text-[11px] text-slate-400 mb-1">월 예상 비용 · 코딩 에이전트 사용량 기준</div>
+                  <div class="flex items-end gap-4 mb-5">
+                    <div class="text-xl text-slate-500 line-through pb-1">$114.00</div>
+                    <div class="text-slate-500 text-xl pb-1">→</div>
+                    <div class="text-4xl font-extrabold">$x.xx</div>
+                    <div class="ml-auto text-3xl font-extrabold text-emerald-400">−x%</div>
+                  </div>
+                  <div class="text-xs">
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">입력</span><span><span class="text-slate-500 line-through mr-2">$3.00</span><span class="font-bold text-white">$x.xx</span></span></div>
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">캐시 입력</span><span><span class="text-slate-500 line-through mr-2">$0.30</span><span class="font-bold text-white">$x.xx</span></span></div>
+                    <div class="flex justify-between py-1.5 border-t border-slate-700/60"><span class="text-slate-400">출력</span><span><span class="text-slate-500 line-through mr-2">$15.00</span><span class="font-bold text-white">$x.xx</span></span></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-3">월 예상 비용 = 입력 1억 토큰(그중 캐시 80%) + 출력 200만 토큰 기준 · 단가는 $ / 1M 토큰 · 공식 API = 각 모델 개발사 표준가 (2026-09-28 조회)</p>
+            </div>
+
+            <!-- ③ 서비스 소개 · WHY MORFAC (가장 가볍게) -->
+            <div class="px-12 py-14 bg-gradient-to-br from-white to-emerald-50/60 border-t">
+              <div class="flex items-center gap-4 mb-6">
+                <span class="text-xs font-extrabold tracking-[0.2em] text-emerald-600">WHY MORFAC</span>
+                <div class="flex-grow border-t border-slate-200"></div>
+              </div>
+              <h3 class="text-3xl font-extrabold text-slate-900 mb-4">Morfac에서 바로 연결하고, 한곳에서 관리하세요</h3>
+              <p class="text-sm text-slate-500 leading-relaxed mb-8">Morfac은 AI 모델을 사용하기 위한 API 게이트웨이를 제공합니다.<br/>인증 · 키 관리 · 사용량 추적을 담당하며 모델 변경이나 업그레이드 시에도 코드 수정 없이 대응할 수 있습니다.</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 border rounded-2xl bg-white overflow-hidden">
+                <div class="p-7 border-r">
+                  <div class="font-mono text-sm font-bold text-emerald-600 mb-3">01</div>
+                  <div class="font-extrabold text-base text-slate-900 mb-3">OpenAI 표준 규격 호환</div>
+                  <p class="text-sm text-slate-500 leading-relaxed">기존 OpenAI SDK와 그대로 호환됩니다. Base URL과 API Key만 바꾸면 연결되고, <code>model</code> 값만 바꿔 모델을 전환합니다.</p>
+                </div>
+                <div class="p-7 border-r">
+                  <div class="font-mono text-sm font-bold text-emerald-600 mb-3">02</div>
+                  <div class="font-extrabold text-base text-slate-900 mb-3">키 발급과 크레딧을 콘솔에서</div>
+                  <p class="text-sm text-slate-500 leading-relaxed">키마다 만료일과 크레딧 한도를 정해 발급하고, 크레딧 충전과 사용 내역을 한곳에서 관리하세요.</p>
+                </div>
+                <div class="p-7">
+                  <div class="font-mono text-sm font-bold text-emerald-600 mb-3">03</div>
+                  <div class="font-extrabold text-base text-slate-900 mb-3">호출 로그와 사용량 추적</div>
+                  <p class="text-sm text-slate-500 leading-relaxed">응답 속도, 토큰 소모량, 실패 상태 코드를 요청 단위로 확인합니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 하단 CTA -->
+            <div class="mx-12 mb-12 rounded-2xl bg-slate-50 border p-8 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-lg text-slate-900">가입하고 $20로 바로 써보세요</div>
+                <div class="text-xs text-slate-500 mt-1">카드 등록 없이 시작 · 온보딩 설문 완료 시 지급</div>
+              </div>
+              <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary w-auto px-6 no-underline text-white">무료로 시작하기</a>
             </div>
           </div>
 
@@ -445,73 +988,166 @@
           </div>
         </div>
       </div>
+      <div class="mm-note mm-note-out">📝 <b>M-01 홈 메모 (9/28)</b> — 홈은 <b>USP “같은 모델, 더 안전하고 더 싸게”</b>를 전달하는 곳, 모델 페이지(M-08)는 모델별 강점과 “API 하나”를 보여주는 곳으로 역할을 나눔.
+        구성(9/28 순서 · 강약): <b>① USP</b>(가장 강하게 — 큰 헤드라인 + 강점 3가지를 카드 없이 한 줄 문장으로) → <b>② 가격 비교</b>(두 번째 — 표 대신 큰 숫자 비교 카드 2개 · 섹션 라벨 없이 헤드라인 “같은 모델인데, 왜 더 내세요?” · 대안: “같은 모델, 더 낼 이유가 없어요” / “같은 GLM, 계산서는 다르게” · 공식가 9/28 조회: GLM-5.3 출력 $4.40(Z.ai) · Kimi K3 출력 $15.00(Moonshot), 모르팩 가격 확정 전) → <b>③ 서비스 소개</b>(WHY MORFAC 라벨 + 헤드라인 + 설명 2줄 + 01·02·03 번호형 3칸, 구 M-06 · 9/28 스아나 시안 반영) → 하단 CTA.
+        <b>대안 문구</b>: ① “데이터는 안심하고, 가격은 가볍게” ② “중국 모델의 성능, 데이터는 중국 밖에서”(가장 직접적 · 표현 수위 확인 필요) ③ “믿고 쓰는 오픈 모델, 합리적인 가격으로”(중국 언급 없음).
+        <b>확인</b>: 중국 서버 미경유 확인 완료(9/28) · 학습 미사용은 Motif 측 확인 중 · “최대 x% 저렴”과 가격 비교표는 공식 API 단가 대비 실제 숫자와 조회일이 있어야 게시 가능(표시광고법) · 특정 국가 언급 표현은 법무 검토 권장.
+        <b>서비스 소개(M-06)는 홈으로 통합(9/28)</b> — M-06의 기능 소개(OpenAI 호환 · 키 관리 · 사용량/로그)를 “바로 연결하고, 한곳에서 관리하세요” 섹션으로 옮기고 M-06 화면은 삭제.</div>
 
-      <!-- M-06: 서비스 소개 (Static Page - OBT 텍스트 최적화 및 CTA 변경) -->
-      <div id="m-06" class="wf-card">
+      
+
+
+      <!-- M-08: 모델 카탈로그 (v4.0 신규 · 공개 페이지) -->
+      <div id="m-08" class="wf-card">
         <div class="wf-header">
-          <span>M-06 서비스 소개 (Morfac API Gateway Static Page)</span>
-          <span class="wf-badge">독립 게이트웨이 정적 설명 페이지</span>
+          <span>M-08 모델 카탈로그 (/models · 로그인 없이 공개)</span>
+          <div class="flex gap-2 items-center"><span class="wf-badge">GNB “모델” (콘솔 상단 GNB 포함)</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></div>
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="text-blue-600 font-bold no-underline">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
-            </div>
-          </div>
-
-          <div class="p-12 bg-white flex-grow max-w-4xl mx-auto w-full">
-            <div class="text-center mb-12">
-              <h1 class="text-3xl font-extrabold text-slate-900 mb-4">Morfac: Unified API Gateway Solution</h1>
-              <p class="text-slate-600 text-sm max-w-2xl mx-auto leading-relaxed">
-                Morfac은 복잡한 LLM 연동을 단일 게이트웨이로 통합하는 API 관리 플랫폼입니다. Motif 3 공개 베타 테스트 참여를 통해 가장 먼저 경험해 보세요.
-              </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
-                <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold mb-4">⚡</div>
-                <h3 class="font-bold text-base mb-2 text-slate-900">OpenAI 표준 규격 호환</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">기존 OpenAI SDK와 100% 호환됩니다. 별도의 코드 개편 없이 Base URL과 API Key 변경만으로 Motif 3 모델에 바로 연결할 수 있습니다.</p>
-              </div>
-              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
-                <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center font-bold mb-4">🛡️</div>
-                <h3 class="font-bold text-base mb-2 text-slate-900">무료 크레딧 & 키 관리</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">사전 체험 기간 동안 테스트용 API 키를 즉시 발급받고 free 크레딧($20)을 지원받아 제약 없이 모델 인퍼런스를 테스트할 수 있습니다.</p>
-              </div>
-              <div class="border rounded-xl p-6 bg-slate-50 border-slate-200">
-                <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold mb-4">📊</div>
-                <h3 class="font-bold text-base mb-2 text-slate-900">실시간 호출 분석 & 로그</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">응답 속도(Latency), 토큰 소모량, 실패 상태 코드를 실시간으로 트래킹하여 안정성을 검증합니다.</p>
-              </div>
-            </div>
-
-            <div class="text-center border-t pt-8 space-y-3">
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-dark w-auto px-10 py-3.5 text-sm font-bold inline-flex rounded-lg shadow-sm hover:shadow-md transition-all">Morfac 콘솔 시작하기 (무료 $20 크레딧 지급)</a>
-              <div class="text-xs text-slate-500 space-x-4">
-                <a href="#m-02" onclick="switchToMTab()" class="hover:text-slate-700 underline">Docs (개발자 가이드) 보기</a>
-                <span>|</span>
-                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-slate-700 underline">Playground에서 테스트하기</a>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
               </div>
             </div>
           </div>
 
+          <div class="p-8 bg-white space-y-8">
+
+            <!-- ① 헤더 -->
+            <div class="text-center">
+              <h1 class="text-3xl font-extrabold text-slate-900 mb-3">모델 3종, API 하나</h1>
+              <p class="text-sm text-slate-500 mb-6">용도에 맞는 모델을 고르고, 같은 API 키로 바로 바꿔 쓰세요.</p>
+              <div class="flex gap-2 justify-center">
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary w-auto px-6 no-underline text-white text-xs">API 키 발급</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn w-auto px-6 no-underline text-slate-800 text-xs">플레이그라운드</a>
+              </div>
+              <p class="text-[10px] text-slate-400 mt-2">로그인 상태면 [API 키 발급] → [키 관리]</p>
+            </div>
+
+            <!-- ② 용도 선택 칩 -->
+            <div>
+              <div class="flex flex-wrap gap-2 justify-center" id="mm-chips">
+                <button class="mm-chip active" onclick="mmChip(this,'all')">전체</button>
+                <button class="mm-chip" onclick="mmChip(this,'motif')">국산 모델</button>
+                <button class="mm-chip" onclick="mmChip(this,'glm')">코딩 에이전트</button>
+                <button class="mm-chip" onclick="mmChip(this,'kimi')">긴 문서 · 컨텍스트</button>
+                <button class="mm-chip" onclick="mmChip(this,'glm')">저비용</button>
+              </div>
+              <p class="text-[11px] text-slate-400 text-center mt-2">칩은 결과를 줄이지 않고 추천 카드만 강조합니다 (나머지는 흐리게, 숨기지 않음)</p>
+            </div>
+
+            <!-- ③ 모델 카드 3열 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="mm-card" data-model="motif">
+                <div class="flex justify-between items-start">
+                  <div><div class="font-extrabold text-base text-slate-900">Motif 3</div><div class="text-[11px] text-slate-400">Motif Technologies</div></div>
+                  
+                </div>
+                <div class="flex flex-wrap gap-1"><span class="mm-tag">국산 모델</span><span class="mm-tag">구조화 출력</span></div>
+                <p class="text-xs text-slate-600 leading-relaxed">도구 호출과 JSON 스키마 출력이 안정적인 국산 모델이에요.</p>
+                <div class="bg-slate-50 rounded-lg p-3">
+                  <div class="text-[11px] font-bold text-slate-500 mb-1">이럴 때 좋아요</div>
+                  <ul class="text-xs text-slate-700 space-y-1"><li>✓ 정해진 JSON 형식으로 데이터 추출 · 분류</li><li>✓ 도구 호출 기반 에이전트</li><li>✓ 국산 모델을 써야 하는 프로젝트</li></ul>
+                </div>
+                <div class="text-xs"><span class="mm-id">motif-3</span> <button onclick="alert('모델 ID 복사: motif-3')" class="text-[11px] text-blue-600 underline border-none bg-transparent cursor-pointer">복사</button></div>
+                <div class="text-[11px] text-slate-600 border-t pt-2 space-y-1">
+                  <div class="flex justify-between"><span>입력 / <b>캐시</b> / 출력</span><span class="font-bold">$x · <span class="text-violet-700">$x</span> · $x <span class="font-normal text-slate-400">/1M</span></span></div>
+                  <div class="flex justify-between"><span>컨텍스트</span><span class="font-bold">xxxK</span></div>
+                  <div class="flex justify-between"><span title="게이트웨이에서 측정 · 최근 7일 p50">실측 TTFT · 처리량 ⓘ</span><span class="font-bold">x.x초 · xx tok/s</span></div>
+                  <div class="flex justify-between"><span>기능</span><span>🛠 tools · { } JSON · 🧠 reasoning</span></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                  <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn wf-btn-dark text-xs no-underline">써보기</a>
+                  <a href="#m-09" class="wf-btn text-xs no-underline text-slate-800">상세</a>
+                </div>
+              </div>
+              <div class="mm-card" data-model="glm">
+                <div class="flex justify-between items-start">
+                  <div><div class="font-extrabold text-base text-slate-900">GLM 5.3</div><div class="text-[11px] text-slate-400">Z.ai</div></div>
+                  
+                </div>
+                <div class="flex flex-wrap gap-1"><span class="mm-tag">코딩 · 에이전트</span></div>
+                <p class="text-xs text-slate-600 leading-relaxed">코딩 에이전트 백엔드로 많이 쓰여요. 빠르고 환각이 적어요.</p>
+                <div class="bg-slate-50 rounded-lg p-3">
+                  <div class="text-[11px] font-bold text-slate-500 mb-1">이럴 때 좋아요</div>
+                  <ul class="text-xs text-slate-700 space-y-1"><li>✓ Claude Code 등 코딩 에이전트 백엔드</li><li>✓ 도구 호출이 많은 에이전트</li><li>✓ 빠른 응답이 필요한 서비스</li></ul>
+                </div>
+                <div class="text-xs"><span class="mm-id">glm-5.3</span> <button onclick="alert('모델 ID 복사: glm-5.3')" class="text-[11px] text-blue-600 underline border-none bg-transparent cursor-pointer">복사</button></div>
+                <div class="text-[11px] text-slate-600 border-t pt-2 space-y-1">
+                  <div class="flex justify-between"><span>입력 / <b>캐시</b> / 출력</span><span class="font-bold">$x · <span class="text-violet-700">$x</span> · $x <span class="font-normal text-slate-400">/1M</span></span></div>
+                  <div class="flex justify-between"><span>컨텍스트</span><span class="font-bold">xxxK</span></div>
+                  <div class="flex justify-between"><span title="게이트웨이에서 측정 · 최근 7일 p50">실측 TTFT · 처리량 ⓘ</span><span class="font-bold">x.x초 · xx tok/s</span></div>
+                  <div class="flex justify-between"><span>기능</span><span>🛠 tools · { } JSON · 🧠 reasoning</span></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                  <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn wf-btn-dark text-xs no-underline">써보기</a>
+                  <a href="#m-09" class="wf-btn text-xs no-underline text-slate-800">상세</a>
+                </div>
+              </div>
+              <div class="mm-card" data-model="kimi">
+                <div class="flex justify-between items-start">
+                  <div><div class="font-extrabold text-base text-slate-900">Kimi</div><div class="text-[11px] text-slate-400">Moonshot AI</div></div>
+                  <span class="mm-tag" style="background:#fef3c7;color:#92400e">Preview?</span>
+                </div>
+                <div class="flex flex-wrap gap-1"><span class="mm-tag">긴 문서</span><span class="mm-tag">UI 코딩</span></div>
+                <p class="text-xs text-slate-600 leading-relaxed">긴 컨텍스트와 프론트엔드 코딩에 강해요. 대신 출력 단가가 높아요.</p>
+                <div class="bg-slate-50 rounded-lg p-3">
+                  <div class="text-[11px] font-bold text-slate-500 mb-1">이럴 때 좋아요</div>
+                  <ul class="text-xs text-slate-700 space-y-1"><li>✓ 긴 문서 · 코드베이스를 한 번에</li><li>✓ 프론트엔드 · UI 코딩</li><li>✓ 스크린샷 보고 디버깅 (이미지 입력)</li></ul>
+                </div>
+                <div class="text-xs"><span class="mm-id">kimi-k3</span> <button onclick="alert('모델 ID 복사: kimi-k3')" class="text-[11px] text-blue-600 underline border-none bg-transparent cursor-pointer">복사</button></div>
+                <div class="text-[11px] text-slate-600 border-t pt-2 space-y-1">
+                  <div class="flex justify-between"><span>입력 / <b>캐시</b> / 출력</span><span class="font-bold">$x · <span class="text-violet-700">$x</span> · $x <span class="font-normal text-slate-400">/1M</span></span></div>
+                  <div class="flex justify-between"><span>컨텍스트</span><span class="font-bold">xxxK</span></div>
+                  <div class="flex justify-between"><span title="게이트웨이에서 측정 · 최근 7일 p50">실측 TTFT · 처리량 ⓘ</span><span class="font-bold">x.x초 · xx tok/s</span></div>
+                  <div class="flex justify-between"><span>기능</span><span>🛠 tools · { } JSON · 🧠 reasoning</span></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                  <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn wf-btn-dark text-xs no-underline">써보기</a>
+                  <a href="#m-09" class="wf-btn text-xs no-underline text-slate-800">상세</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 한눈에 비교 -->
+            <div>
+              <h3 class="font-bold text-sm text-slate-900 mb-2">한눈에 비교</h3>
+              <div class="border rounded-lg overflow-x-auto">
+                <table class="mm-cmp w-full">
+                  <thead><tr class="bg-slate-50"><th></th><th>Motif 3</th><th>GLM 5.3</th><th>Kimi</th></tr></thead>
+                  <tbody>
+                    <tr><td>모델 ID</td><td><span class="mm-id">motif-3</span></td><td><span class="mm-id">glm-5.3</span></td><td><span class="mm-id">kimi-k3</span></td></tr>
+                    <tr><td>입력 / 캐시 / 출력</td><td>$x / $x / $x</td><td>$x / $x / $x</td><td>$x / $x / $x</td></tr>
+                    <tr><td>컨텍스트 · 최대 출력</td><td>xxxK · xxK</td><td>xxxK · xxK</td><td>xxxK · xxK</td></tr>
+                    <tr><td>tools · JSON 스키마 · reasoning</td><td>● · ● · ●</td><td>● · 확인 · ●</td><td>● · 확인 · ●</td></tr>
+                    <tr><td>TTFT · 처리량 (p50, 7일)</td><td>x.x초 · xx tok/s</td><td>x.x초 · xx tok/s</td><td>x.x초 · xx tok/s</td></tr>
+                    <tr><td>업타임 (30일)</td><td>xx.x%</td><td>xx.x%</td><td>xx.x%</td></tr>
+                    <tr><td>잘하는 것</td><td>도구 호출 · JSON 구조화 출력</td><td>코딩 에이전트 · 도구 호출</td><td>긴 문서 · UI 코딩 · 이미지 보고 디버깅</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">모델이 3개라 이 표가 곧 Compare — 별도 비교 페이지는 만들지 않음. 모바일은 첫 열 고정 + 가로 스크롤.</p>
+            </div>
+
+          </div>
+          <div class="h-4"></div>
           <div class="mock-footer flex justify-between items-start">
             <div class="space-y-1">
               <div class="font-bold text-slate-700 text-xs mb-2">Morfac</div>
@@ -519,7 +1155,7 @@
               <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morfac.io | 연락처: 02-000-0000</p>
             </div>
             <div class="flex gap-4 font-medium text-slate-500 text-xs">
-              <a href="#m-07" class="hover:underline text-blue-600 font-semibold">새 소식</a>
+              <a href="#m-07" onclick="switchToMTab()" class="hover:underline text-blue-600 font-semibold">새 소식</a>
               <span>|</span>
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
@@ -530,37 +1166,379 @@
           </div>
         </div>
       </div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 카탈로그 UX안(9/23) 5-2 구성 중 헤더 · 용도 칩 · 카드 · 비교표만 반영(Quick Start · 준비 중 영역은 제외, 9/28). 카드 필드는 <code>/v1/models</code> 응답 필드와 1:1(모델이 늘면 같은 데이터로 필터를 켬). <b>캐시 단가를 가장 잘 보이게</b>(실결제가 대부분이 캐시 입력). [써보기]는 플레이그라운드를 해당 모델 선택 상태로 열기. [상세]는 M-09 모델 상세로 이동. 결정 필요: 모델 ID 표기 · 성능 수치 공개 · 칩→모델 매핑 근거 · Kimi Preview 여부.</div>
+      <div class="mm-note mm-note-out" style="margin:-24px 0 32px">📝 <b>M-08 방향 (9/28)</b> — USP(안전 · 가성비)는 홈(M-01)으로 옮기고, 모델 페이지는 <b>모델별 강점</b>과 <b>“API 하나로 3종”</b>에 집중.
+        “API 하나”는 헤드라인과 설명 문구로만 전달(요청 예시 · 특징 한 줄 영역은 9/28 삭제) · 카드에 <b>“이럴 때 좋아요”</b> 3줄 추가.
+        근거: GLM · Kimi는 OpenRouter 실사용 데이터(모델카탈로그 UX안 5-8: GLM 1위 앱 Claude Code, Kimi 긴 컨텍스트 · UI 코딩 상위), Motif 항목은 Motif 기능 테스트(9/26) 결과로 확정 필요.</div>
+
+      <!-- M-09: 모델 상세 페이지 (v4.0 신규 · 공개) -->
+      <div id="m-09" class="wf-card">
+        <div class="wf-header">
+          <span class="flex items-center gap-2">M-09 모델 상세 (/models/motif-3 · 로그인 없이 공개) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
+          <span class="wf-badge">예시: Motif 3 · GLM · Kimi 같은 템플릿</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
+            </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
+              </div>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white">
+            <!-- 헤더 -->
+            <div class="px-8 pt-6">
+              <div class="text-xs text-slate-400 mb-3"><a href="#m-08" class="underline">모델</a> › Motif 3</div>
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <h1 class="text-2xl font-extrabold text-slate-900">Motif 3</h1>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded border bg-emerald-50 text-emerald-700 border-emerald-200">정식</span>
+                  </div>
+                  <div class="text-xs text-slate-400 mb-2">Motif Technologies · 🇰🇷 국산 모델</div>
+                  <div class="flex gap-1"><span class="mm-tag">구조화 출력</span><span class="mm-tag">🛡️ 태국 데이터센터</span></div>
+                </div>
+                <div class="flex flex-col items-end gap-1 text-[11px] text-slate-400">
+                  <span>다른 모델:</span>
+                  <div class="flex gap-1"><a href="#m-09" class="mm-tag no-underline">GLM 5.3 →</a><a href="#m-09" class="mm-tag no-underline">Kimi →</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 상단 고정 요약 바 -->
+            <div class="sticky top-0 z-10 mt-5 mx-8 border rounded-xl bg-white shadow-sm px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <span><span class="mm-id">motif-3</span> <button onclick="alert('모델 ID 복사: motif-3')" class="text-blue-600 underline border-none bg-transparent cursor-pointer">복사</button></span>
+              <span class="text-slate-500">입력 <b class="text-slate-900">$x</b> · 캐시 <b class="text-violet-700">$x</b> · 출력 <b class="text-slate-900">$x</b> <span class="text-slate-400">/1M</span></span>
+              <span class="text-slate-500">컨텍스트 <b class="text-slate-900">xxxK</b></span>
+              <span class="text-slate-500">TTFT <b class="text-slate-900">x.x초</b></span>
+              <div class="ml-auto flex gap-2">
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn w-auto px-4 text-xs no-underline text-slate-800 whitespace-nowrap">API 키 발급</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn wf-btn-dark w-auto px-4 text-xs no-underline whitespace-nowrap">플레이그라운드에서 써보기</a>
+              </div>
+            </div>
+
+            <!-- 섹션 앵커 -->
+            <div class="mx-8 mt-4 flex border-b overflow-x-auto"><a href="#md-overview" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">개요</a><a href="#md-ko" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">사용 예시</a><a href="#md-price" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">가격</a><a href="#md-perf" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">성능</a><a href="#md-feat" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">기능</a><a href="#md-data" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">데이터 처리</a><a href="#md-qs" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">Quick Start</a><a href="#md-faq" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 no-underline whitespace-nowrap">FAQ</a></div>
+
+            <div class="px-8 pb-10">
+              <section id="md-overview" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">개요</h2>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">Motif 3는 국산 모델이에요. 도구 호출과 JSON 스키마 출력이 안정적이어서 데이터 추출 · 분류, 도구를 쓰는 에이전트에 잘 맞아요. <span class="text-slate-400">(모델 소개 문구는 Motif 측 확인 후 확정)</span></p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">컨텍스트</div><div class="font-bold text-slate-900 mt-1">xxxK</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">최대 출력</div><div class="font-bold text-slate-900 mt-1">xxK</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">입력 모달리티</div><div class="font-bold text-slate-900 mt-1">텍스트</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">지식 기준일</div><div class="font-bold text-slate-900 mt-1">20xx-xx</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">파라미터</div><div class="font-bold text-slate-900 mt-1">확인 필요</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">양자화</div><div class="font-bold text-amber-600 mt-1">공개 여부 결정</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">라이선스</div><div class="font-bold text-slate-900 mt-1">확인 필요</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">버전 · 출시일</div><div class="font-bold text-slate-900 mt-1">v3 · 2026-xx-xx</div></div>
+                </div>
+              </section>
+              <section id="md-ko" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">사용 예시 <span class="text-xs font-normal text-slate-400">모델별 1~2개 · O-08 추천 프롬프트 재사용</span></h2>
+                <div class="grid md:grid-cols-2 gap-3 text-xs">
+                  <div class="border rounded-lg p-4 bg-slate-50">
+                    <div class="font-bold text-slate-500 mb-1">프롬프트 · JSON 스키마 지정</div>
+                    <div class="text-slate-800 mb-3">“이 문의 메일에서 이름, 주문번호, 문의 유형을 뽑아줘.”</div>
+                    <div class="font-bold text-violet-700 mb-1">Motif 3 응답</div>
+                    <div class="font-mono text-[11px] text-slate-700 bg-white border rounded p-2">{"name": "김모프", "order_id": "A-10293", "type": "refund"}</div>
+                  </div>
+                  <div class="border rounded-lg p-4 bg-slate-50">
+                    <div class="font-bold text-slate-500 mb-1">프롬프트 · 도구 호출</div>
+                    <div class="text-slate-800 mb-3">“서울 날씨 알려줘.” (get_weather 도구 제공)</div>
+                    <div class="font-bold text-violet-700 mb-1">Motif 3 응답</div>
+                    <div class="font-mono text-[11px] text-slate-700 bg-white border rounded p-2">get_weather({"city": "Seoul"})</div>
+                  </div>
+                </div>
+                <div class="text-right mt-2"><a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="text-xs text-blue-600 underline">이 프롬프트로 플레이그라운드에서 해보기 →</a></div>
+              </section>
+              <section id="md-price" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">가격</h2>
+                <table class="wf-table border rounded-lg overflow-hidden mb-3">
+                  <thead><tr><th>구분</th><th class="text-right">$ / 1M 토큰</th><th>설명</th></tr></thead>
+                  <tbody>
+                    <tr><td class="font-bold">입력</td><td class="text-right font-bold">$x</td><td class="text-xs text-slate-500">새로 보내는 입력 토큰</td></tr>
+                    <tr><td class="font-bold text-violet-700">캐시 입력</td><td class="text-right font-bold text-violet-700">$x</td><td class="text-xs text-slate-500">반복되는 앞부분(시스템 프롬프트 · 이전 대화)은 자동으로 싸게 계산돼요</td></tr>
+                    <tr><td class="font-bold">출력</td><td class="text-right font-bold">$x</td><td class="text-xs text-slate-500">모델이 생성한 토큰 (추론 토큰 포함)</td></tr>
+                  </tbody>
+                </table>
+                <div class="grid md:grid-cols-2 gap-3 text-xs">
+                  <div class="border rounded-lg p-3 bg-slate-50">💸 <b>공식 API 대비 x% 저렴</b> · 크레딧 구매 수수료 0% · 1크레딧 = $1</div>
+                  <div class="border rounded-lg p-3 bg-slate-50">🧮 예: 입력 10만(캐시 8만) + 출력 1만 토큰 ≈ <b>$x.xx</b></div>
+                </div>
+              </section>
+              <section id="md-perf" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">성능</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs mb-4">
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">첫 토큰까지 (TTFT) p50</div><div class="text-xl font-bold text-slate-900 mt-1">x.x초</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">TTFT p95</div><div class="text-xl font-bold text-slate-900 mt-1">x.x초</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">처리량 p50</div><div class="text-xl font-bold text-slate-900 mt-1">xx tok/s</div></div>
+                  <div class="border rounded-lg p-3"><div class="text-slate-400">업타임 (30일)</div><div class="text-xl font-bold text-emerald-600 mt-1">xx.x%</div></div>
+                </div>
+                <div class="flex gap-1 mb-2"><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-yellow-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div><div class="h-6 flex-grow rounded-sm bg-green-400"></div></div>
+                <p class="text-[11px] text-slate-400">게이트웨이에서 잰 실측값 · 최근 7일 기준 · 매일 갱신. 입력 길이와 시간대에 따라 달라질 수 있어요. <a href="#m-05" class="underline">전체 상태 보기 (M-05)</a></p>
+              </section>
+              <section id="md-feat" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">지원 기능</h2>
+                <table class="wf-table border rounded-lg overflow-hidden">
+                  <thead><tr><th>기능</th><th>파라미터</th><th class="text-right">지원</th></tr></thead>
+                  <tbody><tr><td class="font-medium">도구 호출 (function calling)</td><td><span class="mm-id">tools</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">도구 사용 지정</td><td><span class="mm-id">tool_choice</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">도구 동시 호출</td><td><span class="mm-id">parallel_tool_calls</span></td><td class="text-right"><span class="text-amber-600">불안정 (개선 중)</span></td></tr><tr><td class="font-medium">JSON 모드</td><td><span class="mm-id">response_format</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">JSON 스키마 강제</td><td><span class="mm-id">structured_outputs</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">추론(생각) 모드</td><td><span class="mm-id">reasoning</span></td><td class="text-right"><span class="text-amber-600">추론 과정 표시 ● · 깊이 조절 —</span></td></tr><tr><td class="font-medium">스트리밍 · 중간 취소</td><td><span class="mm-id">stream</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">프롬프트 캐싱</td><td><span class="mm-id">자동</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr><tr><td class="font-medium">이미지 입력</td><td><span class="mm-id">image_url</span></td><td class="text-right"><span class="text-slate-400">— 미지원</span></td></tr><tr><td class="font-medium">온도 · 최대 출력 길이</td><td><span class="mm-id">temperature · max_tokens</span></td><td class="text-right"><span class="text-emerald-600 font-bold">● 지원</span></td></tr></tbody>
+                </table>
+                <p class="text-[11px] text-slate-400 mt-2">모델이 지원해도 우리 API로 실제 동작하는 것만 “지원”으로 표시 · 미지원도 숨기지 않고 표기(Fireworks 방식)</p>
+              </section>
+              <section id="md-data" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">데이터 처리 <span class="text-xs font-normal text-slate-400">신뢰 강점 · 모든 모델 공통</span></h2>
+                <div class="grid md:grid-cols-3 gap-3 text-xs">
+                  <div class="border rounded-lg p-4"><div class="text-lg mb-1">🛡️</div><div class="font-bold text-slate-900 mb-1">태국 데이터센터에서 직접 서빙</div><div class="text-slate-500 leading-relaxed">요청은 모르팩 인프라 안에서만 처리되고 중국 서버를 거치지 않아요.</div></div>
+                  <div class="border rounded-lg p-4"><div class="text-lg mb-1">🗑️</div><div class="font-bold text-slate-900 mb-1">프롬프트 · 응답 본문 미저장</div><div class="text-slate-500 leading-relaxed">보내신 프롬프트와 응답 내용은 저장하지 않아요.</div></div>
+                  <div class="border rounded-lg p-4"><div class="text-lg mb-1">🚫</div><div class="font-bold text-slate-900 mb-1">학습에 쓰지 않음</div><div class="text-slate-500 leading-relaxed">보내신 데이터는 모델 학습에 쓰이지 않아요.</div></div>
+                </div>
+                <div class="text-right mt-2"><a href="#m-04" class="text-xs text-blue-600 underline">개인정보처리방침 보기 →</a></div>
+              </section>
+              <section id="md-qs" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">Quick Start <span class="text-xs font-normal text-slate-400">플레이그라운드 “코드 보기”와 같은 컴포넌트</span></h2>
+                <div class="flex gap-1 mb-2 text-xs">
+                  <button class="state-toggle-btn active">cURL</button><button class="state-toggle-btn">Python</button><button class="state-toggle-btn">TypeScript</button>
+                  <button onclick="alert('모델 ID 복사: motif-3')" class="ml-auto text-xs text-blue-600 underline border-none bg-transparent cursor-pointer">코드 복사</button>
+                </div>
+                <div class="bg-slate-800 text-slate-300 p-4 rounded-md font-mono text-xs leading-relaxed mb-3">
+                  <span class="text-green-400">curl</span> https://api.morfac.io/v1/chat/completions \<br/>
+                  &nbsp;&nbsp;-H <span class="text-yellow-300">"Authorization: Bearer $MORFAC_API_KEY"</span> \<br/>
+                  &nbsp;&nbsp;-d '{"model": <span class="text-green-400">"motif-3"</span>, "messages": [{"role": "user", "content": "안녕하세요"}]}'
+                </div>
+                <div class="flex gap-2">
+                  <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="wf-btn wf-btn-dark w-auto px-5 text-xs no-underline">플레이그라운드에서 해보기</a>
+                  <a href="#m-02" class="wf-btn w-auto px-5 text-xs no-underline text-slate-800">전체 문서 보기</a>
+                </div>
+              </section>
+              <section id="md-faq" class="pt-8 border-t mt-8 first:border-none">
+                <h2 class="text-lg font-bold text-slate-900 mb-4">FAQ</h2>
+                <div class="space-y-2 text-xs">
+                  <details class="border rounded-lg p-3" open><summary class="font-bold cursor-pointer">기존 OpenAI 코드에서 바로 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">네. base_url을 모르팩 주소로, model을 <span class="mm-id">motif-3</span>으로 바꾸면 돼요.</p></details>
+                  <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">캐시 입력 가격은 언제 적용되나요?</summary><p class="text-slate-600 mt-2">이전 요청과 앞부분이 같은 입력은 자동으로 캐시 가격으로 계산돼요. 따로 설정할 것은 없어요.</p></details>
+                  <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">요청 한도(레이트리밋)는 얼마인가요?</summary><p class="text-slate-600 mt-2">분당 요청 x회 · 분당 토큰 x개 (확인 필요)</p></details>
+                  <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">모델 버전이 바뀌면 어떻게 되나요?</summary><p class="text-slate-600 mt-2">교체 · 종료 최소 x일 전에 새 소식과 이메일로 알려드리고, 대체 모델을 안내해요.</p></details>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morfac</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+              <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morfac.io | 연락처: 02-000-0000</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500 text-xs">
+              <a href="#m-07" onclick="switchToMTab()" class="hover:underline text-blue-600 font-semibold">새 소식</a>
+              <span>|</span>
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <span>|</span>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+              <span>|</span>
+              <a href="#m-05" class="hover:underline">Status</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>M-09 모델 상세 메모</b> — 섹션 순서는 9/21 벤치마킹 적용안(개요 → 가격 → 성능 → Quick Start → FAQ)에 카탈로그 UX안(9/23) 5-5 보완을 더함: <b>상단 고정 요약 바</b>(모델 ID 복사 · 단가 3단 · 컨텍스트 · CTA, 스크롤해도 고정) · <b>사용 예시</b>(모델별 1~2개, O-08 재사용) · <b>지원 기능</b>(미지원도 표기) · <b>데이터 처리</b>(신뢰 강점, 3모델 공통 블록). Providers 탭은 두지 않음.
+        URL은 <code>/models/{모델 ID}</code>, 화면 값은 전부 <code>/v1/models</code>와 같은 데이터. GLM · Kimi 상세도 같은 구조(사용 예시만 모델에 맞게 교체)(Kimi는 이미지 입력 “지원”, 상태 배지 Preview 여부 결정).
+        <b>Motif 포지셔닝(9/28)</b>: 한국어 강점 메시지는 쓰지 않고 국산 모델 · 도구 호출 · JSON 구조화 출력으로 소개. 지원 기능 값은 CBT 기능 테스트(9/26~27) 결과 반영, OBT 서빙에서 재확인 필요. <b>데이터 처리 문구</b>: 중국 서버 미경유 확인 완료(9/28) · 본문 미저장은 데이터 보관 정책 기준(보관 기간 숫자는 화면에 쓰지 않고 처리방침에서 안내) · 학습 미사용은 Motif 측 확인 중. <b>확인 필요</b>: 기능 지원 여부는 개발 실측 · 레이트리밋과 버전 교체 사전 공지 기간은 미정 · 양자화 공개 여부 결정.</div>
+
+      <!-- M-10: 요금 (v4.0 신규 · 공개) -->
+      <div id="m-10" class="wf-card">
+        <div class="wf-header">
+          <span class="flex items-center gap-2">M-10 요금 (/pricing · 로그인 없이 공개) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
+          <span class="wf-badge">GNB “요금”</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
+            </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
+              </div>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white px-10 py-10 space-y-12">
+
+            <!-- 헤더 -->
+            <div class="text-center">
+              <h1 class="text-3xl font-extrabold text-slate-900 mb-3">쓴 만큼만, 수수료 없이</h1>
+              <p class="text-sm text-slate-500 mb-5">선불 크레딧으로 충전하고, 사용한 토큰만큼 차감돼요. 1크레딧 = $1</p>
+              <div class="flex flex-wrap gap-2 justify-center text-xs">
+                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">💸 공식 API 대비 최대 x% 저렴</span>
+                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">🧾 크레딧 구매 수수료 0%</span>
+                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">🎁 가입하면 $20 무료</span>
+              </div>
+            </div>
+
+            <!-- 모델별 단가 -->
+            <div>
+              <div class="flex justify-between items-end mb-2">
+                <h2 class="font-bold text-lg text-slate-900">모델별 단가</h2>
+                <span class="text-[11px] text-slate-400">$ / 1M 토큰</span>
+              </div>
+              <table class="wf-table border rounded-lg overflow-hidden">
+                <thead><tr><th>모델</th><th class="text-right">입력</th><th class="text-right text-violet-700">캐시 입력</th><th class="text-right">출력</th><th class="text-right">공식 API 대비</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td><b>Motif 3</b> <span class="mm-id">motif-3</span></td><td class="text-right">$x</td><td class="text-right font-bold text-violet-700">$x</td><td class="text-right">$x</td><td class="text-right text-slate-400">—</td><td class="text-right"><a href="#m-09" class="text-xs text-blue-600 underline">상세</a></td></tr>
+                  <tr><td><b>GLM 5.3</b> <span class="mm-id">glm-5.3</span></td><td class="text-right">$x</td><td class="text-right font-bold text-violet-700">$x</td><td class="text-right">$x</td><td class="text-right font-bold text-emerald-600">−x%</td><td class="text-right"><a href="#m-09" class="text-xs text-blue-600 underline">상세</a></td></tr>
+                  <tr><td><b>Kimi</b> <span class="mm-id">kimi-k3</span></td><td class="text-right">$x</td><td class="text-right font-bold text-violet-700">$x</td><td class="text-right">$x</td><td class="text-right font-bold text-emerald-600">−x%</td><td class="text-right"><a href="#m-09" class="text-xs text-blue-600 underline">상세</a></td></tr>
+                </tbody>
+              </table>
+              <p class="text-[11px] text-slate-400 mt-2">공식 API = 각 모델 개발사 API 표준가 (20xx-xx-xx 조회). 캐시 입력은 이전 요청과 앞부분이 같은 입력에 자동 적용돼요.</p>
+            </div>
+
+            <!-- 비용 계산기 -->
+            <div class="border rounded-2xl p-6 bg-slate-50">
+              <h2 class="font-bold text-lg text-slate-900 mb-4">월 예상 비용 계산</h2>
+              <div class="grid md:grid-cols-4 gap-3 text-xs items-end">
+                <div><label class="wf-label">모델</label><select class="wf-input mb-0"><option>GLM 5.3</option><option>Motif 3</option><option>Kimi</option></select></div>
+                <div><label class="wf-label">월 입력 토큰</label><input class="wf-input mb-0" value="100M"></div>
+                <div><label class="wf-label">그중 캐시 비율</label><input class="wf-input mb-0" value="80%"></div>
+                <div><label class="wf-label">월 출력 토큰</label><input class="wf-input mb-0" value="2M"></div>
+              </div>
+              <div class="flex justify-between items-center mt-5 pt-4 border-t">
+                <div class="text-xs text-slate-500">공식 API 기준 <span class="line-through">$xxx</span></div>
+                <div class="text-right"><span class="text-xs text-slate-500 mr-2">모르팩 예상</span><span class="text-2xl font-extrabold text-slate-900">$xx.xx</span><span class="text-xs font-bold text-emerald-600 ml-2">−x%</span></div>
+              </div>
+            </div>
+
+            <!-- 크레딧 충전 -->
+            <div>
+              <div class="flex justify-between items-end mb-3">
+                <h2 class="font-bold text-lg text-slate-900">크레딧 충전</h2>
+                <span class="text-[11px] text-slate-500">적용 환율 <b class="text-slate-900">1크레딧 = 1,412원</b> (2026년 9월 28일 기준)</span>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="border rounded-xl p-4 bg-white text-center">
+                  <div class="text-2xl font-extrabold text-slate-900">10<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">15,532원</div>
+                  <div class="text-[10px] text-slate-400">부가세 포함</div>
+                  
+                </div>
+                <div class="border rounded-xl p-4 bg-white text-center">
+                  <div class="text-2xl font-extrabold text-slate-900">30<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">46,596원</div>
+                  <div class="text-[10px] text-slate-400">부가세 포함</div>
+                  
+                </div>
+                <div class="border rounded-xl p-4 bg-white text-center">
+                  <div class="text-2xl font-extrabold text-slate-900">100<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">155,320원</div>
+                  <div class="text-[10px] text-slate-400">부가세 포함</div>
+                  
+                </div>
+                <div class="border rounded-xl p-4 bg-white text-center">
+                  <div class="text-2xl font-extrabold text-slate-900">300<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">465,960원</div>
+                  <div class="text-[10px] text-slate-400">부가세 포함</div>
+                  
+                </div>
+              </div>
+              <div class="mt-3 border border-dashed rounded-xl p-4 flex justify-between items-center text-xs">
+                <span>🎁 <b>가입하면 $20 무료</b> — 온보딩 설문 완료 시 지급 · 지급일로부터 14일 동안 사용</span>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary w-auto px-5 no-underline text-white text-xs">무료로 시작하기</a>
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <div>
+              <h2 class="font-bold text-lg text-slate-900 mb-3">자주 묻는 질문</h2>
+              <div class="space-y-2 text-xs">
+                <details class="border rounded-lg p-3" open><summary class="font-bold cursor-pointer">크레딧은 언제까지 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">결제한 크레딧은 결제일로부터 5년, 무료로 받은 크레딧은 지급일로부터 14일 동안 쓸 수 있어요.</p></details>
+                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">원화로 결제하면 환율은 어떻게 적용되나요?</summary><p class="text-slate-600 mt-2">결제 금액 = 크레딧 수 × 적용 환율 × 1.1(부가세 10%)이에요. 예를 들어 10크레딧은 10 × 1,412원 × 1.1 = 15,532원이에요. 환율은 기준일에 따라 바뀔 수 있고 결제하는 시점의 환율로 확정되며, 충전된 크레딧은 이후 환율이 바뀌어도 그대로예요.</p></details>
+                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">어떤 결제 수단을 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">국내 카드와 토스페이를 지원해요. 해외 카드 결제는 준비 중이에요.</p></details>
+                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">영수증이나 세금계산서를 받을 수 있나요?</summary><p class="text-slate-600 mt-2">확인 필요</p></details>
+                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">수수료가 정말 없나요?</summary><p class="text-slate-600 mt-2">크레딧 구매 수수료는 없어요. 결제한 금액만큼 크레딧이 충전돼요.</p></details>
+              </div>
+            </div>
+          </div>
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">Morfac</div>
+              <p>상호: (주)모프컴퍼니 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+              <p>주소: 서울특별시 강남구 테헤란로 00길 00, 0층 | 이메일: contact@morfac.io | 연락처: 02-000-0000</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500 text-xs">
+              <a href="#m-07" onclick="switchToMTab()" class="hover:underline text-blue-600 font-semibold">새 소식</a>
+              <span>|</span>
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <span>|</span>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+              <span>|</span>
+              <a href="#m-05" class="hover:underline">Status</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>M-10 요금 메모</b> — 역할: 모델(M-08)은 “무엇을 쓸지”, 요금은 “얼마 들고 어떻게 결제하는지”. 로그인 전에 크레딧 · 결제 규칙을 볼 수 있는 유일한 공개 화면.
+        단가표는 카탈로그 · <code>/v1/models</code>와 같은 데이터 + “공식 API 대비” 열만 추가. 충전 상품 4종(10 / 30 / 100 / 300)은 C-03과 동일, 실제 결제는 로그인 후 C-03에서.
+        규칙은 C-03 · O-04 스펙과 맞춤: 1크레딧 = $1 · 잔액 $ 표기 · 유료 5년 / 무료 14일 만료 · 자동 충전 없음 · 결제 수단 카드(토스페이 포함).
+        <b>환불은 요금 페이지에 넣지 않음</b>(C-03과 같은 원칙 — 환불이 쉬워 보이지 않게, 이용약관에서 안내).
+        <b>결제 금액(9/28 확정)</b>: 크레딧 수 × 적용 환율 × 1.1, 9/28 기준 1,412원 → 10 / 30 / 100 / 300크레딧 = 15,532 / 46,596 / 155,320 / 465,960원(C-03과 동일). “이렇게 계산돼요” 섹션은 삭제(9/28). <b>확인 필요</b>: 공식가 비교 수치와 조회일 · 영수증/세금계산서 발행 방식 · 계산기는 정적 예시로 두고 실제 계산 기능은 개발 협의.</div>
 
       <!-- M-02: Docs -->
       <div id="m-02" class="wf-card">
         <div class="wf-header">
-          <span>M-02 Docs (개발자 문서)</span>
+          <span class="flex items-center gap-2">M-02 Docs (개발자 문서) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
           <span class="wf-badge">검색창 추가 · 퀵스타트 · 인증 · 에러 코드 · 엔드포인트</span>
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="text-blue-600 font-bold no-underline">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50">
-                <option>KO</option>
-                <option>EN</option>
-              </select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
@@ -572,6 +1550,7 @@
                 <ul class="space-y-2 text-sm">
                   <li class="font-medium text-blue-600 bg-blue-50 p-2 rounded -mx-2">Quickstart</li>
                   <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Authentication</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Models <span class="mm-tag" style="background:#ede9fe;color:#6d28d9">NEW</span></li>
                   <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Context Limits</li>
                 </ul>
               </div>
@@ -579,7 +1558,7 @@
                 <div class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">API Reference</div>
                 <ul class="space-y-2 text-sm">
                   <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Chat Completions</li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Models Catalog</li>
+                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">List Models (GET /v1/models)</li>
                   <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Error Codes (7종)</li>
                 </ul>
               </div>
@@ -599,7 +1578,7 @@
                 &nbsp;&nbsp;-H <span class="text-yellow-300">"Authorization: Bearer $MORPH_API_KEY"</span> \<br/>
                 &nbsp;&nbsp;-H <span class="text-yellow-300">"Content-Type: application/json"</span> \<br/>
                 &nbsp;&nbsp;-d '{<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;"model": "motif-3",<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"model": "motif-3", <span class="text-slate-500">// glm-5.3 · kimi-k3 로 바꾸면 모델 전환</span><br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;"messages": [<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "system", "content": "You are a helpful assistant."},\br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "user", "content": "Hello!"}<br/>
@@ -607,6 +1586,18 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;"stream": true<br/>
                 &nbsp;&nbsp;}'
               </div>
+
+              <h3 class="font-bold mb-3 border-b pb-2">3. 사용 가능한 모델</h3>
+              <table class="wf-table border rounded-lg overflow-hidden mb-3">
+                <thead><tr><th>모델</th><th>모델 ID</th><th>컨텍스트</th><th>잘하는 것</th></tr></thead>
+                <tbody>
+                  <tr><td class="font-bold">Motif 3</td><td><span class="mm-id">motif-3</span> 📋</td><td>xxxK</td><td class="text-xs">도구 호출 · JSON 구조화 출력</td></tr>
+                  <tr><td class="font-bold">GLM 5.3</td><td><span class="mm-id">glm-5.3</span> 📋</td><td>xxxK</td><td class="text-xs">코딩 에이전트 · 도구 호출</td></tr>
+                  <tr><td class="font-bold">Kimi</td><td><span class="mm-id">kimi-k3</span> 📋</td><td>xxxK</td><td class="text-xs">긴 문서 · UI 코딩</td></tr>
+                </tbody>
+              </table>
+              <p class="text-xs text-slate-500 mb-2">목록은 <code>GET /v1/models</code>로도 조회할 수 있습니다. 모델별 단가와 성능은 <a href="#m-08" class="underline text-blue-600">모델 카탈로그</a>를 참고하세요.</p>
+              <p class="text-xs text-slate-500">없는 모델 ID를 보내면 <code>404 model_not_found</code>를 돌려줍니다.</p>
             </div>
           </div>
 
@@ -627,6 +1618,7 @@
           </div>
         </div>
       </div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 모델 표는 <code>/v1/models</code> 응답과 같은 데이터를 써야 함(이름 · ID · 컨텍스트가 화면마다 다르면 안 됨). 응답의 <code>model</code> 필드는 vLLM 내부 이름이 아니라 공개 ID. 에러 코드 · 문구(model_not_found)는 개발과 확정.</div>
 
       <!-- M-03: 이용약관 -->
       <div id="m-03" class="wf-card">
@@ -636,25 +1628,26 @@
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
@@ -716,25 +1709,26 @@
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
@@ -796,30 +1790,31 @@
       <!-- M-05: 서비스 Status -->
       <div id="m-05" class="wf-card">
         <div class="wf-header">
-          <span>M-05 서비스 Status</span>
+          <span class="flex items-center gap-2">M-05 서비스 Status <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
           <span class="wf-badge">시스템 상태 · 가동률 · 인시던트 내역</span>
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50"><option>KO</option><option>EN</option></select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
@@ -855,7 +1850,7 @@
 
                   <div class="pt-4">
                     <div class="flex justify-between text-sm mb-2 font-medium">
-                      <span>Inference Engine (Motif 3)</span>
+                      <span>Motif 3</span>
                       <span class="text-green-600">99.95%</span>
                     </div>
                     <div class="flex gap-1">
@@ -867,6 +1862,28 @@
                              document.write('<div class="h-8 flex-grow bg-green-400 rounded-sm"></div>');
                           }
                         }
+                      </script>
+                    </div>
+                  </div>
+                  <div class="pt-4">
+                    <div class="flex justify-between text-sm mb-2 font-medium">
+                      <span>GLM 5.3</span>
+                      <span class="text-green-600">xx.xx%</span>
+                    </div>
+                    <div class="flex gap-1">
+                      <script>
+                        for(let i=0; i<30; i++) { document.write('<div class="h-8 flex-grow bg-green-400 rounded-sm"></div>'); }
+                      </script>
+                    </div>
+                  </div>
+                  <div class="pt-4">
+                    <div class="flex justify-between text-sm mb-2 font-medium">
+                      <span>Kimi</span>
+                      <span class="text-green-600">xx.xx%</span>
+                    </div>
+                    <div class="flex gap-1">
+                      <script>
+                        for(let i=0; i<30; i++) { document.write('<div class="h-8 flex-grow bg-green-400 rounded-sm"></div>'); }
                       </script>
                     </div>
                   </div>
@@ -922,28 +1939,26 @@
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
-            <div class="font-bold text-lg flex items-center gap-6">
-              <a href="#m-01" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline text-slate-900 font-extrabold text-xl">Morfac</a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-6 text-sm font-medium ml-8">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+              </nav>
             </div>
-            <div class="flex gap-6 text-sm font-medium items-center">
-              <a href="#m-06" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-bold">서비스 소개</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Playground</a>
-              <a href="#m-02" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700">Docs</a>
-              <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="cursor-pointer hover:text-blue-600 no-underline text-slate-700 font-semibold">콘솔</a>
-              <div id="gnb-auth-state" class="flex items-center gap-4">
-                <div id="gnb-before-login" class="flex items-center gap-2">
-                  <a href="#a-01" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">로그인 / 가입</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인후 전환🔄</button>
-                </div>
-                <div id="gnb-after-login" class="hidden items-center gap-4">
-                  <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 no-underline">👤 프로필 (김모프님)</a>
-                  <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50 hover:bg-slate-150">로그인전 전환🔄</button>
-                </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">무료로 시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
-              <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50">
-                <option>KO</option>
-                <option>EN</option>
-              </select>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
             </div>
           </div>
 
@@ -1021,7 +2036,7 @@
                         <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">모델</span>
                       </div>
                       <h3 class="font-bold text-slate-900 mb-2">Motif 3 모델 베타 공개</h3>
-                      <p class="text-sm text-slate-600">최신 한국어 LLM인 Motif 3가 공개되었습니다. Motif 2 대비 한국어 이해도가 25% 향상되었으며, 코드 생성 능력도 크게 개선되었습니다.</p>
+                      <p class="text-sm text-slate-600">국산 모델 Motif 3가 공개되었습니다. 도구 호출과 JSON 스키마 출력을 지원합니다.</p>
                       <div class="flex items-center justify-between mt-3">
                         <span class="text-xs text-slate-400">더보기 →</span>
                         <span class="text-xs text-slate-400">공개 기간: 2026.07.15 ~</span>
@@ -1271,7 +2286,7 @@
       <div id="a-02" class="wf-card">
         <div class="wf-header">
           <span>A-02 회원가입 (Sign Up)</span>
-          <span class="wf-badge">가입 폼 · 약관 동의 · 소셜 가입</span>
+          <div class="flex gap-2 items-center"><span class="wf-badge">가입 폼 · 약관 동의 · 소셜 가입</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 동의 항목</span></div>
         </div>
         <div class="wf-content-a">
           <div class="auth-box">
@@ -1339,6 +2354,12 @@
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" class="w-3 h-3"> [필수] 개인정보 수집 및 이용 동의
                 </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-3 h-3"> [필수] 만 18세 이상입니다
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-3 h-3"> [선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다
+                </label>
               </div>
 
               <a href="#a-03" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">계속하기</a>
@@ -1350,6 +2371,8 @@
           </div>
         </div>
       </div>
+
+      <div class="mm-note mm-note-out">📝 <b>v4.0 가입 동의 메모</b> — 이메일 가입(A-02)과 소셜 가입(A-08)에 같은 항목 2개 추가: <b>[필수] 만 18세 이상입니다</b> · <b>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</b>. “모두 동의”는 선택 항목까지 체크하되, 선택 항목을 해제해도 가입은 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장하고 콘솔 계정 설정에서 철회할 수 있어야 함(정보통신망법 광고성 정보 수신 동의). 만 18세 기준은 이용약관 이용 자격 조항과 문구를 맞출 것.</div>
 
       <!-- A-03: OTP 인증 -->
       <div id="a-03" class="wf-card">
@@ -1827,7 +2850,7 @@
       <div id="a-08" class="wf-card">
         <div class="wf-header">
           <span>A-08 소셜 가입 약관 동의</span>
-          <span class="wf-badge">소셜 가입 전용 · 명시적 약관 동의</span>
+          <div class="flex gap-2 items-center"><span class="wf-badge">소셜 가입 전용 · 명시적 약관 동의</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 동의 항목</span></div>
         </div>
         <div class="wf-content-a">
           <div class="auth-box">
@@ -1854,6 +2877,12 @@
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 개인정보 수집 및 이용 동의 <a href="#m-04" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 18세 이상입니다
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다
               </label>
             </div>
 
@@ -1917,14 +2946,17 @@
         
         <!-- 콘솔 상단 GNB -->
         <div class="mock-gnb rounded-t-lg border">
-          <div class="flex items-center gap-6">
-            <span class="font-bold text-xl tracking-tight text-slate-900">Morfac</span>
+          <div class="flex items-center gap-2">
+            <a href="#m-01" onclick="switchToMTab()" class="no-underline font-extrabold text-xl tracking-tight text-slate-900">Morfac</a>
+            <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+            <nav class="flex gap-6 text-sm font-medium ml-8">
+              <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+              <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+              <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">Docs</a>
+            </nav>
           </div>
-          <div class="flex gap-6 text-sm font-medium items-center relative">
-            <a href="#m-06" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">서비스 소개</a>
-            <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="hover:text-blue-600 no-underline text-slate-700">Playground</a>
-            <a href="#m-02" onclick="switchToMTab()" class="hover:text-blue-600 no-underline text-slate-700">Docs</a>
-            <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-blue-600 font-bold no-underline">콘솔</a>
+          <div class="flex gap-4 text-sm font-medium items-center relative">
+            <span class="text-blue-600 font-bold">콘솔</span>
             
             <div class="relative">
               <button onclick="toggleProfileModal(event)" class="flex items-center gap-2 text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-2 rounded-full border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors">
@@ -1943,10 +2975,6 @@
               </div>
             </div>
 
-            <select class="border border-slate-300 rounded px-2 py-1 text-xs bg-slate-50 cursor-pointer">
-              <option>KO</option>
-              <option>EN</option>
-            </select>
           </div>
         </div>
 
@@ -1998,10 +3026,11 @@
 
             <!-- C-01 대시보드 -->
             <div id="c-01" class="screen-section">
-              <div class="wf-card">
+              <div class="wf-card tbd-card"><div class="tbd-overlay"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div></div></div>
                 <div class="wf-header">
                   <span>C-01 대시보드</span>
                   <div class="flex items-center gap-2">
+                    <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span>
                     <span class="wf-badge">무료 체험 버전</span>
                     <span class="text-xs text-slate-500 font-normal">상태 전환:</span>
                     <button onclick="switchDashboardState('empty')" id="db-btn-empty" class="state-toggle-btn active">크레딧 없음</button>
@@ -2019,8 +3048,24 @@
                     <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">사용 토큰 수</div><div class="text-2xl font-extrabold text-slate-900 mt-1">12.4M</div></div>
                     <div class="border rounded-xl p-4 bg-white"><div class="text-xs text-slate-400 font-semibold uppercase">요청 횟수</div><div class="text-2xl font-extrabold text-slate-900 mt-1">1,842</div></div>
                   </div>
+                  <div>
+                    <div class="flex justify-between items-center mb-2">
+                      <h3 class="font-bold text-sm text-slate-900">모델별 사용량</h3>
+                      <span class="text-[11px] text-slate-400">최근 30일 · 사용 이력 있는 모델만</span>
+                    </div>
+                    <table class="wf-table border rounded-lg overflow-hidden">
+                      <thead><tr><th>모델</th><th class="text-right">요청</th><th class="text-right">토큰 (입력 · 캐시 · 출력)</th><th class="text-right">사용 크레딧</th></tr></thead>
+                      <tbody>
+                        <tr><td class="font-bold">Motif 3</td><td class="text-right">1,120</td><td class="text-right text-xs">6.1M · 4.2M · 0.3M</td><td class="text-right font-bold">$0.02</td></tr>
+                        <tr><td class="font-bold">GLM 5.3</td><td class="text-right">540</td><td class="text-right text-xs">4.8M · 3.9M · 0.1M</td><td class="text-right font-bold">$0.01</td></tr>
+                        <tr><td class="font-bold">Kimi</td><td class="text-right">182</td><td class="text-right text-xs">1.5M · 1.2M · 0.04M</td><td class="text-right font-bold">$0.01</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="text-right mt-2"><a href="javascript:void(0)" onclick="switchToCTab('#c-08')" class="text-xs text-blue-600 underline">요청 로그에서 보기 →</a></div>
+                  </div>
                 </div>
               </div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 합계 카드 4개는 유지하고 아래에 모델별 표만 추가. 모델 행 클릭 → C-08을 해당 모델로 필터링해 열기. 수치는 예시.</div>
             </div>
 
             <!-- C-02 API 키 관리 (높이 넉넉하게 확보됨) -->
@@ -2059,55 +3104,216 @@
               </div>
             </div>
 
-            <!-- C-07 플레이그라운드 -->
+            <!-- C-07 플레이그라운드 (v4.0 멀티턴 · 모델 3종) -->
             <div id="c-07" class="screen-section">
               <div class="wf-card">
                 <div class="wf-header">
-                  <span>C-07 플레이그라운드</span>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs text-slate-500 font-normal">상태 전환:</span>
-                    <button onclick="switchPlaygroundState('empty')" id="pg-btn-empty" class="state-toggle-btn active">크레딧 없음</button>
-                    <button onclick="switchPlaygroundState('has')" id="pg-btn-has" class="state-toggle-btn">크레딧 있음</button>
+                  <span class="flex items-center gap-2">C-07 플레이그라운드 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티턴 · 멀티모델</span></span>
+                  <div class="flex items-center gap-1 flex-wrap justify-end">
+                    <span class="text-xs text-slate-500 font-normal">크레딧:</span>
+                    <button onclick="switchPlaygroundState('empty')" id="pg-btn-empty" class="state-toggle-btn active">없음</button>
+                    <button onclick="switchPlaygroundState('has')" id="pg-btn-has" class="state-toggle-btn">있음</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">대화:</span>
+                    <button onclick="pgConv(this,'empty')" class="state-toggle-btn pg-conv-btn">빈 대화</button>
+                    <button onclick="pgConv(this,'chat')" class="state-toggle-btn pg-conv-btn active">대화 중</button>
+                    <button onclick="pgConv(this,'limit')" class="state-toggle-btn pg-conv-btn">한도 80%</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">단계:</span>
+                    <button onclick="pgPhase('obt')" class="state-toggle-btn pg-phase-btn active" data-p="obt">OBT</button>
+                    <button onclick="pgPhase('open')" class="state-toggle-btn pg-phase-btn" data-p="open">정식 오픈</button>
                   </div>
                 </div>
-                <div class="wf-body p-6 flex flex-col justify-between">
-                  <div id="pg-banner-empty" class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-xs text-blue-700 mb-6 flex items-center gap-3">
+                <div class="wf-body" style="position:relative">
+                  <!-- 코드 보기 드로어 -->
+                  <div id="pg-connect" class="cn-drawer hidden">
+                    <div class="cn-head">
+                      <div><div class="font-extrabold text-sm text-slate-900">&lt;/&gt; 코드 보기</div><div class="text-[11px] text-slate-400">지금 설정과 대화를 그대로 API 코드로</div></div>
+                      <button onclick="pgConnect(false)" class="pg-act text-sm">✕</button>
+                    </div>
+                    <div class="cn-body" style="position:relative"><span id="pg-toast-c" class="cn-toast hidden">복사됨</span>
+                      <div class="flex gap-1 mb-2 items-center"><button onclick="pgLang(0)" class="cn-chip on cn-lang">Python</button><button onclick="pgLang(1)" class="cn-chip cn-lang">TypeScript</button><button onclick="pgLang(2)" class="cn-chip cn-lang">cURL</button><a href="javascript:void(0)" onclick="pgConnect(false); switchToCTab('#c-02')" class="cn-issue ml-auto">API 키 발급 →</a></div>
+                      <div class="cn-code-wrap"><button class="cn-copy" onclick="pgToastC()" title="코드 복사">⧉</button><pre class="cn-code">import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url=&quot;https://api.morfac.io/v1&quot;,
+    api_key=os.environ[&quot;MORFAC_API_KEY&quot;],
+)
+
+stream = client.chat.completions.create(
+    model=&quot;glm-5.3&quot;,
+    stream=True,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.&quot;},
+        {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;1) 결제 후 사용하지 않은 크레딧은 환불 요청할 수 있어요. ...&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;같은 내용을 영어로 바꿔줘.&quot;},
+    ],
+)
+for chunk in stream:
+    print(chunk.choices[0].delta.content or &quot;&quot;, end=&quot;&quot;)</pre></div>
+                      <div class="cn-code-wrap hidden"><button class="cn-copy" onclick="pgToastC()" title="코드 복사">⧉</button><pre class="cn-code">import OpenAI from &quot;openai&quot;;
+
+const client = new OpenAI({
+  baseURL: &quot;https://api.morfac.io/v1&quot;,
+  apiKey: process.env.MORFAC_API_KEY,
+});
+
+const stream = await client.chat.completions.create({
+  model: &quot;glm-5.3&quot;,
+  stream: true,
+  messages: [
+    { role: &quot;system&quot;, content: &quot;You are a helpful assistant.&quot; },
+    { role: &quot;user&quot;, content: &quot;우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.&quot; },
+    { role: &quot;assistant&quot;, content: &quot;1) 결제 후 사용하지 않은 크레딧은 환불 요청할 수 있어요. ...&quot; },
+    { role: &quot;user&quot;, content: &quot;같은 내용을 영어로 바꿔줘.&quot; },
+  ],
+});
+for await (const chunk of stream) {
+  process.stdout.write(chunk.choices[0]?.delta?.content ?? &quot;&quot;);
+}</pre></div>
+                      <div class="cn-code-wrap hidden"><button class="cn-copy" onclick="pgToastC()" title="코드 복사">⧉</button><pre class="cn-code">curl https://api.morfac.io/v1/chat/completions \
+  -H &quot;Authorization: Bearer $MORFAC_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;glm-5.3&quot;,
+    &quot;stream&quot;: true,
+    &quot;messages&quot;: [
+      {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant.&quot;},
+      {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.&quot;},
+      {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;1) 결제 후 사용하지 않은 크레딧은 환불 요청할 수 있어요. ...&quot;},
+      {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;같은 내용을 영어로 바꿔줘.&quot;}
+    ]
+  }&#x27;</pre></div>
+                      <div class="cn-meta">모델 · 시스템 프롬프트 · 파라미터 · 지금 대화 내용이 그대로 들어가요 · 파라미터는 기본값과 다를 때만 포함</div>
+                    </div>
+                  </div>
+                  <!-- 상단 바 -->
+                  <div class="flex items-center gap-2 px-4 py-3 border-b bg-white">
+                    <div class="mm-dd w-72">
+                      <button onclick="document.getElementById('mm-dd-panel').classList.toggle('hidden')" class="wf-input mb-0 text-left flex justify-between items-center cursor-pointer text-xs">
+                        <span><b>Motif 3</b> <span class="text-slate-400">· 국산 모델</span></span><span>▾</span>
+                      </button>
+                      <div id="mm-dd-panel" class="mm-dd-panel hidden">
+                          <div class="mm-dd-item bg-slate-50"><div class="flex justify-between"><b>Motif 3 ✓</b><span class="mm-id">motif-3</span></div><div class="text-slate-500 text-[11px] mt-1">도구 호출 · 구조화 출력 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
+                          <div class="mm-dd-item"><div class="flex justify-between"><b>GLM 5.3</b><span class="mm-id">glm-5.3</span></div><div class="text-slate-500 text-[11px] mt-1">코딩 에이전트 · 도구 호출 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
+                          <div class="mm-dd-item"><div class="flex justify-between"><b>Kimi</b><span class="mm-id">kimi-k3</span></div><div class="text-slate-500 text-[11px] mt-1">긴 문서 · UI 코딩 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
+                          <a href="#m-08" onclick="switchToMTab()" class="block text-center text-xs text-blue-600 underline py-2">모델 비교표 보기 →</a>
+                      </div>
+                    </div>
+                    <a href="#m-09" onclick="switchToMTab()" class="text-[11px] text-slate-600 border border-slate-300 rounded px-2 py-1 no-underline whitespace-nowrap hover:bg-slate-50">모델 상세</a>
+                    <div class="ml-auto flex gap-2">
+                      <button onclick="pgConv(document.querySelector('.pg-conv-btn'),'empty')" class="wf-btn text-xs w-auto whitespace-nowrap">＋ 새 대화</button>
+                      <button onclick="pgConnect(true)" class="wf-btn wf-btn-dark text-xs w-auto whitespace-nowrap">&lt;/&gt; 코드 보기</button>
+                    </div>
+                  </div>
+
+                  <div id="pg-banner-empty" class="mx-4 mt-3 bg-blue-50 border border-blue-200 p-3 rounded-lg text-xs text-blue-700 flex items-center gap-3">
                     <span class="text-base">💡</span>
-                    <div>크레딧 추가 요청은 <a href="mailto:help@morphfactory.io" class="font-bold underline text-blue-700">help@morphfactory.io</a> 로 문의해 주세요.</div>
+                    <div class="pg-phase-obt">크레딧이 부족합니다. <a href="mailto:help@morphfactory.io" class="font-bold underline text-blue-700">help@morphfactory.io</a>로 추가 크레딧을 요청하세요.</div>
+                    <div class="pg-phase-open hidden flex-grow flex items-center justify-between gap-3"><span>크레딧이 부족합니다.</span><a href="javascript:void(0)" onclick="switchToCTab('#c-03')" class="wf-btn wf-btn-dark text-xs w-auto px-4 py-1.5 no-underline whitespace-nowrap">크레딧 충전하기</a></div>
                   </div>
 
-                  <div class="space-y-4 max-w-2xl mx-auto w-full my-auto">
-                    <div>
-                      <label class="block text-xs font-bold text-slate-700 mb-1">모델 선택</label>
-                      <select class="wf-input mb-0"><option>motif-3 (기본)</option></select>
-                    </div>
-                    <div>
-                      <label class="block text-xs font-bold text-slate-700 mb-1">시스템 프롬프트</label>
-                      <textarea class="wf-input h-40 mb-0">You are a helpful coding assistant.</textarea>
-                    </div>
-                    <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed w-full py-3 border-none">잔액 소진으로 실행 불가</button>
-                  </div>
+                  <div class="flex flex-grow min-h-[520px]">
+                    <!-- 대화 영역 -->
+                    <div class="flex-grow flex flex-col min-w-0">
+                      <div id="pg-empty" class="hidden flex-grow p-6 flex flex-col justify-center">
+                        <div class="text-center mb-4">
+                          <div class="font-bold text-slate-800">무엇을 테스트해 볼까요?</div>
+                          <div class="text-[11px] text-slate-400 mt-1">선택한 모델의 추천 프롬프트 (O-08)</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-xl mx-auto w-full">
+                          <button onclick="pgPreset(0)" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs bg-white">
+                            <div class="font-semibold text-slate-900">코드 리뷰</div>
+                            <div class="text-slate-500 text-[11px] mt-1">성능·보안·가독성 분석</div>
+                          </button>
+                          <button onclick="pgPreset(1)" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs bg-white">
+                            <div class="font-semibold text-slate-900">아키텍처 설계</div>
+                            <div class="text-slate-500 text-[11px] mt-1">마이크로서비스 패턴</div>
+                          </button>
+                          <button onclick="pgPreset(2)" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs bg-white">
+                            <div class="font-semibold text-slate-900">기술 블로그 작성</div>
+                            <div class="text-slate-500 text-[11px] mt-1">중급 개발자 대상</div>
+                          </button>
+                          <button onclick="pgPreset(3)" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs bg-white">
+                            <div class="font-semibold text-slate-900">API 문서화</div>
+                            <div class="text-slate-500 text-[11px] mt-1">OpenAPI 3.0 스펙</div>
+                          </button>
+                        </div>
+                      </div>
+                      <div id="pg-thread" class="flex-grow p-5 space-y-4 bg-slate-50/60" style="position:relative;z-index:5">
+                        <div class="flex justify-end"><div class="max-w-[80%] bg-slate-900 text-white text-xs rounded-2xl rounded-br-sm px-4 py-2.5 leading-relaxed">우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.</div></div>
+                        <div class="flex justify-start"><div class="max-w-[85%] w-full relative">
+                          <div class="text-[10px] font-bold text-violet-700 mb-1">Motif 3</div>
+                          <button class="pg-rs-toggle" onclick="pgReason(this)"><span class="pg-rs-caret">▸</span> 추론 과정 <span class="text-slate-400 font-normal">· 4.1초 동안 생각함</span></button>
+                          <div class="pg-rs-body hidden">사용자가 환불 정책을 고객 문의 답변용 3줄로 요약해 달라고 했다. 크레딧 환불 조건, 접수 경로와 소요 기간, 1년 제한을 한 줄씩 정리하고 정중한 존댓말로 쓴다.</div>
+                          <div class="bg-white border text-xs rounded-2xl rounded-bl-sm px-4 py-2.5 leading-relaxed text-slate-700">1) 결제 후 사용하지 않은 크레딧은 환불 요청할 수 있어요.<br/>2) 환불은 help 메일로 접수하고, 카드사 반영까지 3~5영업일 걸려요.<br/>3) 결제일로부터 1년이 지난 건은 환불이 어려워요.</div>
+                          <div class="pg-meta-row">
+                            <button class="pg-speed" onclick="pgPop('pg-pop-m1')">지연 <b>0.40초</b> <span class="pg-bolt">⚡</span> 속도 <b>58 tok/s</b></button>
+                            <span class="text-slate-400">· $0.0003</span>
+                            <span class="ml-auto"><button class="pg-act">복사</button></span>
+                          </div>
+                          <div id="pg-pop-m1" class="pg-pop hidden">
+                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">⚡ 응답 상세</span><button onclick="pgPop('pg-pop-m1')" class="pg-act">✕</button></div>
+                            <div class="pg-ss">토큰</div><div class="pg-sg"><div><div class="pg-sv">131</div><div class="pg-sl">입력 (캐시 110)</div></div><div><div class="pg-sv">396</div><div class="pg-sl">출력 (추론 310)</div></div><div><div class="pg-sv strong">527</div><div class="pg-sl strong">합계</div></div></div>
+                            <div class="pg-ss">처리 시간 (서버)</div><div class="pg-sg"><div><div class="pg-sv">0.02</div><div class="pg-sl">입력 초</div></div><div><div class="pg-sv">6.80</div><div class="pg-sl">출력 초</div></div><div><div class="pg-sv strong">6.82</div><div class="pg-sl strong">합계 초</div></div></div>
+                            <div class="pg-ss">초당 토큰</div><div class="pg-sg"><div><div class="pg-sv">6,550</div><div class="pg-sl">입력</div></div><div><div class="pg-sv">58</div><div class="pg-sl">출력</div></div><div><div class="pg-sv strong">77</div><div class="pg-sl strong">합계</div></div></div>
+                            <div class="pg-pop-foot"><span>왕복 7,410ms</span><span>모델 <span class="mm-id">motif-3</span></span><span>비용 <b>$0.0003</b></span></div>
+                          </div>
+                        </div></div>
+                        <div class="flex justify-end"><div class="max-w-[80%] bg-slate-900 text-white text-xs rounded-2xl rounded-br-sm px-4 py-2.5 leading-relaxed">같은 내용을 영어로 바꿔줘.</div></div>
+                        <div class="flex justify-start"><div class="max-w-[85%] w-full relative">
+                          <div class="text-[10px] font-bold text-violet-700 mb-1">GLM 5.3</div>
+                          <button class="pg-rs-toggle" onclick="pgReason(this)"><span class="pg-rs-caret">▸</span> 추론 과정 <span class="text-slate-400 font-normal">· 0.4초 동안 생각함</span></button>
+                          <div class="pg-rs-body hidden">앞 답변 3줄을 영어로 옮긴다. 줄 구조와 숫자(3–5영업일, 1년)는 그대로 유지한다.</div>
+                          <div class="bg-white border text-xs rounded-2xl rounded-bl-sm px-4 py-2.5 leading-relaxed text-slate-700">1) You can request a refund for unused credits.<br/>2) Refunds are handled via our help email and take 3–5 business days to reach your card.<br/>3) Payments older than one year are not eligible.</div>
+                          <div class="pg-meta-row">
+                            <button class="pg-speed" onclick="pgPop('pg-pop-m2')">지연 <b>0.50초</b> <span class="pg-bolt">⚡</span> 속도 <b>96 tok/s</b></button>
+                            <span class="text-slate-400">· $0.0004</span>
+                            <span class="ml-auto"><button class="pg-act">복사</button> · <button class="pg-act">다시 생성</button></span>
+                          </div>
+                          <div id="pg-pop-m2" class="pg-pop hidden">
+                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">⚡ 응답 상세</span><button onclick="pgPop('pg-pop-m2')" class="pg-act">✕</button></div>
+                            <div class="pg-ss">토큰</div><div class="pg-sg"><div><div class="pg-sv">305</div><div class="pg-sl">입력 (캐시 0)</div></div><div><div class="pg-sv">114</div><div class="pg-sl">출력 (추론 40)</div></div><div><div class="pg-sv strong">419</div><div class="pg-sl strong">합계</div></div></div>
+                            <div class="pg-ss">처리 시간 (서버)</div><div class="pg-sg"><div><div class="pg-sv">0.03</div><div class="pg-sl">입력 초</div></div><div><div class="pg-sv">1.19</div><div class="pg-sl">출력 초</div></div><div><div class="pg-sv strong">1.22</div><div class="pg-sl strong">합계 초</div></div></div>
+                            <div class="pg-ss">초당 토큰</div><div class="pg-sg"><div><div class="pg-sv">10,167</div><div class="pg-sl">입력</div></div><div><div class="pg-sv">96</div><div class="pg-sl">출력</div></div><div><div class="pg-sv strong">343</div><div class="pg-sl strong">합계</div></div></div>
+                            <div class="pg-pop-foot"><span>왕복 1,840ms</span><span>모델 <span class="mm-id">glm-5.3</span></span><span>비용 <b>$0.0004</b></span></div>
+                          </div>
+                        </div></div>
+                      </div>
 
-                  <!-- 추천 프롬프트 예시 -->
-                  <div class="border-t pt-6 mt-6">
-                    <div class="text-xs font-bold text-slate-700 mb-4">💡 추천 프롬프트</div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <button onclick="document.querySelector('[class*=h-40]').value='코드 리뷰를 해줘. 성능, 보안, 가독성 관점에서 개선할 점을 지적해주고, 더 나은 구현 방식을 제안해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
-                        <div class="font-semibold text-slate-900">코드 리뷰</div>
-                        <div class="text-slate-500 text-[11px] mt-1">성능·보안·가독성 분석</div>
-                      </button>
-                      <button onclick="document.querySelector('[class*=h-40]').value='이 기술 스택으로 아키텍처를 설계해줄래? 마이크로서비스 패턴을 고려해서 각 컴포넌트의 책임과 통신 방식을 명확히 해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
-                        <div class="font-semibold text-slate-900">아키텍처 설계</div>
-                        <div class="text-slate-500 text-[11px] mt-1">마이크로서비스 패턴</div>
-                      </button>
-                      <button onclick="document.querySelector('[class*=h-40]').value='기술 블로그 글을 작성해줘. 대상 독자는 중급 개발자이고, 실제 프로젝트 예시와 함께 설명해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
-                        <div class="font-semibold text-slate-900">기술 블로그 작성</div>
-                        <div class="text-slate-500 text-[11px] mt-1">중급 개발자 대상</div>
-                      </button>
-                      <button onclick="document.querySelector('[class*=h-40]').value='API 문서를 작성해줄래? OpenAPI 3.0 스펙으로 명확하고 이해하기 쉽게 정리해줘.'" class="text-left p-3 border rounded-lg hover:bg-slate-50 transition text-xs">
-                        <div class="font-semibold text-slate-900">API 문서화</div>
-                        <div class="text-slate-500 text-[11px] mt-1">OpenAPI 3.0 스펙</div>
-                      </button>
+                      <!-- 입력 영역 -->
+                      <div class="border-t p-3 bg-white">
+                        <div id="pg-limit-warn" class="hidden mb-2 p-2 rounded-lg bg-amber-50 border border-amber-200 text-[11px] text-amber-800">
+                          <div class="flex justify-between mb-1"><span>대화가 컨텍스트 한도의 82%에 도달했어요. 새 대화를 시작하면 비용도 줄어요.</span><button onclick="pgConv(document.querySelector('.pg-conv-btn'),'empty')" class="underline font-bold border-none bg-transparent cursor-pointer text-amber-800">새 대화</button></div>
+                          <div class="h-1.5 bg-amber-100 rounded-full overflow-hidden"><div class="h-1.5 bg-amber-500 w-[82%]"></div></div>
+                          <div class="mt-1 text-amber-700">100%가 되면 전송이 막혀요 (앞부분 자동 잘라내기 없음)</div>
+                        </div>
+                        <div class="flex gap-2 items-end">
+                          <textarea id="pg-input" class="wf-input mb-0 h-20 resize-none text-xs font-mono" style="flex:1" placeholder="메시지를 입력하세요 (Enter 전송 · Shift+Enter 줄바꿈)"></textarea>
+                          <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed py-3 border-none" style="width:7rem;flex:none">크레딧 부족</button>
+                        </div>
+                        <div class="flex justify-between text-[10px] text-slate-400 mt-1.5">
+                          <span id="pg-token-count">누적 305 토큰</span>
+                          <span>스트리밍 중에는 전송 버튼이 [■ 중지]로 바뀜</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 설정 패널 -->
+                    <div class="w-64 border-l bg-white p-4 space-y-4 flex-shrink-0 text-xs">
+                      <div>
+                        <label class="block font-bold text-slate-700 mb-1">시스템 프롬프트</label>
+                        <textarea id="pg-sys" class="wf-input h-32 mb-1 text-xs">You are a helpful assistant.</textarea>
+                        <div class="text-[10px] text-slate-400 leading-relaxed">추천 프롬프트를 고르면 알맞은 시스템 프롬프트도 함께 채워져요</div>
+                      </div>
+                      <details class="border rounded-lg">
+                        <summary class="px-3 py-2 font-bold text-slate-700 cursor-pointer">파라미터 <span class="font-normal text-slate-400">(모델 기본값)</span></summary>
+                        <div class="px-3 pb-3 space-y-3">
+                          <div><div class="flex justify-between"><span>temperature</span><span class="font-mono">기본</span></div><input type="range" class="w-full"></div>
+                          <div><div class="flex justify-between"><span>max_tokens</span><span class="font-mono">기본</span></div><input type="number" class="wf-input mb-0 text-xs" placeholder="모델 기본값"></div>
+                          <button class="text-[11px] underline text-slate-500 border-none bg-transparent cursor-pointer p-0">기본값으로</button>
+                        </div>
+                      </details>
                     </div>
                   </div>
                 </div>
@@ -2116,17 +3322,27 @@
 
             <!-- C-08 로그 -->
             <div id="c-08" class="screen-section">
-              <div class="wf-card">
+              <div class="wf-card tbd-card"><div class="tbd-overlay"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div></div></div>
                 <div class="wf-header">
                   <span>C-08 API 요청 로그</span>
-                  <span class="wf-badge">동일 화면</span>
+                  <div class="flex gap-2 items-center"><span class="wf-badge">동일 화면</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></div>
                 </div>
                 <div class="wf-body p-6 flex flex-col justify-between">
                   <div>
+                    <div class="flex gap-2 items-center mb-3 text-xs">
+                      <span class="font-bold text-slate-500 whitespace-nowrap">모델</span>
+                      <select class="wf-input w-auto mb-0 text-xs" style="width:auto"><option>전체 모델</option><option>motif-3</option><option>glm-5.3</option><option>kimi-k3</option></select>
+                      <span class="font-bold text-slate-500 ml-2 whitespace-nowrap">경로</span>
+                      <select class="wf-input w-auto mb-0 text-xs" style="width:auto"><option>전체</option><option>API</option><option>플레이그라운드</option></select>
+                      <span class="font-bold text-slate-500 ml-2 whitespace-nowrap">상태</span>
+                      <select class="wf-input w-auto mb-0 text-xs" style="width:auto"><option>전체</option><option>성공</option><option>오류</option></select>
+                    </div>
                     <table class="wf-table border rounded-lg overflow-hidden">
-                      <thead><tr><th>일시</th><th>모델</th><th>상태</th><th>토큰 수</th><th>지연 시간</th></tr></thead>
+                      <thead><tr><th>일시</th><th>모델</th><th>상태</th><th>토큰 (입력 · 출력)</th><th>TTFT · 전체</th><th class="text-right">크레딧</th></tr></thead>
                       <tbody>
-                        <tr><td>2026-08-26 14:20:12</td><td>motif-3</td><td><span class="text-emerald-600 font-bold">200 성공 (OK)</span></td><td>1,240</td><td>320ms</td></tr>
+                        <tr><td>2026-09-27 14:20:12</td><td><span class="mm-id">motif-3</span></td><td><span class="text-emerald-600 font-bold">200 성공</span></td><td>1,240 · 310</td><td>0.3s · 2.1s</td><td class="text-right">$0.001</td></tr>
+                        <tr><td>2026-09-27 14:18:40</td><td><span class="mm-id">glm-5.3</span></td><td><span class="text-emerald-600 font-bold">200 성공</span></td><td>8,902 · 120</td><td>0.5s · 1.4s</td><td class="text-right">$0.002</td></tr>
+                        <tr><td>2026-09-27 14:15:03</td><td><span class="mm-id">kimi-k3</span></td><td><span class="text-red-600 font-bold">400 컨텍스트 초과</span></td><td>—</td><td>—</td><td class="text-right">$0</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -2135,6 +3351,7 @@
                   </div>
                 </div>
               </div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 모델 컬럼 = <b>실제 사용 모델</b>(응답 <code>model</code> 필드와 같은 공개 ID). 모델 · 경로(API / 플레이그라운드, <code>source=playground</code>) 필터 추가. 본문은 보여주지 않고 메타데이터만(데이터 보관 정책). 캐시 입력 토큰을 별도 컬럼으로 뺄지는 C-01 표기와 맞춰 결정.</div>
             </div>
 
             <!-- C-03 크레딧 (잔액 확인 · 크레딧 내역 · 충전 진입 · 환불 안내) -->
@@ -2167,26 +3384,30 @@
 
                   <!-- ② 충전 -->
                   <div class="c03-block">
-                    <div class="c03-section-title"><span class="c03-marker">2</span>충전</div>
+                    <div class="c03-section-title" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="c03-marker">2</span>충전</span><span style="font-size:12px;font-weight:600;color:#475569;">적용 환율 <b style="color:#0f172a;">1크레딧 = 1,412원</b> <span style="color:#94a3b8;font-weight:500;">(2026년 9월 28일 기준)</span></span></div>
                     <div class="c03-topup-grid">
                       <div class="c03-topup">
                         <div class="c03-topup-credit">10크레딧</div>
-                        <div class="c03-topup-price">14,850원</div>
+                        <div class="c03-topup-price">15,532원</div>
+                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
                       </div>
                       <div class="c03-topup">
                         <div class="c03-topup-credit">30크레딧</div>
-                        <div class="c03-topup-price">44,550원</div>
+                        <div class="c03-topup-price">46,596원</div>
+                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
                       </div>
                       <div class="c03-topup">
                         <div class="c03-topup-credit">100크레딧</div>
-                        <div class="c03-topup-price">148,500원</div>
+                        <div class="c03-topup-price">155,320원</div>
+                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
                       </div>
                       <div class="c03-topup">
                         <div class="c03-topup-credit">300크레딧</div>
-                        <div class="c03-topup-price">445,500원</div>
+                        <div class="c03-topup-price">465,960원</div>
+                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
                       </div>
                     </div>
-                    <div class="c03-topup-note">표시 금액은 부가세 포함이며, 적용 환율에 따라 달라질 수 있습니다.</div>
+                    <div class="c03-topup-note">결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 추가됩니다.</div>
                   </div>
                   
                   <!-- ③ 크레딧 내역 -->
@@ -2253,6 +3474,8 @@
                       <li>크레딧 금액은 <b>$ 표기</b>, 소수점 이하가 0이면 생략 (예: <b>$20</b> · 잔액 <b>$27.11</b>)</li>
                       <li>잔액 영역에 <b>무료/유료 구분 표시하지 않음</b></li>
                       <li>상태 표기 3종 고정(버튼 아님·텍스트): ✓ 결제완료 / ⏳ 환불 처리중 / ↩️ 환불완료</li>
+                      <li><b>(9/28) 결제 금액 = 적용 환율 × 크레딧 수 × 1.1(부가세)</b> · 충전 영역 오른쪽 위에 적용 환율과 기준일, 상품 아래에 한 줄 고지(“결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 추가됩니다.” · 계산식 박스는 9/28 삭제) · 결제 건마다 적용 환율을 저장(O-04 결제 내역 “적용환율”) · 과거 내역 금액은 당시 환율 기준이라 지금 상품가와 다를 수 있음</li>
+                      <li><b>확인 필요</b>: 환율 기준(출처 · 갱신 주기 · 갱신 시각) · 원 단위 미만 처리(절사/반올림) · 결제창 진입 후 환율이 바뀌는 경우 처리</li>
                     </ul>
                   </div>
                   <div class="c03-spec-item">
@@ -2346,6 +3569,7 @@
                 <a href="#o-06" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">✉️ O-06 문의 메일 운영</a>
                 <a href="#o-07" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">📢 O-07 공지사항</a>
                 <a href="#o-08" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">💡 O-08 추천 프롬프트</a>
+                <a href="#o-09" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🧩 O-09 모델 관리 <span class="mm-tag" style="background:#ede9fe;color:#6d28d9">NEW</span></a>
               </div>
             </div>
           </div>
@@ -2357,7 +3581,7 @@
             <div id="sec-dashboard" class="screen-section">
               <div class="wf-card">
                 <div class="wf-header">
-                  <span class="text-base font-bold text-slate-900">대시보드</span>
+                  <span class="text-base font-bold text-slate-900 flex items-center gap-2">대시보드 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
                   <div class="flex items-center gap-2">
                     <div class="inline-flex rounded-lg border border-slate-200 p-1 bg-slate-100 text-xs">
                       <button class="px-3 py-1 rounded-md text-slate-600 hover:text-slate-900 font-medium">오늘</button>
@@ -2424,7 +3648,7 @@
                   <div>
                     <div class="flex justify-between items-center mb-3">
                       <h3 class="font-bold text-sm text-slate-900">모델별 사용량</h3>
-                      <select class="wf-input w-auto text-xs py-1 font-bold"><option>Motif 3</option><option>Motif 2 Pro</option></select>
+                      <select class="wf-input w-auto text-xs py-1 font-bold"><option>Motif 3</option><option>GLM 5.3</option><option>Kimi</option></select>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                       <div class="border rounded-xl p-4 bg-slate-50/80"><div class="text-xs text-slate-400 mb-1">사용된 토큰량</div><div class="text-2xl font-bold text-slate-800">1.82M</div></div>
@@ -2443,6 +3667,22 @@
                         <div class="w-full bg-emerald-600 rounded-t-sm h-[95%]"></div>
                       </div>
                     </div>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center gap-2 mb-3">
+                      <h3 class="font-bold text-sm text-slate-900">모델 비교</h3>
+                      <span class="text-xs text-slate-400">선택 기간 · 3종 나란히</span>
+                    </div>
+                    <table class="wf-table border rounded-lg overflow-hidden bg-white">
+                      <thead><tr><th>모델</th><th class="text-right">요청</th><th class="text-right">성공률</th><th class="text-right">토큰</th><th class="text-right">캐시 적중</th><th class="text-right">TTFT p50 · p95</th><th class="text-right">사용 크레딧</th></tr></thead>
+                      <tbody>
+                        <tr><td class="font-bold">Motif 3</td><td class="text-right">412</td><td class="text-right">97.1%</td><td class="text-right">1.82M</td><td class="text-right">71%</td><td class="text-right">0.4s · 1.2s</td><td class="text-right">$31.20</td></tr>
+                        <tr><td class="font-bold">GLM 5.3</td><td class="text-right">288</td><td class="text-right">96.5%</td><td class="text-right">2.10M</td><td class="text-right">82%</td><td class="text-right">0.5s · 1.6s</td><td class="text-right">$28.04</td></tr>
+                        <tr><td class="font-bold">Kimi</td><td class="text-right">96</td><td class="text-right">95.8%</td><td class="text-right">0.94M</td><td class="text-right">79%</td><td class="text-right">0.8s · 2.9s</td><td class="text-right">$18.43</td></tr>
+                      </tbody>
+                    </table>
+                    <p class="text-[11px] text-slate-400 mt-1">감지 언어(ko / en / zh / code)별 분포는 2월 오토 라우팅 규칙 근거용 — 로그 스키마 확정 후 추가</p>
                   </div>
 
                   <div>
@@ -2801,6 +4041,58 @@
                   </table>
                 </div>
               </div>
+            </div>
+
+
+            <!-- O-09 모델 관리 (v4.0 신규 · 협의 필요) -->
+            <div id="o-09" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span>🧩 O-09 모델 관리</span>
+                  <div class="flex gap-2 items-center"><span class="wf-badge" style="background:#fef3c7;color:#92400e">협의 필요</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></div>
+                </div>
+                <div class="wf-body p-6 space-y-4">
+                  <p class="text-xs text-slate-500">여기서 고친 값이 카탈로그(M-08) · 플레이그라운드 드롭다운(C-07) · Docs 모델 표(M-02) · <code>/v1/models</code> 응답에 같이 반영됩니다.</p>
+                  <table class="wf-table border rounded-lg">
+                    <thead><tr><th>모델 · ID</th><th>상태</th><th>용도 태그</th><th>입력 / 캐시 / 출력</th><th>컨텍스트</th><th>노출</th><th class="text-right">관리</th></tr></thead>
+                    <tbody>
+                        <tr>
+                          <td><div class="font-bold text-xs">Motif 3</div><span class="mm-id">motif-3</span></td>
+                          <td><span class="text-xs font-bold px-2 py-0.5 rounded border bg-emerald-50 text-emerald-700 border-emerald-200">정식</span></td>
+                          <td class="text-xs">국산 모델 · 구조화 출력</td>
+                          <td class="text-xs text-slate-600">$x / $x / $x</td>
+                          <td class="text-xs">xxxK</td>
+                          <td><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></td>
+                          <td class="text-right"><button onclick="alert('모델 정보 수정 (표시 이름 · 한 줄 용도 · 태그 · 단가 · 상태 · 종료 예정일/대체 모델)')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="font-bold text-xs">GLM 5.3</div><span class="mm-id">glm-5.3</span></td>
+                          <td><span class="text-xs font-bold px-2 py-0.5 rounded border bg-emerald-50 text-emerald-700 border-emerald-200">정식</span></td>
+                          <td class="text-xs">코딩 · 에이전트</td>
+                          <td class="text-xs text-slate-600">$x / $x / $x</td>
+                          <td class="text-xs">xxxK</td>
+                          <td><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></td>
+                          <td class="text-right"><button onclick="alert('모델 정보 수정 (표시 이름 · 한 줄 용도 · 태그 · 단가 · 상태 · 종료 예정일/대체 모델)')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button></td>
+                        </tr>
+                        <tr>
+                          <td><div class="font-bold text-xs">Kimi</div><span class="mm-id">kimi-k3</span></td>
+                          <td><span class="text-xs font-bold px-2 py-0.5 rounded border bg-amber-50 text-amber-700 border-amber-200">Preview</span></td>
+                          <td class="text-xs">긴 문서 · UI 코딩</td>
+                          <td class="text-xs text-slate-600">$x / $x / $x</td>
+                          <td class="text-xs">xxxK</td>
+                          <td><label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label></td>
+                          <td class="text-right"><button onclick="alert('모델 정보 수정 (표시 이름 · 한 줄 용도 · 태그 · 단가 · 상태 · 종료 예정일/대체 모델)')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer">수정</button></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-[11px] text-slate-500 bg-slate-50 border rounded-lg p-3 leading-relaxed">
+                    • 노출 OFF = 카탈로그 · 드롭다운에서 숨김(호출 가능 여부는 별개 · 개발 확인)<br/>
+                    • 단가 변경은 <b>적용 단가 버전</b>으로 기록(로그 스키마 “적용 단가 버전” 필드와 연결), 적용 시작 일시 지정<br/>
+                    • 상태 “종료 예정”을 고르면 종료일 · 대체 모델 입력 → 카탈로그 상세와 공지(O-07)에 사용
+                  </div>
+                </div>
+              </div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 카탈로그 UX안 “API와 화면의 데이터 소스를 하나로”에서 나온 화면. 모델 수가 3개라 <b>어드민 화면 없이 설정 파일 배포로 가는 안</b>도 가능 → 개발과 협의 후 유지/삭제 결정. 성능 · 업타임 수치는 자동 측정값이라 여기서 입력하지 않음.</div>
             </div>
 
             <!-- O-04 결제·환불 관리 -->
@@ -3176,7 +4468,7 @@
       </div>
 
       <!-- E-01: 회원가입 이메일 인증 (OTP) -->
-      <div class="wf-card mb-6">
+      <div id="e-01" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-01 회원가입 이메일 인증 (OTP)</span>
           <span class="wf-badge">신규 사용자</span>
@@ -3226,7 +4518,7 @@
       </div>
 
       <!-- E-02: 가입 완료 안내 -->
-      <div class="wf-card mb-6">
+      <div id="e-02" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-02 가입 완료 안내</span>
           <span class="wf-badge">회원가입 완료</span>
@@ -3272,7 +4564,7 @@
       </div>
 
       <!-- E-03: 비밀번호 재설정 OTP -->
-      <div class="wf-card mb-6">
+      <div id="e-03" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-03 비밀번호 재설정 OTP</span>
           <span class="wf-badge">보안</span>
@@ -3315,7 +4607,7 @@
       </div>
 
       <!-- E-04: 비밀번호 재설정 알림 -->
-      <div class="wf-card mb-6">
+      <div id="e-04" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-04 비밀번호 재설정 알림</span>
           <span class="wf-badge">보안</span>
@@ -3359,7 +4651,7 @@
       </div>
 
       <!-- E-05: 소셜 계정 연동 완료 알림 -->
-      <div class="wf-card mb-6">
+      <div id="e-05" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-05 소셜 계정 연동 완료 알림</span>
           <span class="wf-badge">계정 연동</span>
@@ -3410,7 +4702,7 @@
       </div>
 
       <!-- E-06: 운영메일 답변 -->
-      <div class="wf-card mb-6">
+      <div id="e-06" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-06 운영메일 답변</span>
           <span class="wf-badge">운영 / 고객지원</span>
@@ -3455,7 +4747,7 @@
       <!-- E-07 / E-08: 결제·환불 자동 발송 메일 (나란히 배치) -->
       <div class="e07-mail-grid">
       <!-- ===================== E-07 ===================== -->
-      <div class="wf-card mb-6">
+      <div id="e-07" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-07 충전 완료 안내</span>
           <span class="wf-badge">결제 완료 시 자동 발송</span>
@@ -3523,7 +4815,7 @@
       </div>
 
       <!-- ===================== E-08 ===================== -->
-      <div class="wf-card mb-6">
+      <div id="e-08" class="wf-card mb-6">
         <div class="wf-header">
           <span>E-08 환불 완료 안내</span>
           <span class="wf-badge">O-04에서 완료 처리 시 자동 발송</span>
@@ -4084,6 +5376,21 @@
           <input type="text" class="wf-input mb-0" placeholder="예: 코드 리뷰">
         </div>
         <div>
+          <label class="block font-bold text-slate-700 mb-1">대상 모델 <span class="text-red-500">*</span> <span class="text-violet-700 font-bold text-[10px]">v4.0</span></label>
+          <div class="flex gap-3">
+            <label class="flex items-center gap-1"><input type="checkbox" checked> 전체 모델</label>
+            <label class="flex items-center gap-1"><input type="checkbox"> Motif 3</label>
+            <label class="flex items-center gap-1"><input type="checkbox"> GLM 5.3</label>
+            <label class="flex items-center gap-1"><input type="checkbox"> Kimi</label>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-1">플레이그라운드는 선택된 모델의 프롬프트만 보여줘요.</p>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">시스템 프롬프트 <span class="text-violet-700 font-bold text-[10px]">v4.0</span></label>
+          <textarea class="wf-input mb-1 h-20 text-xs" placeholder="예: 당신은 시니어 소프트웨어 엔지니어입니다. 코드를 성능, 보안, 가독성 관점에서 리뷰하고…"></textarea>
+          <p class="text-[11px] text-slate-400 mb-3">플레이그라운드에서 이 프롬프트를 고르면 시스템 프롬프트 칸에 함께 채워져요. 비우면 모델 기본값.</p>
+        </div>
+        <div>
           <label class="block font-bold text-slate-700 mb-1">프롬프트 내용 <span class="text-red-500">*</span></label>
           <div class="border border-slate-300 rounded-lg overflow-hidden">
             <div class="bg-slate-100 border-b p-2 flex flex-wrap gap-2 items-center text-slate-700">
@@ -4115,6 +5422,7 @@
   <script>
     /* 메인 탭 전환 (History, M, A, C, O) */
     function openTab(tabId, btnElement) {
+      if (tabId === 'tab-sitemap') setTimeout(drawSitemapLinks, 30);
       document.querySelectorAll('.tab-content').forEach(el => {
         el.classList.remove('block');
         el.classList.add('hidden');
@@ -4269,8 +5577,8 @@
         if (actionBtn) {
           actionBtn.disabled = true;
           actionBtn.classList.add('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
-          actionBtn.classList.remove('bg-slate-900', 'text-white');
-          actionBtn.textContent = '잔액 소진으로 실행 불가';
+          actionBtn.classList.remove('bg-slate-900', 'text-white', 'wf-btn-dark');
+          actionBtn.textContent = '크레딧 부족';
         }
       } else {
         hasBtn.classList.add('active');
@@ -4279,8 +5587,8 @@
         if (actionBtn) {
           actionBtn.disabled = false;
           actionBtn.classList.remove('bg-slate-100', 'text-slate-400', 'cursor-not-allowed');
-          actionBtn.classList.add('bg-slate-900', 'text-white');
-          actionBtn.textContent = '실행';
+          actionBtn.classList.add('bg-slate-900', 'text-white', 'wf-btn-dark');
+          actionBtn.textContent = '전송 ↵';
         }
       }
     }
@@ -4616,6 +5924,127 @@
         alert('회원 탈퇴가 완료되었습니다.');
         closeAccountSettingModal();
       }
+    }
+
+    /* v4.0 멀티모델: 카탈로그 용도 칩 · 플레이그라운드 대화 상태 */
+    const SM_LINKS = [['A-03','E-01'],['A-02','E-05'],['A-04','E-02'],['A-05','E-03'],['A-05','E-04'],['C-03','E-07'],['C-03','E-08'],['ACCT','E-04'],['ACCT','E-05']];
+    function drawSitemapLinks() {
+      const lay = document.getElementById('sm-layout'), svg = document.getElementById('sm-links');
+      if (!lay || !svg || lay.offsetParent === null) return;
+      const L = lay.getBoundingClientRect();
+      let paths = '', dots = '';
+      SM_LINKS.forEach(([pg, ml]) => {
+        const a = lay.querySelector('[data-pg="' + pg + '"]'), b = lay.querySelector('[data-mail="' + ml + '"]');
+        if (!a || !b) return;
+        const A = a.getBoundingClientRect(), B = b.getBoundingClientRect();
+        const pageLeft = A.left > B.right;               // 페이지가 메일 오른쪽에 있으면 왼쪽 변에서 출발
+        const x1 = (pageLeft ? A.left : A.right) - L.left, y1 = A.top + A.height / 2 - L.top;
+        const x2 = (pageLeft ? B.right : B.left) - L.left, y2 = B.top + B.height / 2 - L.top;
+        const cx = (x1 + x2) / 2;
+        const key = ' data-pg="' + pg + '" data-ml="' + ml + '"';
+        paths += '<path class="sm-link"' + key + ' d="M' + x1 + ',' + y1 + ' C' + cx + ',' + y1 + ' ' + cx + ',' + y2 + ' ' + x2 + ',' + y2 + '" />';
+        dots += '<circle class="sm-dot"' + key + ' cx="' + x2 + '" cy="' + y2 + '" r="3" />';
+      });
+      svg.innerHTML = paths + dots;
+      if (!lay.dataset.hoverBound) {                     // 마우스 오버 하이라이트 (한 번만 연결)
+        lay.dataset.hoverBound = '1';
+        lay.addEventListener('mouseover', e => {
+          const n = e.target.closest('[data-pg], [data-mail]');
+          if (!n || n.closest('svg')) return;
+          smHighlight(n.dataset.pg ? 'pg' : 'ml', n.dataset.pg || n.dataset.mail);
+        });
+        lay.addEventListener('mouseout', e => {
+          const n = e.target.closest('[data-pg], [data-mail]');
+          if (n && !n.contains(e.relatedTarget)) smHighlight(null);
+        });
+      }
+    }
+    function smHighlight(kind, id) {
+      const lay = document.getElementById('sm-layout');
+      lay.querySelectorAll('.sm-hl').forEach(el => el.classList.remove('sm-hl'));
+      lay.classList.remove('sm-hovering');
+      if (!kind) return;
+      const links = [...lay.querySelectorAll('.sm-link, .sm-dot')].filter(p => p.dataset[kind] === id);
+      if (!links.length) return;
+      lay.classList.add('sm-hovering');
+      links.forEach(p => {
+        p.classList.add('sm-hl');
+        lay.querySelector('[data-pg="' + p.dataset.pg + '"]:not(path):not(circle)')?.classList.add('sm-hl');
+        lay.querySelector('[data-mail="' + p.dataset.ml + '"]')?.classList.add('sm-hl');
+      });
+    }
+    window.addEventListener('resize', drawSitemapLinks);
+    function smGo(tab, id) {
+      openTab(tab);
+      setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+    }
+    function langToggle() {
+      const sw = document.querySelector('.lang-switch');
+      const next = sw.dataset.lang === 'KO' ? 'EN' : 'KO';
+      document.querySelectorAll('.lang-switch').forEach(b => b.dataset.lang = next);
+    }
+    function pgConv(btn, state) {
+      document.querySelectorAll('.pg-conv-btn').forEach(b => b.classList.remove('active'));
+      const idx = {empty: 0, chat: 1, limit: 2}[state];
+      document.querySelectorAll('.pg-conv-btn')[idx].classList.add('active');
+      document.getElementById('pg-empty').classList.toggle('hidden', state !== 'empty');
+      document.getElementById('pg-thread').classList.toggle('hidden', state === 'empty');
+      document.getElementById('pg-limit-warn').classList.toggle('hidden', state !== 'limit');
+      document.getElementById('pg-token-count').textContent =
+        state === 'empty' ? '누적 0 토큰' : state === 'limit' ? '누적 107,520 / 131,072 토큰' : '누적 305 토큰';
+    }
+    const PG_PRESETS = [
+      { sys: '당신은 시니어 소프트웨어 엔지니어입니다. 코드를 성능, 보안, 가독성 관점에서 리뷰하고, 문제가 되는 위치와 이유, 구체적인 수정안을 함께 제시하세요.',
+        user: '아래 파이썬 코드를 리뷰해줘. 성능, 보안, 가독성 관점에서 개선할 점을 알려줘.\n\ndef get_user(db, user_id):\n    query = "SELECT * FROM users WHERE id = " + str(user_id)\n    rows = db.execute(query).fetchall()\n    for r in rows:\n        if r[0] == user_id:\n            return r\n    return None' },
+      { sys: '당신은 소프트웨어 아키텍트입니다. 요구사항이 부족하면 먼저 질문하고, 컴포넌트별 책임과 통신 방식, 선택의 트레이드오프를 명확히 설명하세요.',
+        user: 'Next.js + FastAPI + PostgreSQL로 B2B SaaS를 만들고 있어. 월 사용자는 5만 명, 파일 업로드와 실시간 알림 기능이 있어. 트래픽이 3배로 늘어도 버틸 수 있는 서비스 아키텍처를 설계해줘.' },
+      { sys: '당신은 중급 개발자를 위한 기술 블로그 작가입니다. 실제 프로젝트 예시와 코드 스니펫을 넣어 단계별로 명확하게 설명하세요.',
+        user: '“LLM API 비용을 줄이는 프롬프트 캐싱 활용법”을 주제로 중급 개발자 대상 블로그 글을 써줘. 캐시가 적용되는 조건, 시스템 프롬프트 배치 요령, 파이썬 코드 예시를 포함해줘.' },
+      { sys: '당신은 API 문서화 전문가입니다. OpenAPI 3.0 형식을 정확히 지키고, 엔드포인트마다 요청 · 응답 예시와 오류 코드를 포함하세요.',
+        user: '아래 주문 API를 OpenAPI 3.0 스펙(YAML)으로 정리해줘.\n\n- POST /v1/orders : 주문 생성 (body: product_id, quantity)\n- GET /v1/orders/{id} : 주문 조회\n- DELETE /v1/orders/{id} : 주문 취소 (배송 시작 후에는 409)' },
+    ];
+    function pgConnect(open) { document.getElementById('pg-connect').classList.toggle('hidden', !open); }
+    function pgConnTab(i) {
+      document.querySelectorAll('#pg-connect .cn-tab').forEach((t, k) => t.classList.toggle('on', k === i));
+      document.querySelectorAll('#pg-connect .cn-pane').forEach((p, k) => p.classList.toggle('hidden', k !== i));
+    }
+    function pgTool(t) {
+      document.querySelectorAll('#pg-connect .cn-chip[data-t]').forEach(c => c.classList.toggle('on', c.dataset.t === t));
+      document.querySelectorAll('#pg-connect .cn-tool').forEach(p => p.classList.toggle('hidden', p.dataset.t !== t));
+    }
+    function pgLang(i) {
+      document.querySelectorAll('#pg-connect .cn-lang').forEach((c, k) => c.classList.toggle('on', k === i));
+      document.querySelectorAll('#pg-connect .cn-code-wrap').forEach((p, k) => p.classList.toggle('hidden', k !== i));
+    }
+    function pgToastC() {
+      const t = document.getElementById('pg-toast-c'); t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 1200);
+    }
+    function pgPhase(p) {
+      document.querySelectorAll('.pg-phase-btn').forEach(b => b.classList.toggle('active', b.dataset.p === p));
+      document.querySelectorAll('.pg-phase-obt').forEach(e => e.classList.toggle('hidden', p !== 'obt'));
+      document.querySelectorAll('.pg-phase-open').forEach(e => e.classList.toggle('hidden', p !== 'open'));
+    }
+    function pgPreset(i) {
+      const p = PG_PRESETS[i]; if (!p) return;
+      document.getElementById('pg-sys').value = p.sys;
+      document.getElementById('pg-input').value = p.user;
+    }
+    function pgReason(btn) {
+      const body = btn.nextElementSibling; body.classList.toggle('hidden');
+      btn.querySelector('.pg-rs-caret').textContent = body.classList.contains('hidden') ? '▸' : '▾';
+    }
+    function pgPop(id) {
+      document.querySelectorAll('.pg-pop').forEach(p => { if (p.id !== id) p.classList.add('hidden'); });
+      document.getElementById(id)?.classList.toggle('hidden');
+    }
+    function mmChip(btn, key) {
+      document.querySelectorAll('#mm-chips .mm-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#m-08 .mm-card').forEach(c => {
+        c.classList.remove('dim', 'rec');
+        if (key !== 'all') c.classList.add(c.dataset.model === key ? 'rec' : 'dim');
+      });
     }
   </script>
 </body>
