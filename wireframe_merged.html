@@ -203,6 +203,20 @@
     .wf-card + .mm-note { margin: -20px 0 32px; }
     .screen-section .wf-card + .mm-note { margin: 8px 0 0; }
     .tbd-card { position: relative; }
+    .wd-h { font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+    .wd-tag { font-size: 11px; font-weight: 700; color: #b45309; background: #fef3c7; border-radius: 9999px; padding: 2px 8px; vertical-align: middle; margin-left: 4px; }
+    .wd-bal { border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; background: #f8fafc; }
+    .wd-alert { border-radius: 10px; padding: 12px 14px; font-size: 12px; line-height: 1.6; }
+    .wd-alert.red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .wd-alert.amber { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+    .wd-faq { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+    .wd-q { font-size: 13px; font-weight: 700; color: #0f172a; }
+    .wd-a { font-size: 12px; color: #475569; margin-top: 3px; line-height: 1.6; }
+    .wd-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #334155; }
+    #wd-root .wd-v { display: none; }
+    #wd-root[data-state="paid"] .wd-v-paid, #wd-root[data-state="refunding"] .wd-v-refunding, #wd-root[data-state="zero"] .wd-v-zero { display: block; }
+    #wd-root[data-auth="email"] .wd-a-social, #wd-root[data-auth="social"] .wd-a-email { display: none; }
+    #wd-submit:disabled { opacity: .4; cursor: not-allowed; }
     .tbd-overlay { position: absolute; inset: 0; z-index: 25; background: rgba(15,23,42,.55); border-radius: 8px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(1px); }
     .tbd-box { text-align: center; color: #fff; }
     .tbd-badge { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .15em; background: #f59e0b; color: #1f2937; border-radius: 4px; padding: 3px 10px; margin-bottom: 10px; }
@@ -237,13 +251,15 @@
     .pg-rs-toggle:hover { color: #0f172a; }
     .pg-rs-body { border-left: 2px solid #e2e8f0; padding: 2px 0 2px 10px; margin: 0 0 8px 4px; font-size: 11px; color: #94a3b8; line-height: 1.6; }
     .pg-meta-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin-top: 6px; color: #64748b; }
-    .pg-speed { border: none; background: none; padding: 0; cursor: pointer; font-size: 10px; font-style: italic; color: #ea580c; }
+    .pg-speed { border: none; background: none; padding: 0; cursor: pointer; font-size: 10px; color: #475569; font-variant-numeric: tabular-nums; }
+    .pg-speed .sep { color: #cbd5e1; margin: 0 3px; }
+    .pg-speed .ic { color: #94a3b8; margin-left: 3px; }
     .pg-speed b { font-weight: 700; }
     .pg-speed:hover { text-decoration: underline; }
     .pg-bolt { font-style: normal; margin: 0 2px; }
     .pg-act { border: none; background: none; padding: 0; color: #94a3b8; cursor: pointer; font-size: 10px; }
     .pg-act:hover { color: #0f172a; text-decoration: underline; }
-    .pg-pop { position: absolute; left: 0; top: 100%; margin-top: 6px; width: 340px; background: #1e293b; color: #fff; border: 1px solid #475569; border-radius: 12px; box-shadow: 0 16px 32px rgba(15,23,42,.25); padding: 16px 18px; z-index: 30; }
+    .pg-pop { position: absolute; left: 0; top: 100%; margin-top: 6px; width: 380px; background: #1e293b; color: #fff; border: 1px solid #475569; border-radius: 12px; box-shadow: 0 16px 32px rgba(15,23,42,.25); padding: 16px 18px; z-index: 30; }
     .pg-pop-title { color: #fb923c; font-weight: 800; font-size: 14px; }
     .pg-ss { font-size: 12px; font-weight: 800; margin: 10px 0 6px; }
     .pg-sg { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
@@ -251,6 +267,17 @@
     .pg-sv.strong { font-size: 22px; font-weight: 800; }
     .pg-sl { font-size: 10px; color: #cbd5e1; }
     .pg-sl.strong { color: #fff; font-weight: 700; }
+    .pd-kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 4px; }
+    .pd-kpi div { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 8px; }
+    .pd-kpi b { display: block; font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .pd-kpi span { font-size: 10px; color: #94a3b8; }
+    .pd-sec { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; font-weight: 800; margin: 12px 0 5px; }
+    .pd-sec span { font-weight: 500; color: #cbd5e1; font-variant-numeric: tabular-nums; }
+    .pd-bar { display: flex; height: 10px; border-radius: 9999px; overflow: hidden; background: #334155; gap: 2px; }
+    .pd-bar i { display: block; height: 100%; }
+    .pd-leg { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; font-size: 10px; color: #cbd5e1; font-variant-numeric: tabular-nums; }
+    .pd-leg em { font-style: normal; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: 0; }
+    .pd-leg b { color: #fff; font-weight: 700; margin-left: 3px; }
     .pg-pop-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155; font-size: 10px; color: #cbd5e1; }
     .pg-pop-foot .mm-id { background: #334155; color: #e2e8f0; }
     .sm-canvas { background: #f1f5f9; padding: 28px; overflow-x: auto; }
@@ -369,6 +396,86 @@
     .mm-dd-panel { position: absolute; left: 0; right: 0; top: 100%; margin-top: 4px; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,.08); z-index: 30; }
     .mm-dd-item { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; font-size: 12px; cursor: pointer; }
     .mm-dd-item:hover { background: #f8fafc; }
+
+    /* 계정 설정 C-09 · C-10 (9/29) */
+    .acct { position: relative; font-size: 12px; }
+    .acct .acct-p { display: none; }
+    .acct[data-tab="profile"] .acct-p-profile, .acct[data-tab="security"] .acct-p-security { display: block; }
+    .acct .acct-tb { padding: 8px 16px; font-size: 12px; font-weight: 700; border: none; border-bottom: 2px solid transparent; color: #94a3b8; background: transparent; cursor: pointer; }
+    .acct[data-tab="profile"] .acct-tb[data-t="profile"], .acct[data-tab="security"] .acct-tb[data-t="security"] { color: #0f172a; border-bottom-color: #0f172a; }
+    .acct .acct-lbl-s { display: none; }
+    .acct[data-tab="security"] .acct-lbl-p { display: none; }
+    .acct[data-tab="security"] .acct-lbl-s { display: inline; }
+    .acct .sc-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; background: #fff; }
+    .acct .sc-on, .acct .sc-off { display: none; }
+    .acct[data-gh="on"] .sc-gh .sc-on, .acct[data-gh="off"] .sc-gh .sc-off,
+    .acct[data-gg="on"] .sc-gg .sc-on, .acct[data-gg="off"] .sc-gg .sc-off { display: flex; }
+    .acct .sc-link { font-size: 11px; font-weight: 700; border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px 10px; background: #fff; color: #334155; cursor: pointer; white-space: nowrap; }
+    .acct .sc-link.red { color: #dc2626; border-color: #fecaca; }
+    .acct .pw-yes, .acct .pw-no { display: none; }
+    .acct[data-pw="yes"] .pw-yes, .acct[data-pw="no"] .pw-no { display: block; }
+    .acct .pw-open { display: none; }
+    .acct[data-pwform="open"] .pw-open { display: block; }
+    .acct[data-pwform="open"] .pw-closed { display: none; }
+    .acct .sec-box { border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; }
+    .acct .sec-h { font-size: 13px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+    .acct .name-save { display: none; }
+    .acct[data-namedirty="1"] .name-save { display: inline-flex; }
+    .acct .acct-dlg { display: none; position: absolute; inset: 0; background: rgba(15,23,42,.45); border-radius: 16px; align-items: center; justify-content: center; padding: 24px; z-index: 5; }
+    .acct[data-dlg="dup"] .acct-dlg { display: flex; }
+    .acct-alert { background: #fff; border-radius: 14px; box-shadow: 0 20px 40px rgba(15,23,42,.25); padding: 20px; width: 100%; max-width: 300px; text-align: center; }
+    .acct-alert h4 { font-size: 14px; font-weight: 800; color: #0f172a; margin: 0 0 6px; }
+    .acct-alert p { font-size: 12px; color: #64748b; line-height: 1.6; margin: 0 0 16px; }
+    .acct-alert .btns { display: flex; gap: 8px; }
+    .acct-alert .btns button { flex: 1; padding: 9px 0; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid #0f172a; background: #0f172a; color: #fff; }
+    .acct .acct-low { position: relative; }
+    .acct-low-ov { position: absolute; inset: -8px; z-index: 4; background: rgba(15,23,42,.62); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .acct .mkt-sw { width: 38px; height: 22px; border-radius: 9999px; border: none; background: #cbd5e1; position: relative; cursor: pointer; flex-shrink: 0; transition: background .15s; }
+    .acct .mkt-sw i { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2); transition: left .15s; }
+    .acct[data-mkt="on"] .mkt-sw { background: #0f172a; }
+    .acct[data-mkt="on"] .mkt-sw i { left: 19px; }
+    .acct .mkt-on-t, .acct .mkt-off-t { display: none; }
+    .acct[data-mkt="on"] .mkt-on-t, .acct[data-mkt="off"] .mkt-off-t { display: block; }
+    .acct-stage { background: #e2e8f0; border-radius: 12px; padding: 28px 16px; display: flex; justify-content: center; }
+    .acct-box { background: #fff; border-radius: 16px; box-shadow: 0 20px 40px rgba(15,23,42,.18); border: 1px solid #e2e8f0; width: 100%; max-width: 440px; }
+    .acct-cap { font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 8px; }
+
+    /* C-07-1 여러 모델 선택 (후순위, 9/29) */
+    .cmp-low { white-space:nowrap; display:inline-block; font-size:10px; font-weight:800; color:#92400e; background:#fef3c7; border:1px solid #fcd34d; border-radius:4px; padding:1px 6px; letter-spacing:.02em; vertical-align:middle; }
+    .cmp-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    #cmp-root[data-n="3"] .cmp-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    #cmp-root .cmp-p3, #cmp-root .cmp-chip3 { display:none; }
+    #cmp-root[data-n="3"] .cmp-p3 { display:flex; }
+    #cmp-root[data-n="3"] .cmp-chip3 { display:inline-flex; }
+    #cmp-root[data-n="3"] .cmp-addchip { display:none; }
+    #cmp-root .cmp-t2 { display:none; }
+    #cmp-root[data-turn="2"] .cmp-t2 { display:flex; }
+    #cmp-root[data-turn="2"] .cmp-inherit.cmp-t2 { display:block; }
+    #cmp-root .cmp-n3 { display:none; }
+    #cmp-root[data-n="3"] .cmp-n3 { display:inline; }
+    #cmp-root[data-n="3"] .cmp-n2 { display:none; }
+    #cmp-root .cmp-ddp { display:none; }
+    #cmp-root[data-dd="1"] .cmp-ddp { display:block; }
+    .cmp-ms { display:flex; align-items:center; gap:6px; flex-wrap:wrap; border:1px solid #cbd5e1; border-radius:8px; padding:5px 8px; background:#fff; min-width:0; flex:1; max-width:560px; cursor:pointer; }
+    .cmp-chip { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; border-radius:9999px; padding:3px 6px 3px 4px; background:#f1f5f9; color:#0f172a; }
+    .cmp-chip i { font-style:normal; color:#94a3b8; font-weight:400; margin-left:2px; }
+    .cmp-dot { width:16px; height:16px; border-radius:9999px; font-size:9px; font-weight:800; color:#fff; display:inline-flex; align-items:center; justify-content:center; }
+    .cmp-addchip { font-size:11px; color:#64748b; border:1px dashed #cbd5e1; border-radius:9999px; padding:2px 8px; }
+    .cmp-ddp { position:absolute; top:100%; left:0; margin-top:4px; width:360px; background:#fff; border:1px solid #cbd5e1; border-radius:10px; box-shadow:0 12px 28px rgba(15,23,42,.14); z-index:20; padding:6px; }
+    .cmp-opt { display:flex; gap:8px; align-items:flex-start; padding:8px; border-radius:6px; font-size:11px; }
+    .cmp-opt:hover { background:#f8fafc; }
+    .cmp-panel { display:flex; flex-direction:column; min-width:0; border-right:1px solid #e2e8f0; }
+    .cmp-panel:last-child { border-right:none; }
+    .cmp-ph { display:flex; align-items:center; gap:6px; padding:8px 10px; border-bottom:1px solid #e2e8f0; background:#fff; font-size:12px; }
+    .cmp-ic { border:none; background:none; font-size:11px; color:#94a3b8; cursor:pointer; margin-left:auto; }
+    .cmp-sum { font-size:10px; color:#64748b; padding:5px 10px; border-bottom:1px solid #f1f5f9; background:#f8fafc; display:flex; justify-content:space-between; }
+    .cmp-body { flex:1; padding:12px; display:flex; flex-direction:column; gap:10px; background:rgba(248,250,252,.6); }
+    .cmp-user { align-self:flex-end; max-width:90%; background:#0f172a; color:#fff; font-size:11px; border-radius:14px 14px 4px 14px; padding:7px 11px; line-height:1.5; }
+    .cmp-ans { background:#fff; border:1px solid #e2e8f0; font-size:11px; border-radius:14px 14px 14px 4px; padding:8px 11px; line-height:1.6; color:#334155; }
+    .cmp-inherit { font-size:10px; color:#64748b; background:#fff; border:1px dashed #cbd5e1; border-radius:8px; padding:8px 10px; line-height:1.5; }
+    .cmp-panel .pg-meta-row { flex-wrap:wrap; row-gap:2px; }
+    .cmp-panel .pg-meta-row .ml-auto { white-space:nowrap; }
+    .cmp-fast { white-space:nowrap; font-size:9px; font-weight:800; color:#047857; background:#d1fae5; border-radius:9999px; padding:1px 6px; font-style:normal; margin-left:2px; }
   </style>
 </head>
 <body>
@@ -460,6 +567,11 @@
                 <h3 class="font-bold text-base text-slate-900">C-01 · C-07 · C-08 - 콘솔을 모델별로</h3>
               </div>
               <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>C-07 응답 메타</strong>(9/30): “지연 · 속도” → <b>TTFT • tok/s • 비용</b> 한 줄(Fireworks 방식), 속도와 가격 같은 무게. 응답 상세 팝오버를 <b>막대 시각화</b>(시간 · 토큰 · 비용, OpenRouter 방식)로</li>
+                <li><strong>C-07-1 여러 모델 선택</strong>(9/29, <b>후순위</b>): 별도 비교 모드 대신 C-07 모델 드롭다운을 여러 개 선택(최대 3)으로 확장 — 답변 나란히, 모델별로 이어서 질문, 대화 중 추가된 모델은 A 답변을 이어받음, 코드 보기는 모델 칩으로 선택</li>
+                <li><strong>소셜 로그인 Google만</strong>(9/29): A-01 · A-02 GitHub 버튼, C-09 GitHub 연결, E-05 GitHub 표기 삭제 · <strong>C-10-1 탈퇴 사유 입력 삭제</strong></li>
+                <li><strong>C-09 · C-10 계정 설정</strong>(9/29): 모달을 화면에도 펼쳐서 표시, Google 연결 표시(연결됨 / 연결하기, 소셜 로그인은 OBT에서 Google만), 연결 해제는 OBT에서 제공하지 않음(필요 시 help 메일), 이미 다른 계정에 연결된 소셜 계정 얼럿(연결 계정 영역은 OBT 후순위 레이어), 보안 탭은 비밀번호 변경 · 최초 설정 두 상태를 나란히, 이름 수정 시 옆에 저장 · 모달은 닫기만, 마케팅 정보 수신 동의 · 철회 토글, 보안 탭 비밀번호 · 탈퇴 영역 접기 없이 모두 펼침</li>
+                <li><strong>C-10-1 회원 탈퇴</strong> 신규(9/29): 결제 크레딧이 남아 있으면 탈퇴 버튼 비활성 + help 메일 환불 신청 경로, 무료 크레딧 소멸 안내, 재가입 30일 제한(이메일 해시 30일 보관), 본인 확인(비밀번호 · 소셜 재인증). 보안 탭(C-10) 탈퇴 영역은 진입 버튼만 남김</li>
                 <li><strong>C-01 대시보드 · C-08 요청 로그: 🚧 기획 중(TBD)</strong> 표시 — 화면 재검토 중, 확정 전 개발 착수 금지(9/28)</li>
                 <li>C-07 <strong>코드 보기</strong> 드로어(9/28): Python · TypeScript · cURL, 지금 설정과 대화 그대로 반영(연결하기 탭 3개안에서 축소). 추천 프롬프트 예시를 실제 내용으로</li>
                 <li>C-07 플레이그라운드(9/28): 응답 메타를 <strong>Groq식 한 줄(지연 ⚡ 속도 · 비용) + 상세 팝오버</strong>로, <strong>추론 과정 접기 · 펼치기</strong> 추가, 추천 프롬프트 선택 시 <strong>시스템 프롬프트도 함께 채움</strong>(역할 프리셋 칩 삭제), 저장 고지 · 비용 안내 문구 삭제</li>
@@ -488,8 +600,10 @@
                 <h3 class="font-bold text-base text-slate-900">A-02 · A-08 - 가입 동의 항목 2개 추가</h3>
               </div>
               <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
-                <li><strong>[필수] 만 18세 이상입니다</strong></li>
-                <li><strong>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</strong> — 해제해도 가입 가능</li>
+                <li><strong>[필수] 만 18세 이상입니다.</strong></li>
+                <li><strong>[선택] 마케팅 정보 수신에 동의합니다.</strong> — 해제해도 가입 가능, [보기]로 전문(A-08-1) 확인, 가입 후 계정 설정(C-09)에서 동의 · 철회</li>
+                <li>항목 어미를 “~에 동의합니다.”로 통일(9/29)</li>
+                <li><strong>[필수] 개인정보 수집 및 이용 동의 체크박스 삭제</strong> → 체크박스 없는 “※ 개인정보 수집 및 이용 안내 [보기]”(처리방침 제1조 ① 가.로 이동)로 대체(9/29)</li>
                 <li>이메일 가입(A-02)과 소셜 가입(A-08)에 똑같이 적용</li>
               </ul>
             </div>
@@ -714,10 +828,14 @@
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-split"><div class="tb-side dark"></div><div class="tb-main"><div class="tb-title"></div><div class="tb-table"><i></i><i></i><i></i><i></i></div></div></div></div>
                 <div class="pg-label"><span class="sm-id">C-08</span> 요청 로그 </div>
-              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01'); setTimeout(openAccountSettingModal, 400)" class="pg" data-pg="ACCT">
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-09')" class="pg" data-pg="ACCT">
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-form"><div class="tb-title c"></div><div class="tb-row3"><i></i><i></i><i></i></div><div class="tb-field"></div><div class="tb-field"></div><div class="tb-btn"></div></div></div>
-                <div class="pg-label"><span class="sm-id">모달</span> 계정 설정</div><div class="pg-note">프로필 · 보안(비밀번호 · 탈퇴)</div>
+                <div class="pg-label"><span class="sm-id">C-09 · C-10</span> 계정 설정</div><div class="pg-note">모달 · 프로필 / 보안</div>
+              </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-10-1')" class="pg" data-pg="C-10-1">
+                <div class="pg-dots"><i></i><i></i><i></i></div>
+                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-row3"><i></i><i></i><i></i></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-btn" style="width:40%;margin:0 auto"></div></div>
+                <div class="pg-label"><span class="sm-id">C-10-1</span> 회원 탈퇴 <span class="sm-new">NEW</span></div><div class="pg-note">크레딧 환불 후 탈퇴</div>
               </a></div></div></div>
             </div>
               <div class="sm-footer">
@@ -2235,8 +2353,7 @@
               <p class="text-xs text-slate-500 mt-2">Morfac에 로그인하세요</p>
             </div>
 
-            <button class="wf-btn mb-2">Google로 계속하기</button>
-            <button class="wf-btn mb-3">GitHub로 계속하기</button>
+            <button class="wf-btn mb-3">Google로 계속하기</button>
 
             <div class="divider text-xs text-slate-400">또는 이메일로</div>
 
@@ -2295,8 +2412,7 @@
               <p class="text-xs text-slate-500 mt-2">API 사용을 위한 계정을 생성합니다</p>
             </div>
 
-            <a href="#a-08" class="wf-btn mb-2 no-underline text-slate-800 block">Google로 가입 (A-08 이동)</a>
-            <a href="#a-08" class="wf-btn mb-3 no-underline text-slate-800 block">GitHub로 가입 (A-08 이동)</a>
+            <a href="#a-08" class="wf-btn mb-3 no-underline text-slate-800 block">Google로 가입 (A-08 이동)</a>
 
             <div class="divider text-xs text-slate-400">또는 이메일로</div>
 
@@ -2349,17 +2465,17 @@
                   <input type="checkbox" class="w-3 h-3"> 모두 동의합니다.
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관 동의
+                  <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [필수] 개인정보 수집 및 이용 동의
+                  <input type="checkbox" class="w-3 h-3"> [필수] 만 18세 이상입니다.
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [필수] 만 18세 이상입니다
+                  <input type="checkbox" class="w-3 h-3"> [선택] 마케팅 정보 수신에 동의합니다. <a href="javascript:void(0)" onclick="event.preventDefault(); openMktModal()" class="ml-auto underline text-blue-600">보기</a>
                 </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다
-                </label>
+                <div class="flex items-center gap-2 pt-2 border-t text-slate-500">
+                  <span class="w-3 text-center">※</span> 개인정보 수집 및 이용 안내 <a href="#m-04" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+                </div>
               </div>
 
               <a href="#a-03" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">계속하기</a>
@@ -2372,7 +2488,7 @@
         </div>
       </div>
 
-      <div class="mm-note mm-note-out">📝 <b>v4.0 가입 동의 메모</b> — 이메일 가입(A-02)과 소셜 가입(A-08)에 같은 항목 2개 추가: <b>[필수] 만 18세 이상입니다</b> · <b>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</b>. “모두 동의”는 선택 항목까지 체크하되, 선택 항목을 해제해도 가입은 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장하고 콘솔 계정 설정에서 철회할 수 있어야 함(정보통신망법 광고성 정보 수신 동의). 만 18세 기준은 이용약관 이용 자격 조항과 문구를 맞출 것.</div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 가입 동의 메모</b> — 이메일 가입(A-02)과 소셜 가입(A-08)에 같은 항목 2개 추가: <b>[필수] 만 18세 이상입니다</b> · <b>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</b>. 항목(9/29): [필수] 서비스 이용약관에 동의합니다. [보기] · [필수] 만 18세 이상입니다. · [선택] 마케팅 정보 수신에 동의합니다. [보기 → A-08-1 전문] · ※ 개인정보 수집 및 이용 안내 [보기 → M-04 처리방침 제1조 ① 가.] — <b>필수 개인정보 동의 체크박스는 없앰</b>: 계약 이행에 필요한 정보는 동의 없이 수집(개인정보 보호법 제15조 ① 4호, 처리방침 제1조 ① 가.)하므로 체크박스 없이 안내만(네이버 클라우드 · 쿠팡 · 리디 방식). [보기]는 처리방침 전체가 아니라 제1조 ① 가. 표로 바로 이동(앵커). 법무 확인 필요. “모두 동의”는 선택 항목까지 체크하되, 선택 항목을 해제해도 가입은 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장하고 콘솔 계정 설정에서 철회할 수 있어야 함(정보통신망법 광고성 정보 수신 동의). 만 18세 기준은 이용약관 이용 자격 조항과 문구를 맞출 것.</div>
 
       <!-- A-03: OTP 인증 -->
       <div id="a-03" class="wf-card">
@@ -2873,22 +2989,55 @@
                 <input type="checkbox" class="w-4 h-4 rounded text-slate-800 cursor-pointer"> 모두 동의합니다.
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관 동의 <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 개인정보 수집 및 이용 동의 <a href="#m-04" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 18세 이상입니다.
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 18세 이상입니다
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [선택] 마케팅 정보 수신에 동의합니다. <a href="javascript:void(0)" onclick="event.preventDefault(); openMktModal()" class="ml-auto underline text-blue-600">보기</a>
               </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다
-              </label>
+              <div class="flex items-center gap-2 pt-3 border-t text-slate-500">
+                <span class="w-3.5 text-center">※</span> 개인정보 수집 및 이용 안내 <a href="#m-04" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+              </div>
             </div>
 
             <a href="#a-04" class="wf-btn wf-btn-primary no-underline text-white flex items-center justify-center">가입 완료하기</a>
           </div>
         </div>
+      </div>
+
+
+      <!-- A-08-1: 마케팅 정보 수신 동의 전문 (레이어) -->
+      <div id="a-08-1" class="wf-card">
+        <div class="wf-header">
+          <span>A-08-1 마케팅 정보 수신 동의 전문 <span class="text-xs text-slate-400 font-normal">레이어 · A-02 / A-08 [보기]</span></span>
+          <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span>
+        </div>
+        <div class="wf-content-a">
+          <div class="acct-stage" style="width:100%"><div class="acct-box p-6" style="max-width:480px">
+            <div class="flex justify-end -mb-6"><span class="text-slate-400 font-bold text-lg">&times;</span></div>
+            <div class="mkt-full text-xs text-slate-700 leading-relaxed">
+                <h3 class="font-bold text-base text-slate-900 mb-1">마케팅 정보 수신 동의 <span class="text-slate-400 font-medium text-sm">(선택)</span></h3>
+                <p class="text-slate-500 mb-4">회사는 광고성 정보를 보내 드리기 위해 아래와 같이 개인정보를 수집 · 이용합니다.</p>
+                <table class="w-full border-collapse mb-4 text-[11px]">
+                  <tr class="border-t border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 w-32 whitespace-nowrap">이용 목적</th><td class="px-3 py-2">이벤트 · 혜택 · 새 모델 안내 등 광고성 정보 전송</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">수신 채널</th><td class="px-3 py-2">이메일</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">수집 항목</th><td class="px-3 py-2">이메일 주소, 이름 또는 닉네임</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">보유 및 이용기간</th><td class="px-3 py-2 font-bold">동의 철회 또는 회원 탈퇴 시까지</td></tr>
+                </table>
+                <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-600">
+                  <li>동의를 거부할 수 있으며, 거부해도 서비스 이용에 제한이 없어요. 다만 이벤트 · 혜택 안내를 받을 수 없어요.</li>
+                  <li>동의한 뒤에도 콘솔 <b>계정 설정</b> 또는 메일 하단의 <b>수신 거부</b> 링크로 언제든 철회할 수 있어요.</li>
+                  <li>서비스 운영에 꼭 필요한 안내(결제 · 보안 · 약관 변경 등)는 동의 여부와 관계없이 보내 드려요.</li>
+                </ul>
+              </div>
+            <button class="wf-btn wf-btn-dark mt-5">확인</button>
+          </div></div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>A-08-1 마케팅 수신 동의 전문 메모 (9/29)</b> — A-02 · A-08의 [선택] 마케팅 항목 [보기]로 여는 레이어. 필수 항목과 분리된 별도 동의(개인정보 보호법 · 정보통신망법 제50조 광고성 정보 전송 사전 동의). 전문에 받는 정보 · 보내는 방법 · 이용 개인정보 · 보유 기간 · 미동의 불이익 없음 · 철회 방법을 명시.
+        <b>운영 규칙(확인 필요)</b>: 광고 메일 제목에 “(광고)” 표기 + 하단 수신 거부 링크 · 야간(21시~다음 날 8시) 발송하지 않음 · 동의 · 철회 시 처리 결과(일시 · 내용)를 이메일로 안내 · 동의한 사용자에게 2년마다 수신 동의 여부 재확인 메일. 문구와 규칙은 법무 검토 후 확정. 전문 표는 법무 검토용 처리방침 최종본 제1조 ① 나. “마케팅 활용” 행(목적 · 항목 · 기간)과 똑같이 맞춤 — 처리방침이 바뀌면 전문도 함께 수정. 리디 전문(policy.ridi.com/legal/privacy-collect-and-use-marketing) 구성 참고: 목적 · 항목 · 기간 · 거부 권리와 불이익 · 철회 방법 · 수신 채널. 법무 검토 제안: 수집 항목에 “수신 동의 · 철회 여부 및 일시”, 기간에 “동의 · 철회 이력 [3]년 보관” 추가 여부(리디 방식). 처리방침 기재(법 제30조)와 동의 시 고지(A-08-1)는 근거가 달라 둘 다 필요.
       </div>
 
       <!-- A-09: 소셜 ↔ 이메일 계정 연동 안내 -->
@@ -2925,7 +3074,7 @@
             <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 border text-2xl">🔒</div>
             <h2 class="text-xl font-bold mb-2">이메일 인증이 필요합니다</h2>
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-              사용 중인 소셜 계정에서 이메일 인증이 완료되지 않았습니다.<br/>해당 제공자(Google/GitHub 등)에서 이메일 인증 후 다시 시도해 주세요.
+              사용 중인 소셜 계정에서 이메일 인증이 완료되지 않았습니다.<br/>Google 계정에서 이메일 인증 후 다시 시도해 주세요.
             </p>
             
             <div class="flex gap-2 justify-center">
@@ -3197,6 +3346,7 @@ for await (const chunk of stream) {
                           <div class="mm-dd-item bg-slate-50"><div class="flex justify-between"><b>Motif 3 ✓</b><span class="mm-id">motif-3</span></div><div class="text-slate-500 text-[11px] mt-1">도구 호출 · 구조화 출력 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
                           <div class="mm-dd-item"><div class="flex justify-between"><b>GLM 5.3</b><span class="mm-id">glm-5.3</span></div><div class="text-slate-500 text-[11px] mt-1">코딩 에이전트 · 도구 호출 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
                           <div class="mm-dd-item"><div class="flex justify-between"><b>Kimi</b><span class="mm-id">kimi-k3</span></div><div class="text-slate-500 text-[11px] mt-1">긴 문서 · UI 코딩 · 입력 $x · 캐시 $x · 출력 $x /1M · xxxK</div></div>
+                          <a href="javascript:void(0)" onclick="document.getElementById('c-07-1').scrollIntoView({behavior:'smooth'})" class="block text-[11px] text-slate-500 px-3 py-2 border-t no-underline">☐ 여러 모델 선택해서 답변 나란히 보기 <span class="cmp-low">후순위</span> <span class="text-blue-600 underline">C-07-1</span></a>
                           <a href="#m-08" onclick="switchToMTab()" class="block text-center text-xs text-blue-600 underline py-2">모델 비교표 보기 →</a>
                       </div>
                     </div>
@@ -3248,16 +3398,16 @@ for await (const chunk of stream) {
                           <div class="pg-rs-body hidden">사용자가 환불 정책을 고객 문의 답변용 3줄로 요약해 달라고 했다. 크레딧 환불 조건, 접수 경로와 소요 기간, 1년 제한을 한 줄씩 정리하고 정중한 존댓말로 쓴다.</div>
                           <div class="bg-white border text-xs rounded-2xl rounded-bl-sm px-4 py-2.5 leading-relaxed text-slate-700">1) 결제 후 사용하지 않은 크레딧은 환불 요청할 수 있어요.<br/>2) 환불은 help 메일로 접수하고, 카드사 반영까지 3~5영업일 걸려요.<br/>3) 결제일로부터 1년이 지난 건은 환불이 어려워요.</div>
                           <div class="pg-meta-row">
-                            <button class="pg-speed" onclick="pgPop('pg-pop-m1')">지연 <b>0.40초</b> <span class="pg-bolt">⚡</span> 속도 <b>58 tok/s</b></button>
-                            <span class="text-slate-400">· $0.0003</span>
+                            <button class="pg-speed" onclick="pgPop('pg-pop-m1')" title="응답 상세">TTFT <b>400ms</b><span class="sep">•</span><b>58.0</b> tok/s<span class="sep">•</span><b>$0.0003</b><span class="ic">ⓘ</span></button>
                             <span class="ml-auto"><button class="pg-act">복사</button></span>
                           </div>
                           <div id="pg-pop-m1" class="pg-pop hidden">
-                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">⚡ 응답 상세</span><button onclick="pgPop('pg-pop-m1')" class="pg-act">✕</button></div>
-                            <div class="pg-ss">토큰</div><div class="pg-sg"><div><div class="pg-sv">131</div><div class="pg-sl">입력 (캐시 110)</div></div><div><div class="pg-sv">396</div><div class="pg-sl">출력 (추론 310)</div></div><div><div class="pg-sv strong">527</div><div class="pg-sl strong">합계</div></div></div>
-                            <div class="pg-ss">처리 시간 (서버)</div><div class="pg-sg"><div><div class="pg-sv">0.02</div><div class="pg-sl">입력 초</div></div><div><div class="pg-sv">6.80</div><div class="pg-sl">출력 초</div></div><div><div class="pg-sv strong">6.82</div><div class="pg-sl strong">합계 초</div></div></div>
-                            <div class="pg-ss">초당 토큰</div><div class="pg-sg"><div><div class="pg-sv">6,550</div><div class="pg-sl">입력</div></div><div><div class="pg-sv">58</div><div class="pg-sl">출력</div></div><div><div class="pg-sv strong">77</div><div class="pg-sl strong">합계</div></div></div>
-                            <div class="pg-pop-foot"><span>왕복 7,410ms</span><span>모델 <span class="mm-id">motif-3</span></span><span>비용 <b>$0.0003</b></span></div>
+                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">응답 상세</span><button onclick="pgPop('pg-pop-m1')" class="pg-act">✕</button></div>
+                            <div class="pd-kpi"><div><b>400ms</b><span>TTFT (첫 토큰까지)</span></div><div><b>58.0</b><span>tok/s (출력 속도)</span></div><div><b>$0.0003</b><span>비용</span></div></div>
+                            <div class="pd-sec">시간<span>합계 6.83초</span></div><div class="pd-bar"><i style="width:5.9%;background:#64748b"></i><i style="width:60.0%;background:#a78bfa"></i><i style="width:34.1%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#64748b"></em>첫 토큰까지<b>0.40초</b></span><span><em style="background:#a78bfa"></em>추론<b>4.10초</b></span><span><em style="background:#38bdf8"></em>답변<b>2.33초</b></span></div>
+                            <div class="pd-sec">토큰<span>합계 527</span></div><div class="pd-bar"><i style="width:20.9%;background:#475569"></i><i style="width:4.0%;background:#94a3b8"></i><i style="width:58.8%;background:#a78bfa"></i><i style="width:16.3%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#475569"></em>입력 캐시<b>110</b></span><span><em style="background:#94a3b8"></em>입력<b>21</b></span><span><em style="background:#a78bfa"></em>추론<b>310</b></span><span><em style="background:#38bdf8"></em>답변<b>86</b></span></div>
+                            <div class="pd-sec">비용<span>합계 $0.0003</span></div><div class="pd-bar"><i style="width:6.7%;background:#475569"></i><i style="width:10.0%;background:#94a3b8"></i><i style="width:83.3%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#475569"></em>입력 캐시<b>$0.00002</b></span><span><em style="background:#94a3b8"></em>입력<b>$0.00003</b></span><span><em style="background:#38bdf8"></em>출력<b>$0.00025</b></span></div>
+                            <div class="pg-pop-foot"><span>모델 <span class="mm-id">motif-3</span></span></div>
                           </div>
                         </div></div>
                         <div class="flex justify-end"><div class="max-w-[80%] bg-slate-900 text-white text-xs rounded-2xl rounded-br-sm px-4 py-2.5 leading-relaxed">같은 내용을 영어로 바꿔줘.</div></div>
@@ -3267,16 +3417,16 @@ for await (const chunk of stream) {
                           <div class="pg-rs-body hidden">앞 답변 3줄을 영어로 옮긴다. 줄 구조와 숫자(3–5영업일, 1년)는 그대로 유지한다.</div>
                           <div class="bg-white border text-xs rounded-2xl rounded-bl-sm px-4 py-2.5 leading-relaxed text-slate-700">1) You can request a refund for unused credits.<br/>2) Refunds are handled via our help email and take 3–5 business days to reach your card.<br/>3) Payments older than one year are not eligible.</div>
                           <div class="pg-meta-row">
-                            <button class="pg-speed" onclick="pgPop('pg-pop-m2')">지연 <b>0.50초</b> <span class="pg-bolt">⚡</span> 속도 <b>96 tok/s</b></button>
-                            <span class="text-slate-400">· $0.0004</span>
+                            <button class="pg-speed" onclick="pgPop('pg-pop-m2')" title="응답 상세">TTFT <b>500ms</b><span class="sep">•</span><b>96.4</b> tok/s<span class="sep">•</span><b>$0.0004</b><span class="ic">ⓘ</span></button>
                             <span class="ml-auto"><button class="pg-act">복사</button> · <button class="pg-act">다시 생성</button></span>
                           </div>
                           <div id="pg-pop-m2" class="pg-pop hidden">
-                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">⚡ 응답 상세</span><button onclick="pgPop('pg-pop-m2')" class="pg-act">✕</button></div>
-                            <div class="pg-ss">토큰</div><div class="pg-sg"><div><div class="pg-sv">305</div><div class="pg-sl">입력 (캐시 0)</div></div><div><div class="pg-sv">114</div><div class="pg-sl">출력 (추론 40)</div></div><div><div class="pg-sv strong">419</div><div class="pg-sl strong">합계</div></div></div>
-                            <div class="pg-ss">처리 시간 (서버)</div><div class="pg-sg"><div><div class="pg-sv">0.03</div><div class="pg-sl">입력 초</div></div><div><div class="pg-sv">1.19</div><div class="pg-sl">출력 초</div></div><div><div class="pg-sv strong">1.22</div><div class="pg-sl strong">합계 초</div></div></div>
-                            <div class="pg-ss">초당 토큰</div><div class="pg-sg"><div><div class="pg-sv">10,167</div><div class="pg-sl">입력</div></div><div><div class="pg-sv">96</div><div class="pg-sl">출력</div></div><div><div class="pg-sv strong">343</div><div class="pg-sl strong">합계</div></div></div>
-                            <div class="pg-pop-foot"><span>왕복 1,840ms</span><span>모델 <span class="mm-id">glm-5.3</span></span><span>비용 <b>$0.0004</b></span></div>
+                            <div class="flex justify-between items-center mb-3"><span class="pg-pop-title">응답 상세</span><button onclick="pgPop('pg-pop-m2')" class="pg-act">✕</button></div>
+                            <div class="pd-kpi"><div><b>500ms</b><span>TTFT (첫 토큰까지)</span></div><div><b>96.4</b><span>tok/s (출력 속도)</span></div><div><b>$0.0004</b><span>비용</span></div></div>
+                            <div class="pd-sec">시간<span>합계 1.69초</span></div><div class="pd-bar"><i style="width:29.6%;background:#64748b"></i><i style="width:23.7%;background:#a78bfa"></i><i style="width:46.7%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#64748b"></em>첫 토큰까지<b>0.50초</b></span><span><em style="background:#a78bfa"></em>추론<b>0.40초</b></span><span><em style="background:#38bdf8"></em>답변<b>0.79초</b></span></div>
+                            <div class="pd-sec">토큰<span>합계 419</span></div><div class="pd-bar"><i style="width:72.8%;background:#94a3b8"></i><i style="width:9.5%;background:#a78bfa"></i><i style="width:17.7%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#94a3b8"></em>입력<b>305</b></span><span><em style="background:#a78bfa"></em>추론<b>40</b></span><span><em style="background:#38bdf8"></em>답변<b>74</b></span></div>
+                            <div class="pd-sec">비용<span>합계 $0.0004</span></div><div class="pd-bar"><i style="width:30.0%;background:#94a3b8"></i><i style="width:70.0%;background:#38bdf8"></i></div><div class="pd-leg"><span><em style="background:#94a3b8"></em>입력<b>$0.00012</b></span><span><em style="background:#38bdf8"></em>출력<b>$0.00028</b></span></div>
+                            <div class="pg-pop-foot"><span>모델 <span class="mm-id">glm-5.3</span></span></div>
                           </div>
                         </div></div>
                       </div>
@@ -3293,7 +3443,7 @@ for await (const chunk of stream) {
                           <button id="pg-action-btn" disabled class="wf-btn bg-slate-100 text-slate-400 text-xs cursor-not-allowed py-3 border-none" style="width:7rem;flex:none">크레딧 부족</button>
                         </div>
                         <div class="flex justify-between text-[10px] text-slate-400 mt-1.5">
-                          <span id="pg-token-count">누적 305 토큰</span>
+                          <span></span>
                           <span>스트리밍 중에는 전송 버튼이 [■ 중지]로 바뀜</span>
                         </div>
                       </div>
@@ -3317,6 +3467,137 @@ for await (const chunk of stream) {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+
+              <div class="mm-note mm-note-out">📝 <b>C-07 응답 메타 · 응답 상세 (9/30)</b> — 응답 아래 한 줄: <b>TTFT 400ms • 58.0 tok/s • $0.0003 ⓘ</b>(Fireworks 방식). 사용자가 체감하는 건 첫 토큰이 나오기까지라 “지연(전체 시간)” 대신 TTFT. <b>속도와 가격을 같은 무게로</b> 표시(색 · 굵기 동일) — 실제 성능 · 가격을 보고 어느 쪽을 강조할지 나중에 결정.
+                <b>응답 상세 팝오버</b>(ⓘ 또는 한 줄 클릭, OpenRouter처럼 막대로): 상단 3칸 TTFT · tok/s · 비용 → 시간 막대(첫 토큰까지 · 추론 · 답변 — 서버에서 잰 값이지만 화면엔 “서버” 표기 없음) → 토큰 막대(입력 캐시 · 입력 · 추론 · 답변) → 비용 막대(입력 캐시 · 입력 · 출력) → 하단 모델 ID. 브라우저 왕복 시간은 표시하지 않음(9/30 삭제 — 네트워크 원인 추적은 요청 로그에서). 추론 없는 모델 · 캐시 0이면 해당 조각과 범례를 숨김.
+                <b>정의</b>: TTFT = 요청 수신 → 첫 토큰(추론 토큰 포함) — 추론 모델은 추론이 스트리밍되는 순간부터 반응이 보이므로 추론 토큰 기준(D-10 권장안). tok/s = 출력 토큰 ÷ (첫 토큰 이후 생성 시간). 카탈로그(M-08 · M-09)의 “실측 TTFT · 처리량”과 같은 정의로 맞출 것.
+                <b>대화 길이</b>(9/30): 입력창 아래 상시 표시는 <b>우선 제외</b> — 한도 80% 경고 · 100% 전송 막기에만 내부 계산값으로 사용. 계산 정의: 과금 토큰이 아니라 다음 요청에 들어갈 양 = 마지막 턴 입력 토큰 + 마지막 답변 토큰(추론 토큰 제외, 추론 토큰 수를 못 받으면 출력 전체). 예: 2턴 입력 305 + 답변 74 = 379. 한도는 응답이 아니라 모델 설정(O-09)의 최대 컨텍스트. 과금 누적(이 대화 사용 크레딧)은 별도 숫자.
+                <b>개발 확인</b>: usage에 서버 측 TTFT · 생성 시간 · 추론 토큰 수 · 캐시 토큰 수가 오는지(없으면 해당 막대 숨김).
+              </div>
+
+            <!-- C-07-1 여러 모델 선택 (후순위, 9/29) -->
+            <div id="c-07-1" class="screen-section">
+              <div class="wf-card" style="overflow:visible">
+                <div class="wf-header">
+                  <span class="flex items-center gap-2">C-07-1 여러 모델 선택 <span class="cmp-low">후순위</span></span>
+                  <div class="flex items-center gap-1 flex-wrap justify-end">
+                    <span class="text-xs text-slate-500 font-normal">모델:</span>
+                    <button onclick="cmpSet('n','2',this)" class="state-toggle-btn active" data-k="n">2개 선택</button>
+                    <button onclick="cmpSet('n','3',this)" class="state-toggle-btn" data-k="n">대화 중 1개 추가</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">턴:</span>
+                    <button onclick="cmpSet('turn','1',this)" class="state-toggle-btn" data-k="turn">첫 질문</button>
+                    <button onclick="cmpSet('turn','2',this)" class="state-toggle-btn active" data-k="turn">이어서 질문</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">드롭다운:</span>
+                    <button onclick="cmpSet('dd','0',this)" class="state-toggle-btn active" data-k="dd">닫힘</button>
+                    <button onclick="cmpSet('dd','1',this)" class="state-toggle-btn" data-k="dd">열림</button>
+                  </div>
+                </div>
+                <div class="wf-body" id="cmp-root" data-n="2" data-turn="2" data-dd="0" style="overflow:visible;position:relative">
+                  <!-- 상단 바: 모델 선택이 여러 개 선택으로 바뀜 -->
+                  <div class="flex items-center gap-2 px-4 py-3 border-b bg-white">
+                    <div style="position:relative;flex:1;min-width:0;max-width:560px">
+                      <div class="cmp-ms" onclick="cmpToggleDD()">
+                        <span class="cmp-chip"><span class="cmp-dot" style="background:#7c3aed">A</span>Motif 3<i>✕</i></span>
+                        <span class="cmp-chip"><span class="cmp-dot" style="background:#0284c7">B</span>GLM 5.3<i>✕</i></span>
+                        <span class="cmp-chip cmp-chip3"><span class="cmp-dot" style="background:#059669">C</span>Kimi<i>✕</i></span>
+                        <span class="cmp-addchip">＋ 모델</span>
+                        <span class="ml-auto text-slate-400">▾</span>
+                      </div>
+                      <div class="cmp-ddp">
+                        <div class="text-[10px] text-slate-400 px-2 pt-1 pb-1">여러 개 고르면 같은 질문에 답변을 나란히 받아요 · 최대 3개</div>
+                        <label class="cmp-opt"><input type="checkbox" checked ><span class="cmp-dot" style="background:#7c3aed">A</span><span class="flex-1"><span class="flex justify-between"><b>Motif 3</b><span class="mm-id">motif-3</span></span><span class="block text-slate-500 text-[10px] mt-0.5">도구 호출 · 구조화 출력 · 입력 $x · 출력 $x /1M</span></span></label>
+                        <label class="cmp-opt"><input type="checkbox" checked ><span class="cmp-dot" style="background:#0284c7">B</span><span class="flex-1"><span class="flex justify-between"><b>GLM 5.3</b><span class="mm-id">glm-5.3</span></span><span class="block text-slate-500 text-[10px] mt-0.5">코딩 에이전트 · 도구 호출 · 입력 $x · 출력 $x /1M</span></span></label>
+                        <label class="cmp-opt"><input type="checkbox" class="cmp-kimi"  ><span class="cmp-dot" style="background:#059669">C</span><span class="flex-1"><span class="flex justify-between"><b>Kimi</b><span class="mm-id">kimi-k3</span></span><span class="block text-slate-500 text-[10px] mt-0.5">긴 문서 · UI 코딩 · 입력 $x · 출력 $x /1M</span></span></label>
+                        <div class="text-[10px] text-slate-400 px-2 py-1 border-t mt-1">1개만 남기면 지금 C-07과 같은 단일 대화</div>
+                      </div>
+                    </div>
+                    <div class="ml-auto flex gap-2">
+                      <button class="wf-btn text-xs w-auto whitespace-nowrap">＋ 새 대화</button>
+                      <button onclick="cmpCode(true)" class="wf-btn wf-btn-dark text-xs w-auto whitespace-nowrap">&lt;/&gt; 코드 보기</button>
+                    </div>
+                  </div>
+
+                  <!-- 코드 보기 드로어 (여러 모델 선택 중) -->
+                  <div id="cmp-connect" class="cn-drawer hidden">
+                    <div class="cn-head">
+                      <div><div class="font-extrabold text-sm text-slate-900">&lt;/&gt; 코드 보기</div><div class="text-[11px] text-slate-400">모델을 고르면 그 모델의 설정과 대화가 그대로 들어가요</div></div>
+                      <button onclick="cmpCode(false)" class="pg-act text-sm">✕</button>
+                    </div>
+                    <div class="cn-body">
+                      <div class="text-[11px] font-bold text-slate-500 mb-1">모델</div>
+                      <div class="flex gap-1 mb-3 flex-wrap">
+                        <button onclick="cmpCodeM('a')" class="cn-chip on cmp-cm" data-m="a"><span class="cmp-dot" style="background:#7c3aed;width:14px;height:14px">A</span> Motif 3</button>
+                        <button onclick="cmpCodeM('b')" class="cn-chip cmp-cm" data-m="b"><span class="cmp-dot" style="background:#0284c7;width:14px;height:14px">B</span> GLM 5.3</button>
+                        <button onclick="cmpCodeM('c')" class="cn-chip cmp-cm cmp-chip3" data-m="c"><span class="cmp-dot" style="background:#059669;width:14px;height:14px">C</span> Kimi</button>
+                      </div>
+                      <div class="text-[11px] font-bold text-slate-500 mb-1">언어</div>
+                      <div class="flex gap-1 mb-2 items-center"><button onclick="cmpCodeL(0)" class="cn-chip on cmp-cl">Python</button><button onclick="cmpCodeL(1)" class="cn-chip cmp-cl">TypeScript</button><button onclick="cmpCodeL(2)" class="cn-chip cmp-cl">cURL</button><a href="javascript:void(0)" onclick="switchToCTab('#c-02')" class="cn-issue ml-auto">API 키 발급 →</a></div>
+                      <div class="cn-code-wrap"><button class="cn-copy" title="코드 복사">⧉</button><pre class="cn-code" id="cmp-code-pre"></pre></div>
+                      <div class="cn-meta">코드는 모델 하나 기준이에요 — API는 한 번에 한 모델을 호출해요. 대화 중에 추가된 모델은 A 답변을 이어받은 대화가 들어가요.</div>
+                    </div>
+                  </div>
+
+                  <div class="cmp-grid min-h-[400px]">
+                    <div class="cmp-panel ">
+                      <div class="cmp-ph"><span class="cmp-dot" style="background:#7c3aed">A</span><b>Motif 3</b><span class="text-slate-400 font-mono text-[10px]">motif-3</span><button class="cmp-ic" title="이 모델 빼기">✕</button></div>
+                      <div class="cmp-sum"><span>대화 길이 412 토큰</span><span>이 모델 사용 $0.0005</span></div>
+                      <div class="cmp-body">
+                        <div class="cmp-user">우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.</div>
+                        <div class=" flex-col"><div class="cmp-ans">1) 사용하지 않은 크레딧은 환불을 요청할 수 있어요.<br>2) help 메일로 접수하면 3~5영업일 안에 카드로 돌려드려요.<br>3) 결제 후 1년이 지나면 환불이 어려워요.</div>
+                          <div class="pg-meta-row"><span class="pg-speed">TTFT <b>400ms</b><span class="sep">•</span><b>58.0</b> tok/s<span class="sep">•</span><b>$0.0003</b><span class="ic">ⓘ</span></span><i class="cmp-fast">가장 빠름</i><span class="ml-auto"><button class="pg-act">복사</button></span></div></div>
+                        <div class="cmp-user cmp-t2">더 짧게, 한 줄로 줄여줘.</div>
+                        <div class="cmp-t2 flex-col"><div class="cmp-ans">미사용 크레딧은 help 메일로 1년 안에 환불받을 수 있어요(3~5영업일).</div>
+                          <div class="pg-meta-row"><span class="pg-speed">TTFT <b>380ms</b><span class="sep">•</span><b>61.0</b> tok/s<span class="sep">•</span><b>$0.0002</b><span class="ic">ⓘ</span></span><i class="cmp-fast">가장 빠름</i><span class="ml-auto"><button class="pg-act">복사</button> · <button class="pg-act">다시 생성</button></span></div></div>
+                      </div>
+                    </div>
+                    <div class="cmp-panel ">
+                      <div class="cmp-ph"><span class="cmp-dot" style="background:#0284c7">B</span><b>GLM 5.3</b><span class="text-slate-400 font-mono text-[10px]">glm-5.3</span><button class="cmp-ic" title="이 모델 빼기">✕</button></div>
+                      <div class="cmp-sum"><span>대화 길이 488 토큰</span><span>이 모델 사용 $0.0007</span></div>
+                      <div class="cmp-body">
+                        <div class="cmp-user">우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.</div>
+                        <div class=" flex-col"><div class="cmp-ans">1) 미사용 크레딧은 환불 대상입니다.<br>2) 환불은 help 메일로 신청하며 카드사 반영까지 3~5영업일 소요됩니다.<br>3) 결제일 기준 1년 경과 건은 환불이 불가합니다.</div>
+                          <div class="pg-meta-row"><span class="pg-speed">TTFT <b>520ms</b><span class="sep">•</span><b>96.0</b> tok/s<span class="sep">•</span><b>$0.0004</b><span class="ic">ⓘ</span></span><span class="ml-auto"><button class="pg-act">복사</button></span></div></div>
+                        <div class="cmp-user cmp-t2">더 짧게, 한 줄로 줄여줘.</div>
+                        <div class="cmp-t2 flex-col"><div class="cmp-ans">미사용 크레딧은 결제 후 1년 안에 help 메일로 환불 신청할 수 있습니다.</div>
+                          <div class="pg-meta-row"><span class="pg-speed">TTFT <b>490ms</b><span class="sep">•</span><b>99.0</b> tok/s<span class="sep">•</span><b>$0.0003</b><span class="ic">ⓘ</span></span><span class="ml-auto"><button class="pg-act">복사</button> · <button class="pg-act">다시 생성</button></span></div></div>
+                      </div>
+                    </div>
+                    <div class="cmp-panel cmp-p3">
+                      <div class="cmp-ph"><span class="cmp-dot" style="background:#059669">C</span><b>Kimi</b><span class="text-slate-400 font-mono text-[10px]">kimi-k3</span><button class="cmp-ic" title="이 모델 빼기">✕</button></div>
+                      <div class="cmp-sum"><span>대화 길이 402 토큰</span><span>이 모델 사용 $0.0004</span></div>
+                      <div class="cmp-body">
+                        <div class="cmp-inherit cmp-t2">⤷ 대화 중에 추가됨 · 이전 대화는 <b>Motif 3(A)</b> 답변을 이어받아요</div>
+                        <div class="cmp-user cmp-t2">더 짧게, 한 줄로 줄여줘.</div>
+                        <div class="cmp-t2 flex-col"><div class="cmp-ans">쓰지 않은 크레딧은 1년 안에 help 메일로 환불받을 수 있어요.</div>
+                          <div class="pg-meta-row"><span class="pg-speed">TTFT <b>770ms</b><span class="sep">•</span><b>47.0</b> tok/s<span class="sep">•</span><b>$0.0004</b><span class="ic">ⓘ</span></span><span class="ml-auto"><button class="pg-act">복사</button> · <button class="pg-act">다시 생성</button></span></div></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 입력 영역 (C-07과 같음) -->
+                  <div class="border-t p-3 bg-white">
+                    <div class="flex gap-2 items-end">
+                      <textarea class="wf-input mb-0 h-16 resize-none text-xs font-mono" style="flex:1" placeholder="메시지를 입력하세요 (Enter 전송 · Shift+Enter 줄바꿈)"></textarea>
+                      <button class="wf-btn wf-btn-dark text-xs py-3" style="width:9rem;flex:none"><span class="cmp-n2">2개 모델에 전송</span><span class="cmp-n3">3개 모델에 전송</span></button>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-400 mt-1.5">
+                      <span>크레딧은 모델 수만큼 차감돼요 · 시스템 프롬프트 · 파라미터는 모든 모델에 같게 적용</span>
+                      <span>스트리밍 중에는 [■ 모두 중지]</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mm-note mm-note-out">📝 <b>C-07-1 여러 모델 선택 메모 (9/29 · 후순위)</b> — 9/29 논의: 비교 기능은 넣되 <b>후순위</b>. 별도 “비교 모드” 대신 <b>C-07 모델 드롭다운을 여러 개 선택으로 확장</b>(OpenRouter 방식). 모드 진입 · 종료가 없어 화면이 하나로 유지됨.
+                <b>선택</b>: 드롭다운에 체크박스, 최대 3개(모델이 3종). 선택한 모델은 상단에 칩(A · B · C, 색 구분)으로 보이고 칩의 ✕로 빼기. 1개만 남으면 지금 C-07 단일 대화와 같음. C-07은 설정 패널이 오른쪽에 있지만 여러 개 선택 중에는 답변 영역을 넓히려고 접힘(입력창 위 한 줄로 공통 적용 안내).
+                <b>답변</b>: 모델 수만큼 열을 나란히(보기 전환 없음). 열 머리에 모델 · 대화 길이 · 이 모델 사용 크레딧. 응답마다 C-07과 같은 한 줄 메타(TTFT • tok/s • 비용 + 상세 팝오버), 턴마다 TTFT가 가장 짧은 응답에 [가장 빠름]. 스트리밍은 모델별로 따로.
+                <b>이어서 질문</b>: 모델마다 자기 답변을 이어받음(모델별 messages 따로). <b>대화 중에 모델을 추가</b>하면 다음 턴부터 참여하고, 이전 대화는 A(첫 번째 모델)의 답변을 이어받음 — 열 위에 “대화 중에 추가됨” 표시. 대화 중에 모델을 빼면 그 열만 사라짐.
+                <b>코드 보기</b>: 여러 개 선택 중에도 [코드 보기] 동작. 드로어 위 모델 칩(A · B · C)으로 어느 모델 코드를 볼지 고름 — 기본은 A. 코드는 모델 하나 기준(API는 한 번에 한 모델 호출), 그 모델이 실제로 받은 대화가 그대로 들어감(대화 중 추가된 모델은 A 답변을 이어받은 대화).
+                <b>에러 · 비용</b>: 한 모델이 실패해도 나머지는 계속, 실패한 열만 [다시 시도]. 전송 버튼 “N개 모델에 전송” + “크레딧은 모델 수만큼 차감돼요”. 크레딧이 모자라면 전송 전에 막음.
+                <b>제외</b>: 목록 ↔ 나란히 보기 전환 · 모델별 다른 파라미터 · 모바일(1개만 선택 가능).
+                <b>개발 확인</b>: 한 사용자 동시 요청 2~3건 레이트리밋 · 로그 source=playground + 동시 선택 모델 수.
               </div>
             </div>
 
@@ -3512,6 +3793,159 @@ for await (const chunk of stream) {
                 </div>
               </div>
             </div>
+
+            <!-- C-09 계정 설정 — 프로필 (9/29) -->
+            <div id="c-09" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span class="flex items-center gap-2">C-09 계정 설정 — 프로필 <span class="text-xs text-slate-400 font-normal">모달</span></span>
+                  <div class="flex items-center gap-1 flex-wrap justify-end">
+                    <span class="text-xs text-slate-500 font-normal">마케팅</span>
+                    <button onclick="acctSet('acct-c09','mkt','on',this)" class="state-toggle-btn active" data-k="mkt">동의</button><button onclick="acctSet('acct-c09','mkt','off',this)" class="state-toggle-btn" data-k="mkt">미동의</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">Google</span>
+                    <button onclick="acctSet('acct-c09','gg','on',this)" class="state-toggle-btn active" data-k="gg">연결</button><button onclick="acctSet('acct-c09','gg','off',this)" class="state-toggle-btn" data-k="gg">안 됨</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">연결하기 결과</span>
+                    <button onclick="acctSet('acct-c09','linkres','ok',this)" class="state-toggle-btn active" data-k="linkres">성공</button><button onclick="acctSet('acct-c09','linkres','dup',this)" class="state-toggle-btn" data-k="linkres">이미 연결됨</button>
+                  </div>
+                </div>
+                <div class="wf-body p-6">
+                  <div class="grid md:grid-cols-[1fr_300px] gap-6 items-start">
+                    <div>
+                      <div class="acct-cap">모달 화면</div>
+                      <div class="acct-stage"><div class="acct-box" data-acct-mount="acct-c09" data-tab="profile"></div></div>
+                    </div>
+                    <div>
+                      <div class="acct-cap">연결하기 → 이미 다른 Morfac 계정에 연결된 소셜 계정일 때 <span class="text-amber-600">(OBT 후순위)</span></div>
+                      <div class="acct-stage" style="padding:20px 12px"><div class="acct-alert">
+                        <h4>이미 다른 계정에 연결되어 있어요</h4>
+                        <p>이 Google 계정은 다른 Morfac 계정에 연결되어 있어 연결할 수 없어요. 다른 Google 계정으로 연결해 주세요.</p>
+                        <div class="btns"><button>확인</button></div>
+                      </div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mm-note mm-note-out">📝 <b>C-09 계정 설정 · 프로필 메모 (9/29)</b> — 콘솔 우측 상단 프로필 메뉴 › 계정 설정으로 여는 모달. 화면에서 바로 볼 수 있도록 모달 목업을 펼쳐 둠(실제로는 레이어).
+                <b>연결 계정: OBT 후순위</b>(9/29) — 검정 레이어로 표시, OBT 범위 안에서 후순위로 개발(사용 빈도가 낮을 것으로 예상). OBT 소셜 로그인은 Google만 제공(9/29) — Google 한 줄만 [연결됨 · 계정 이메일] 또는 [연결 안 됨 · 연결하기](헤더 버튼으로 전환). 이메일 가입자가 Google을 연결하는 용도. GitHub 등은 추후 추가 시 같은 형태로 줄 추가.
+                <b>연결 해제: OBT에서는 제공하지 않음</b>(9/29) — 비밀번호 없는 소셜 전용 계정이 마지막 연결을 끊으면 로그인할 방법이 없어지는 문제를 피함. 해제가 꼭 필요하면 help 메일로 요청 → 운영자 처리. 이메일 코드 로그인 등 다른 로그인 수단이 생기면 해제 기능(확인 얼럿 · 마지막 수단 차단) 재검토.
+                <b>연결하기</b>: 해당 소셜 OAuth로 이동 → 돌아오면 연결됨. OAuth에서 돌아왔을 때 그 소셜 계정이 이미 다른 Morfac 계정에 연결되어 있으면(또는 그 소셜 이메일로 가입한 다른 Morfac 계정이 있으면) 연결하지 않고 얼럿 “이미 다른 계정에 연결되어 있어요” 표시(헤더 “연결하기 결과”로 확인). 연결 시 가입 이메일로 보안 알림 메일 권장.
+                <b>이름</b>: 고치면 입력란 옆에 [저장]이 나타나고, 저장하면 사라짐. 모달 하단은 [닫기]만. <b>이메일</b>: 변경 불가(읽기 전용 박스로만 표시, 별도 안내 문구 없음). <b>마케팅 정보 수신</b>(9/29): 가입 때 [선택] 동의 값을 토글로 표시 — 누르면 바로 동의 · 철회 저장(별도 저장 버튼 없음), 아래에 마지막 처리 일자 표시(“동의일 YYYY.MM.DD / 거부일 YYYY.MM.DD”, 가입 때 미동의면 가입일이 거부일). 한 줄 설명 + [전문 보기](A-08-1 같은 레이어) — 철회 후 다시 동의하는 것도 새로 동의를 받는 것이라 전문 고지가 필요. 처리 결과는 이메일로도 안내(정보통신망법상 처리 결과 통지), 동의 · 철회 일시는 계정에 이력으로 저장. 소셜 전용 가입자는 가입 시 받은 소셜 이메일이 표시됨.
+              </div>
+            </div>
+
+            <!-- C-10 계정 설정 — 보안 (9/29) -->
+            <div id="c-10" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span class="flex items-center gap-2">C-10 계정 설정 — 보안 <span class="text-xs text-slate-400 font-normal">모달</span></span>
+                </div>
+                <div class="wf-body p-6">
+                  <div class="grid md:grid-cols-2 gap-6 items-start">
+                    <div>
+                      <div class="acct-cap">A. 이메일 가입자 — 비밀번호 변경</div>
+                      <div class="acct-stage"><div class="acct-box" data-acct-mount="acct-c10" data-tab="security" data-pw="yes"></div></div>
+                    </div>
+                    <div>
+                      <div class="acct-cap">B. 소셜 가입자 — 비밀번호 최초 설정</div>
+                      <div class="acct-stage"><div class="acct-box" data-acct-mount="acct-c10b" data-tab="security" data-pw="no"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mm-note mm-note-out">📝 <b>C-10 계정 설정 · 보안 메모 (9/29)</b> — 접기 · 펼치기 없이 비밀번호와 회원 탈퇴 영역을 모두 펼쳐서 보여줌.
+                A · B 두 상태를 나란히 표시. <b>비밀번호</b>: 이메일 가입자는 [비밀번호 변경](현재 · 새 · 확인), 비밀번호를 한 번도 설정하지 않은 소셜 가입자는 [비밀번호 설정하기] 버튼만 보이고, 누르면 비밀번호 · 비밀번호 확인 2개 입력란 + [취소][저장]이 펼쳐짐 — 설정하면 이메일로도 로그인 가능. 변경 완료 시 E-04 안내 메일.
+                <b>회원 탈퇴</b>: 짧은 안내 + [탈퇴 진행하기 →] → C-10-1 전용 화면으로 이동.
+              </div>
+            </div>
+
+            <!-- C-10-1 회원 탈퇴 (9/29) -->
+            <div id="c-10-1" class="screen-section">
+              <div class="wf-card">
+                <div class="wf-header">
+                  <span class="flex items-center gap-2">C-10-1 회원 탈퇴 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
+                  <div class="flex items-center gap-1 flex-wrap justify-end">
+                    <span class="text-xs text-slate-500 font-normal">잔액</span>
+                    <button onclick="wdState('paid')" class="state-toggle-btn wd-st active" data-s="paid">환불 가능 크레딧 있음</button>
+                    <button onclick="wdState('refunding')" class="state-toggle-btn wd-st" data-s="refunding">환불 처리 중</button>
+                    <button onclick="wdState('zero')" class="state-toggle-btn wd-st" data-s="zero">탈퇴 가능</button>
+                    <span class="text-xs text-slate-500 font-normal ml-2">가입</span>
+                    <button onclick="wdAuth('email')" class="state-toggle-btn wd-au active" data-a="email">이메일</button>
+                    <button onclick="wdAuth('social')" class="state-toggle-btn wd-au" data-a="social">소셜</button>
+                  </div>
+                </div>
+                <div class="wf-body p-8" id="wd-root" data-state="paid" data-auth="email">
+                  <div class="max-w-2xl mx-auto space-y-8">
+                    <div>
+                      <div class="text-xs text-slate-400 mb-1"><a href="javascript:void(0)" onclick="openAccountSettingModal('security')" class="underline">계정 설정</a> › 보안 › 회원 탈퇴</div>
+                      <h2 class="text-2xl font-extrabold text-slate-900">회원 탈퇴</h2>
+                      <p class="text-sm text-slate-500 mt-1">탈퇴하기 전에 아래 내용을 꼭 확인해 주세요.</p>
+                    </div>
+
+                    <!-- ① 잔액 -->
+                    <div>
+                      <h3 class="wd-h">남은 크레딧</h3>
+                      <div class="wd-bal max-w-sm">
+                        <div class="text-xs text-slate-500 mb-1">환불 가능한 크레딧</div>
+                        <div class="wd-v wd-v-paid"><span class="text-2xl font-extrabold text-slate-900">$12.40</span></div>
+                        <div class="wd-v wd-v-refunding"><span class="text-2xl font-extrabold text-slate-900">$12.40</span> <span class="wd-tag">⏳ 환불 처리 중</span></div>
+                        <div class="wd-v wd-v-zero"><span class="text-2xl font-extrabold text-slate-900">$0</span></div>
+                      </div>
+                      <div class="text-[11px] text-slate-400 mt-2">무료로 받은 크레딧 $6.66은 환불되지 않습니다.</div>
+
+                      <div class="wd-v wd-v-paid wd-alert red mt-3">
+                        <div class="font-bold mb-1">크레딧 환불을 먼저 신청해 주세요</div>
+                        <div>환불 가능한 크레딧이 $0이 되어야 탈퇴할 수 있어요.</div>
+                        <a href="mailto:help@morphfactory.io?subject=%ED%99%98%EB%B6%88%20%EC%8B%A0%EC%B2%AD" class="wf-btn wf-btn-dark text-xs w-auto px-4 mt-3 no-underline text-white inline-flex">help@morphfactory.io로 환불 신청하기</a>
+                      </div>
+                    </div>
+
+                    <!-- ② 자주 묻는 질문 -->
+                    <div>
+                      <h3 class="wd-h">탈퇴하기 전에 확인해 주세요</h3>
+                      <div class="space-y-4">
+                    <div class="wd-faq"><div class="wd-q">Q. 남은 크레딧은 어떻게 되나요?</div><div class="wd-a">결제한 크레딧은 환불을 받은 뒤에 탈퇴할 수 있어요. 무료로 받은 크레딧은 탈퇴하면 사라지고 환불되지 않아요.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. API 키는 어떻게 되나요?</div><div class="wd-a">탈퇴하면 모든 API 키가 바로 사용 중지돼요. 키를 연결해 둔 서비스나 도구의 호출도 바로 실패해요.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. 같은 이메일로 다시 가입할 수 있나요?</div><div class="wd-a">탈퇴 후 30일이 지나면 같은 이메일로 다시 가입할 수 있어요. 편법 이용행위를 방지하기 위해 이메일을 암호화하여 보관합니다.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. 제 정보와 사용 기록은 어떻게 되나요?</div><div class="wd-a">계정 정보와 요청 기록은 삭제돼요. 결제 기록은 관련 법령에 따라 정해진 기간 동안 보관해요.</div></div>
+                      </div>
+                    </div>
+
+                    <!-- ③ 본인 확인 -->
+                    <div>
+                      <h3 class="wd-h">본인 확인</h3>
+                      <div class="wd-a-email">
+                        <div class="text-xs text-slate-500 mb-2">user@morfac.io 계정의 비밀번호를 입력해 주세요.</div>
+                        <input type="password" class="wf-input mb-0 max-w-xs" placeholder="비밀번호">
+                      </div>
+                      <div class="wd-a-social">
+                        <div class="text-xs text-slate-500 mb-2">소셜 계정으로 가입해 비밀번호가 없어요. 가입한 계정으로 한 번 더 인증해 주세요.</div>
+                        <button class="wf-btn text-xs w-auto px-4">G Google로 다시 인증</button>
+                      </div>
+                    </div>
+
+                    <!-- ④ 동의 · 버튼 -->
+                    <div class="space-y-3">
+                      <div class="wd-alert amber">⚠️ 탈퇴한 계정은 다시 복구할 수 없어요.</div>
+                      <label class="flex items-center gap-2 justify-center text-sm font-semibold text-slate-700"><input type="checkbox"> 위 내용을 모두 확인했으며, 탈퇴에 동의합니다.</label>
+                      <div class="flex gap-2 justify-center">
+                        <button onclick="switchToCTab('#c-01')" class="wf-btn w-auto px-8">취소</button>
+                        <button id="wd-submit" class="wf-btn w-auto px-8 border-none font-bold" style="background:#dc2626;color:#fff" disabled>회원 탈퇴</button>
+                      </div>
+                      <div class="text-center text-[11px] text-slate-400 wd-v wd-v-paid">크레딧 환불이 끝나야 탈퇴할 수 있어요</div>
+                      <div class="text-center text-[11px] text-slate-400 wd-v wd-v-refunding">환불이 완료되면 탈퇴할 수 있어요</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mm-note mm-note-out">📝 <b>C-10-1 회원 탈퇴 메모 (9/29)</b> — 계정 설정 › 보안(C-10) [탈퇴 진행하기]로 들어오는 전용 화면. 헤더 버튼으로 잔액 3상태 · 가입 유형 2가지 전환. 구성은 리디 탈퇴 화면을 참고해 ① 남은 크레딧 → ② 확인 사항(Q&amp;A) → ③ 본인 확인 → ④ 복구 불가 경고 · 동의 · 버튼. 탈퇴 사유는 받지 않음(9/29 삭제 — 처리방침에 수집 항목을 늘리지 않기 위해).
+                <b>잔액 정책</b>: 결제(유상) 크레딧이 $0보다 크면 [회원 탈퇴] 비활성 + 환불 신청 경로(help 메일) 표시 → 운영자가 O-04에서 환불 완료하면 $0이 되어 탈퇴 가능. 환불 처리 중(동결)인 동안에도 비활성. 무료(무상) 크레딧은 탈퇴 시 소멸 — 결제 크레딧만 카드로 크게, 무료 크레딧은 아래 한 줄로 작게(“무료로 받은 크레딧 $N은 환불되지 않습니다.”). 환불 처리 중에는 금액 옆 상태 표시만(별도 안내 박스 없음). 화면 표기는 섹션 제목 “남은 크레딧” 아래 카드 라벨 “환불 가능한 크레딧”(= 결제 크레딧 잔액, 무료 크레딧 제외 — C-01의 “남은 크레딧” 합계와 구분), 환불 안내는 두 줄로 가볍게 + help 메일 버튼(메일에 적을 내용은 자동 입력 제목 · 본문 템플릿으로).
+                <b>[회원 탈퇴] 활성 조건</b>: 결제 크레딧 $0 · 환불 처리 중 아님 · 본인 확인 완료 · 동의 체크.
+                <b>재가입</b>: 화면 문구 “편법 이용행위를 방지하기 위해 이메일을 암호화하여 보관합니다.” — 실제로는 정규화한 이메일의 해시만 탈퇴 후 30일 보관(재가입 쿨다운과 같은 기간) → 기간이 지나면 해시 삭제, 같은 이메일로 재가입 가능(A-02 쿨다운 에러와 연결).
+                <b>본인 확인</b>: 이메일 가입은 비밀번호, 소셜 전용 가입은 해당 소셜 재인증.
+                <b>확인 필요</b>: 30일 후 재가입 시 가입 크레딧($20) 재지급 여부 · 이메일 정규화 규칙(대소문자, Gmail 점 · + 별칭 처리) · 탈퇴 완료 안내 메일(E-09) 필요 여부.
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -4671,16 +5105,12 @@ for await (const chunk of stream) {
             </div>
 
             <div style="text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 14px; color: #64748b; margin: 0;">이제 GitHub 또는 Google 계정으로 로그인할 수 있습니다.</p>
+              <p style="font-size: 14px; color: #64748b; margin: 0;">이제 Google 계정으로도 로그인할 수 있습니다.</p>
             </div>
 
             <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
               <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 16px 0;">연동된 계정</h3>
               <div style="space-y: 8px;">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 13px; color: #475569;">
-                  <span style="font-size: 20px;">🐙</span>
-                  <span>GitHub · suana-hub</span>
-                </div>
                 <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #475569;">
                   <span style="font-size: 20px;">🔵</span>
                   <span>Google · suana@morphfactory.io</span>
@@ -4888,206 +5318,140 @@ for await (const chunk of stream) {
 
   </div>
 
-  <!-- C 시리즈: 계정 설정 통합 모달 (프로필 / 보안) -->
+  <!-- C 시리즈: 계정 설정 통합 모달 (C-09 프로필 / C-10 보안) — 내용은 #acct-tpl -->
   <div id="account-setting-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full border border-slate-200" id="acct-modal-slot"></div>
+  </div>
 
-      <div class="flex justify-between items-center mb-4 border-b pb-3">
+
+  <!-- 마케팅 정보 수신 동의 전문 모달 (A-02 · A-08 · C-09 [보기]) -->
+  <div id="mkt-modal" class="hidden fixed inset-0 bg-slate-900/50 flex items-center justify-center z-[60]" onclick="if(event.target===this)closeMktModal()">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+      <div class="flex justify-end -mb-6"><button onclick="closeMktModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button></div>
+      <div class="mkt-full text-xs text-slate-700 leading-relaxed">
+                <h3 class="font-bold text-base text-slate-900 mb-1">마케팅 정보 수신 동의 <span class="text-slate-400 font-medium text-sm">(선택)</span></h3>
+                <p class="text-slate-500 mb-4">회사는 광고성 정보를 보내 드리기 위해 아래와 같이 개인정보를 수집 · 이용합니다.</p>
+                <table class="w-full border-collapse mb-4 text-[11px]">
+                  <tr class="border-t border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 w-32 whitespace-nowrap">이용 목적</th><td class="px-3 py-2">이벤트 · 혜택 · 새 모델 안내 등 광고성 정보 전송</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">수신 채널</th><td class="px-3 py-2">이메일</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">수집 항목</th><td class="px-3 py-2">이메일 주소, 이름 또는 닉네임</td></tr>
+                  <tr class="border-b"><th class="bg-slate-50 text-left font-bold text-slate-700 px-3 py-2 whitespace-nowrap">보유 및 이용기간</th><td class="px-3 py-2 font-bold">동의 철회 또는 회원 탈퇴 시까지</td></tr>
+                </table>
+                <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-600">
+                  <li>동의를 거부할 수 있으며, 거부해도 서비스 이용에 제한이 없어요. 다만 이벤트 · 혜택 안내를 받을 수 없어요.</li>
+                  <li>동의한 뒤에도 콘솔 <b>계정 설정</b> 또는 메일 하단의 <b>수신 거부</b> 링크로 언제든 철회할 수 있어요.</li>
+                  <li>서비스 운영에 꼭 필요한 안내(결제 · 보안 · 약관 변경 등)는 동의 여부와 관계없이 보내 드려요.</li>
+                </ul>
+              </div>
+      <button onclick="closeMktModal()" class="wf-btn wf-btn-dark mt-5">확인</button>
+    </div>
+  </div>
+
+  <!-- 계정 설정 C-09 · C-10 공통 템플릿 (모달 · 화면 목업이 같은 마크업을 사용) -->
+  <template id="acct-tpl">
+    <div class="acct p-6" data-tab="profile" data-gh="off" data-gg="on" data-pw="yes" data-mkt="on" data-dlg="" data-namedirty="" data-linkres="ok">
+      <div class="flex justify-between items-center mb-3">
         <div>
           <h3 class="font-bold text-base text-slate-900">⚙️ 계정 설정</h3>
-          <p id="account-setting-label" class="text-[10px] text-slate-500 mt-0.5">C-09 • 프로필</p>
+          <p class="text-[10px] text-slate-500 mt-0.5"><span class="acct-lbl-p">C-09 • 프로필</span><span class="acct-lbl-s">C-10 • 보안</span></p>
         </div>
         <button onclick="closeAccountSettingModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
-
-      <!-- 탭 버튼 -->
-      <div class="flex gap-2 border-b border-slate-200 mb-6">
-        <button id="tab-btn-profile" onclick="switchAccountTab('profile')" class="px-4 py-2 text-xs font-bold border-b-2 border-slate-900 text-slate-900 bg-transparent cursor-pointer">
-          프로필
-        </button>
-        <button id="tab-btn-security" onclick="switchAccountTab('security')" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-900 bg-transparent cursor-pointer">
-          보안
-        </button>
+      <div class="flex gap-1 border-b border-slate-200 mb-5">
+        <button class="acct-tb" data-t="profile" onclick="acctTab(this,'profile')">프로필</button>
+        <button class="acct-tb" data-t="security" onclick="acctTab(this,'security')">보안</button>
       </div>
 
-      <!-- 1. 프로필 탭 -->
-      <div id="account-tab-profile" class="space-y-4 text-xs">
-        <!-- 이름 -->
+      <!-- C-09 프로필 -->
+      <div class="acct-p acct-p-profile space-y-5">
         <div>
           <label class="block font-bold text-slate-700 mb-2">이름</label>
-          <input type="text" class="wf-input mb-0" value="Hanah Suh" placeholder="이름을 입력하세요">
+          <div class="flex gap-2 items-center">
+            <input type="text" class="wf-input mb-0 flex-1" value="Hanah Suh" oninput="acctRoot(this).dataset.namedirty='1'">
+            <button class="wf-btn wf-btn-dark text-xs w-auto px-4 name-save" onclick="acctRoot(this).dataset.namedirty=''">저장</button>
+          </div>
         </div>
-
-        <!-- 이메일 -->
         <div>
           <label class="block font-bold text-slate-700 mb-2">이메일</label>
-          <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-600">
-            suana@morphfactory.io
-          </div>
-          <p class="text-[10px] text-slate-400 mt-1">확인용 (변경 불가)</p>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-600">suana@morphfactory.io</div>
         </div>
-
-        <!-- 연결 계정 - 계정 있는 경우 -->
-        <div id="profile-connected-accounts" class="space-y-2">
-          <label class="block font-bold text-slate-700 mb-2">연결 계정</label>
-          <div class="space-y-2">
-            <!-- GitHub 연결됨 -->
-            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-              <div class="flex items-center gap-2">
-                <span>🐙</span>
-                <span class="text-slate-600">GitHub · suana-hub</span>
-              </div>
-              <button onclick="confirmDisconnect('GitHub')" class="text-[11px] text-red-600 hover:text-red-700 font-bold border-none bg-transparent cursor-pointer underline">
-                연결 해제
-              </button>
-            </div>
-            <!-- Google 연결됨 -->
-            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-              <div class="flex items-center gap-2">
-                <span>🔵</span>
-                <span class="text-slate-600">Google · suana@morphfactory.io</span>
-              </div>
-              <button onclick="confirmDisconnect('Google')" class="text-[11px] text-red-600 hover:text-red-700 font-bold border-none bg-transparent cursor-pointer underline">
-                연결 해제
-              </button>
-            </div>
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="font-bold text-slate-700">마케팅 정보 수신</label>
+            <a href="javascript:void(0)" onclick="openMktModal()" class="text-[11px] text-slate-400 underline">전문 보기</a>
           </div>
-          <button onclick="toggleConnectedAccountsState()" class="text-[11px] text-slate-500 hover:text-slate-700 font-bold border-none bg-transparent cursor-pointer underline">
-            상태 토글 (테스트)
-          </button>
-        </div>
-
-        <!-- 연결 계정 - 계정 없는 경우 -->
-        <div id="profile-no-accounts" class="hidden space-y-2">
-          <label class="block font-bold text-slate-700 mb-2">연결 계정</label>
-          <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-3 text-center space-y-2">
-            <p class="text-slate-600 text-xs">연결된 계정이 없습니다.</p>
-            <p class="text-slate-400 text-[10px]">소셜 계정을 연결하면 더 편하게 로그인할 수 있습니다.</p>
-            <div class="flex gap-2 justify-center pt-1">
-              <button onclick="alert('GitHub 연결 진행...')" class="text-[11px] px-3 py-1.5 bg-slate-700 text-white rounded font-bold border-none cursor-pointer hover:bg-slate-800">
-                🐙 GitHub
-              </button>
-              <button onclick="alert('Google 연결 진행...')" class="text-[11px] px-3 py-1.5 bg-slate-700 text-white rounded font-bold border-none cursor-pointer hover:bg-slate-800">
-                🔵 Google
-              </button>
-            </div>
-          </div>
-          <button onclick="toggleConnectedAccountsState()" class="text-[11px] text-slate-500 hover:text-slate-700 font-bold border-none bg-transparent cursor-pointer underline">
-            상태 토글 (테스트)
-          </button>
-        </div>
-
-        <div class="flex justify-end gap-2 pt-4 border-t">
-          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">닫기</button>
-        </div>
-      </div>
-
-      <!-- 2. 보안 탭 -->
-      <div id="account-tab-security" class="hidden space-y-2 text-xs">
-
-        <!-- 2-1. 비밀번호 섹션 - Accordion (2가지 시나리오) -->
-        <div class="border border-slate-200 rounded-lg overflow-hidden">
-          <!-- 시나리오 A: 비밀번호가 있는 경우 (비밀번호 변경) -->
-          <div id="password-has-section">
-            <button onclick="toggleSecuritySection('password')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
-              <span>🔑 비밀번호 변경</span>
-              <span id="password-toggle-icon">▼</span>
-            </button>
-            <div id="security-section-password" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
-              <div>
-                <label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label>
-                <input type="password" class="wf-input mb-0" placeholder="••••••••">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
-                <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label>
-                <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
-              </div>
-              <div class="flex justify-end gap-2 pt-2">
-                <button onclick="alert('비밀번호가 성공적으로 변경되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">변경하기</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 시나리오 B: 비밀번호가 없는 경우 (소셜 가입만 한 경우, 비밀번호 생성) -->
-          <div id="password-no-section" class="hidden">
-            <button onclick="toggleSecuritySection('password-create')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-slate-900 border-none cursor-pointer">
-              <span>🔑 비밀번호 생성</span>
-              <span id="password-create-toggle-icon">▼</span>
-            </button>
-            <div id="security-section-password-create" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
-              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-900 leading-relaxed">
-                <p class="text-[11px] text-blue-800">
-                  소셜 계정으로 가입했으므로 비밀번호가 설정되어 있지 않습니다. 이메일로 로그인할 때 사용할 비밀번호를 생성해주세요.
-                </p>
-              </div>
-              <div>
-                <label class="block font-bold text-slate-700 mb-1">새 비밀번호</label>
-                <input type="password" class="wf-input mb-0" placeholder="8자 이상 영문/숫자/특수문자 조합">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-700 mb-1">비밀번호 확인</label>
-                <input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력">
-              </div>
-              <div class="flex justify-end gap-2 pt-2">
-                <button onclick="alert('비밀번호가 성공적으로 생성되었습니다.');" class="wf-btn wf-btn-dark text-xs w-auto">생성하기</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 테스트용: 비밀번호 상태 토글 -->
-          <button onclick="togglePasswordState()" class="text-[10px] text-slate-400 hover:text-slate-600 font-bold border-none bg-transparent cursor-pointer underline mt-2 ml-4">
-            비밀번호 상태 토글 (테스트)
-          </button>
-        </div>
-
-        <!-- 2-2. 회원 탈퇴 섹션 - Accordion -->
-        <div class="border border-slate-200 rounded-lg overflow-hidden">
-          <button onclick="toggleSecuritySection('withdraw')" class="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 px-4 py-3 font-bold text-red-700 border-none cursor-pointer">
-            <span>⛔ 회원 탈퇴</span>
-            <span id="withdraw-toggle-icon">▼</span>
-          </button>
-          <div id="security-section-withdraw" class="hidden border-t border-slate-200 px-4 py-4 bg-white space-y-3">
+          <p class="text-[11px] text-slate-400 mb-2">동의하면 새 모델 · 기능 소식과 이벤트 · 크레딧 혜택을 이메일로 받을 수 있어요.</p>
+          <div class="sc-row">
             <div>
-              <label class="block font-bold text-slate-700 mb-1">본인 확인 비밀번호</label>
-              <input type="password" class="wf-input mb-0" placeholder="현재 비밀번호 입력">
+              <div class="font-bold text-slate-800">이벤트 · 혜택 소식을 이메일로 받기</div>
+              <div class="text-[11px] text-slate-400 mt-0.5 mkt-on-t">동의일 2026.09.29</div>
+              <div class="text-[11px] text-slate-400 mt-0.5 mkt-off-t">거부일 2026.09.29</div>
             </div>
-
-            <label class="flex items-start gap-2 cursor-pointer bg-slate-50 border border-slate-200 rounded-lg p-3">
-              <input type="checkbox" id="withdraw-agree-check" onchange="toggleWithdrawButton()" class="mt-0.5 w-4 h-4 text-red-600 rounded border-slate-300">
-              <span class="font-bold text-slate-700 text-xs leading-snug">안내사항을 모두 확인하였으며 탈퇴에 동의합니다</span>
-            </label>
-
-            <div class="bg-red-50 border border-red-200 rounded-lg p-3 text-red-900 leading-relaxed space-y-2">
-              <div class="font-bold flex items-center gap-1 text-xs text-red-700">
-                <span>⚠️</span> 탈퇴 전 필독 사항
-              </div>
-              <p class="text-[11px] text-red-800">
-                탈퇴 시 프로젝트 데이터, 실행 로그, 잔여 크레딧이 완전 삭제되어 복구할 수 없습니다.
-              </p>
-              <p class="text-[11px] text-red-800">
-                탈퇴 후 30일간 동일한 이메일로 재가입이 제한됩니다.
-              </p>
-            </div>
-
-            <div class="flex justify-end gap-2 pt-2">
-              <button id="withdraw-submit-btn" disabled onclick="confirmWithdraw()" class="wf-btn bg-red-600 text-white border-none font-bold text-xs w-auto opacity-50 cursor-not-allowed">
-                탈퇴하기
-              </button>
+            <button class="mkt-sw" onclick="acctMkt(this)" aria-label="마케팅 정보 수신"><i></i></button>
+          </div>
+        </div>
+        <div class="acct-low">
+          <div class="acct-low-ov"><div class="tbd-box"><div class="tbd-badge" style="font-size:10px;margin-bottom:6px">OBT 후순위</div><div class="text-sm font-extrabold">계정 연결은 OBT에서 후순위로 개발</div></div></div>
+          <label class="block font-bold text-slate-700 mb-1">연결 계정</label>
+          <p class="text-[11px] text-slate-400 mb-2">연결한 계정으로도 로그인할 수 있어요.</p>
+          <div class="space-y-2">
+            <div class="sc-row sc-gg">
+              <div class="flex items-center gap-2 font-bold text-slate-800"><span class="w-6 h-6 rounded-full border border-slate-300 text-[11px] font-extrabold text-blue-600 flex items-center justify-center">G</span>Google</div>
+              <div class="sc-on items-center gap-2"><span class="text-[11px] text-slate-500">suana@morphfactory.io</span><span class="text-[11px] font-bold text-emerald-600">연결됨</span></div>
+              <div class="sc-off items-center gap-2"><span class="text-[11px] text-slate-400">연결 안 됨</span><button class="sc-link" onclick="acctConnect(this,'gg')">연결하기</button></div>
             </div>
           </div>
         </div>
-
-        <div class="flex justify-end gap-2 pt-4 border-t">
-          <button onclick="closeAccountSettingModal()" class="wf-btn text-xs w-auto">닫기</button>
+        <div class="flex justify-end pt-4 border-t">
+          <button class="wf-btn text-xs w-auto px-4" onclick="closeAccountSettingModal()">닫기</button>
         </div>
       </div>
 
+      <!-- C-10 보안 (모두 펼침) -->
+      <div class="acct-p acct-p-security space-y-4">
+        <div class="sec-box">
+          <div class="pw-yes">
+            <div class="sec-h">비밀번호 변경</div>
+            <div class="space-y-3">
+              <div><label class="block font-bold text-slate-700 mb-1">현재 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="••••••••"></div>
+              <div><label class="block font-bold text-slate-700 mb-1">새 비밀번호</label><input type="password" class="wf-input mb-0" placeholder="8자 이상 영문 · 숫자 · 특수문자 조합"></div>
+              <div><label class="block font-bold text-slate-700 mb-1">새 비밀번호 확인</label><input type="password" class="wf-input mb-0" placeholder="새 비밀번호 다시 입력"></div>
+              <div class="flex justify-end"><button class="wf-btn wf-btn-dark text-xs w-auto px-4">변경하기</button></div>
+            </div>
+          </div>
+          <div class="pw-no">
+            <div class="sec-h">비밀번호</div>
+            <div class="pw-closed">
+              <p class="text-[11px] text-slate-500 mb-3 leading-relaxed">아직 비밀번호가 없어요. 비밀번호를 설정하면 이메일로도 로그인할 수 있어요.</p>
+              <button class="wf-btn text-xs w-auto px-4" onclick="acctRoot(this).dataset.pwform='open'">비밀번호 설정하기</button>
+            </div>
+            <div class="pw-open space-y-3">
+              <div><label class="block font-bold text-slate-700 mb-1">비밀번호</label><input type="password" class="wf-input mb-0" placeholder="8자 이상 영문 · 숫자 · 특수문자 조합"></div>
+              <div><label class="block font-bold text-slate-700 mb-1">비밀번호 확인</label><input type="password" class="wf-input mb-0" placeholder="비밀번호 다시 입력"></div>
+              <div class="flex justify-end gap-2"><button class="wf-btn text-xs w-auto px-4" onclick="acctRoot(this).dataset.pwform=''">취소</button><button class="wf-btn wf-btn-dark text-xs w-auto px-4">저장</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="sec-box">
+          <div class="sec-h text-red-700" style="color:#b91c1c">회원 탈퇴</div>
+          <p class="text-[11px] text-slate-600 leading-relaxed mb-3">탈퇴하면 API 키와 계정 정보가 삭제되고 다시 복구할 수 없어요. 환불 가능한 크레딧이 있으면 환불을 먼저 받아야 해요.</p>
+          <div class="flex justify-end"><button onclick="closeAccountSettingModal(); switchToCTab('#c-10-1')" class="wf-btn text-xs w-auto px-4 text-red-600 border-red-200">탈퇴 진행하기 →</button></div>
+        </div>
+        <div class="flex justify-end pt-4 border-t">
+          <button class="wf-btn text-xs w-auto px-4" onclick="closeAccountSettingModal()">닫기</button>
+        </div>
+      </div>
+
+      <!-- 이미 다른 계정에 연결된 소셜 계정 얼럿 -->
+      <div class="acct-dlg">
+        <div class="acct-alert">
+          <h4>이미 다른 계정에 연결되어 있어요</h4>
+          <p>이 <span class="dlg-prov">Google</span> 계정은 다른 Morfac 계정에 연결되어 있어 연결할 수 없어요. 다른 <span class="dlg-prov">Google</span> 계정으로 연결해 주세요.</p>
+          <div class="btns"><button class="dark" onclick="acctRoot(this).dataset.dlg=''">확인</button></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </template>
 
   <!-- C 시리즈: 새 API 키 발급 모달 -->
   <div id="api-key-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
@@ -5647,38 +6011,17 @@ for await (const chunk of stream) {
     }
     function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
 
-    function openAccountSettingModal() {
+    function openAccountSettingModal(tab) {
+      const slot = document.getElementById('acct-modal-slot');
+      const r = slot.querySelector('.acct') || acctMount(slot, 'profile');
+      r.dataset.tab = tab || 'profile'; r.dataset.dlg = '';
       document.getElementById('account-setting-modal').classList.remove('hidden');
-      switchAccountTab('profile');
     }
     function closeAccountSettingModal() {
       document.getElementById('account-setting-modal').classList.add('hidden');
     }
-
     function switchAccountTab(tabType) {
-      const tabProfile = document.getElementById('account-tab-profile');
-      const tabSecurity = document.getElementById('account-tab-security');
-      const btnProfile = document.getElementById('tab-btn-profile');
-      const btnSecurity = document.getElementById('tab-btn-security');
-      const settingLabel = document.getElementById('account-setting-label');
-
-      if(tabType === 'profile') {
-        tabProfile.classList.remove('hidden');
-        tabSecurity.classList.add('hidden');
-        btnProfile.classList.add('border-slate-900', 'text-slate-900');
-        btnProfile.classList.remove('border-transparent', 'text-slate-400');
-        btnSecurity.classList.remove('border-slate-900', 'text-slate-900');
-        btnSecurity.classList.add('border-transparent', 'text-slate-400');
-        if(settingLabel) settingLabel.textContent = 'C-09 • 프로필';
-      } else {
-        tabProfile.classList.add('hidden');
-        tabSecurity.classList.remove('hidden');
-        btnSecurity.classList.add('border-slate-900', 'text-slate-900');
-        btnSecurity.classList.remove('border-transparent', 'text-slate-400');
-        btnProfile.classList.remove('border-slate-900', 'text-slate-900');
-        btnProfile.classList.add('border-transparent', 'text-slate-400');
-        if(settingLabel) settingLabel.textContent = 'C-10 • 보안';
-      }
+      const r = document.querySelector('#acct-modal-slot .acct'); if (r) r.dataset.tab = tabType;
     }
 
     function toggleWithdrawButton() {
@@ -5850,73 +6193,71 @@ for await (const chunk of stream) {
       a05ErrorState = (a05ErrorState + 1) % errors.length;
     }
 
-    // 보안 섹션 토글 (Accordion)
-    function toggleSecuritySection(sectionType) {
-      const section = document.getElementById(`security-section-${sectionType}`);
-      const icon = document.getElementById(`${sectionType}-toggle-icon`);
-
-      if(section && icon) {
-        if(section.classList.contains('hidden')) {
-          section.classList.remove('hidden');
-          icon.textContent = '▲';
-        } else {
-          section.classList.add('hidden');
-          icon.textContent = '▼';
-        }
-      }
+    /* 계정 설정 C-09 · C-10 (9/29): #acct-tpl 하나로 모달 · 화면 목업을 함께 그림 */
+    function acctMount(host, tab, id){
+      const node = document.getElementById('acct-tpl').content.firstElementChild.cloneNode(true);
+      node.dataset.tab = tab || 'profile';
+      if (id) node.id = id;
+      host.innerHTML = ''; host.appendChild(node);
+      return node;
     }
-
-    // 비밀번호 상태 토글 (테스트용)
-    let userHasPassword = true;
-    function togglePasswordState() {
-      const hasSection = document.getElementById('password-has-section');
-      const noSection = document.getElementById('password-no-section');
-
-      userHasPassword = !userHasPassword;
-
-      if(userHasPassword) {
-        hasSection.classList.remove('hidden');
-        noSection.classList.add('hidden');
+    function acctRoot(el){ return el.closest('.acct'); }
+    function acctTab(el, t){ acctRoot(el).dataset.tab = t; }
+    function acctSetK(el, k, v){ acctRoot(el).dataset[k] = v; }
+    function acctMkt(el){ const r = acctRoot(el); r.dataset.mkt = r.dataset.mkt === 'on' ? 'off' : 'on'; }
+    function openMktModal(){ document.getElementById('mkt-modal').classList.remove('hidden'); }
+    function closeMktModal(){ document.getElementById('mkt-modal').classList.add('hidden'); }
+    function cmpSet(k, v, btn){
+      const r = document.getElementById('cmp-root'); if (!r) return;
+      r.dataset[k] = v;
+      if (k === 'n') { const c = r.querySelector('.cmp-kimi'); if (c) c.checked = v === '3'; }
+      if (!document.getElementById('cmp-connect').classList.contains('hidden')) setTimeout(cmpRender);
+      document.querySelectorAll('#c-07-1 .state-toggle-btn[data-k="'+k+'"]').forEach(b => b.classList.toggle('active', b === btn));
+    }
+    const CMP_M = {a:['motif-3','A'], b:['glm-5.3','B'], c:['kimi-k3','C']};
+    const CMP_Q1 = '우리 서비스 환불 정책을 고객 문의 답변용으로 3줄 요약해줘.';
+    const CMP_Q2 = '더 짧게, 한 줄로 줄여줘.';
+    const CMP_ANS = {a:'1) 사용하지 않은 크레딧은 환불을 요청할 수 있어요. ...', b:'1) 미사용 크레딧은 환불 대상입니다. ...', c:'1) 사용하지 않은 크레딧은 환불을 요청할 수 있어요. ...'};
+    let cmpM = 'a', cmpL = 0;
+    function cmpRender(){
+      const r = document.getElementById('cmp-root');
+      if (cmpM === 'c' && r.dataset.n !== '3') cmpM = 'a';
+      const id = CMP_M[cmpM][0];
+      const msgs = [['system','You are a helpful assistant.'],['user',CMP_Q1]];
+      if (r.dataset.turn === '2') msgs.push(['assistant',CMP_ANS[cmpM]],['user',CMP_Q2]);
+      let code;
+      if (cmpL === 0) {
+        code = 'import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://api.morfac.io/v1",\n    api_key=os.environ["MORFAC_API_KEY"],\n)\n\nstream = client.chat.completions.create(\n    model="'+id+'",\n    stream=True,\n    messages=[\n' + msgs.map(m=>'        {"role": "'+m[0]+'", "content": "'+m[1]+'"},').join('\n') + '\n    ],\n)\nfor chunk in stream:\n    print(chunk.choices[0].delta.content or "", end="")';
+      } else if (cmpL === 1) {
+        code = 'import OpenAI from "openai";\n\nconst client = new OpenAI({\n  baseURL: "https://api.morfac.io/v1",\n  apiKey: process.env.MORFAC_API_KEY,\n});\n\nconst stream = await client.chat.completions.create({\n  model: "'+id+'",\n  stream: true,\n  messages: [\n' + msgs.map(m=>'    { role: "'+m[0]+'", content: "'+m[1]+'" },').join('\n') + '\n  ],\n});\nfor await (const chunk of stream) {\n  process.stdout.write(chunk.choices[0]?.delta?.content ?? "");\n}';
       } else {
-        hasSection.classList.add('hidden');
-        noSection.classList.remove('hidden');
+        code = 'curl https://api.morfac.io/v1/chat/completions \\\n  -H "Authorization: Bearer $MORFAC_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "model": "'+id+'",\n    "stream": true,\n    "messages": [\n' + msgs.map((m,i)=>'      {"role": "'+m[0]+'", "content": "'+m[1]+'"}'+(i<msgs.length-1?',':'')).join('\n') + '\n    ]\n  }\'';
       }
-
-      // 섹션이 열려있으면 닫기
-      const passwordSection = document.getElementById('security-section-password');
-      const passwordCreateSection = document.getElementById('security-section-password-create');
-      if(passwordSection) {
-        passwordSection.classList.add('hidden');
-        const icon = document.getElementById('password-toggle-icon');
-        if(icon) icon.textContent = '▼';
-      }
-      if(passwordCreateSection) {
-        passwordCreateSection.classList.add('hidden');
-        const icon = document.getElementById('password-create-toggle-icon');
-        if(icon) icon.textContent = '▼';
-      }
+      document.getElementById('cmp-code-pre').textContent = code;
+      document.querySelectorAll('#cmp-connect .cmp-cm').forEach(b => b.classList.toggle('on', b.dataset.m === cmpM));
+      document.querySelectorAll('#cmp-connect .cmp-cl').forEach((b,i) => b.classList.toggle('on', i === cmpL));
     }
-
-    // 연결 계정 상태 토글 (테스트용)
-    function toggleConnectedAccountsState() {
-      const connectedDiv = document.getElementById('profile-connected-accounts');
-      const noAccountsDiv = document.getElementById('profile-no-accounts');
-
-      if(connectedDiv.classList.contains('hidden')) {
-        connectedDiv.classList.remove('hidden');
-        noAccountsDiv.classList.add('hidden');
-      } else {
-        connectedDiv.classList.add('hidden');
-        noAccountsDiv.classList.remove('hidden');
-      }
+    function cmpCode(open){ document.getElementById('cmp-connect').classList.toggle('hidden', !open); if (open) cmpRender(); }
+    function cmpCodeM(m){ cmpM = m; cmpRender(); }
+    function cmpCodeL(i){ cmpL = i; cmpRender(); }
+    function cmpToggleDD(){
+      const r = document.getElementById('cmp-root'); const on = r.dataset.dd !== '1';
+      const btns = document.querySelectorAll('#c-07-1 .state-toggle-btn[data-k="dd"]');
+      cmpSet('dd', on ? '1' : '0', btns[on ? 1 : 0]);
     }
-
-    // 연결 계정 연결 해제
-    function confirmDisconnect(provider) {
-      if(confirm(`${provider} 계정 연결을 해제하시겠습니까?`)) {
-        alert(`${provider} 계정이 연결 해제되었습니다.`);
-      }
+    const ACCT_NAME = {gh:'GitHub', gg:'Google'};
+    function acctConnect(el, k){
+      const r = acctRoot(el);
+      if (r.dataset.linkres === 'dup') { r.querySelectorAll('.dlg-prov').forEach(x => x.textContent = ACCT_NAME[k]); r.dataset.dlg = 'dup'; }
+      else r.dataset[k] = 'on';
     }
+    function acctSet(id, k, v, btn){
+      const r = document.getElementById(id); if (r) { r.dataset[k] = v; r.dataset.pwform = ''; r.dataset.dlg = ''; }
+      if (btn) btn.parentElement.querySelectorAll('.state-toggle-btn[data-k="'+k+'"]').forEach(b => b.classList.toggle('active', b === btn));
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-acct-mount]').forEach(h => { const r = acctMount(h, h.dataset.tab, h.dataset.acctMount); if (h.dataset.pw) r.dataset.pw = h.dataset.pw; });
+    });
 
     // 회원 탈퇴 확인
     function confirmWithdraw() {
@@ -5934,7 +6275,7 @@ for await (const chunk of stream) {
       const L = lay.getBoundingClientRect();
       let paths = '', dots = '';
       SM_LINKS.forEach(([pg, ml]) => {
-        const a = lay.querySelector('[data-pg="' + pg + '"]'), b = lay.querySelector('[data-mail="' + ml + '"]');
+        const a = lay.querySelector('.pg[data-pg="' + pg + '"]'), b = lay.querySelector('.ml[data-mail="' + ml + '"]');
         if (!a || !b) return;
         const A = a.getBoundingClientRect(), B = b.getBoundingClientRect();
         const pageLeft = A.left > B.right;               // 페이지가 메일 오른쪽에 있으면 왼쪽 변에서 출발
@@ -5969,8 +6310,8 @@ for await (const chunk of stream) {
       lay.classList.add('sm-hovering');
       links.forEach(p => {
         p.classList.add('sm-hl');
-        lay.querySelector('[data-pg="' + p.dataset.pg + '"]:not(path):not(circle)')?.classList.add('sm-hl');
-        lay.querySelector('[data-mail="' + p.dataset.ml + '"]')?.classList.add('sm-hl');
+        lay.querySelector('.pg[data-pg="' + p.dataset.pg + '"]')?.classList.add('sm-hl');
+        lay.querySelector('.ml[data-mail="' + p.dataset.ml + '"]')?.classList.add('sm-hl');
       });
     }
     window.addEventListener('resize', drawSitemapLinks);
@@ -5990,8 +6331,7 @@ for await (const chunk of stream) {
       document.getElementById('pg-empty').classList.toggle('hidden', state !== 'empty');
       document.getElementById('pg-thread').classList.toggle('hidden', state === 'empty');
       document.getElementById('pg-limit-warn').classList.toggle('hidden', state !== 'limit');
-      document.getElementById('pg-token-count').textContent =
-        state === 'empty' ? '누적 0 토큰' : state === 'limit' ? '누적 107,520 / 131,072 토큰' : '누적 305 토큰';
+      /* 대화 길이 상시 표시는 제외(9/30) — 80% 경고만 */
     }
     const PG_PRESETS = [
       { sys: '당신은 시니어 소프트웨어 엔지니어입니다. 코드를 성능, 보안, 가독성 관점에서 리뷰하고, 문제가 되는 위치와 이유, 구체적인 수정안을 함께 제시하세요.',
@@ -6003,6 +6343,15 @@ for await (const chunk of stream) {
       { sys: '당신은 API 문서화 전문가입니다. OpenAPI 3.0 형식을 정확히 지키고, 엔드포인트마다 요청 · 응답 예시와 오류 코드를 포함하세요.',
         user: '아래 주문 API를 OpenAPI 3.0 스펙(YAML)으로 정리해줘.\n\n- POST /v1/orders : 주문 생성 (body: product_id, quantity)\n- GET /v1/orders/{id} : 주문 조회\n- DELETE /v1/orders/{id} : 주문 취소 (배송 시작 후에는 409)' },
     ];
+    function wdState(st) {
+      const r = document.getElementById('wd-root'); r.dataset.state = st;
+      document.querySelectorAll('.wd-st').forEach(b => b.classList.toggle('active', b.dataset.s === st));
+      document.getElementById('wd-submit').disabled = st !== 'zero';
+    }
+    function wdAuth(a) {
+      document.getElementById('wd-root').dataset.auth = a;
+      document.querySelectorAll('.wd-au').forEach(b => b.classList.toggle('active', b.dataset.a === a));
+    }
     function pgConnect(open) { document.getElementById('pg-connect').classList.toggle('hidden', !open); }
     function pgConnTab(i) {
       document.querySelectorAll('#pg-connect .cn-tab').forEach((t, k) => t.classList.toggle('on', k === i));
