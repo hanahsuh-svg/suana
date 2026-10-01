@@ -202,6 +202,16 @@
     /* v4.0 멀티모델 */
     .wf-card + .mm-note { margin: -20px 0 32px; }
     .screen-section .wf-card + .mm-note { margin: 8px 0 0; }
+    /* M 메시지 초안 베일 (10/1) */
+    .msg-card { position: relative; }
+    .msg-veil { position: absolute; inset: 0; z-index: 24; background: rgba(100,116,139,.45); border-radius: 8px; cursor: pointer; }
+    .msg-veil-box { position: sticky; top: 38vh; margin: 120px auto 0; width: max-content; text-align: center; background: #fff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px 22px; box-shadow: 0 8px 24px rgba(15,23,42,.08); }
+    .msg-veil-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .08em; color: #6d28d9; background: #ede9fe; border-radius: 4px; padding: 2px 8px; margin-bottom: 6px; }
+    .msg-veil-title { font-size: 15px; font-weight: 800; color: #334155; }
+    .msg-veil-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+    .msg-card.msg-open .msg-veil { display: none; }
+    .msg-recover { display: none; position: absolute; top: 10px; right: 12px; z-index: 24; font-size: 10px; font-weight: 700; color: #6d28d9; background: #ede9fe; border: 1px solid #ddd6fe; border-radius: 9999px; padding: 3px 10px; cursor: pointer; }
+    .msg-card.msg-open .msg-recover { display: inline-block; }
     .tbd-card { position: relative; }
     .wd-h { font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
     .wd-tag { font-size: 11px; font-weight: 700; color: #b45309; background: #fef3c7; border-radius: 9999px; padding: 2px 8px; vertical-align: middle; margin-left: 4px; }
@@ -219,6 +229,14 @@
     #wd-submit:disabled { opacity: .4; cursor: not-allowed; }
     .tbd-overlay { position: absolute; inset: 0; z-index: 25; background: rgba(15,23,42,.55); border-radius: 8px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(1px); }
     .tbd-box { text-align: center; color: #fff; }
+    .tbd-overlay { cursor: pointer; }
+    .tbd-hint { font-size: 11px; color: #cbd5e1; margin-top: 10px; text-decoration: underline; text-underline-offset: 3px; }
+    .tbd-card.tbd-open > .tbd-overlay { display: none; }
+    .tbd-recover { display: none; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 26; font-size: 10px; font-weight: 700; color: #92400e; background: #fef3c7; border: 1px solid #fcd34d; border-radius: 9999px; padding: 3px 10px; cursor: pointer; }
+    .tbd-card.tbd-open > .tbd-recover { display: inline-block; }
+    .tbd-tall > .tbd-overlay { display: block; }
+    .tbd-tall > .tbd-overlay .tbd-box { position: sticky; top: 36vh; margin: 160px auto 0; width: max-content; }
+
     .tbd-badge { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .15em; background: #f59e0b; color: #1f2937; border-radius: 4px; padding: 3px 10px; margin-bottom: 10px; }
     .tbd-title { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
     .tbd-sub { font-size: 13px; color: #e2e8f0; }
@@ -567,6 +585,7 @@
                 <h3 class="font-bold text-base text-slate-900">C-01 · C-07 · C-08 - 콘솔을 모델별로</h3>
               </div>
               <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
+                <li><strong>M-01 · M-02 · M-08 · M-09 · M-10 “화면 내용 정리 중”</strong>(10/1): C-01 · C-08 TBD 레이어와 같은 형태로 덮음. TBD 레이어는 모두 클릭하면 걷히고, 오른쪽 위 [다시 덮기]로 복귀</li>
                 <li><strong>C-07 응답 메타</strong>(9/30): “지연 · 속도” → <b>TTFT • tok/s • 비용</b> 한 줄(Fireworks 방식), 속도와 가격 같은 무게. 응답 상세 팝오버를 <b>막대 시각화</b>(시간 · 토큰 · 비용, OpenRouter 방식)로</li>
                 <li><strong>C-07-1 여러 모델 선택</strong>(9/29, <b>후순위</b>): 별도 비교 모드 대신 C-07 모델 드롭다운을 여러 개 선택(최대 3)으로 확장 — 답변 나란히, 모델별로 이어서 질문, 대화 중 추가된 모델은 A 답변을 이어받음, 코드 보기는 모델 칩으로 선택</li>
                 <li><strong>소셜 로그인 Google만</strong>(9/29): A-01 · A-02 GitHub 버튼, C-09 GitHub 연결, E-05 GitHub 표기 삭제 · <strong>C-10-1 탈퇴 사유 입력 삭제</strong></li>
@@ -946,7 +965,7 @@
     <div id="tab-m" class="tab-content hidden">
 
       <!-- M-01: 서비스 메인 (Motif 모델 USP 중심 랜딩) -->
-      <div id="m-01" class="wf-card">
+      <div id="m-01" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
           <span class="flex items-center gap-2">M-01 서비스 메인 (USP 랜딩) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
           <span class="wf-badge">GNB [로고 · 언어 / 모델 / 요금 / Docs / 로그인 · 무료로 시작하기]</span>
@@ -1116,7 +1135,7 @@
 
 
       <!-- M-08: 모델 카탈로그 (v4.0 신규 · 공개 페이지) -->
-      <div id="m-08" class="wf-card">
+      <div id="m-08" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
           <span>M-08 모델 카탈로그 (/models · 로그인 없이 공개)</span>
           <div class="flex gap-2 items-center"><span class="wf-badge">GNB “모델” (콘솔 상단 GNB 포함)</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></div>
@@ -1290,7 +1309,7 @@
         근거: GLM · Kimi는 OpenRouter 실사용 데이터(모델카탈로그 UX안 5-8: GLM 1위 앱 Claude Code, Kimi 긴 컨텍스트 · UI 코딩 상위), Motif 항목은 Motif 기능 테스트(9/26) 결과로 확정 필요.</div>
 
       <!-- M-09: 모델 상세 페이지 (v4.0 신규 · 공개) -->
-      <div id="m-09" class="wf-card">
+      <div id="m-09" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
           <span class="flex items-center gap-2">M-09 모델 상세 (/models/motif-3 · 로그인 없이 공개) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
           <span class="wf-badge">예시: Motif 3 · GLM · Kimi 같은 템플릿</span>
@@ -1481,7 +1500,7 @@
         <b>Motif 포지셔닝(9/28)</b>: 한국어 강점 메시지는 쓰지 않고 국산 모델 · 도구 호출 · JSON 구조화 출력으로 소개. 지원 기능 값은 CBT 기능 테스트(9/26~27) 결과 반영, OBT 서빙에서 재확인 필요. <b>데이터 처리 문구</b>: 중국 서버 미경유 확인 완료(9/28) · 본문 미저장은 데이터 보관 정책 기준(보관 기간 숫자는 화면에 쓰지 않고 처리방침에서 안내) · 학습 미사용은 Motif 측 확인 중. <b>확인 필요</b>: 기능 지원 여부는 개발 실측 · 레이트리밋과 버전 교체 사전 공지 기간은 미정 · 양자화 공개 여부 결정.</div>
 
       <!-- M-10: 요금 (v4.0 신규 · 공개) -->
-      <div id="m-10" class="wf-card">
+      <div id="m-10" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
           <span class="flex items-center gap-2">M-10 요금 (/pricing · 로그인 없이 공개) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
           <span class="wf-badge">GNB “요금”</span>
@@ -1630,7 +1649,7 @@
         <b>결제 금액(9/28 확정)</b>: 크레딧 수 × 적용 환율 × 1.1, 9/28 기준 1,412원 → 10 / 30 / 100 / 300크레딧 = 15,532 / 46,596 / 155,320 / 465,960원(C-03과 동일). “이렇게 계산돼요” 섹션은 삭제(9/28). <b>확인 필요</b>: 공식가 비교 수치와 조회일 · 영수증/세금계산서 발행 방식 · 계산기는 정적 예시로 두고 실제 계산 기능은 개발 협의.</div>
 
       <!-- M-02: Docs -->
-      <div id="m-02" class="wf-card">
+      <div id="m-02" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
           <span class="flex items-center gap-2">M-02 Docs (개발자 문서) <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></span>
           <span class="wf-badge">검색창 추가 · 퀵스타트 · 인증 · 에러 코드 · 엔드포인트</span>
@@ -3175,7 +3194,7 @@
 
             <!-- C-01 대시보드 -->
             <div id="c-01" class="screen-section">
-              <div class="wf-card tbd-card"><div class="tbd-overlay"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div></div></div>
+              <div class="wf-card tbd-card"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
                 <div class="wf-header">
                   <span>C-01 대시보드</span>
                   <div class="flex items-center gap-2">
@@ -3603,7 +3622,7 @@ for await (const chunk of stream) {
 
             <!-- C-08 로그 -->
             <div id="c-08" class="screen-section">
-              <div class="wf-card tbd-card"><div class="tbd-overlay"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div></div></div>
+              <div class="wf-card tbd-card"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 기획 중</div><div class="tbd-sub">화면 구성을 검토하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
                 <div class="wf-header">
                   <span>C-08 API 요청 로그</span>
                   <div class="flex gap-2 items-center"><span class="wf-badge">동일 화면</span><span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티모델</span></div>
