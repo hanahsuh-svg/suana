@@ -28,7 +28,7 @@
     .sidebar-subitem:hover, .sidebar-subitem.active { background-color: #f1f5f9; color: #0f172a; font-weight: 600; }
 
     /* 우측 콘텐츠 컨테이너 영역 */
-    .content-container { flex-grow: 1; padding: 24px; max-width: 960px; margin: 0 auto; }
+    .content-container { flex-grow: 1; min-width: 0; padding: 24px; max-width: 960px; margin: 0 auto; }
     
     /* 개별 와이어프레임 카드 및 섹션 고정 설정 */
     .screen-section { 
@@ -3443,7 +3443,7 @@
             <div id="c-07" class="screen-section">
               <div class="wf-card">
                 <div class="wf-header">
-                  <span class="flex items-center gap-2">C-07 플레이그라운드 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티턴 · 멀티모델</span></span>
+                  <span class="flex items-center gap-2 whitespace-nowrap shrink-0">C-07 플레이그라운드 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 멀티턴 · 멀티모델</span></span>
                   <div class="flex items-center gap-1 flex-wrap justify-end">
                     <span class="text-xs text-slate-500 font-normal">크레딧:</span>
                     <button onclick="switchPlaygroundState('empty')" id="pg-btn-empty" class="state-toggle-btn active">없음</button>
