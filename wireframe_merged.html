@@ -400,6 +400,12 @@
     .lang-switch[data-lang="EN"] .ls-knob { left: 27px; }
     .lang-switch .ls-lbl { position: relative; z-index: 1; flex: 1; text-align: center; color: #94a3b8; transition: color .2s; }
     .lang-switch[data-lang="KO"] .ls-ko, .lang-switch[data-lang="EN"] .ls-en { color: #fff; }
+    /* 메모 접기 (10/1) — 기본은 한 줄, 클릭하면 펼침 */
+    .mm-note { cursor: pointer; position: relative; padding-right: 64px !important; }
+    .mm-note:not(.mm-open) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mm-note:not(.mm-open) br { display: none; }
+    .mm-note::after { content: '펼치기 ▾'; position: absolute; top: 10px; right: 12px; font-size: 10px; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding-left: 6px; }
+    .mm-note.mm-open::after { content: '접기 ▴'; }
     .mm-note { margin: 12px 16px 0; padding: 10px 12px; border: 1px dashed #a78bfa; background: #f5f3ff; color: #4c1d95; border-radius: 8px; font-size: 11px; line-height: 1.6; }
     .mm-chip { padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 9999px; font-size: 12px; font-weight: 600; background: #fff; color: #475569; cursor: pointer; }
     .mm-chip.active { background: #0f172a; color: #fff; border-color: #0f172a; }
@@ -494,6 +500,39 @@
     .cmp-panel .pg-meta-row { flex-wrap:wrap; row-gap:2px; }
     .cmp-panel .pg-meta-row .ml-auto { white-space:nowrap; }
     .cmp-fast { white-space:nowrap; font-size:9px; font-weight:800; color:#047857; background:#d1fae5; border-radius:9999px; padding:1px 6px; font-style:normal; margin-left:2px; }
+
+    /* C-02 API 키 (CBT 2차 기준, 10/1) */
+    #c02-root .wf-table th, #c02-root .wf-table td { white-space: nowrap; padding-left: 10px; padding-right: 10px; }
+    #c02-root .wf-table code { font-size: 10.5px; }
+    .k-mock .k-target { word-break: break-all; }
+    .k-mock .k-chip { flex-shrink: 0; }
+    .k-badge { font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+    .k-badge.on { background: #e7f4ee; color: #0f7a52; }
+    .k-badge.off { background: #eef2ef; color: #5b6b8c; }
+    .k-badge.exp { background: #fbeaea; color: #b04141; }
+    .k-row-off td { opacity: .45; }
+    .k-row-off td:last-child { opacity: 1; }
+    .k-more { position: relative; display: inline-block; }
+    .k-more > button { border: 1px solid #e2e8f0; background: #fff; border-radius: 6px; width: 28px; height: 24px; cursor: pointer; color: #475569; font-weight: 800; }
+    .k-menu { display: none; position: absolute; right: 0; top: 28px; z-index: 20; width: 120px; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 24px rgba(15,23,42,.12); padding: 4px; text-align: left; }
+    .k-more.open .k-menu { display: block; }
+    .k-menu div { font-size: 12px; padding: 7px 10px; border-radius: 6px; cursor: pointer; color: #334155; }
+    .k-menu div:hover { background: #f1f5f9; }
+    .k-menu div.red { color: #dc2626; }
+    #c02-root[data-st="empty"] .k-list { display: none; }
+    #c02-root .k-empty { display: none; }
+    #c02-root[data-st="empty"] .k-empty { display: block; }
+    .k-chip { font-size: 11px; font-weight: 600; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 4px 10px; background: #fff; color: #475569; cursor: pointer; }
+    .k-chip.on { background: #0f172a; border-color: #0f172a; color: #fff; }
+    .k-mock { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 12px 28px rgba(15,23,42,.10); padding: 18px; font-size: 12px; }
+    .k-mock h4 { font-size: 14px; font-weight: 800; color: #0f172a; margin: 0 0 4px; }
+    .k-mock .sub { font-size: 11px; color: #64748b; margin-bottom: 12px; }
+    .k-mock .fl { font-weight: 700; color: #334155; margin: 10px 0 4px; font-size: 11px; }
+    .k-mock .btns { display: flex; justify-content: flex-end; gap: 6px; margin-top: 14px; }
+    .k-mock .btns span { font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #334155; }
+    .k-mock .btns span.dark { background: #0f172a; border-color: #0f172a; color: #fff; }
+    .k-mock .btns span.red { background: #dc2626; border-color: #dc2626; color: #fff; }
+    .k-target { font-family: ui-monospace, monospace; font-size: 11px; background: #f1f5f9; border-radius: 6px; padding: 6px 8px; color: #334155; }
   </style>
 </head>
 <body>
@@ -586,6 +625,9 @@
               </div>
               <ul class="space-y-1.5 text-xs text-slate-700 list-disc pl-5 leading-relaxed">
                 <li><strong>M-01 · M-02 · M-08 · M-09 · M-10 “화면 내용 정리 중”</strong>(10/1): C-01 · C-08 TBD 레이어와 같은 형태로 덮음. TBD 레이어는 모두 클릭하면 걷히고, 오른쪽 위 [다시 덮기]로 복귀</li>
+                <li><strong>📝 메모 접기</strong>(10/1): 화면 아래 메모는 기본 한 줄로 접힘, 클릭하면 펼침</li>
+                <li><strong>C-02 API 키</strong>(10/1): CBT 2차 수준으로 교체 — 7컬럼(이름 · 키 · 생성일 · 만료일 · 최근 사용 · 사용 비용/한도 · 작업), 비활성 · 만료 뱃지, 한도 초과 붉게, ⋯ 메뉴, 생성 · 수정 · 1회 노출 · 비활성화 · 삭제 모달, 키 없음 상태</li>
+                <li><strong>A-04 온보딩 설문</strong>(10/1): CBT 2차 구글폼 문항 2개 추가 — “어디에 붙여보실 예정인가요?”(단답) · “Morfac을 어떻게 알게 되셨나요?”(필수, 복수 선택). 6 → 8문항, “프론티어 모델 대비 성능 비교” 오타 수정</li>
                 <li><strong>C-07 응답 메타</strong>(9/30): “지연 · 속도” → <b>TTFT • tok/s • 비용</b> 한 줄(Fireworks 방식), 속도와 가격 같은 무게. 응답 상세 팝오버를 <b>막대 시각화</b>(시간 · 토큰 · 비용, OpenRouter 방식)로</li>
                 <li><strong>C-07-1 여러 모델 선택</strong>(9/29, <b>후순위</b>): 별도 비교 모드 대신 C-07 모델 드롭다운을 여러 개 선택(최대 3)으로 확장 — 답변 나란히, 모델별로 이어서 질문, 대화 중 추가된 모델은 A 답변을 이어받음, 코드 보기는 모델 칩으로 선택</li>
                 <li><strong>소셜 로그인 Google만</strong>(9/29): A-01 · A-02 GitHub 버튼, C-09 GitHub 연결, E-05 GitHub 표기 삭제 · <strong>C-10-1 탈퇴 사유 입력 삭제</strong></li>
@@ -2484,10 +2526,10 @@
                   <input type="checkbox" class="w-3 h-3"> 모두 동의합니다.
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+                  <input type="checkbox" class="w-3 h-3"> [필수] 만 18세 이상입니다.
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" class="w-3 h-3"> [필수] 만 18세 이상입니다.
+                  <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" class="w-3 h-3"> [선택] 마케팅 정보 수신에 동의합니다. <a href="javascript:void(0)" onclick="event.preventDefault(); openMktModal()" class="ml-auto underline text-blue-600">보기</a>
@@ -2507,7 +2549,7 @@
         </div>
       </div>
 
-      <div class="mm-note mm-note-out">📝 <b>v4.0 가입 동의 메모</b> — 이메일 가입(A-02)과 소셜 가입(A-08)에 같은 항목 2개 추가: <b>[필수] 만 18세 이상입니다</b> · <b>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</b>. 항목(9/29): [필수] 서비스 이용약관에 동의합니다. [보기] · [필수] 만 18세 이상입니다. · [선택] 마케팅 정보 수신에 동의합니다. [보기 → A-08-1 전문] · ※ 개인정보 수집 및 이용 안내 [보기 → M-04 처리방침 제1조 ① 가.] — <b>필수 개인정보 동의 체크박스는 없앰</b>: 계약 이행에 필요한 정보는 동의 없이 수집(개인정보 보호법 제15조 ① 4호, 처리방침 제1조 ① 가.)하므로 체크박스 없이 안내만(네이버 클라우드 · 쿠팡 · 리디 방식). [보기]는 처리방침 전체가 아니라 제1조 ① 가. 표로 바로 이동(앵커). 법무 확인 필요. “모두 동의”는 선택 항목까지 체크하되, 선택 항목을 해제해도 가입은 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장하고 콘솔 계정 설정에서 철회할 수 있어야 함(정보통신망법 광고성 정보 수신 동의). 만 18세 기준은 이용약관 이용 자격 조항과 문구를 맞출 것.</div>
+      <div class="mm-note mm-note-out">📝 <b>v4.0 가입 동의 메모</b> — 이메일 가입(A-02)과 소셜 가입(A-08)에 같은 항목 2개 추가: <b>[필수] 만 18세 이상입니다</b> · <b>[선택] 이벤트 · 혜택 등 마케팅 정보를 이메일로 받겠습니다</b>. 항목(10/1 순서): [필수] 만 18세 이상입니다. · [필수] 서비스 이용약관에 동의합니다. [보기] · [선택] 마케팅 정보 수신에 동의합니다. [보기 → A-08-1 전문] · ※ 개인정보 수집 및 이용 안내 [보기 → M-04 처리방침 제1조 ① 가.] — <b>필수 개인정보 동의 체크박스는 없앰</b>: 계약 이행에 필요한 정보는 동의 없이 수집(개인정보 보호법 제15조 ① 4호, 처리방침 제1조 ① 가.)하므로 체크박스 없이 안내만(네이버 클라우드 · 쿠팡 · 리디 방식). [보기]는 처리방침 전체가 아니라 제1조 ① 가. 표로 바로 이동(앵커). 법무 확인 필요. “모두 동의”는 선택 항목까지 체크하되, 선택 항목을 해제해도 가입은 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장하고 콘솔 계정 설정에서 철회할 수 있어야 함(정보통신망법 광고성 정보 수신 동의). 만 18세 기준은 이용약관 이용 자격 조항과 문구를 맞출 것.</div>
 
       <!-- A-03: OTP 인증 -->
       <div id="a-03" class="wf-card">
@@ -2547,7 +2589,7 @@
       <div id="a-04" class="wf-card">
         <div class="wf-header">
           <span>A-04 온보딩 설문</span>
-          <span class="wf-badge">6문항 · 완료 시 크레딧 지급 · Skip 가능</span>
+          <span class="wf-badge">8문항 · 완료 시 크레딧 지급 · Skip 가능</span>
         </div>
         <div class="wf-content-a">
           <div class="auth-box max-w-2xl">
@@ -2579,6 +2621,13 @@
                 </div>
               </div>
 
+              <!-- 1-1. 어디에 붙여보실 예정인가요? (CBT 2차 추가) -->
+              <div>
+                <label class="wf-label">어디에 붙여보실 예정인가요?</label>
+                <p class="text-xs text-slate-500 mb-2">예: Cursor, Claude Code, 직접 개발한 백엔드</p>
+                <input type="text" class="wf-input" placeholder="Your answer">
+              </div>
+
               <!-- 2. 가장 중요하게 보시는 것은? -->
               <div>
                 <label class="wf-label"><span class="text-red-500">*</span> 가장 중요하게 보시는 것은?</label>
@@ -2593,12 +2642,40 @@
                     <input type="radio" name="priority" value="quality" class="w-3 h-3"> 코드 품질
                   </label>
                   <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
-                    <input type="radio" name="priority" value="performance" class="w-3 h-3"> 프롬프터 모델 대비 성능 비교
+                    <input type="radio" name="priority" value="performance" class="w-3 h-3"> 프론티어 모델 대비 성능 비교
                   </label>
                 </div>
                 <div class="flex items-center gap-2">
                   <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
                     <input type="radio" name="priority" value="other" class="w-3 h-3"> Other:
+                  </label>
+                  <input type="text" class="wf-input flex-1 mb-0 h-8" placeholder="">
+                </div>
+              </div>
+
+              <!-- 2-1. Morfac을 어떻게 알게 되셨나요? (CBT 2차 추가, 복수 선택) -->
+              <div>
+                <label class="wf-label"><span class="text-red-500">*</span> Morfac을 어떻게 알게 되셨나요? <span class="text-xs font-normal text-slate-400">(복수 선택)</span></label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> 지인·동료에게 들었어요
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> 모티프(Motif) 홈페이지·링크드인 등 모티프 채널에서 봤어요
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> 개발자 커뮤니티에서 봤어요 (긱뉴스, 디스코드, 오픈채팅 등)
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> 뉴스 기사에서 봤어요
+                  </label>
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> 검색하다가 찾았어요
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label class="inline-flex items-center gap-2 px-3 py-1 border border-slate-300 rounded-full cursor-pointer hover:bg-slate-50 text-sm">
+                    <input type="checkbox" name="referral" class="w-3 h-3"> Other:
                   </label>
                   <input type="text" class="wf-input flex-1 mb-0 h-8" placeholder="">
                 </div>
@@ -3008,10 +3085,10 @@
                 <input type="checkbox" class="w-4 h-4 rounded text-slate-800 cursor-pointer"> 모두 동의합니다.
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 18세 이상입니다.
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 18세 이상입니다.
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [선택] 마케팅 정보 수신에 동의합니다. <a href="javascript:void(0)" onclick="event.preventDefault(); openMktModal()" class="ml-auto underline text-blue-600">보기</a>
@@ -3236,39 +3313,129 @@
       <div class="mm-note mm-note-out">📝 <b>v4.0 멀티모델 스펙 메모</b> — 합계 카드 4개는 유지하고 아래에 모델별 표만 추가. 모델 행 클릭 → C-08을 해당 모델로 필터링해 열기. 수치는 예시.</div>
             </div>
 
-            <!-- C-02 API 키 관리 (높이 넉넉하게 확보됨) -->
+            <!-- C-02 API 키 관리 (CBT 2차 수준, 10/1) -->
             <div id="c-02" class="screen-section">
-              <div class="wf-card">
+              <div class="wf-card" style="overflow:visible">
                 <div class="wf-header">
-                  <span>C-02 API 키 관리</span>
-                  <span class="wf-badge">만료일 및 크레딧 제한 설정 포함</span>
+                  <span class="flex items-center gap-2">C-02 API 키 관리 <span class="wf-badge">CBT 2차 개발 버전 기준</span></span>
+                  <div class="flex items-center gap-1">
+                    <span class="text-xs text-slate-500 font-normal">상태:</span>
+                    <button onclick="c02St('list',this)" class="state-toggle-btn active c02-st">목록</button>
+                    <button onclick="c02St('empty',this)" class="state-toggle-btn c02-st">키 없음</button>
+                  </div>
                 </div>
-                <div class="wf-body p-6 flex flex-col justify-between">
-                  <div>
-                    <div class="flex justify-between items-center mb-4">
-                      <span class="text-xs text-slate-500">보안을 위해 발급된 키의 비밀 키(Secret Key)는 최초 1회만 표시됩니다.</span>
-                      <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 API 키 발급</button>
+                <div class="wf-body p-6" id="c02-root" data-st="list" style="overflow:visible">
+                  <div class="flex justify-between items-center mb-4">
+                    <div>
+                      <div class="font-bold text-slate-900">API 키</div>
+                      <div class="text-xs text-slate-500 mt-0.5">키 전체 값은 생성 직후 한 번만 표시됩니다.</div>
                     </div>
-                    <table class="wf-table border rounded-lg overflow-hidden">
+                    <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto">+ 키 생성</button>
+                  </div>
+                  <div class="k-list">
+                    <table class="wf-table border rounded-lg" style="overflow:visible">
                       <thead>
-                        <tr><th>키 이름</th><th>비밀 키 식별자</th><th>상태</th><th>만료일</th><th>크레딧 제한</th><th class="text-right">관리</th></tr>
+                        <tr><th>이름</th><th>키</th><th>생성일</th><th>만료일</th><th>최근 사용</th><th class="text-right">사용 비용 · 한도</th><th class="text-right">작업</th></tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td class="font-bold">Production Key</td>
-                          <td><code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono">morph-sk-9f82...</code></td>
-                          <td><span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold border border-emerald-200">활성</span></td>
-                          <td class="text-slate-500 text-xs">90일 후</td>
-                          <td class="text-slate-500 text-xs">$50.00</td>
-                          <td class="text-right space-x-2">
-                            <button class="text-xs text-amber-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">비활성화</button>
-                            <button onclick="confirm('이 API 키를 정말 삭제하시겠습니까? 삭제된 키는 복구할 수 없습니다.')" class="text-xs text-red-600 font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer">삭제</button>
-                          </td>
+                          <td class="font-bold">production<span class="k-badge on">활성</span></td>
+                          <td><code class="text-[11px] font-mono text-slate-500">mak_...7f2a</code></td>
+                          <td class="text-xs text-slate-500">2026-09-21</td>
+                          <td class="text-xs" style="color:#64748b">100일 후</td>
+                          <td class="text-xs text-slate-500">방금 전</td>
+                          <td class="text-xs font-mono text-right"><b style="">$0.003318</b> / <span style="font-size:10px;color:#64748b">제한 없음</span></td>
+                          <td class="text-right"><div class="k-more"><button onclick="c02Menu(this)" aria-label="더보기">⋯</button><div class="k-menu"><div>수정</div><div class="red">비활성화</div><div class="red">삭제</div></div></div></td>
+                        </tr>
+                        <tr>
+                          <td class="font-bold">staging<span class="k-badge on">활성</span></td>
+                          <td><code class="text-[11px] font-mono text-slate-500">mak_...1b93</code></td>
+                          <td class="text-xs text-slate-500">2026-08-14</td>
+                          <td class="text-xs" style="color:#a2620f;font-weight:700">12일 후</td>
+                          <td class="text-xs text-slate-500">2026-09-06</td>
+                          <td class="text-xs font-mono text-right"><b style="color:#dc2626">$50.12</b> / <span style="font-size:10px;color:#64748b">$50.00</span></td>
+                          <td class="text-right"><div class="k-more"><button onclick="c02Menu(this)" aria-label="더보기">⋯</button><div class="k-menu"><div>수정</div><div class="red">비활성화</div><div class="red">삭제</div></div></div></td>
+                        </tr>
+                        <tr>
+                          <td class="font-bold">ci-runner<span class="k-badge on">활성</span></td>
+                          <td><code class="text-[11px] font-mono text-slate-500">mak_...3d10</code></td>
+                          <td class="text-xs text-slate-500">2026-09-02</td>
+                          <td class="text-xs" style="color:#64748b">336일 후</td>
+                          <td class="text-xs text-slate-500">2026-09-30</td>
+                          <td class="text-xs font-mono text-right"><b style="">$3.42</b> / <span style="font-size:10px;color:#64748b">제한 없음</span></td>
+                          <td class="text-right"><div class="k-more"><button onclick="c02Menu(this)" aria-label="더보기">⋯</button><div class="k-menu"><div>수정</div><div class="red">비활성화</div><div class="red">삭제</div></div></div></td>
+                        </tr>
+                        <tr class="k-row-off">
+                          <td class="font-bold">batch-job<span class="k-badge off">비활성</span></td>
+                          <td><code class="text-[11px] font-mono text-slate-500">mak_...a04c</code></td>
+                          <td class="text-xs text-slate-500">2026-08-19</td>
+                          <td class="text-xs" style="color:#64748b">45일 후</td>
+                          <td class="text-xs text-slate-500">2026-08-31</td>
+                          <td class="text-xs font-mono text-right"><b style="">$0.00</b> / <span style="font-size:10px;color:#64748b">$10.00</span></td>
+                          <td class="text-right"><div class="k-more"><button onclick="c02Menu(this)" aria-label="더보기">⋯</button><div class="k-menu"><div>수정</div><div class="red">활성화</div><div class="red">삭제</div></div></div></td>
+                        </tr>
+                        <tr>
+                          <td class="font-bold">legacy-test<span class="k-badge exp">만료</span></td>
+                          <td><code class="text-[11px] font-mono text-slate-500">mak_...e552</code></td>
+                          <td class="text-xs text-slate-500">2026-07-02</td>
+                          <td class="text-xs" style="color:#b04141;font-weight:700">만료됨</td>
+                          <td class="text-xs text-slate-500">2026-08-09</td>
+                          <td class="text-xs font-mono text-right"><b style="">$0.00</b> / <span style="font-size:10px;color:#64748b">$50.00</span></td>
+                          <td class="text-right"><div class="k-more"><button onclick="c02Menu(this)" aria-label="더보기">⋯</button><div class="k-menu"><div>수정</div><div class="red">비활성화</div><div class="red">삭제</div></div></div></td>
                         </tr>
                       </tbody>
                     </table>
+                    <div class="text-[11px] text-slate-400 mt-2 pl-3">총 5개</div>
+                  </div>
+                  <div class="k-empty border border-dashed rounded-xl p-10 text-center">
+                    <div class="font-bold text-slate-700">아직 만든 API 키가 없어요</div>
+                    <div class="text-xs text-slate-500 mt-1">키를 만들면 코드나 도구에서 Morfac 모델을 호출할 수 있어요.</div>
+                    <button onclick="openCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto mt-4 px-5">+ 키 생성</button>
+                  </div>
+                  <div class="mt-8">
+                    <div class="text-xs font-bold text-slate-500 mb-3">모달 · 얼럿 (화면에서 바로 보이도록 펼쳐 둠)</div>
+                    <div class="grid md:grid-cols-3 gap-4 items-start p-5 rounded-xl" style="background:#e2e8f0">
+                      <div class="k-mock">
+                        <h4>API 키 생성</h4><div class="sub">키 전체 값은 생성 직후 한 번만 표시됩니다.</div>
+                        <div class="fl">이름 <span class="font-normal text-slate-400">선택 사항</span></div><div class="wf-input mb-0 text-xs text-slate-400">&nbsp;</div>
+                        <div class="fl">만료일</div><div class="flex gap-1 flex-wrap"><span class="k-chip">30일</span><span class="k-chip">60일</span><span class="k-chip">90일</span><span class="k-chip on">1년</span><span class="k-chip">직접 지정</span></div>
+                        <div class="fl">사용 한도 (USD)</div><div class="wf-input mb-0 text-xs text-slate-400">미설정 시 제한 없음</div>
+                        <div class="text-[10px] text-slate-400 mt-1">최근 30일 사용액을 기준으로 적용됩니다.</div>
+                        <div class="btns"><span>취소</span><span class="dark">키 생성</span></div>
+                      </div>
+                      <div class="k-mock">
+                        <h4>API 키가 생성되었습니다</h4><div class="sub">전체 키 값은 지금만 표시됩니다. 안전한 곳에 저장해 두세요 — 창을 닫으면 다시 확인할 수 없습니다.</div>
+                        <div class="fl">production</div>
+                        <div class="flex gap-2 items-center"><div class="k-target flex-1">mak_9c1a2f7bd0e4c3b6a17f2a</div><span class="k-chip">복사</span></div>
+                        <div class="btns"><span class="dark">닫기</span></div>
+                      </div>
+                      <div class="k-mock">
+                        <h4>API 키 수정</h4>
+                        <div class="k-target mt-2"><span class="text-slate-400 mr-2">KEY</span>mak_...1b93</div>
+                        <div class="fl">이름</div><div class="wf-input mb-0 text-xs">staging</div>
+                        <div class="fl">만료일</div><div class="flex justify-between items-center"><div class="flex gap-1 flex-wrap"><span class="k-chip">30일</span><span class="k-chip">60일</span><span class="k-chip">90일</span><span class="k-chip">1년</span></div><span class="text-[11px] font-bold whitespace-nowrap ml-2" style="color:#0f7a52">100일 후</span></div>
+                        <div class="fl">사용 한도 (USD)</div><div class="wf-input mb-0 text-xs">50</div>
+                        <div class="text-[10px] text-slate-400 mt-1">한도를 설정하거나 변경하면 최근 30일 사용액을 기준으로 적용됩니다.</div>
+                        <div class="btns"><span>취소</span><span class="dark">저장</span></div>
+                      </div>
+                      <div class="k-mock">
+                        <h4>API 키 비활성화</h4><div class="sub">API 키를 비활성화하시겠습니까? 이 키를 사용하는 요청은 즉시 중단되며 나중에 다시 활성화할 수 있습니다.</div>
+                        <div class="k-target"><b>batch-job</b> · mak_...a04c</div>
+                        <div class="btns"><span>취소</span><span class="red">비활성화</span></div>
+                      </div>
+                      <div class="k-mock">
+                        <h4>API 키 삭제</h4><div class="sub">API 키를 삭제하시겠습니까? 목록에서 사라지며 되돌릴 수 없습니다.</div>
+                        <div class="k-target"><b>legacy-test</b> · mak_...e552</div>
+                        <div class="btns"><span>취소</span><span class="red">삭제</span></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+              <div class="mm-note mm-note-out">📝 <b>C-02 API 키 메모 (10/1 · CBT 2차 개발 버전 cbt2.morphfactory.io 기준으로 맞춤)</b> — 목록: 이름(+ 활성 · 비활성 · 만료 뱃지) | 키(mak_...끝 4자리) | 생성일 | 만료일(남은 기간, 14일 이내 강조, 지나면 “만료됨”) | 최근 사용 | 사용 비용 · 한도(“$0.003318 / 제한 없음”, 한도 초과 시 비용을 붉게) | ⋯(수정 · 비활성화 · 삭제). 발급 개수 제한 없음 · 하단 총 개수. 목록 아래 Quickstart는 OBT에서 제외(10/1 — 다른 서비스에도 없고 Docs가 생겨 역할이 겹침, 개발 버전에서도 삭제).
+                <b>만료일</b>: 생성 30 · 60 · 90일 · 1년(기본) · 직접 지정 / 수정 30 · 60 · 90일 · 1년 + 현재 남은 기간. <b>“무기한” 제외(10/1)</b> — 개발 버전 수정 모달에 있는 “무기한” 칩은 빼야 함.
+                <b>사용 한도</b>: 미설정 시 제한 없음 · 최근 30일 사용액 기준 · 만료일과 별개. 비활성화 · 삭제는 확인 얼럿(비활성화는 나중에 다시 활성화 가능, 삭제는 되돌릴 수 없고 귀속 · 감사 이력은 보존).
+                <b>OBT 확인</b>: 키 접두사(mak_) 정식 표기.
               </div>
             </div>
 
@@ -4933,10 +5100,6 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <!-- 카테고리 태그 -->
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">회원가입 인증</span>
-            </div>
 
             <!-- 메인 헤딩 -->
             <div style="text-align: center; margin-bottom: 24px;">
@@ -4982,25 +5145,38 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">계정 활성화</span>
-            </div>
 
             <div style="text-align: center; margin-bottom: 24px;">
-              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">환영합니다! 계정이 활성화되었습니다</h1>
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">모르팩 가입을 환영합니다.</h1>
             </div>
 
             <div style="text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 14px; color: #64748b; margin: 0;">이제 MorphFactory의 모든 기능을 이용할 수 있습니다.</p>
+              <p style="font-size: 14px; color: #64748b; margin: 0; line-height: 1.6;">GLM · Kimi 같은 최신 오픈 모델과 국산 모델 Motif를<br>API 키 하나로 바로 써 보세요.</p>
             </div>
 
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">🚀 다음 단계</h3>
-              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #475569; line-height: 1.8;">
-                <li style="margin-bottom: 8px;">콘솔에서 API 키 발급하기</li>
-                <li style="margin-bottom: 8px;">Playground에서 모델 테스트해보기</li>
-                <li>통합 가이드 문서 확인하기</li>
-              </ul>
+            <div style="margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">🚀 이렇게 시작해 보세요</h3>
+              <a href="#" style="display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 8px; background: #ffffff;">
+                <table style="width: 100%; border-collapse: collapse;"><tr>
+                  <td style="width: 36px; font-size: 20px; vertical-align: middle;">🔑</td>
+                  <td style="vertical-align: middle;"><div style="font-size: 14px; font-weight: bold; color: #0f172a;">API 키 발급하기</div><div style="font-size: 12px; color: #64748b; margin-top: 2px;">콘솔에서 키를 만들고 바로 호출해 보세요</div></td>
+                  <td style="width: 20px; text-align: right; font-size: 16px; color: #94a3b8; vertical-align: middle;">→</td>
+                </tr></table>
+              </a>
+              <a href="#" style="display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 8px; background: #ffffff;">
+                <table style="width: 100%; border-collapse: collapse;"><tr>
+                  <td style="width: 36px; font-size: 20px; vertical-align: middle;">💬</td>
+                  <td style="vertical-align: middle;"><div style="font-size: 14px; font-weight: bold; color: #0f172a;">Playground에서 모델 테스트하기</div><div style="font-size: 12px; color: #64748b; margin-top: 2px;">코드 없이 모델 응답을 비교해 보세요</div></td>
+                  <td style="width: 20px; text-align: right; font-size: 16px; color: #94a3b8; vertical-align: middle;">→</td>
+                </tr></table>
+              </a>
+              <a href="#" style="display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 0; background: #ffffff;">
+                <table style="width: 100%; border-collapse: collapse;"><tr>
+                  <td style="width: 36px; font-size: 20px; vertical-align: middle;">📘</td>
+                  <td style="vertical-align: middle;"><div style="font-size: 14px; font-weight: bold; color: #0f172a;">Docs에서 연동 방법 확인하기</div><div style="font-size: 12px; color: #64748b; margin-top: 2px;">OpenAI SDK 그대로, Base URL과 키만 바꾸면 돼요</div></td>
+                  <td style="width: 20px; text-align: right; font-size: 16px; color: #94a3b8; vertical-align: middle;">→</td>
+                </tr></table>
+              </a>
             </div>
 
             <div style="text-align: center; margin-bottom: 32px;">
@@ -5016,6 +5192,8 @@ for await (const chunk of stream) {
         </div>
       </div>
 
+        <div class="mm-note mm-note-out">📝 <b>E-02 가입 환영 (10/1)</b> — 제목 “모르팩 가입을 환영합니다.” 아래 한 줄 소개(GLM · Kimi · Motif를 API 키 하나로) → 시작 3단계를 <b>링크 블록 3개</b>로(API 키 → 콘솔 키 관리 C-02 · Playground → C-07 · Docs → M-02, 블록 전체가 링크) → 콘솔 CTA. 서비스 소개 표(같은 모델 · 더 안전하게 · 더 싸게)와 가입 크레딧 $20 안내는 일단 제외 — 가격 · 크레딧 지급 시점 확정 후 다시 검토. 확인 필요: 메일 내 서비스명 표기(모르팩 / MorphFactory / Morfac) 통일.</div>
+
       <!-- E-03: 비밀번호 재설정 OTP -->
       <div id="e-03" class="wf-card mb-6">
         <div class="wf-header">
@@ -5028,9 +5206,6 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">보안</span>
-            </div>
 
             <div style="text-align: center; margin-bottom: 24px;">
               <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호를 재설정해 주세요</h1>
@@ -5071,9 +5246,6 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">보안 알림</span>
-            </div>
 
             <div style="text-align: center; margin-bottom: 24px;">
               <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호가 변경되었습니다</h1>
@@ -5115,9 +5287,6 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">계정 설정</span>
-            </div>
 
             <div style="text-align: center; margin-bottom: 24px;">
               <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">소셜 계정 연동이 완료되었습니다</h1>
@@ -5162,9 +5331,6 @@ for await (const chunk of stream) {
               <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 Morfac</span>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="display: inline-block; background-color: #3b82f6; color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold;">고객지원</span>
-            </div>
 
             <div style="text-align: center; margin-bottom: 24px;">
               <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">문의에 대한 답변입니다</h1>
@@ -5212,9 +5378,6 @@ for await (const chunk of stream) {
             </div>
 
             <!-- 카테고리 라벨 -->
-            <div style="text-align:center; margin-bottom:20px;">
-              <span style="display:inline-block; background-color:#10b981; color:white; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:bold;">결제</span>
-            </div>
 
             <!-- 메인 헤딩 -->
             <div style="text-align:center; margin-bottom:24px;">
@@ -5278,9 +5441,6 @@ for await (const chunk of stream) {
               <span style="font-size:24px; font-weight:bold; color:#0f172a;">🎯 {company_name}</span>
             </div>
 
-            <div style="text-align:center; margin-bottom:20px;">
-              <span style="display:inline-block; background-color:#3b82f6; color:white; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:bold;">환불</span>
-            </div>
 
             <div style="text-align:center; margin-bottom:24px;">
               <h1 style="font-size:24px; font-weight:bold; color:#0f172a; margin:0; line-height:1.4;">환불 처리가 완료되었습니다</h1>
@@ -5473,39 +5633,19 @@ for await (const chunk of stream) {
   </template>
 
   <!-- C 시리즈: 새 API 키 발급 모달 -->
-  <div id="api-key-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
-      <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">🔑 새 API 키 발급</h3>
-        <button onclick="closeCreateApiKeyModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
-      </div>
-      <div class="space-y-4 mb-6 text-xs">
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">키 이름 (식별용)</label>
-          <input type="text" id="api-key-name-input" class="wf-input mb-0" placeholder="예: 프로덕션 서버 키">
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">만료일 (Expiration)</label>
-          <select class="wf-input mb-0">
-            <option>기한 없음 (무제한)</option>
-            <option>1시간 후</option>
-            <option>1일 후</option>
-            <option>7일 후</option>
-            <option>30일 후</option>
-            <option>90일 후</option>
-            <option>180일 후</option>
-            <option>1년 후</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">크레딧 제한 (Credit Limit, $ USD)</label>
-          <input type="number" class="wf-input mb-0" placeholder="예: 50 (미입력 시 제한 없음)">
-          <p class="text-[11px] text-slate-400 mt-1">지정한 금액 이상 소모 시 해당 키의 호출이 일시 차단됩니다.</p>
-        </div>
-      </div>
-      <div class="flex justify-end gap-2">
-        <button onclick="closeCreateApiKeyModal()" class="wf-btn text-xs w-auto">취소</button>
-        <button onclick="alert('API 키가 성공적으로 발급되었습니다. (비밀 키는 보안상 최초 1회만 노출됩니다)'); closeCreateApiKeyModal();" class="wf-btn wf-btn-dark text-xs w-auto">발급 생성</button>
+  <div id="api-key-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50" onclick="if(event.target===this)closeCreateApiKeyModal()">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200 text-xs">
+      <h3 class="font-bold text-base text-slate-900">API 키 생성</h3><p class="text-[11px] text-slate-500 mt-1 mb-4">키 전체 값은 생성 직후 한 번만 표시됩니다.</p>
+      <label class="block font-bold text-slate-700 mb-1">이름 <span class="font-normal text-slate-400">선택 사항</span></label>
+      <input type="text" class="wf-input mb-3">
+      <label class="block font-bold text-slate-700 mb-1">만료일</label>
+      <div class="mb-3"><div class="flex gap-1 flex-wrap"><span class="k-chip">30일</span><span class="k-chip">60일</span><span class="k-chip">90일</span><span class="k-chip on">1년</span><span class="k-chip">직접 지정</span></div></div>
+      <label class="block font-bold text-slate-700 mb-1">사용 한도 (USD)</label>
+      <input type="number" class="wf-input mb-1" placeholder="미설정 시 제한 없음">
+      <p class="text-[10px] text-slate-400">최근 30일 사용액을 기준으로 적용됩니다.</p>
+      <div class="flex justify-end gap-2 mt-5">
+        <button onclick="closeCreateApiKeyModal()" class="wf-btn text-xs w-auto px-4">취소</button>
+        <button onclick="closeCreateApiKeyModal()" class="wf-btn wf-btn-dark text-xs w-auto px-4">키 생성</button>
       </div>
     </div>
   </div>
@@ -6021,6 +6161,20 @@ for await (const chunk of stream) {
     }
 
     /* C 시리즈 전용 모달 스크립트 */
+    document.addEventListener('click', e => {
+      const n = e.target.closest('.mm-note');
+      if (n && !e.target.closest('a,button,input')) n.classList.toggle('mm-open');
+    });
+    function c02Menu(btn){
+      const m = btn.parentElement; const was = m.classList.contains('open');
+      document.querySelectorAll('.k-more.open').forEach(x => x.classList.remove('open'));
+      if (!was) m.classList.add('open');
+    }
+    document.addEventListener('click', e => { if (!e.target.closest('.k-more')) document.querySelectorAll('.k-more.open').forEach(x => x.classList.remove('open')); });
+    function c02St(st, btn){
+      document.getElementById('c02-root').dataset.st = st;
+      document.querySelectorAll('.c02-st').forEach(b => b.classList.toggle('active', b === btn));
+    }
     function openCreateApiKeyModal() { document.getElementById('api-key-modal').classList.remove('hidden'); }
     function closeCreateApiKeyModal() { document.getElementById('api-key-modal').classList.add('hidden'); }
 
