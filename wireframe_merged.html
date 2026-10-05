@@ -249,6 +249,16 @@
     .c03-topup { border: 2px solid #cbd5e1; background: #ffffff; border-radius: 8px; padding: 20px 16px; text-align: center; cursor: pointer; }
     .c03-topup-credit { font-size: 18px; font-weight: 800; color: #0f172a; }
     .c03-topup-price { font-size: 13px; color: #64748b; margin-top: 6px; font-weight: 600; }
+    .c03-topup { font-family:inherit; }
+    .c03-topup.sel { border-color:#0f172a; background:#f8fafc; box-shadow:0 0 0 1px #0f172a inset; }
+    .tu-row { margin-top:14px; }
+    .tu-pay { display:block; width:100%; margin-top:14px; background:#0b0b0b; color:#fff; border:none; border-radius:10px; padding:14px; font-size:15px; font-weight:700; cursor:pointer; } .tu-pay:disabled { background:#cbd5e1; cursor:not-allowed; }
+    .tu-amt { text-align:right; font-size:13px; color:#64748b; margin-top:6px; font-variant-numeric:tabular-nums; } .tu-amt b { color:#0f172a; }
+    .tu-in { display:flex; align-items:center; border:1.5px solid #cbd5e1; border-radius:10px; padding:0 14px; background:#fff; }
+    .tu-in input { flex:1; border:none; outline:none; font-size:18px; font-weight:700; padding:12px 0; color:#0f172a; min-width:0; background:transparent; }
+    .tu-in span { font-size:13px; color:#64748b; font-weight:600; }
+    .tu-in:focus-within { border-color:#0f172a; } .tu-in.err { border-color:#ef4444 !important; }
+    .tu-err { font-size:12px; color:#ef4444; margin-top:6px; font-weight:600; }
     .c03-topup-note { font-size: 11px; color: #94a3b8; margin-top: 10px; }
     .c03-muted { color: #94a3b8; }
     .c03-exp-tag { display: inline-block; background: #e2e8f0; color: #334155; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
@@ -689,6 +699,7 @@
                 <li><strong>📝 메모 접기</strong>(10/1): 화면 아래 메모는 기본 한 줄로 접힘, 클릭하면 펼침</li>
                 <li><strong>C-02 API 키</strong>(10/1): CBT 2차 수준으로 교체 — 7컬럼(이름 · 키 · 생성일 · 만료일 · 최근 사용 · 사용 비용/한도 · 작업), 비활성 · 만료 뱃지, 한도 초과 붉게, ⋯ 메뉴, 생성 · 수정 · 1회 노출 · 비활성화 · 삭제 모달, 키 없음 상태</li>
                 <li><strong>A-04 온보딩 설문</strong>(10/1): CBT 2차 구글폼 문항 2개 추가 — “어디에 붙여보실 예정인가요?”(단답) · “Morfac을 어떻게 알게 되셨나요?”(필수, 복수 선택). 6 → 8문항, “프론티어 모델 대비 성능 비교” 오타 수정</li>
+                <li><strong>C-03 · M-10 충전</strong>(10/6): 프리셋 10 · 20 · 100 · 500크레딧, 직접 입력(10~500, 범위 밖 에러) + 입력칸 아래 “부가세 포함 N원”</li>
                 <li><strong>C-08 로그 업데이트</strong>(10/2): 필터 모델 · API 키 · 상태, 표는 일시 · 모델 · 상태 · 토큰 · 시간, 행 클릭 시 오른쪽 상세 패널(기본 · 시간 · 토큰 · 크레딧 · 오류 본문 JSON). Anthropic Console 로그 참고, 기획 중 덮개 제거</li>
                 <li><strong>C-01 대시보드 업데이트</strong>(10/2): 크레딧 잔액을 맨 위 별도 영역으로 분리, 모델 · API 키 필터 + 지난 7일(기본) / 30일, 1열 모델별 사용한 크레딧 · 요청 수 · 사용 토큰(한 번에 표시), 2열 토큰 구성(입력 · 입력 캐시 · 출력) · 입력 캐시 비율(100% 막대), 막대 마우스 오버 시 상세 레이어. 크레딧 추가 문의 배너 · 기획 중 덮개 제거</li>
                 <li><strong>C-07 응답 메타</strong>(9/30): “지연 · 속도” → <b>TTFT • tok/s • 비용</b> 한 줄(Fireworks 방식), 속도와 가격 같은 무게. 응답 상세 팝오버를 <b>막대 시각화</b>(시간 · 토큰 · 비용, OpenRouter 방식)로</li>
@@ -1693,8 +1704,8 @@
                   
                 </div>
                 <div class="border rounded-xl p-4 bg-white text-center">
-                  <div class="text-2xl font-extrabold text-slate-900">30<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
-                  <div class="text-sm font-bold text-slate-900 mt-3">46,596원</div>
+                  <div class="text-2xl font-extrabold text-slate-900">20<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">31,064원</div>
                   <div class="text-[10px] text-slate-400">부가세 포함</div>
                   
                 </div>
@@ -1705,12 +1716,13 @@
                   
                 </div>
                 <div class="border rounded-xl p-4 bg-white text-center">
-                  <div class="text-2xl font-extrabold text-slate-900">300<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
-                  <div class="text-sm font-bold text-slate-900 mt-3">465,960원</div>
+                  <div class="text-2xl font-extrabold text-slate-900">500<span class="text-sm font-bold text-slate-500"> 크레딧</span></div>
+                  <div class="text-sm font-bold text-slate-900 mt-3">776,600원</div>
                   <div class="text-[10px] text-slate-400">부가세 포함</div>
                   
                 </div>
               </div>
+              <div class="text-[11px] text-slate-400 mt-2">10~500크레딧 사이에서 직접 입력해 충전할 수도 있어요. 결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 포함됩니다.</div>
               <div class="mt-3 border border-dashed rounded-xl p-4 flex justify-between items-center text-xs">
                 <span>🎁 <b>가입하면 $20 무료</b> — 온보딩 설문 완료 시 지급 · 지급일로부터 14일 동안 사용</span>
                 <a href="#a-02" onclick="switchToATab()" class="wf-btn wf-btn-primary w-auto px-5 no-underline text-white text-xs">무료로 시작하기</a>
@@ -1748,10 +1760,10 @@
         </div>
       </div>
       <div class="mm-note mm-note-out">📝 <b>M-10 요금 메모</b> — 역할: 모델(M-08)은 “무엇을 쓸지”, 요금은 “얼마 들고 어떻게 결제하는지”. 로그인 전에 크레딧 · 결제 규칙을 볼 수 있는 유일한 공개 화면.
-        단가표는 카탈로그 · <code>/v1/models</code>와 같은 데이터 + “공식 API 대비” 열만 추가. 충전 상품 4종(10 / 30 / 100 / 300)은 C-03과 동일, 실제 결제는 로그인 후 C-03에서.
+        단가표는 카탈로그 · <code>/v1/models</code>와 같은 데이터 + “공식 API 대비” 열만 추가. 충전 상품 4종(10 / 20 / 100 / 500, 10/6 변경) + 직접 입력(10~500)은 C-03과 동일, 실제 결제는 로그인 후 C-03에서.
         규칙은 C-03 · O-04 스펙과 맞춤: 1크레딧 = $1 · 잔액 $ 표기 · 유료 5년 / 무료 14일 만료 · 자동 충전 없음 · 결제 수단 카드(토스페이 포함).
         <b>환불은 요금 페이지에 넣지 않음</b>(C-03과 같은 원칙 — 환불이 쉬워 보이지 않게, 이용약관에서 안내).
-        <b>결제 금액(9/28 확정)</b>: 크레딧 수 × 적용 환율 × 1.1, 9/28 기준 1,412원 → 10 / 30 / 100 / 300크레딧 = 15,532 / 46,596 / 155,320 / 465,960원(C-03과 동일). “이렇게 계산돼요” 섹션은 삭제(9/28). <b>확인 필요</b>: 공식가 비교 수치와 조회일 · 영수증/세금계산서 발행 방식 · 계산기는 정적 예시로 두고 실제 계산 기능은 개발 협의.</div>
+        <b>결제 금액(9/28 확정)</b>: 크레딧 수 × 적용 환율 × 1.1, 9/28 기준 1,412원 → 10 / 20 / 100 / 500크레딧 = 15,532 / 31,064 / 155,320 / 776,600원(10/6 프리셋 변경, C-03과 동일). “이렇게 계산돼요” 섹션은 삭제(9/28). <b>확인 필요</b>: 공식가 비교 수치와 조회일 · 영수증/세금계산서 발행 방식 · 계산기는 정적 예시로 두고 실제 계산 기능은 개발 협의.</div>
 
       <!-- M-02: Docs -->
       <div id="m-02" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
@@ -3975,29 +3987,15 @@ for await (const chunk of stream) {
                   <!-- ② 충전 -->
                   <div class="c03-block">
                     <div class="c03-section-title" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="c03-marker">2</span>충전</span><span style="font-size:12px;font-weight:600;color:#475569;">적용 환율 <b style="color:#0f172a;">1크레딧 = 1,412원</b> <span style="color:#94a3b8;font-weight:500;">(2026년 9월 28일 기준)</span></span></div>
-                    <div class="c03-topup-grid">
-                      <div class="c03-topup">
-                        <div class="c03-topup-credit">10크레딧</div>
-                        <div class="c03-topup-price">15,532원</div>
-                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
-                      </div>
-                      <div class="c03-topup">
-                        <div class="c03-topup-credit">30크레딧</div>
-                        <div class="c03-topup-price">46,596원</div>
-                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
-                      </div>
-                      <div class="c03-topup">
-                        <div class="c03-topup-credit">100크레딧</div>
-                        <div class="c03-topup-price">155,320원</div>
-                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
-                      </div>
-                      <div class="c03-topup">
-                        <div class="c03-topup-credit">300크레딧</div>
-                        <div class="c03-topup-price">465,960원</div>
-                        <div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div>
-                      </div>
+                    <div class="c03-topup-grid"><button class="c03-topup sel" data-n="10" onclick="tuPick(10)"><div class="c03-topup-credit">10크레딧</div><div class="c03-topup-price">15,532원</div><div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div></button><button class="c03-topup" data-n="20" onclick="tuPick(20)"><div class="c03-topup-credit">20크레딧</div><div class="c03-topup-price">31,064원</div><div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div></button><button class="c03-topup" data-n="100" onclick="tuPick(100)"><div class="c03-topup-credit">100크레딧</div><div class="c03-topup-price">155,320원</div><div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div></button><button class="c03-topup" data-n="500" onclick="tuPick(500)"><div class="c03-topup-credit">500크레딧</div><div class="c03-topup-price">776,600원</div><div style="font-size:10px;color:#94a3b8;margin-top:2px;">부가세 포함</div></button></div>
+                    <div class="tu-row">
+                      <div class="text-xs font-bold text-slate-500 mb-1.5">직접 입력</div>
+                      <div class="tu-in" id="tu-box"><input id="tu-input" type="text" inputmode="numeric" value="" oninput="tuInput(this.value)"><span>크레딧</span></div>
+                      <div class="tu-amt" id="tu-t"></div>
+                      <div class="tu-err hidden" id="tu-err">10~500크레딧 사이로 입력해 주세요.</div>
                     </div>
-                    <div class="c03-topup-note">결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 추가됩니다.</div>
+                    <button class="tu-pay" id="tu-pay">10크레딧 구매</button>
+                    <div class="c03-topup-note">결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 포함됩니다.</div>
                   </div>
                   
                   <!-- ③ 크레딧 내역 -->
@@ -4064,7 +4062,8 @@ for await (const chunk of stream) {
                       <li>크레딧 금액은 <b>$ 표기</b>, 소수점 이하가 0이면 생략 (예: <b>$20</b> · 잔액 <b>$27.11</b>)</li>
                       <li>잔액 영역에 <b>무료/유료 구분 표시하지 않음</b></li>
                       <li>상태 표기 3종 고정(버튼 아님·텍스트): ✓ 결제완료 / ⏳ 환불 처리중 / ↩️ 환불완료</li>
-                      <li><b>(9/28) 결제 금액 = 적용 환율 × 크레딧 수 × 1.1(부가세)</b> · 충전 영역 오른쪽 위에 적용 환율과 기준일, 상품 아래에 한 줄 고지(“결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 추가됩니다.” · 계산식 박스는 9/28 삭제) · 결제 건마다 적용 환율을 저장(O-04 결제 내역 “적용환율”) · 과거 내역 금액은 당시 환율 기준이라 지금 상품가와 다를 수 있음</li>
+                      <li><b>(9/28) 결제 금액 = 적용 환율 × 크레딧 수 × 1.1(부가세)</b> · 충전 영역 오른쪽 위에 적용 환율과 기준일, 상품 아래에 한 줄 고지(“결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 포함됩니다.” · 계산식 박스는 9/28 삭제) · 결제 건마다 적용 환율을 저장(O-04 결제 내역 “적용환율”) · 과거 내역 금액은 당시 환율 기준이라 지금 상품가와 다를 수 있음</li>
+                      <li><b>(10/6) 충전 프리셋 10 · 20 · 100 · 500크레딧 + 직접 입력</b> — 프리셋을 누르면 선택 표시 + 입력칸에 같은 값. 직접 입력은 1크레딧 단위 정수, 최소 10 · 최대 500크레딧(범위 밖이면 입력칸 빨간 테두리 + “10~500크레딧 사이로 입력해 주세요.”, 결제 버튼 비활성). <b>프리셋을 눌러도 입력칸은 채우지 않음</b>(선택 표시만, 입력칸은 비움) · 입력칸에 직접 입력하면 프리셋 선택이 풀림 — 둘 중 마지막에 고른 것이 결제 대상. 직접 입력 시에만 입력칸 오른쪽 아래 “부가세 포함 N원” 표시(범위 밖이어도 금액은 보여 주고 에러 함께). 아래 <b>가로 꽉 찬 [N크레딧 구매] 버튼</b>(Anthropic Console 방식, 선택 · 입력값에 따라 문구 변경, 유효하지 않으면 비활성) → 토스 결제창. 기본 선택 10크레딧. 안내 문구 “결제 금액은 결제 당일의 적용 환율에 따라 정해지며, 부가세 10%가 포함됩니다.”</li>
                       <li><b>확인 필요</b>: 환율 기준(출처 · 갱신 주기 · 갱신 시각) · 원 단위 미만 처리(절사/반올림) · 결제창 진입 후 환율이 바뀌는 경우 처리</li>
                     </ul>
                   </div>
@@ -6225,6 +6224,26 @@ for await (const chunk of stream) {
     }
     function lgClose() { document.getElementById('lg-panel').classList.add('hidden'); lgCur = -1; document.querySelectorAll('#c-08 .lg-table tbody tr').forEach(tr => tr.classList.remove('sel')); }
     document.addEventListener('DOMContentLoaded', () => lgOpen(2));
+    let tuSel = 10;
+    function tuPay(n) {
+      const p = document.getElementById('tu-pay'), ok = Number.isInteger(n) && n >= 10 && n <= 500;
+      p.disabled = !ok; p.textContent = ok ? n + '크레딧 구매' : '크레딧을 선택하거나 입력해 주세요';
+    }
+    function tuInput(v) {
+      const raw = String(v).replace(/[^0-9]/g, ''), n = parseInt(raw, 10), has = raw.length > 0;
+      if (has) { tuSel = null; document.querySelectorAll('.c03-topup').forEach(b => b.classList.remove('sel')); }
+      const ok = has && n >= 10 && n <= 500;
+      document.getElementById('tu-err').classList.toggle('hidden', !has || ok);
+      document.getElementById('tu-box').classList.toggle('err', has && !ok);
+      document.getElementById('tu-t').textContent = has ? '부가세 포함 ' + Math.round(n * 1412 * 1.1).toLocaleString() + '원' : '';
+      tuPay(has ? n : tuSel);
+    }
+    function tuPick(n) {
+      tuSel = n; const i = document.getElementById('tu-input'); i.value = '';
+      document.querySelectorAll('.c03-topup').forEach(b => b.classList.toggle('sel', +b.dataset.n === n));
+      document.getElementById('tu-t').textContent = ''; document.getElementById('tu-err').classList.add('hidden'); document.getElementById('tu-box').classList.remove('err');
+      tuPay(n);
+    }
     function dbEmpty(e) {
       const r = document.getElementById('db-root'); if (e) r.dataset.e = e; else delete r.dataset.e;
       document.querySelectorAll('.db-eb').forEach(b => b.classList.toggle('active', b.dataset.e === e));
