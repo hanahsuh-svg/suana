@@ -89,6 +89,31 @@ h2{font-size:31px;line-height:1.3;letter-spacing:-.02em;margin:10px 0 14px}
 .spec{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .spec div{background:var(--faint);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted)}
 .spec b{display:block;font-size:16px;color:var(--ink);margin-top:2px}
+/* why */
+.why{padding:64px 0 60px;background:#fff}
+.why .in{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.why .kick{font-size:14px;font-weight:700;color:var(--accent-ink)}
+.why h2{font-size:34px;margin:10px 0 14px}
+.why .sub{margin-bottom:26px}
+.pills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pill{background:var(--faint);border-radius:12px;padding:14px 16px}
+.pill b{display:block;font-size:15px;color:var(--accent-ink);margin-bottom:4px}
+.pill span{font-size:13.5px;color:var(--muted);line-height:1.45}
+.cmp{display:flex;flex-direction:column;gap:14px}
+.lane{border-radius:16px;padding:20px 22px;border:1px solid var(--line);background:#fff}
+.lane.us{border:2px solid var(--accent);background:#F4FBF8}
+.lane h5{margin:0 0 14px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between}
+.lane.us h5{color:var(--accent-ink)}
+.flowr{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.node{padding:10px 14px;border-radius:10px;background:var(--faint);white-space:nowrap}
+.node.g{background:var(--accent);color:#fff}
+.arr{color:#9AA8A2;font-weight:400}
+.provs{display:flex;flex-direction:column;gap:6px}
+.prov{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;background:var(--faint)}
+.prov small{font-weight:400;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%}
+.res{margin-left:auto;font-size:13px;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.res.bad{background:#F6ECDB;color:var(--note)} .res.good{background:var(--soft);color:var(--accent-ink)}
 /* footer cta */
 .final{background:var(--dark);color:#fff;padding:60px 0;text-align:center}
 .final h3{font-size:30px;margin:0 0 10px}
@@ -105,9 +130,9 @@ h2{font-size:31px;line-height:1.3;letter-spacing:-.02em;margin:10px 0 14px}
 
 <section class="hero"><div class="in">
   <div>
-    <span class="eyebrow">자체 GPU 직접 서빙</span>
+    <span class="eyebrow">직접 운영하는 GPU에서 서빙</span>
     <h1>쓰던 도구 그대로,<br>오픈웨이트 모델을<br><em>더 부담 없이, 더 안정적으로.</em></h1>
-    <p class="lead">GLM·Kimi부터 국산 모델 Motif 3까지 API 하나로.<br><span class="hl">Morfac이 데이터센터에서 직접 서빙</span>하고, 데이터는 모델 개발사로 보내지 않습니다.</p>
+    <p class="lead">GLM·Kimi부터 국산 모델 Motif 3까지 API 하나로.<br><span class="hl">다른 공급사에 넘기지 않고, Morfac이 직접 운영하는 GPU에서 서빙</span>합니다.<br>데이터는 모델 개발사로 보내지 않습니다.</p>
     <div class="ctas"><span class="btn p">무료 크레딧으로 시작하기</span><span class="btn s">플레이그라운드에서 비교해보기</span></div>
     <div class="small">가입하면 무료 크레딧 지급 · 카드 등록 없이 시작</div>
   </div>
@@ -115,6 +140,34 @@ h2{font-size:31px;line-height:1.3;letter-spacing:-.02em;margin:10px 0 14px}
     <div class="mcard"><div class="mlogo">GLM<br>로고</div><div><div class="mname">GLM 5.3</div><div class="mdesc">빠르고 정확한 코딩 에이전트용</div></div><span class="mtag">코딩 에이전트</span></div>
     <div class="mcard"><div class="mlogo">Kimi<br>로고</div><div><div class="mname">Kimi K3</div><div class="mdesc">긴 문서·이미지 이해, UI 코딩</div></div><span class="mtag k">긴 문서 · 이미지</span></div>
     <div class="mcard"><div class="mlogo">Motif<br>로고</div><div><div class="mname">Motif 3</div><div class="mdesc">국산 모델, 부담 없는 단가</div></div><span class="mtag">국산 모델</span></div>
+  </div>
+</div></section>
+
+<section class="why"><div class="in">
+  <div>
+    <div class="kick">왜 Morfac은 다른가요</div>
+    <h2>직접 돌리니까, 일정합니다.</h2>
+    <p class="sub">같은 GLM이라도 어디서 돌리느냐에 따라 속도와 오류가 달라요. Morfac은 장비부터 추론 엔진까지 직접 운영해서, 매번 같은 품질로 응답해요.</p>
+    <div class="pills">
+      <div class="pill"><b>부담 없는 가격</b><span>중간 공급사가 없어 원가가 낮아요</span></div>
+      <div class="pill"><b>안정적인 속도</b><span>직접 운영해서 속도·가동률이 일정해요</span></div>
+      <div class="pill"><b>데이터 보호</b><span>우리 장비 밖, 모델 개발사로 보내지 않아요</span></div>
+    </div>
+  </div>
+  <div class="cmp">
+    <div class="lane"><h5><span>일반 게이트웨이</span><span>공급사가 바뀔 때마다</span></h5>
+      <div class="flowr"><span class="node">내 요청</span><span class="arr">→</span><span class="node">라우터</span><span class="arr">→</span>
+        <div class="provs" style="flex:1">
+          <div class="prov"><i class="dot" style="background:#E8C473"></i>공급사 A <small>빠르지만 툴콜 오류</small></div>
+          <div class="prov"><i class="dot" style="background:#E8C473"></i>공급사 B <small>싸지만 느림</small></div>
+          <div class="prov"><i class="dot" style="background:#E8C473"></i>공급사 C <small>가끔 다운</small></div>
+        </div>
+      </div>
+      <div style="display:flex;margin-top:12px"><span class="res bad">속도·오류가 매번 달라요</span></div>
+    </div>
+    <div class="lane us"><h5><span>Morfac</span><span>처음부터 끝까지 직접</span></h5>
+      <div class="flowr"><span class="node">내 요청</span><span class="arr">→</span><span class="node g">Morfac GPU · 추론 엔진</span><span class="res good">매번 같은 품질</span></div>
+    </div>
   </div>
 </div></section>
 
@@ -153,7 +206,7 @@ h2{font-size:31px;line-height:1.3;letter-spacing:-.02em;margin:10px 0 14px}
     <div class="pin" id="s2">⚓ 탭 2 앵커 · 오픈웨이트 사용자·탐색자</div>
     <div class="who">GLM·Kimi를 안정적으로 쓰고 싶다면</div>
     <h2>싼 곳 찾다 끊기지 마세요.<br>공식가보다 싸게, 끊김 없이*</h2>
-    <p class="sub">자체 GPU로 직접 서빙해서 가격과 속도가 들쭉날쭉하지 않아요.</p>
+    <p class="sub">요청을 다른 공급사로 넘기지 않고 직접 서빙해서, 가격과 속도가 들쭉날쭉하지 않아요.</p>
     <div class="pts">
       <div class="pt"><i>✓</i><div><b>응답마다 속도·비용 공개</b><span>첫 응답 시간, 초당 토큰, 요청별 비용을 그대로 보여줘요</span></div></div>
       <div class="pt"><i>✓</i><div><b>모델별 가동률 공개</b><span>상태 페이지에서 언제든 확인</span></div></div>
@@ -233,5 +286,5 @@ h2{font-size:31px;line-height:1.3;letter-spacing:-.02em;margin:10px 0 14px}
   <p>플레이그라운드에서 GLM·Kimi·Motif 3를 나란히 써보고 결정하세요.</p>
   <span class="btn p">무료 크레딧으로 시작하기</span>
 </div></section>
-<div class="foot">시안 · 2026-10-07 · 로고 자리는 각 모델사 공식 로고로 교체 · * "공식가보다 싸게·끊김 없이"는 판매 단가와 가동률 실측 확정 후 사용 · [실측값]·[확정 예정]은 자리 표시</div>
+<div class="foot">시안 · 2026-10-07 · 로고 자리는 각 모델사 공식 로고로 교체 · * "공식가보다 싸게·끊김 없이"는 판매 단가와 가동률 실측 확정 후 사용 · [실측값]·[확정 예정]은 자리 표시 · "자체 데이터센터"는 소유·코로케이션 확인 전이라 "직접 운영하는 GPU"로 표기</div>
 </div><script>function go(el){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));el.classList.add("on");var t=document.getElementById(el.dataset.t);window.scrollTo({top:t.getBoundingClientRect().top+scrollY-170,behavior:"smooth"});}</script></body></html>
