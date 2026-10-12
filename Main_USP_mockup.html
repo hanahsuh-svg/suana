@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morfac 메인 목업</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#F7F9F8;--bg2:#F1F4F3;--card:#FFFFFF;--card2:#EEF2F0;--line:#E3E9E6;--line2:#D3DBD7;
+  --fg:#13201B;--sub:#56635E;--mute:#8B9792;--mint:#0E9F74;--mint2:#0B8762;--mintbg:rgba(14,159,116,.09);
+  --amber:#B7791F;--red:#D64545;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.num{font-variant-numeric:tabular-nums}
+.only-a,.only-b{display:none!important}
+body[data-phase="a"] .only-a{display:revert!important}
+body[data-phase="b"] .only-b{display:revert!important}
+body[data-phase="a"] .only-a.flex,body[data-phase="b"] .only-b.flex{display:flex!important}
+body[data-phase="a"] .only-a.grid,body[data-phase="b"] .only-b.grid{display:grid!important}
+
+/* viewer bar */
+.viewer{position:sticky;top:0;z-index:50;display:flex;gap:16px;align-items:center;justify-content:center;padding:8px 16px;background:#fff;border-bottom:1px solid var(--line)}
+.seg{display:inline-flex;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{padding:6px 16px;border-radius:999px;font-size:13px;color:var(--sub);font-weight:600}
+.seg button.on{background:var(--mint);color:#fff}
+.viewer .gap{width:1px;height:20px;background:var(--line)}
+
+/* site chrome */
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.promo{background:#E4F6EF;color:#14533F;font-size:13.5px;text-align:center;padding:9px 16px}
+.promo b{color:var(--mint)}
+.promo .dot{opacity:.5;margin:0 10px}
+header.site{border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+header.site .wrap{display:flex;align-items:center;height:64px;gap:36px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.logo i{width:22px;height:22px;border-radius:6px;background:conic-gradient(from 200deg,var(--mint),#5BC8FF,var(--mint));display:block}
+nav.gnb{display:flex;gap:26px;font-size:14.5px;color:var(--sub)}
+nav.gnb a:hover,nav.gnb a.on{color:var(--fg)}
+.hright{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 18px;border-radius:10px;font-weight:600;font-size:14.5px;white-space:nowrap}
+.btn.lg{height:50px;padding:0 24px;font-size:16px;border-radius:12px}
+.btn.pri{background:var(--mint);color:#fff}
+.btn.pri:hover{background:#0B8762}
+.btn.sec{background:var(--card2);border:1px solid var(--line2)}
+.btn.ghost{color:var(--sub)}
+.btn.line{border:1px solid var(--line2)}
+
+/* hero */
+.hero{padding:84px 0 72px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-200px -200px auto auto;width:700px;height:700px;background:radial-gradient(closest-side,rgba(14,159,116,.16),transparent);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--mint);background:var(--mintbg);border:1px solid rgba(14,159,116,.25);border-radius:999px;padding:5px 12px;font-weight:600}
+h1.big{font-size:52px;line-height:1.18;letter-spacing:-.035em;margin:20px 0 18px;font-weight:800}
+h1.big em{font-style:normal;color:var(--mint)}
+.lead{font-size:18px;color:var(--sub);margin:0 0 30px;max-width:34em}
+.ctas{display:flex;gap:10px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:30px;font-size:13.5px;color:var(--sub)}
+.trust span:before{content:"✓";color:var(--mint);margin-right:6px;font-weight:700}
+.trust a{color:var(--mint)}
+
+.term{--mute:#7E8A86;background:#101413;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(19,32,27,.18);position:relative}
+.term .bar{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid #222;align-items:center}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#333;display:block}
+.term .bar span{margin-left:10px;font-size:12px;color:var(--mute);font-family:var(--mono)}
+.term pre{margin:0;padding:20px 22px;font-family:var(--mono);font-size:13px;line-height:1.85;color:#C9D3CF;white-space:pre-wrap}
+.c-m{color:var(--mute)}.c-k{color:var(--mint)}.c-s{color:#FFD38A}.c-g{color:#8FD8FF}
+.floater{position:absolute;right:-14px;bottom:-26px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:14px 18px;min-width:230px;box-shadow:0 14px 34px rgba(19,32,27,.14)}
+.floater small{display:block;color:var(--sub);font-size:12px}
+.floater b{font-size:24px;letter-spacing:-.02em}
+.floater .pct{color:var(--mint);font-size:13px;font-weight:700;margin-left:6px}
+.hero-r{position:relative;padding-bottom:20px}
+
+/* sections */
+section.blk{padding:84px 0;border-top:1px solid var(--line)}
+.kicker{color:var(--mint);font-size:13.5px;font-weight:700;letter-spacing:.02em;margin-bottom:10px}
+h2.h{font-size:34px;line-height:1.3;letter-spacing:-.03em;margin:0 0 12px;font-weight:800}
+.hsub{color:var(--sub);font-size:16.5px;margin:0 0 40px}
+
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.mcard .top{display:flex;justify-content:space-between;align-items:flex-start}
+.mcard h3{margin:0;font-size:21px;letter-spacing:-.02em}
+.mcard .vendor{font-size:12.5px;color:var(--mute)}
+.tag{display:inline-flex;align-items:center;font-size:12px;font-weight:700;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.tag.mint{background:var(--mintbg);color:var(--mint)}
+.tag.gray{background:var(--card2);color:var(--sub)}
+.tag.amber{background:rgba(255,200,97,.12);color:var(--amber)}
+.mcard .desc{color:var(--sub);font-size:14px;margin:0}
+.price{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:14px;gap:6px}
+.price div small{display:block;font-size:11.5px;color:var(--mute)}
+.price div b{font-size:17px}
+.price div s{display:block;font-size:12px;color:var(--mute)}
+.metric{display:flex;gap:14px;font-size:12.5px;color:var(--sub);background:var(--bg2);border-radius:8px;padding:8px 10px}
+.metric b{color:var(--mint)}
+.mcard .go{margin-top:auto;font-size:14px;color:var(--mint);font-weight:600}
+
+.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:15px}
+.cmp th,.cmp td{padding:16px 22px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp thead th{font-size:13px;color:var(--mute);font-weight:600;background:var(--bg2)}
+.cmp th.us,.cmp td.us{background:rgba(14,159,116,.06)}
+.cmp thead th.us{color:var(--mint)}
+.cmp td.us b{color:var(--mint);font-size:18px}
+.cmp .x{color:var(--sub)}
+.foot{font-size:13px;color:var(--mute);margin-top:14px;display:flex;justify-content:space-between}
+.foot a{color:var(--mint)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.stat small{color:var(--sub);font-size:13.5px}
+.stat .v{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:6px 0 4px}
+.stat .v span{font-size:20px;color:var(--sub);font-weight:600;margin-left:4px}
+.stat .vs{font-size:13px;color:var(--mute)}
+.stat .bars{display:grid;gap:7px;margin-top:16px}
+.stat .row{display:grid;grid-template-columns:88px 1fr 56px;gap:10px;align-items:center;font-size:12px;color:var(--sub)}
+.stat .row i{height:8px;border-radius:4px;background:var(--line2);display:block}
+.stat .row.us i{background:var(--mint)}
+.stat .row em{font-style:normal;text-align:right}
+
+/* persona tabs */
+.ptabs{display:flex;gap:8px;margin-bottom:22px}
+.ptab{flex:1;text-align:left;padding:18px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:16.5px;letter-spacing:-.01em;display:flex;gap:12px;align-items:center}
+.ptab .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--card2);font-size:14px;flex:none;color:var(--sub)}
+.ptab.on{border-color:var(--mint);background:linear-gradient(180deg,rgba(14,159,116,.10),rgba(14,159,116,.03))}
+.ptab.on .n{background:var(--mint);color:#fff}
+.ppanel{display:grid;scroll-margin-top:150px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:44px;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ppanel+.ppanel{margin-top:16px}
+.ppanel h3{font-size:28px;line-height:1.35;letter-spacing:-.03em;margin:0 0 14px}
+.ppanel p.d{color:var(--sub);font-size:16px;margin:0 0 22px}
+ul.chk{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:10px;font-size:15px}
+ul.chk li{display:flex;gap:10px}
+ul.chk li:before{content:"";width:18px;height:18px;border-radius:50%;flex:none;margin-top:3px;background:var(--mintbg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2l2.6 2.6L12 5.4' fill='none' stroke='%230E9F74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+ul.chk li.soon{color:var(--mute)}
+ul.chk li.soon:before{background:var(--card2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='4.5' fill='none' stroke='%2377837F' stroke-width='1.6'/%3E%3Cpath d='M8 5.8V8l1.4 1' stroke='%2377837F' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/13px no-repeat}
+ul.chk li .tag{margin-left:6px}
+.pbtns{display:flex;gap:10px;flex-wrap:wrap}
+.vis{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px}
+
+/* savings mini */
+.sv-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sub)}
+.sv-big{font-size:38px;font-weight:800;letter-spacing:-.03em;margin:4px 0 2px}
+.sv-big small{font-size:15px;color:var(--mint);font-weight:700;margin-left:8px}
+.sv-krw{color:var(--mute);font-size:13px;margin-bottom:18px}
+.duo{display:grid;gap:10px}
+.duo .r{display:grid;grid-template-columns:118px 1fr 64px;gap:10px;align-items:center;font-size:13px;color:var(--sub)}
+.duo .r .t{height:12px;border-radius:6px;background:var(--line2);position:relative;overflow:hidden}
+.duo .r .t i{position:absolute;inset:0 auto 0 0;background:var(--mint);border-radius:6px}
+.duo .r b{text-align:right;color:var(--fg)}
+
+/* path */
+.path{display:grid;gap:10px}
+.node{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.node .ic{width:36px;height:36px;border-radius:10px;background:var(--card2);display:grid;place-items:center;font-size:16px;flex:none}
+.node b{display:block;font-size:14.5px}
+.node small{color:var(--sub);font-size:12.5px}
+.node.hl{border-color:rgba(14,159,116,.5);background:linear-gradient(90deg,rgba(14,159,116,.09),transparent)}
+.node.hl .ic{background:var(--mintbg)}
+.arr{text-align:center;color:var(--mute);font-size:13px;line-height:1}
+.blocked{display:flex;gap:10px;align-items:center;justify-content:center;font-size:13px;color:var(--sub);border:1px dashed var(--line2);border-radius:12px;padding:12px;margin-top:6px}
+.blocked s{color:var(--red);text-decoration-thickness:2px}
+
+/* motif compare */
+.mc{display:grid;gap:18px}
+.mc .grp small{display:block;font-size:12.5px;color:var(--mute);margin-bottom:8px}
+.mc .r{display:grid;grid-template-columns:70px 1fr 64px;gap:10px;align-items:center;font-size:13px;margin-bottom:6px;color:var(--sub)}
+.mc .r i{display:block;height:10px;border-radius:5px;background:var(--line2)}
+.mc .r.us i{background:var(--mint)}
+.mc .r.us{color:var(--fg);font-weight:700}
+.mc .r em{font-style:normal;text-align:right}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tool{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:14.5px}
+.tool i{width:22px;height:22px;border-radius:6px;background:var(--card2);display:block}
+
+.team4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.tbox .ic{width:40px;height:40px;border-radius:12px;background:var(--mintbg);display:grid;place-items:center;font-size:18px;margin-bottom:14px}
+.tbox b{display:block;font-size:16.5px;margin-bottom:6px}
+.tbox span{color:var(--sub);font-size:14px}
+
+.closing{background:linear-gradient(135deg,#E4F6EF,#FFFFFF 65%);border:1px solid rgba(14,159,116,.25);border-radius:24px;padding:52px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.closing h2{margin:0 0 8px;font-size:30px;letter-spacing:-.03em}
+.closing p{margin:0;color:var(--sub);font-size:16px}
+
+footer.site{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--mute);font-size:13px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer.site nav{display:flex;gap:18px}
+footer.site a:hover{color:var(--fg)}
+
+/* modal */
+.dim{position:fixed;inset:0;background:rgba(19,32,27,.45);backdrop-filter:blur(3px);z-index:80;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:48px 16px}
+.dim.on{display:flex}
+.modal{width:600px;max-width:100%;background:var(--card);border:1px solid var(--line2);border-radius:20px;box-shadow:0 40px 100px rgba(19,32,27,.25)}
+.modal .mh{padding:28px 30px 8px;position:relative}
+.modal .mh h3{margin:0 0 6px;font-size:23px;letter-spacing:-.02em}
+.modal .mh p{margin:0;color:var(--sub);font-size:14.5px}
+.modal .x{position:absolute;right:20px;top:20px;width:34px;height:34px;border-radius:10px;color:var(--sub);font-size:18px}
+.modal .x:hover{background:var(--card2)}
+.mb{padding:18px 30px 6px;display:grid;gap:22px}
+.fld label.l{display:flex;gap:6px;align-items:baseline;font-weight:700;font-size:14.5px;margin-bottom:9px}
+.fld label.l small{font-weight:500;color:var(--mute);font-size:12.5px}
+.fld label.l .req{color:var(--mint)}
+.inp{width:100%;height:46px;border-radius:10px;border:1px solid var(--line2);background:var(--bg2);color:var(--fg);padding:0 14px;font:inherit;font-size:15px}
+.inp:focus{outline:none;border-color:var(--mint)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 14px;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);font-size:14px;color:var(--sub)}
+.chip.on{border-color:var(--mint);color:var(--mint);background:var(--mintbg);font-weight:600}
+.agree{background:var(--bg2);border-radius:12px;padding:14px 16px;display:grid;gap:10px;font-size:13.5px;color:var(--sub)}
+.agree label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.agree input{accent-color:var(--mint);width:17px;height:17px;margin-top:2px}
+.agree a{color:var(--mint);margin-left:4px}
+.mf{padding:18px 30px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);margin-top:14px}
+.mf small{color:var(--mute);font-size:12.5px}
+.done{padding:52px 34px 36px;text-align:center}
+.done .ok{width:64px;height:64px;border-radius:50%;background:var(--mintbg);color:var(--mint);font-size:30px;display:grid;place-items:center;margin:0 auto 20px;font-weight:800}
+.done h3{margin:0 0 10px;font-size:24px}
+.done p{margin:0 auto 28px;color:var(--sub);max-width:28em}
+.done .pbtns{justify-content:center}
+
+/* security page */
+.sec-hero{padding:64px 0 40px}
+.crumb{font-size:13px;color:var(--mute);margin-bottom:18px}
+.crumb a{color:var(--sub)}
+.sec-hero h1{font-size:40px;line-height:1.3;letter-spacing:-.03em;margin:12px 0 14px}
+.sec-meta{display:flex;gap:18px;font-size:13px;color:var(--mute);margin:18px 0 26px}
+.sec-layout{display:grid;grid-template-columns:220px 1fr;gap:56px;padding-bottom:80px}
+.toc{position:sticky;top:120px;align-self:start;display:grid;gap:4px;font-size:14px}
+.toc a{padding:7px 12px;border-radius:8px;color:var(--sub)}
+.toc a.on,.toc a:hover{background:var(--card);color:var(--fg)}
+.sec-body{display:grid;gap:56px}
+.sec-body h2{font-size:24px;margin:0 0 8px;letter-spacing:-.02em}
+.sec-body .s{color:var(--sub);margin:0 0 20px}
+.keys{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.key{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.key .n{color:var(--mint);font-weight:800;font-size:13px}
+.key b{display:block;font-size:17px;margin:4px 0 6px}
+.key span{color:var(--sub);font-size:14px}
+.hflow{display:grid;grid-template-columns:1fr 28px 1fr 28px 1.2fr 28px 1fr;align-items:stretch}
+.hflow .node{flex-direction:column;align-items:flex-start;gap:8px}
+.hflow .a{display:grid;place-items:center;color:var(--mute)}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tbl table{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th,.tbl td{padding:14px 20px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:12.5px;color:var(--mute);font-weight:600;background:var(--bg2)}
+.tbl td.p{font-weight:700;white-space:nowrap}
+.tbl td.p.z{color:var(--mint)}
+.tbl td .sm{color:var(--sub)}
+.note{font-size:13.5px;color:var(--mute);margin-top:12px}
+.guard{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.faq summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.faq summary:after{content:"+";color:var(--mute);font-weight:400;font-size:20px;line-height:1}
+.faq details[open] summary:after{content:"−"}
+.faq p{margin:10px 0 0;color:var(--sub)}
+.contact{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.contact h3{margin:0 0 6px;font-size:20px}
+.contact p{margin:0;color:var(--sub);font-size:14.5px}
+
+/* console */
+.con{display:grid;grid-template-columns:232px 1fr;min-height:calc(100vh - 50px)}
+.side{background:var(--bg2);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:4px}
+.side .logo{padding:6px 10px 18px;font-size:17px}
+.side .org{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:14px;font-size:13.5px}
+.side .org i{width:24px;height:24px;border-radius:7px;background:#3A4F48;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700}
+.side a{display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:8px;color:var(--sub);font-size:14px}
+.side a.on{background:var(--card2);color:var(--fg);font-weight:600}
+.side .grp{font-size:11.5px;color:var(--mute);padding:14px 12px 6px;letter-spacing:.04em}
+.side .bal{margin-top:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.side .bal small{color:var(--sub);font-size:12px}
+.side .bal b{display:block;font-size:20px;margin:2px 0 10px}
+.main{padding:28px 40px 60px;display:grid;gap:22px;align-content:start}
+.ph{display:flex;justify-content:space-between;align-items:flex-end}
+.ph h1{margin:0;font-size:26px;letter-spacing:-.02em}
+.ph .r{display:flex;gap:8px}
+.sel{height:38px;border-radius:10px;border:1px solid var(--line2);background:var(--card);padding:0 12px;font-size:13.5px;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
+.sel:after{content:"▾";color:var(--mute);font-size:11px}
+.kpis{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.kpi small{color:var(--sub);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}
+.kpi .s{font-size:12.5px;color:var(--mute)}
+.kpi.save{background:linear-gradient(140deg,rgba(14,159,116,.14),rgba(14,159,116,.03));border-color:rgba(14,159,116,.4)}
+.kpi.save .v{font-size:36px;color:var(--mint)}
+.kpi.save .v span{font-size:14px;margin-left:8px;color:#9FF5DA;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.panel .pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.panel .pt b{font-size:16px}
+.lg{display:flex;gap:16px;font-size:12.5px;color:var(--sub)}
+.lg span{display:flex;gap:6px;align-items:center}
+.lg i{width:10px;height:10px;border-radius:3px;display:block}
+.chart{display:grid;grid-template-columns:44px 1fr;gap:8px;height:230px}
+.yax{display:flex;flex-direction:column;justify-content:space-between;font-size:11px;color:var(--mute);text-align:right;padding-bottom:22px}
+.plot{position:relative;display:flex;align-items:flex-end;gap:10px;border-bottom:1px solid var(--line);padding:0 4px;background:repeating-linear-gradient(to top,transparent 0,transparent calc(25% - 1px),#262B29 calc(25% - 1px),#262B29 25%)}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;position:relative;height:100%}
+.col .sv{background:repeating-linear-gradient(135deg,rgba(14,159,116,.38) 0 4px,rgba(14,159,116,.14) 4px 8px);border:1px solid rgba(14,159,116,.6);border-bottom:0;border-radius:4px 4px 0 0}
+.col .pd{background:#5E6B67}
+.col .pd.m{background:#4A5552}
+.col em{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-style:normal;font-size:11px;color:var(--mute)}
+.col:hover .tip{display:block}
+.tip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0D0F0E;border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font-size:12px;white-space:nowrap;z-index:5;line-height:1.7}
+.tip b{color:var(--mint)}
+.mt{width:100%;border-collapse:collapse;font-size:14px}
+.mt th,.mt td{padding:12px 10px;text-align:right;border-bottom:1px solid var(--line)}
+.mt th:first-child,.mt td:first-child{text-align:left}
+.mt th{font-size:12.5px;color:var(--mute);font-weight:600}
+.mt td.g{color:var(--mint);font-weight:700}
+.mt td.d{color:var(--mute)}
+.mt tfoot td{border-bottom:0;font-weight:800;padding-top:14px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:13.5px;color:var(--sub)}
+.how div{background:var(--bg2);border-radius:10px;padding:14px 16px}
+.how b{display:block;color:var(--fg);margin-bottom:4px;font-size:14px}
+.split{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.cum{display:grid;gap:14px}
+.cum .big{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.share{display:flex;gap:12px;align-items:center;background:var(--bg2);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub)}
+.share b{color:var(--fg)}
+.banner{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--sub)}
+.banner b{color:var(--fg)}
+
+.page{display:none}
+.page.on{display:block}
+
+.calc{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+.cin{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;display:grid;gap:30px}
+.ql{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;margin-bottom:14px}
+.qn{width:24px;height:24px;border-radius:50%;background:var(--fg);color:#fff;font-size:12.5px;display:grid;place-items:center;flex:none}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.opt{text-align:left;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;background:var(--card)}
+.opt b{display:block;font-size:15px}
+.opt small{color:var(--mute);font-size:12.5px}
+.opt.on{border-color:var(--mint);background:var(--mintbg);box-shadow:inset 0 0 0 1px var(--mint)}
+.opt.on b{color:var(--mint2)}
+.opts.sm .opt{padding:11px 14px}
+.mseg{display:inline-flex;background:var(--card2);border-radius:10px;padding:3px;margin-bottom:18px}
+.mseg button{padding:7px 14px;border-radius:8px;font-size:13.5px;color:var(--sub);font-weight:600}
+.mseg button.on{background:#fff;color:var(--fg);box-shadow:0 1px 3px rgba(19,32,27,.12)}
+.rl{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--sub);margin-bottom:8px}
+.rl b{font-size:22px;color:var(--fg);letter-spacing:-.02em}
+input[type=range]{width:100%;accent-color:var(--mint);height:24px}
+.rt{display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+.hint{font-size:12.5px;color:var(--mute);margin-top:8px}
+.step{display:flex;align-items:center;gap:4px;border:1px solid var(--line2);border-radius:10px;padding:3px}
+.step button{width:32px;height:32px;border-radius:8px;font-size:17px;color:var(--sub)}
+.step button:hover{background:var(--card2)}
+.step b{min-width:52px;text-align:center;font-size:16px;color:var(--fg)}
+.adv{border-top:1px solid var(--line);padding-top:18px}
+.adv summary{cursor:pointer;font-size:14px;color:var(--sub);font-weight:600}
+.mixrow{display:flex;gap:10px;margin-top:14px}
+.mixrow label{flex:1;display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--sub);border:1px solid var(--line2);border-radius:10px;padding:0 12px;height:42px}
+.mixrow input{width:100%;border:0;background:none;font:inherit;font-size:15px;color:var(--fg);text-align:right;font-weight:700}
+.mixrow input:focus{outline:none}
+.cout{position:sticky;top:76px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;display:grid;gap:20px;box-shadow:0 20px 50px rgba(19,32,27,.07)}
+.ro-h{font-weight:700;font-size:15px;color:var(--sub)}
+.cmpbars{display:grid;gap:14px}
+.cbl{display:flex;justify-content:space-between;font-size:14px;color:var(--sub);margin-bottom:6px}
+.cbl b{color:var(--fg);font-size:16px}
+.cb.us .cbl b{color:var(--mint2)}
+.cbt{height:14px;border-radius:7px;background:var(--card2);overflow:hidden}
+.cbt i{display:block;height:100%;border-radius:7px;background:var(--line2);transition:width .25s}
+.cb.us .cbt i{background:var(--mint)}
+.savebox{background:var(--mintbg);border-radius:14px;padding:18px 20px}
+.savebox small{font-size:13px;color:var(--mint2);font-weight:600}
+.savebox .sv{display:flex;align-items:baseline;gap:10px}
+.savebox .sv span{font-size:42px;font-weight:800;letter-spacing:-.035em;color:var(--mint2)}
+.savebox .sv em{font-style:normal;font-weight:800;color:var(--mint2);font-size:16px}
+.savebox .yr{font-size:13.5px;color:var(--sub)}
+.bd{width:100%;border-collapse:collapse;font-size:13.5px}
+.bd th,.bd td{padding:8px 0;text-align:right;border-bottom:1px solid var(--line)}
+.bd th:first-child,.bd td:first-child{text-align:left}
+.bd th{font-size:12px;color:var(--mute);font-weight:600}
+.bd tr:last-child td{border-bottom:0}
+.basis{margin:0;font-size:12px;color:var(--mute);line-height:1.55}
+.cbtns{display:flex;gap:8px}
+.sharewrap{position:relative}
+.sharepop{display:none;position:absolute;right:0;bottom:calc(100% + 10px);width:330px;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:16px;box-shadow:0 24px 60px rgba(19,32,27,.2);z-index:10}
+.sharepop.on{display:block}
+.scard{background:linear-gradient(135deg,#E4F6EF,#fff);border:1px solid var(--line);border-radius:12px;padding:16px}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sc-t{font-size:12.5px;color:var(--sub)}
+.sc-v{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:2px 0}
+.sc-v span{color:var(--mint2)}
+.sc-s{font-size:12.5px;color:var(--sub)}
+.sp-btns{display:flex;gap:8px;margin-top:12px}
+.sp-url{margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--mute);background:var(--bg2);border-radius:8px;padding:8px 10px;word-break:break-all}
+.teamline{font-size:13.5px;color:var(--sub);text-align:center}
+.teamline a{color:var(--mint2);font-weight:600}
+
+.hv{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 30px 70px rgba(19,32,27,.10)}
+.hv-key{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;width:max-content;max-width:100%;margin:0 auto}
+.hv-key .kic{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:17px}
+.hv-key b{display:block;font-size:15px;line-height:1.3}
+.hv-key code{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.hv-ln{display:block;width:100%;height:22px}
+.hv-ln.br{height:30px}
+.hv-ln path{fill:none;stroke:var(--line2);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:4 4}
+.hv-hub{align-items:center;justify-content:space-between;gap:12px;border:1.5px solid var(--mint);background:var(--mintbg);border-radius:14px;padding:14px 18px}
+.hv-hub b{display:block;font-size:17px;letter-spacing:-.01em}
+.hv-hub small{font-size:12.5px;color:var(--sub)}
+.hv-hub.dark{background:#1F6B52;border-color:#1F6B52;color:#fff}
+.hv-hub.dark small{color:#CBEBDD}
+.hub-badge{font-size:12px;font-weight:700;border-radius:999px;padding:5px 10px;background:#fff;color:var(--mint2);white-space:nowrap}
+.hv-models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hm{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;display:grid;gap:2px}
+.hm-t{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.hm-t b{font-size:14.5px;white-space:nowrap}
+.hm-p span{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.hm-p{white-space:nowrap}.hm-p s{font-size:12px;color:var(--mute);margin-left:6px}
+.hm small{font-size:11.5px;color:var(--mute)}
+.hm-m{margin-top:6px;font-size:11.5px;color:var(--mint2);background:var(--mintbg);border-radius:6px;padding:3px 7px;font-weight:600}
+.hv-foot{justify-content:space-between;gap:8px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line2);font-size:13px;color:var(--sub)}
+.hv-foot b{color:var(--fg)}
+body[data-phase="a"] .btn.only-a,body[data-phase="b"] .btn.only-b{display:inline-flex!important}
+
+.gw{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:stretch}
+.gwc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:18px}
+.gwc.us{border:1.5px solid #1F6B52;background:#F0F8F4}.gwc.us .gwrow{flex:1}
+.gwh{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--sub)}
+.gwh b{font-size:15px;color:var(--fg)}
+.gwc.us .gwh b,.gwc.us .gwh span{color:#1F6B52;font-weight:700}
+.gwrow{display:flex;align-items:center;gap:12px}
+.gwn{background:var(--card2);border-radius:10px;padding:12px 16px;font-weight:700;font-size:14.5px;white-space:nowrap}
+.gwn.dk{background:#1F6B52;color:#fff}
+.gwa{color:var(--mute)}
+.gwp{flex:1;display:grid;gap:7px}
+.gwp div{display:flex;align-items:center;gap:8px;background:var(--card2);border-radius:8px;padding:8px 12px;font-size:13.5px;white-space:nowrap}
+.gwp i{width:7px;height:7px;border-radius:50%;background:#D9B76A;display:block}
+.gwp small{color:var(--sub);font-size:12.5px;overflow:hidden;text-overflow:ellipsis}
+.gwf{display:flex;justify-content:flex-end}
+.pill{font-size:13px;font-weight:700;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.pill.warn{background:#F5EBD8;color:#8A6420}
+.pill.ok{background:#DCEFE6;color:#1F6B52}
+
+.soonb{display:table;margin-top:12px;font-style:normal;font-size:12px;font-weight:700;background:var(--card2);color:var(--sub);border-radius:6px;padding:3px 8px}
+.skc{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.skt{font-weight:800;font-size:15px;margin-bottom:12px;display:inline-block;background:var(--card2);border-radius:8px;padding:6px 12px}
+.skt.b{background:#1F6B52;color:#fff}
+.skcol{display:grid;gap:10px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.sk:hover{border-color:var(--mint)}
+.sk.core{border:1.5px solid var(--fg)}
+.sk.ghost{background:transparent;border:1.5px dashed var(--line2);cursor:default}
+.sk.ghost p{color:var(--mute)}
+.sk-h{display:flex;justify-content:space-between;align-items:center;font-size:14.5px}
+.sk-h span{color:var(--mute);font-size:13px}
+.sk p{margin:4px 0 10px;font-size:13px;color:var(--sub)}
+.sk-lines{display:grid;gap:6px}
+.sk-lines i{display:block;height:8px;border-radius:4px;background:var(--card2)}
+.sk-grid{display:grid;gap:6px}
+.sk-grid div{height:44px;border-radius:8px;background:var(--card2)}
+.sk-grid div.m{background:var(--mintbg);border:1px solid rgba(14,159,116,.3)}
+.sk-hero{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+.sk-hero .sk-lines i:first-child{height:12px}
+.sk-btns{display:flex;gap:6px;margin-top:10px}
+.sk-btns i{width:56px;height:18px;border-radius:6px;background:var(--card2);display:block}
+.sk-btns i.p{background:var(--mint)}
+.sk-pic{height:76px;border-radius:10px;background:var(--mintbg);border:1px solid rgba(14,159,116,.3);display:grid;place-items:center;font-size:11.5px;color:var(--mint2);font-weight:700;text-align:center;padding:6px}
+[id]{scroll-margin-top:64px}
+body[data-phase="a"] .soonb.only-a{display:table!important}
+
+.pnav{position:sticky;top:57px;z-index:20;display:flex;gap:8px;padding:10px 0;margin-bottom:12px;background:linear-gradient(var(--bg) 80%,rgba(247,249,248,0))}
+.pnav a{flex:1;padding:14px 18px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:15.5px;display:flex;gap:12px;align-items:center}
+.pnav .n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--card2);font-size:13px;flex:none;color:var(--sub)}
+.pnav a.on{border-color:var(--mint);background:#F1FAF6}
+.pnav a.on .n{background:var(--mint);color:#fff}
+
+.hx{position:relative;background:linear-gradient(180deg,#FFFFFF,#F6FAF8);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 40px 80px -20px rgba(19,32,27,.18),0 0 0 6px rgba(255,255,255,.6)}
+.hx:before{content:"";position:absolute;inset:0;border-radius:24px;background:radial-gradient(400px 200px at 50% 48%,rgba(14,159,116,.10),transparent 70%);pointer-events:none}
+.hx-code{position:relative;background:#0F1513;border-radius:14px;padding:0 0 14px;color:#D6E2DD;font-family:var(--mono);font-size:13px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+.hx-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #1E2826;margin-bottom:10px}
+.hx-bar i{width:9px;height:9px;border-radius:50%;background:#2C3835;display:block}
+.hx-bar span{margin-left:8px;color:#7E8D88;font-size:11.5px}
+.hx-bar em{margin-left:auto;font-style:normal;font-family:Pretendard,sans-serif;font-size:11px;color:#8FE3C6;background:rgba(48,232,176,.10);border-radius:999px;padding:2px 8px}
+.hx-l{display:flex;align-items:center;gap:14px;padding:3px 18px;line-height:1.7}
+.hx-l .k{width:66px;color:#6FA897}
+.hx-l .v{color:#FFD38A}
+.hx-l .note{margin-left:auto;font-family:Pretendard,sans-serif;font-size:11px;font-weight:700;color:#0F1513;background:#30E8B0;border-radius:6px;padding:1px 7px}
+#hxModel{color:#7FE0FF;transition:opacity .2s}
+.caret{width:7px;height:15px;background:#30E8B0;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hx-ln{display:block;width:10px;height:34px;margin:0 auto}
+.hx-ln path,.hx-br path{fill:none;stroke:var(--line2);stroke-width:2;vector-effect:non-scaling-stroke}
+.hx-ln path.flow{stroke:var(--mint);stroke-dasharray:4 5;animation:flow 1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.hx-hub{position:relative;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--mint);border-radius:16px;padding:16px 18px;box-shadow:0 0 0 6px rgba(14,159,116,.08)}
+.hx-hub b{display:block;font-size:17px;letter-spacing:-.01em}
+.hx-hub small{font-size:12.5px;color:var(--sub)}
+.hx-logo{width:40px;height:40px;border-radius:11px;background:conic-gradient(from 200deg,var(--mint),#5BC8FF,var(--mint));flex:none}
+.hx-badge{margin-left:auto;font-size:12px;font-weight:700;border-radius:999px;padding:5px 11px;background:var(--mintbg);color:var(--mint2);white-space:nowrap}
+.hx-hub.dark{background:linear-gradient(135deg,#1F6B52,#144C3A);border-color:#1F6B52;color:#fff;box-shadow:0 0 0 6px rgba(31,107,82,.12),0 16px 30px -12px rgba(20,76,58,.6)}
+.hx-hub.dark small{color:#BFE6D5}
+.hx-hub.dark .hx-badge{background:rgba(255,255,255,.14);color:#fff}
+.hx-gpu{width:40px;height:40px;flex:none}
+.hx-gpu rect{fill:rgba(255,255,255,.12);stroke:rgba(255,255,255,.45);stroke-width:1}
+.hx-gpu .led{fill:#30E8B0;animation:led 1.4s ease-in-out infinite}
+.hx-gpu .led.d2{animation-delay:.3s}.hx-gpu .led.d3{animation-delay:.6s}
+@keyframes led{50%{opacity:.25}}
+.hx-br{display:block;width:100%;height:40px}
+.hx-br path.on{stroke:var(--mint);stroke-dasharray:4 5;animation:flow 1s linear infinite}
+.hx-models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hx-m{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;transition:all .25s;flex-wrap:wrap}
+.hx-m .av{width:32px;height:32px;border-radius:9px;color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center;flex:none}
+.hx-m div{min-width:0;flex:1}
+.hx-m b{display:block;font-size:14px;white-space:nowrap}
+.hx-m small{font-size:11.5px;color:var(--mute)}
+.hx-m .off{font-size:13px;font-weight:800;color:var(--mint2);background:var(--mintbg);border-radius:8px;padding:4px 8px;width:100%;text-align:center}
+.hx-m .off.kr{color:var(--amber);background:rgba(232,163,58,.12)}
+.hx-m.on{border-color:var(--mint);box-shadow:0 0 0 3px rgba(14,159,116,.15),0 12px 24px -12px rgba(14,159,116,.5);transform:translateY(-2px)}
+body[data-phase] .hx-m .off.only-a,body[data-phase] .hx-m .off.only-b{width:100%}
+
+.hx-box{position:relative;background:#fff;border:1.5px solid var(--mint);border-radius:18px;padding:16px;box-shadow:0 0 0 6px rgba(14,159,116,.08)}
+body[data-phase="b"] .hx-box{background:linear-gradient(160deg,#1F6B52,#123F31);border-color:#1F6B52;box-shadow:0 0 0 6px rgba(31,107,82,.12),0 20px 40px -16px rgba(18,63,49,.7)}
+.hx-boxh{align-items:center;gap:12px;padding:2px 4px 14px}
+.hx-boxh b{display:block;font-size:17px;letter-spacing:-.01em}
+.hx-boxh small{font-size:12.5px;color:var(--sub)}
+body[data-phase="b"] .hx-boxh{color:#fff}
+body[data-phase="b"] .hx-boxh small{color:#BFE6D5}
+body[data-phase="b"] .hx-boxh .hx-badge{background:rgba(255,255,255,.14);color:#fff}
+.hx-box .hx-models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hx-box .hx-m{display:block;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px;transition:all .25s}
+body[data-phase="b"] .hx-box .hx-m{background:rgba(255,255,255,.96);border-color:transparent}
+.hx-mt{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:6px}
+.hx-mt b{font-size:14.5px;white-space:nowrap}
+.hx-box .hx-m .off{width:auto;font-size:12px;padding:2px 7px;border-radius:6px}
+.hx-box .hx-m small{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--sub);white-space:nowrap}
+.hx-m .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);display:block;box-shadow:0 0 0 3px rgba(14,159,116,.18)}
+.hx-box .hx-m.on{background:#fff;border-color:var(--mint);box-shadow:0 0 0 3px rgba(14,159,116,.18);transform:translateY(-2px)}
+body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.only-b{width:auto}
+
+.hx-box .hx-n{display:block;font-size:15px;letter-spacing:-.01em;margin-bottom:8px;white-space:nowrap}
+.hx-mb{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.hx-mb .run{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--sub)}
+.hx-mb .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;flex:none;box-shadow:0 0 0 3px rgba(14,159,116,.18);animation:led 1.6s ease-in-out infinite}
+</style>
+</head>
+<body data-phase="a">
+
+<div class="viewer">
+  <div class="seg" id="phaseSeg">
+    <button data-phase="a" class="on">정식 오픈 시점</button>
+    <button data-phase="b">자체 서빙 후</button>
+  </div>
+  <span class="gap"></span>
+  <div class="seg" id="pageSeg">
+    <button data-page="skel">구조</button>
+    <button data-page="home" class="on">메인</button>
+    <button data-page="security">보안·데이터 처리</button>
+  </div>
+</div>
+
+<!-- ============ HOME ============ -->
+<div class="page on" id="p-home">
+  <div class="promo only-a"><b>정식 오픈 진입가</b> · GLM·Kimi 공식가보다 최대 36% 저렴<span class="dot">|</span>첫 충전하면 보너스 크레딧 $10</div>
+  <div class="promo only-b"><b>최저가 캠페인</b> · 직접 서빙 원가로 GLM·Kimi 최저가<span class="dot">|</span>카드 등록하면 $5 크레딧<span class="dot">|</span>팀원 초대하면 서로 $5</div>
+
+  <header class="site"><div class="wrap">
+    <a class="logo" href="#"><i></i>Morfac</a>
+    <nav class="gnb">
+      <a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#">Docs</a>
+    </nav>
+    <div class="hright"><a class="btn ghost" href="#">로그인</a><a class="btn pri" href="#">시작하기</a></div>
+  </div></header>
+
+  <section class="hero" id="s-hero"><div class="wrap">
+    <div>
+      
+      <h1 class="big only-a" style="margin-top:0">GLM·Kimi를 <em>더 싸게,</em><br>국산 모델 Motif 3까지<br>API 키 하나로</h1>
+      <h1 class="big only-b" style="margin-top:0">같은 오픈웨이트 모델,<br>직접 돌려서 <em>더 싸고<br>더 안정적입니다</em></h1>
+      <p class="lead only-a">충전 수수료 0%, 원화 결제. 쓰던 도구에서 주소와 키만 바꾸면 바로 이어서 작업할 수 있어요.</p>
+      <p class="lead only-b">다른 공급사로 넘기지 않고 장비부터 추론 엔진까지 직접 운영해요.</p>
+      <div class="ctas">
+        <a class="btn pri lg" href="#">무료로 시작하기</a>
+        <a class="btn sec lg only-a" href="#s-models">요금 비교 보기</a>
+        <a class="btn sec lg only-b" href="#team">팀으로 시작하기</a>
+      </div>
+      <div class="trust">
+        <span>충전 수수료 0%</span><span>원화 결제 · 세금계산서</span><span>입력이 모델 개발사로 가지 않아요 <a href="#" data-go="security">→</a></span>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="hx">
+        <div class="hx-code">
+          <div class="hx-bar"><i></i><i></i><i></i><span>request.py</span><em>OpenAI · Anthropic 호환</em></div>
+          <div class="hx-l"><span class="k">base_url</span><span class="v">"https://api.morfac.ai/v1"</span></div>
+          <div class="hx-l"><span class="k">api_key</span><span class="v">"mf-••••••••3f9a"</span><span class="note">키 하나</span></div>
+          <div class="hx-l"><span class="k">model</span><span class="v" id="hxModel">"glm-5.3"</span><span class="caret"></span></div>
+        </div>
+        <svg class="hx-ln" viewBox="0 0 10 40" preserveAspectRatio="none"><path class="flow" d="M5 0 V40"/></svg>
+        <div class="hx-box">
+          <div class="hx-boxh only-a flex"><span class="hx-logo"></span><div><b>Morfac</b><small>다른 공급사로 넘기지 않고 Morfac이 응답해요</small></div><span class="hx-badge">라우팅 없음</span></div>
+          <div class="hx-boxh only-b flex"><svg class="hx-gpu" viewBox="0 0 40 40"><rect x="4" y="6" width="32" height="8" rx="2"/><rect x="4" y="16" width="32" height="8" rx="2"/><rect x="4" y="26" width="32" height="8" rx="2"/><circle class="led" cx="30" cy="10" r="1.6"/><circle class="led d2" cx="30" cy="20" r="1.6"/><circle class="led d3" cx="30" cy="30" r="1.6"/></svg><div><b>Morfac GPU · 추론 엔진</b><small>자체 데이터센터에서 직접 서빙</small></div><span class="hx-badge">직접 운영</span></div>
+          <div class="hx-models">
+            <div class="hx-m on" data-id="glm-5.3"><b class="hx-n">GLM 5.3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off only-a">−36%</span><span class="off only-b">−40%</span></div></div>
+            <div class="hx-m" data-id="kimi-k3"><b class="hx-n">Kimi K3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off only-a">−20%</span><span class="off only-b">−30%</span></div></div>
+            <div class="hx-m" data-id="motif-3"><b class="hx-n">Motif 3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off kr">국산</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- models -->
+  <section class="blk" id="s-models"><div class="wrap">
+    <div class="kicker">모델 · 가격</div>
+    <h2 class="h only-a">많이 쓰는 오픈 모델을, 공식가보다 싸게</h2>
+    <h2 class="h only-b">직접 서빙하는 모델, 가장 부담없는 가격으로</h2>
+    <p class="hsub">100만 토큰당 가격 · 입력 / 캐시 / 출력</p>
+    <div class="models">
+      <div class="mcard">
+        <div class="top"><div><h3>GLM 5.3</h3><div class="vendor">Z.ai 개발</div></div><span class="tag mint only-a">공식가 −36%</span><span class="tag mint only-b">공식가 −40%</span></div>
+        <p class="desc">빠른 코딩 에이전트 · 환각이 적어요</p>
+        <div class="price num">
+          <div><small>입력</small><b class="only-a">$0.90</b><b class="only-b">$0.84</b><s>$1.40</s></div>
+          <div><small>캐시</small><b class="only-a">$0.17</b><b class="only-b">$0.16</b><s>$0.26</s></div>
+          <div><small>출력</small><b class="only-a">$2.82</b><b class="only-b">$2.64</b><s>$4.40</s></div>
+        </div>
+        <a class="go" href="#">플레이그라운드에서 써보기 →</a>
+      </div>
+      <div class="mcard">
+        <div class="top"><div><h3>Kimi K3</h3><div class="vendor">Moonshot AI 개발</div></div><span class="tag mint only-a">공식가 −20%</span><span class="tag mint only-b">공식가 −30%</span></div>
+        <p class="desc">긴 문서·이미지 이해 · UI·프론트엔드 코딩</p>
+        <div class="price num">
+          <div><small>입력</small><b class="only-a">$2.40</b><b class="only-b">$2.10</b><s>$3.00</s></div>
+          <div><small>캐시</small><b class="only-a">$0.24</b><b class="only-b">$0.21</b><s>$0.30</s></div>
+          <div><small>출력</small><b class="only-a">$12.00</b><b class="only-b">$10.50</b><s>$15.00</s></div>
+        </div>
+        <a class="go" href="#">플레이그라운드에서 써보기 →</a>
+      </div>
+      <div class="mcard">
+        <div class="top"><div><h3>Motif 3</h3><div class="vendor">모티프테크놀로지스 개발</div></div><span class="tag amber">국산</span></div>
+        <p class="desc">종합 지능 지수 47 · SWE-bench 76.2 · 가볍고 저렴해요</p>
+        <div class="price num">
+          <div><small>입력</small><b>$0.20</b><s style="visibility:hidden">-</s></div>
+          <div><small>캐시</small><b>$0.04</b><s style="visibility:hidden">-</s></div>
+          <div><small>출력</small><b>$0.80</b><s style="visibility:hidden">-</s></div>
+        </div>
+        <a class="go" href="#">플레이그라운드에서 써보기 →</a>
+      </div>
+    </div>
+    <div class="foot"><span>원화 · 국내 카드 결제 · 충전 수수료 0%<span class="only-b"> · 카드 등록 결제</span> · 2026년 10월 모델사 공식가 기준</span><a href="#calc">내 사용량으로 계산해 보기 ↓</a></div>
+  </div></section>
+
+  <!-- B: stability -->
+  <section class="blk only-b" id="s-stab"><div class="wrap">
+    <div class="kicker">안정성</div>
+    <h2 class="h">같은 모델이라도, 어디서 돌리느냐에 따라 끊깁니다</h2>
+    <p class="hsub">요청이 공급사를 오가지 않아서, 속도와 오류가 매번 달라지지 않아요</p>
+<div class="gw">
+      <div class="gwc">
+        <div class="gwh"><b>일반 게이트웨이</b><span>공급사가 바뀔 때마다</span></div>
+        <div class="gwrow">
+          <div class="gwn">내 요청</div><span class="gwa">→</span><div class="gwn">라우터</div><span class="gwa">→</span>
+          <div class="gwp">
+            <div><i></i><b>공급사 A</b><small>빠르지만 툴콜 오류</small></div>
+            <div><i></i><b>공급사 B</b><small>싸지만 느림</small></div>
+            <div><i></i><b>공급사 C</b><small>가끔 다운</small></div>
+          </div>
+        </div>
+        <div class="gwf"><span class="pill warn">속도·오류가 매번 달라요</span></div>
+      </div>
+      <div class="gwc us">
+        <div class="gwh"><b>Morfac</b><span>처음부터 끝까지 직접</span></div>
+        <div class="gwrow">
+          <div class="gwn">내 요청</div><span class="gwa">→</span><div class="gwn dk">Morfac GPU · 추론 엔진</div>
+          <span class="pill ok" style="margin-left:auto">매번 같은 품질</span>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- calculator -->
+  <section class="blk calc-sec" id="calc"><div class="wrap">
+    <div class="kicker">비용 계산기</div>
+    <h2 class="h">내 사용량이면, 한 달에 얼마나 아낄까요?</h2>
+    <p class="hsub">쓰는 방식과 양만 고르면 공식 API와 바로 비교해 드려요</p>
+
+    <div class="calc">
+      <div class="cin">
+        <div class="q"><div class="ql"><span class="qn">1</span>어떻게 쓰나요?</div>
+          <div class="opts" data-k="use">
+            <button class="opt on" data-v="coding"><b>코딩 에이전트</b><small>Claude Code·Cline 등</small></button>
+            <button class="opt" data-v="service"><b>서비스에 탑재</b><small>챗봇·RAG·기능 내장</small></button>
+            <button class="opt" data-v="batch"><b>대량 처리</b><small>문서 요약·데이터 변환</small></button>
+          </div></div>
+
+        <div class="q"><div class="ql"><span class="qn">2</span>어떤 모델로 계산할까요?</div>
+          <div class="opts sm" data-k="model">
+            <button class="opt on" data-v="glm"><b>GLM 5.3</b></button>
+            <button class="opt" data-v="kimi"><b>Kimi K3</b></button>
+            <button class="opt" data-v="both"><b>둘 다 반반</b></button>
+          </div></div>
+
+        <div class="q"><div class="ql"><span class="qn">3</span>얼마나 쓰나요?</div>
+          <div class="mseg" data-k="mode">
+            <button class="on" data-v="cost">월 비용</button><button data-v="people">사람 수</button><button data-v="tokens">토큰 수</button>
+          </div>
+          <div class="mode" data-m="cost">
+            <div class="rl"><span>모델사 공식 API 기준 한 달 사용 금액</span><b class="num" id="vCost">$300</b></div>
+            <input type="range" id="rCost" min="10" max="3000" step="10" value="300">
+            <div class="rt num"><span>$10</span><span>$3,000</span></div>
+            <div class="hint num" id="hCost">약 ₩432,900</div>
+          </div>
+          <div class="mode" data-m="people" hidden>
+            <div class="rl"><span>함께 쓰는 사람</span>
+              <div class="step"><button data-d="-1">−</button><b class="num" id="vPpl">5명</b><button data-d="1">＋</button></div></div>
+            <div class="rl" style="margin-top:14px"><span>한 사람이 하루에</span></div>
+            <div class="opts sm" data-k="inten">
+              <button class="opt" data-v="2"><b>가볍게</b><small>하루 약 2M 토큰</small></button>
+              <button class="opt on" data-v="8"><b>보통</b><small>하루 약 8M 토큰</small></button>
+              <button class="opt" data-v="20"><b>많이</b><small>하루 약 20M 토큰</small></button>
+            </div>
+            <div class="hint">한 달 21일 근무 기준</div>
+          </div>
+          <div class="mode" data-m="tokens" hidden>
+            <div class="rl"><span>한 달 토큰 수</span><b class="num" id="vTok">200M</b></div>
+            <input type="range" id="rTok" min="1" max="3000" step="1" value="200">
+            <div class="rt num"><span>1M</span><span>3,000M</span></div>
+            <div class="hint">입력·캐시·출력 합계 · 콘솔 사용량 화면에서 확인할 수 있어요</div>
+          </div>
+        </div>
+
+        <div class="q"><div class="ql"><span class="qn">4</span>가벼운 작업은 국산 모델 Motif 3로 <span class="tag amber" style="margin-left:6px">선택</span></div>
+          <div class="rl"><span>Motif 3로 옮길 비율</span><b class="num" id="vMot">0%</b></div>
+          <input type="range" id="rMot" min="0" max="60" step="5" value="0">
+          <div class="rt"><span>안 옮김</span><span>60%</span></div>
+        </div>
+
+        <details class="adv">
+          <summary>토큰 구성 직접 조정</summary>
+          <div class="mixrow num">
+            <label>입력<input id="mI" type="number" min="0" max="100">%</label>
+            <label>캐시<input id="mC" type="number" min="0" max="100">%</label>
+            <label>출력<input id="mO" type="number" min="0" max="100">%</label>
+          </div>
+          <div class="hint">사용 방식을 고르면 대표 구성이 들어가요. 콘솔 사용량 화면의 실제 비율을 넣으면 더 정확해요.</div>
+        </details>
+      </div>
+
+      <div class="cout">
+        <div class="ro-h">한 달 예상 비용</div>
+        <div class="cmpbars num">
+          <div class="cb"><div class="cbl"><span>모델사 공식 API</span><b id="oOff">$300</b></div><div class="cbt"><i id="bOff" style="width:100%"></i></div></div>
+          <div class="cb us"><div class="cbl"><span>Morfac</span><b id="oUs">$193</b></div><div class="cbt"><i id="bUs" style="width:64%"></i></div></div>
+        </div>
+        <div class="savebox num">
+          <small>매달 아끼는 금액</small>
+          <div class="sv"><span id="oSave">$107</span><em id="oPct">−36%</em></div>
+          <div class="yr" id="oYr">1년이면 약 ₩1,840,000</div>
+        </div>
+        <table class="bd num" id="oBd"></table>
+        <p class="basis" id="oBasis"></p>
+        <div class="cbtns">
+          
+          <div class="sharewrap" style="flex:1">
+            <button class="btn pri lg" id="shareBtn" style="width:100%">↗ 팀에 공유하기</button>
+            <div class="sharepop" id="sharePop">
+              <div class="scard num">
+                <div class="sc-top"><span class="logo" style="font-size:14px"><i style="width:16px;height:16px"></i>Morfac</span><span style="font-size:11.5px;color:var(--mute)">비용 계산 결과</span></div>
+                <div class="sc-t" id="scT">코딩 에이전트 · GLM 5.3 · 월 $300 기준</div>
+                <div class="sc-v"><span id="scV">월 $107</span> 절약</div>
+                <div class="sc-s" id="scS">연 약 ₩1,840,000 · 공식 API 대비 −36%</div>
+              </div>
+              <div class="sp-btns">
+                <button class="btn sec" id="copyLink" style="flex:1">링크 복사</button>
+                <button class="btn sec" style="flex:1">이미지로 저장</button>
+              </div>
+              <div class="sp-url" id="spUrl">morfac.ai/calc?u=coding&amp;m=glm&amp;c=300</div>
+            </div>
+          </div>
+        </div>
+        <div class="teamline only-a" id="teamA">여러 명이 함께 쓸 계획이라면 <a href="#" data-open="team">팀으로 쓰고 싶어요 →</a></div>
+        <div class="teamline only-b" id="teamB">여러 명이 함께 쓴다면 <a href="#">팀 만들기 →</a> 멤버별 한도와 세금계산서까지</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- persona -->
+  <section class="blk" id="s-persona"><div class="wrap">
+    <div class="kicker">이런 분께</div>
+    <h2 class="h">어떤 게 가장 필요하세요?</h2>
+    <p class="hsub">쓰는 방식에 맞게 골라 보세요</p>
+    <nav class="pnav" id="pnav">
+      <a href="#per-1" class="on"><span class="n">1</span>비용을 줄이고 싶어요</a>
+      <a href="#per-2"><span class="n">2</span>데이터가 모델사로 가는 게 찝찝해요</a>
+      <a href="#per-3"><span class="n">3</span>국산 모델 Motif를 쓰고 싶어요</a>
+    </nav>
+
+    <div class="ppanel" id="per-1" data-p="1">
+      <div>
+        <h3>구독 한도에 막혀도 작업은 계속.<br>쓰던 도구에 모델만 바꿔 끼우세요</h3>
+        <p class="d">Claude Code·Cline·OpenCode에서 주소와 키만 바꾸면 GLM·Kimi로 이어서 작업해요. 쓰는 만큼만 충전해서 쓰면 돼요.</p>
+        <ul class="chk">
+          <li>공식 API보다 최대 <span class="only-a">36%</span><span class="only-b">40%</span> 저렴</li>
+          <li>Anthropic·OpenAI 호환 엔드포인트</li>
+          <li>원화 결제 · 국내 카드, 충전 수수료 0%</li>
+          <li class="only-b">카드 등록해 두면 충전이 한 번에</li>
+        </ul>
+        <div class="pbtns"><a class="btn pri" href="#">3분 설정 가이드</a><a class="btn line" href="#calc">내 사용량으로 계산해 보기</a></div>
+      </div>
+      <div class="vis">
+        <div class="sv-h"><span>코딩 에이전트 · GLM 5.3 · 월 $300 쓰던 만큼</span></div>
+        <div class="sv-big num"><span class="only-a">$107</span><span class="only-b">$119</span><small class="only-a">−36%</small><small class="only-b">−40%</small></div>
+        <div class="sv-krw num">매달 아끼는 금액 · 1년이면 약 <span class="only-a">₩1,846,000</span><span class="only-b">₩2,061,000</span></div>
+        <div class="duo num">
+          <div class="r"><span>공식 API</span><div class="t"><i style="width:100%;background:var(--line2)"></i></div><b>$300</b></div>
+          <div class="r"><span>Morfac</span><div class="t"><i class="only-a" style="width:64%"></i><i class="only-b" style="width:60%"></i></div><b><span class="only-a">$193</span><span class="only-b">$181</span></b></div>
+        </div>
+        <a href="#calc" style="display:block;margin-top:18px;font-size:13.5px;color:var(--mint);font-weight:600">내 사용량으로 다시 계산하기 →</a>
+      </div>
+    </div>
+
+    <div class="ppanel" id="per-2" data-p="2">
+      <div>
+        <h3 class="only-a">GLM·Kimi를 써도<br>입력은 모델 개발사로 가지 않아요</h3>
+        <h3 class="only-b">정식 서비스에 모델을 넣어도<br>데이터는 우리 장비 밖으로 나가지 않아요</h3>
+        <p class="d only-a">공개된 모델 가중치로 직접 서빙해서, 모델 개발사 API를 거치지 않아요. 프롬프트와 응답 본문은 저장하지 않아요.</p>
+        <p class="d only-b">장비부터 추론 엔진까지 직접 운영하고, 다른 공급사로 넘기지 않아요. 가드레일로 민감정보를 막고, 팀 키와 한도로 관리해요.</p>
+        <ul class="chk only-a">
+          <li>모델 개발사 API·중국 경유 없음</li>
+          <li>프롬프트·응답 본문 미저장, 학습에 쓰지 않음</li>
+          <li>보관하는 기록과 기간을 모두 공개</li>
+          <li class="soon">팀 키·멤버 관리, 세금계산서, 민감정보 차단 <span class="tag gray">준비 중</span></li>
+        </ul>
+        <ul class="chk only-b">
+          <li>Morfac 데이터센터에서만 처리, 다른 공급사로 넘기지 않음</li>
+          <li>프롬프트·응답 본문 미저장, 학습에 쓰지 않음</li>
+          <li>가드레일: 개인정보 마스킹·입력 필터</li>
+          <li>팀 키·멤버별 한도·세금계산서</li>
+        </ul>
+        <div class="pbtns only-a flex"><a class="btn pri" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn line" href="#">PDF로 받기</a></div>
+        <div class="pbtns only-b flex"><a class="btn pri" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn line" href="#">도입 문의</a></div>
+      </div>
+      <div class="vis">
+        <div class="path">
+          <div class="node"><div class="ic">⌘</div><div><b>내 애플리케이션</b><small>API 키로 요청</small></div></div>
+          <div class="arr">↓</div>
+          <div class="node"><div class="ic">⇆</div><div><b>Morfac 게이트웨이</b><small>인증·과금 · 본문 기록 없음</small></div></div>
+          <div class="arr">↓</div>
+          <div class="node hl"><div class="ic">▣</div><div>
+            <b class="only-a">추론 서버 · 일본 데이터센터</b><b class="only-b">Morfac 데이터센터 · 직접 운영</b>
+            <small>공개 가중치로 GLM·Kimi 서빙</small></div></div>
+          <div class="blocked"><s>Z.ai · Moonshot API</s> 거치지 않음</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ppanel" id="per-3" data-p="3">
+      <div>
+        <h3>국산 모델 Motif 3,<br>같은 API 키로 바로</h3>
+        <p class="d">GLM·Kimi를 쓰던 키 그대로 모델 이름만 바꾸면 돼요. 가볍고 저렴해서 서비스 기능이나 대량 처리에도 부담 없어요.</p>
+        <ul class="chk">
+          <li>종합 지능 지수 47 · SWE-bench 76.2 · Terminal-Bench 74.9</li>
+          <li>입력 $0.20 / 출력 $0.80 (100만 토큰)</li>
+          <li>도구 호출 · JSON 출력 지원</li>
+        </ul>
+        <div class="pbtns"><a class="btn pri" href="#">Motif 3 써보기</a><a class="btn line" href="#">모델 상세</a></div>
+      </div>
+      <div class="vis">
+        <div class="mc num">
+          <div class="grp"><small>출력 100만 토큰당 가격</small>
+            <div class="r us"><span>Motif 3</span><i style="width:6%"></i><em>$0.80</em></div>
+            <div class="r"><span>GLM 5.3</span><i style="width:21%"></i><em class="only-a">$2.82</em><em class="only-b">$2.64</em></div>
+            <div class="r"><span>Kimi K3</span><i style="width:90%"></i><em class="only-a">$12.00</em><em class="only-b">$10.50</em></div>
+          </div>
+          <div class="grp"><small>입력 100만 토큰당 가격</small>
+            <div class="r us"><span>Motif 3</span><i style="width:8%"></i><em>$0.20</em></div>
+            <div class="r"><span>GLM 5.3</span><i style="width:37%"></i><em class="only-a">$0.90</em><em class="only-b">$0.84</em></div>
+            <div class="r"><span>Kimi K3</span><i style="width:90%"></i><em class="only-a">$2.40</em><em class="only-b">$2.10</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- team -->
+  <section class="blk" id="team"><div class="wrap">
+    <div class="kicker">팀 · 조직 <span class="tag gray only-a" style="margin-left:6px">준비 중</span></div>
+    <h2 class="h">팀 AI 비용을 한 곳에서</h2>
+    <p class="hsub only-a">팀 기능을 준비하고 있어요. 신청하시면 열리는 대로 가장 먼저 알려드릴게요</p>
+    <p class="hsub only-b">개인 계정에서 팀으로 넘어오면 결제·키·정책을 한 번에 관리해요</p>
+    <div class="team4">
+      <div class="tbox"><div class="ic">👥</div><b>멤버 초대</b><span>역할별 권한, 초대하면 서로 $5 크레딧</span><em class="soonb only-a">준비 중</em></div>
+      <div class="tbox"><div class="ic">🔑</div><b>팀 키 · 한도</b><span>멤버·프로젝트별 키와 월 사용 한도</span><em class="soonb only-a">준비 중</em></div>
+      <div class="tbox"><div class="ic">₩</div><b>원화 결제 · 세금계산서</b><span class="only-a">원화 카드 결제는 지금 가능, 세금계산서는 준비 중</span><span class="only-b">카드 등록 결제, 세금계산서 발행</span><em class="soonb only-a" style="background:var(--mintbg);color:var(--mint2)">일부 제공</em></div>
+      <div class="tbox"><div class="ic">🛡</div><b>가드레일</b><span>민감정보 차단, 허용 모델 지정</span><em class="soonb only-a">준비 중</em></div>
+    </div>
+    <div class="contact only-a flex" style="margin-top:20px">
+      <div><h3>팀으로 쓸 계획이신가요?</h3><p>인원과 필요한 기능을 알려주시면 팀 기능이 열리는 대로 먼저 안내해 드려요.</p></div>
+      <div class="pbtns"><a class="btn line" href="#" data-go="security">보안·데이터 처리 안내</a><button class="btn pri" data-open="team">팀으로 쓰고 싶어요</button></div>
+    </div>
+    <div class="contact only-b flex" style="margin-top:20px">
+      <div><h3>보안 검토가 필요하신가요?</h3><p>보안·데이터 처리 안내서와 질문지 대응, 파일럿 크레딧을 드려요.</p></div>
+      <div class="pbtns"><a class="btn line" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn pri" href="#">팀 만들기</a><a class="btn sec" href="#">도입 문의</a></div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap">
+    <div class="kicker" id="s-tools">연결</div>
+    <h2 class="h">쓰던 도구 그대로</h2>
+    <p class="hsub">도구별 설정 가이드를 따라 하면 첫 요청까지 5분이면 충분해요</p>
+    <div class="tools">
+      <div class="tool"><i></i>Claude Code</div><div class="tool"><i></i>Cline</div><div class="tool"><i></i>OpenCode</div><div class="tool"><i></i>Kimi CLI</div><div class="tool"><i></i>Hermes Agent</div><div class="tool"><i></i>Cursor</div><div class="tool"><i></i>OpenAI SDK</div><div class="tool"><i></i>LangChain</div>
+    </div>
+  </div></section>
+
+  <section class="blk" id="s-cta" style="border-top:0;padding-top:20px"><div class="wrap">
+    <div class="closing">
+      <div><h2>내 작업에 충분한지, 먼저 비교해 보세요</h2><p>플레이그라운드에서 GLM·Kimi·Motif 3를 나란히 써보고 시작하세요.</p></div>
+      <div class="pbtns"><a class="btn sec lg" href="#">플레이그라운드 열기</a><a class="btn pri lg" href="#">무료로 시작하기</a></div>
+    </div>
+  </div></section>
+
+  <footer class="site"><div class="wrap">
+    <div>© Morfac · 주식회사 모르팩<br><span class="only-a">추론 처리 위치: 일본 (국외 이전 고지)</span><span class="only-b">추론 처리: Morfac 자체 데이터센터</span></div>
+    <nav><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#" data-go="security">보안·데이터 처리</a><a class="only-b" href="#">상태 페이지</a></nav>
+  </div></footer>
+</div>
+
+<!-- ============ SKELETON ============ -->
+<div class="page" id="p-skel">
+  <div class="wrap" style="padding-top:44px;padding-bottom:80px">
+    <h1 style="font-size:28px;letter-spacing:-.02em;margin:0 0 6px">메인 화면 구조</h1>
+    <p style="color:var(--sub);margin:0 0 28px">블록을 누르면 해당 시점 화면의 그 섹션으로 이동해요 · 진한 테두리가 핵심 4블록</p>
+    <div class="skc">
+      <div><div class="skt">정식 오픈 시점</div><div class="skcol" data-ph="a"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>GLM·Kimi를 더 싸게, 국산 모델 Motif 3까지 API 키 하나로</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">키 하나 → Morfac API → 모델 3</div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>② 모델 · 가격</b><span>↗</span></div><p>GLM 5.3 · Kimi K3 · Motif 3 — 가격 · 공식가 취소선 · 할인율 + 결제 조건</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div><div class="sk ghost"><div class="sk-h"><b>③ 자체 서빙 · 안정성</b><span class="tag gray">자체 서빙 후 노출</span></div><p>장비 투입·실측 확보 전이라 섹션 없음</p></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산(방식·모델·사용량·Motif 비율) → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:70px"></div><div class="m" style="height:70px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 이런 분께</b><span>↗</span></div><p>앵커 3개 → 비용 · 데이터가 모델사로 · 국산 모델 블록이 차례로 펼쳐짐, 블록마다 CTA</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:16px"></div><div style="height:16px"></div><div style="height:16px"></div></div><div class="sk-grid" style="margin-top:6px"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 · 조직 <span class="tag gray">준비 중</span></b><span>↗</span></div><p>4개 기능 준비 중 표시 + 팀으로 쓰고 싶어요(신청)</p><div class="sk-grid" style="grid-template-columns:repeat(4,1fr)"><div></div><div></div><div></div><div></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 무료로 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
+      <div><div class="skt b">자체 서빙 후</div><div class="skcol" data-ph="b"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>같은 오픈웨이트 모델, 직접 돌려서 더 싸고 더 안정적입니다</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">키 하나 → Morfac GPU → 모델 3</div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>② 모델 · 가격</b><span>↗</span></div><p>GLM 5.3 · Kimi K3 · Motif 3 — 가격 · 공식가 취소선 · 할인율 + 결제 조건</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div><div class="sk core" data-jump="s-stab"><div class="sk-h"><b>③ 자체 서빙 · 안정성</b><span>↗</span></div><p>일반 게이트웨이 vs Morfac</p><div class="sk-grid" style="grid-template-columns:1.25fr 1fr"><div></div><div class="m"></div></div></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산(방식·모델·사용량·Motif 비율) → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:70px"></div><div class="m" style="height:70px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 이런 분께</b><span>↗</span></div><p>앵커 3개 → 비용 · 데이터가 모델사로 · 국산 모델 블록이 차례로 펼쳐짐, 블록마다 CTA</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:16px"></div><div style="height:16px"></div><div style="height:16px"></div></div><div class="sk-grid" style="margin-top:6px"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 · 조직</b><span>↗</span></div><p>4개 기능 제공 + 팀 만들기 · 도입 문의</p><div class="sk-grid" style="grid-template-columns:repeat(4,1fr)"><div></div><div></div><div></div><div></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 무료로 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECURITY ============ -->
+<div class="page" id="p-security">
+  <header class="site"><div class="wrap">
+    <a class="logo" href="#" data-go="home"><i></i>Morfac</a>
+    <nav class="gnb"><a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#">Docs</a></nav>
+    <div class="hright"><a class="btn ghost" href="#">로그인</a><a class="btn pri" href="#">시작하기</a></div>
+  </div></header>
+
+  <div class="wrap">
+    <div class="sec-hero">
+      <div class="crumb"><a href="#" data-go="home">Morfac</a> › 보안·데이터 처리</div>
+      <span class="eyebrow">보안·구매 검토 담당자를 위한 요약</span>
+      <h1>보낸 데이터가 어디를 지나고,<br>무엇이 얼마나 남는지 모두 공개합니다</h1>
+      <p class="lead" style="margin:0">팀 내부 보안 검토나 구매 검토에 그대로 쓸 수 있도록 한 페이지로 정리했어요.</p>
+      <div class="sec-meta"><span class="only-a">v1.0 · 2026년 12월 기준</span><span class="only-b">v2.0 · 2027년 1분기 기준</span><span>변경 시 이 페이지와 개인정보처리방침에 미리 공지</span></div>
+      <div class="pbtns"><a class="btn sec" href="#">PDF로 받기</a><a class="btn line" href="#">보안 질문지 보내기</a></div>
+    </div>
+
+    <div class="sec-layout">
+      <nav class="toc">
+        <a href="#s1" class="on">한눈에 보기</a><a href="#s2">요청이 지나는 길</a><a href="#s3">보관 기간</a><a href="#s4">데이터를 맡기는 곳</a><a href="#s5">가드레일</a><a href="#s6">자주 받는 질문</a>
+      </nav>
+      <div class="sec-body">
+        <div id="s1"><h2>한눈에 보기</h2><p class="s">&nbsp;</p>
+          <div class="keys">
+            <div class="key"><div class="n">01</div><b>프롬프트·응답 본문은 저장하지 않아요</b><span>추론에 쓰고 바로 버려요. 저장 기능은 고객이 직접 켤 때만 제공할 예정이에요.</span></div>
+            <div class="key"><div class="n">02</div><b>모델 학습에 쓰지 않아요</b><span>입력과 출력 데이터로 모델을 학습시키지 않아요.</span></div>
+            <div class="key"><div class="n">03</div><b>모델 개발사로 데이터가 가지 않아요</b><span>GLM·Kimi는 공개된 모델 가중치로 서빙해요. 모델 개발사 API를 거치지 않고, 중국을 경유하지 않아요.</span></div>
+            <div class="key"><div class="n">04</div><b>보관하는 기록과 기간을 모두 공개해요</b><span>요청 기록은 1년 보관하고, 그 기간 동안 콘솔에서 직접 볼 수 있어요.</span></div>
+          </div>
+        </div>
+
+        <div id="s2"><h2>요청 한 건이 지나는 길</h2><p class="s">본문은 추론 서버에서만 처리되고, 어디에도 기록되지 않아요.</p>
+          <div class="hflow">
+            <div class="node"><div class="ic">⌘</div><div><b>고객 애플리케이션</b><small>API 키로 요청</small></div></div>
+            <div class="a">→</div>
+            <div class="node"><div class="ic">⇆</div><div><b>API 게이트웨이</b><small>AWS 서울 리전<br>인증·과금·사용량 기록</small></div></div>
+            <div class="a">→</div>
+            <div class="node hl"><div class="ic">▣</div><div>
+              <b class="only-a">추론 서버(GPU)</b><b class="only-b">Morfac 데이터센터</b>
+              <small class="only-a">일본 데이터센터에서 처리</small><small class="only-b">데이터센터·GPU·추론 엔진 직접 운영<br>다른 공급사로 넘기지 않음</small></div></div>
+            <div class="a">→</div>
+            <div class="node"><div class="ic">↩</div><div><b>응답 반환</b><small>본문은 남지 않음</small></div></div>
+          </div>
+          <p class="note">전송 구간은 TLS 1.2 이상으로 암호화해요. 게이트웨이는 본문이 아닌 메타데이터(시각, 모델, 토큰 수, 상태 코드, 응답 시간)만 기록해요.</p>
+        </div>
+
+        <div id="s3"><h2>무엇을, 얼마나 보관하나요</h2><p class="s">&nbsp;</p>
+          <div class="tbl"><table>
+            <thead><tr><th>데이터</th><th>보관 기간</th><th>이유</th></tr></thead>
+            <tbody>
+              <tr><td>프롬프트·응답 본문</td><td class="p z">저장 안 함</td><td class="sm">추론 처리 후 즉시 폐기</td></tr>
+              <tr><td>요청 기록 <span class="sm">(시각·모델·토큰·상태 코드·응답 시간)</span></td><td class="p">1년</td><td class="sm">콘솔 로그 조회, 과금 분쟁·환불 대응</td></tr>
+              <tr><td>접속 기록 <span class="sm">(IP·브라우저 정보·로그인)</span></td><td class="p">1년</td><td class="sm">부정 이용 탐지, 보안 사고 대응</td></tr>
+              <tr><td>일별·모델별 사용량 집계</td><td class="p">탈퇴 시까지</td><td class="sm">콘솔 전체 기간 사용량 조회</td></tr>
+              <tr><td>크레딧 충전·사용 기록</td><td class="p">5년</td><td class="sm">전자상거래법 (대금 결제 기록)</td></tr>
+              <tr class="only-a"><td>팀 이용 신청 정보</td><td class="p">출시 안내 후 파기</td><td class="sm">팀 기능 출시 안내·수요 조사</td></tr>
+              <tr><td>카드 번호</td><td class="p z">저장 안 함</td><td class="sm">토스페이먼츠가 처리</td></tr>
+            </tbody>
+          </table></div>
+          <p class="note">탈퇴하면 계정, API 키, 요청 기록을 영업일 5일 이내에 파기해요. 법으로 정한 결제 기록만 기간 동안 따로 보관해요.</p>
+        </div>
+
+        <div id="s4"><h2>데이터를 맡기는 곳</h2><p class="s">국외 이전 항목은 개인정보처리방침에 이전받는 자, 국가, 항목, 기간까지 모두 적어요.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>업체</th><th>하는 일</th><th>위치</th></tr></thead>
+            <tbody>
+              <tr><td>Amazon Web Services</td><td class="sm">회원 정보, 크레딧 원장, 요청 기록 저장</td><td>한국</td></tr>
+              <tr class="only-a"><td>GPU 인프라 제공사</td><td class="sm">추론 서버(GPU) 제공</td><td>일본</td></tr>
+              <tr class="only-b"><td>Morfac (직접 운영)</td><td class="sm">데이터센터·GPU·추론 엔진</td><td>자체 데이터센터</td></tr>
+              <tr><td>토스페이먼츠</td><td class="sm">카드 결제<span class="only-b"> · 카드 등록 결제</span></td><td>한국</td></tr>
+              <tr><td>메일·고객지원 도구</td><td class="sm">인증·알림 메일, 문의 응대</td><td>미국</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div id="s5"><h2>가드레일</h2><p class="s">&nbsp;</p>
+          <div class="guard">
+            <div class="key"><span class="tag gray only-a">준비 중</span><span class="tag mint only-b">제공 중</span><b>민감정보 차단</b><span>주민등록번호, 카드 번호, 연락처 같은 개인정보가 요청에 섞이면 가리거나 막아요.</span></div>
+            <div class="key"><span class="tag gray only-a">준비 중</span><span class="tag mint only-b">제공 중</span><b>팀 단위 정책</b><span>팀 관리자가 허용 모델, 멤버별 한도, 차단 규칙을 정해요.</span></div>
+          </div>
+        </div>
+
+        <div id="s6"><h2>자주 받는 질문</h2><p class="s">&nbsp;</p>
+          <div class="faq">
+            <details open><summary>중국 모델을 쓰면 데이터가 중국으로 가나요?</summary><p class="only-a">아니요. 공개된 모델 가중치로 일본 데이터센터에서 서빙해요. 모델 개발사는 요청을 받지 않아요.</p><p class="only-b">아니요. 공개된 모델 가중치로 Morfac 데이터센터에서 직접 서빙해요. 모델 개발사는 요청을 받지 않아요.</p></details>
+            <details class="only-a"><summary>국내에서 처리되나요?</summary><p>지금은 일본에서 처리해요. 국내 데이터센터 일정이 정해지면 이 페이지에서 알려드려요.</p></details>
+            <details><summary>장애나 남용을 조사할 때 본문을 보나요?</summary><p>본문 없이 요청 기록과 탐지 결과만으로 대응해요.</p></details>
+            <details><summary>보안 질문지에 답해 줄 수 있나요?</summary><p>네. 아래 버튼으로 보내 주시면 담당자가 회신해요.</p></details>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div><h3>보안 검토 중이신가요?</h3><p>보안 질문지나 추가 자료가 필요하면 security@morfac.ai로 보내 주세요.</p></div>
+          <div class="pbtns">
+            <a class="btn line" href="#">보안 질문지 보내기</a>
+            <button class="btn pri only-a" data-open="team">팀으로 쓰고 싶어요</button>
+            <a class="btn pri only-b" href="#">도입 문의</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site"><div class="wrap">
+    <div>© Morfac · 주식회사 모르팩</div>
+    <nav><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">보안·데이터 처리</a></nav>
+  </div></footer>
+</div>
+
+<!-- ============ TEAM MODAL ============ -->
+<div class="dim" id="teamDim">
+  <div class="modal" id="mForm">
+    <div class="mh">
+      <h3>팀으로 쓰고 싶어요</h3>
+      <p>팀 기능이 열리면 가장 먼저 알려드릴게요. 어떤 기능부터 만들지 정하는 데 씁니다.</p>
+      <button class="x" data-close>✕</button>
+    </div>
+    <div class="mb">
+      <div class="fld"><label class="l">이메일 <span class="req">*</span></label><input class="inp" value="hanah@morfac.ai"></div>
+      <div class="two">
+        <div class="fld"><label class="l">회사·팀 이름 <small>선택</small></label><input class="inp" placeholder="예: 모르팩 개발팀"></div>
+        <div class="fld"><label class="l">역할 <small>선택</small></label><input class="inp" placeholder="예: 팀장, CTO, 개발자"></div>
+      </div>
+      <div class="fld"><label class="l">몇 명이 함께 쓰나요? <span class="req">*</span></label>
+        <div class="chips single"><button class="chip">2~5명</button><button class="chip on">6~20명</button><button class="chip">21~50명</button><button class="chip">50명 이상</button></div></div>
+      <div class="fld"><label class="l">어디에 쓰나요? <span class="req">*</span> <small>여러 개 선택</small></label>
+        <div class="chips"><button class="chip on">코딩 에이전트</button><button class="chip">사내 업무 도구</button><button class="chip on">우리 서비스에 모델 탑재</button><button class="chip">문서·데이터 처리</button><button class="chip">기타</button></div></div>
+      <div class="fld"><label class="l">가장 필요한 팀 기능은? <span class="req">*</span> <small>최대 3개</small></label>
+        <div class="chips"><button class="chip on">멤버·팀 키 관리</button><button class="chip">원화 결제·세금계산서</button><button class="chip on">멤버별 사용 한도</button><button class="chip">사용량 리포트</button><button class="chip">가드레일 (민감정보 차단)</button><button class="chip">보안 검토 자료·계약</button><button class="chip">국내 데이터센터</button></div></div>
+      <div class="fld"><label class="l">언제부터 쓰고 싶나요? <small>선택</small></label>
+        <div class="chips single"><button class="chip">바로</button><button class="chip on">3개월 안</button><button class="chip">올해 안</button><button class="chip">아직 탐색 중</button></div></div>
+      <div class="fld"><label class="l">팀의 월 AI API 비용은? <small>선택</small></label>
+        <div class="chips single"><button class="chip">10만 원 미만</button><button class="chip">10~50만 원</button><button class="chip">50~200만 원</button><button class="chip">200만 원 이상</button><button class="chip">잘 모름</button></div></div>
+      <div class="fld"><label class="l">지금은 어디서 쓰고 있나요? <small>선택 · 여러 개</small></label>
+        <div class="chips"><button class="chip">OpenRouter 등 게이트웨이</button><button class="chip">모델사 공식 API</button><button class="chip">클라우드 (Bedrock·Vertex 등)</button><button class="chip">구독형 도구만</button><button class="chip">아직 없음</button></div></div>
+      <div class="agree">
+        <label><input type="checkbox" checked> <span>[필수] 개인정보 수집·이용 동의 — 이메일, 회사·팀 이름, 역할 / 팀 기능 출시 안내와 수요 조사 / 출시 안내 후 파기<a href="#">자세히</a></span></label>
+        <label><input type="checkbox" id="secChk"> <span>[선택] 보안 검토가 필요해요. 담당자가 따로 연락 주세요.</span></label>
+      </div>
+    </div>
+    <div class="mf"><small>제출해도 지금처럼 개인 계정으로 바로 쓸 수 있어요</small><button class="btn pri lg" id="submitTeam">신청하기</button></div>
+  </div>
+
+  <div class="modal" id="mDone" style="display:none">
+    <div class="done">
+      <div class="ok">✓</div>
+      <h3>신청이 접수됐어요</h3>
+      <p>팀 기능이 열리면 hanah@morfac.ai로 가장 먼저 알려드릴게요.<span id="secMsg" style="display:none"> 보안 검토 담당자가 2영업일 안에 연락드려요.</span><br>그 전에 보안 검토가 필요하다면 아래 문서를 먼저 보세요.</p>
+      <div class="pbtns"><button class="btn sec" data-go="security" data-close>보안·데이터 처리 안내 보기</button><button class="btn pri" data-close>개인 계정으로 시작하기</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const body=document.body;
+// phase
+document.querySelectorAll('#phaseSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#phaseSeg button').forEach(x=>x.classList.toggle('on',x===b));
+  body.dataset.phase=b.dataset.phase;
+  if(b.dataset.phase==='b')closeModal();
+});
+// pages
+function go(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id==='p-'+p));
+  document.querySelectorAll('#pageSeg button').forEach(x=>x.classList.toggle('on',x.dataset.page===p));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('#pageSeg button').forEach(b=>b.onclick=()=>go(b.dataset.page));
+document.addEventListener('click',e=>{
+  const j=e.target.closest('[data-jump]'); if(j){const ph=j.closest('.skcol').dataset.ph;document.querySelector('#phaseSeg button[data-phase='+ph+']').click();go('home');setTimeout(()=>document.getElementById(j.dataset.jump).scrollIntoView({block:'start'}),30);return}
+  const g=e.target.closest('[data-go]'); if(g){e.preventDefault();go(g.dataset.go)}
+  const o=e.target.closest('[data-open]'); if(o){e.preventDefault();openModal()}
+  const c=e.target.closest('[data-close]'); if(c){closeModal()}
+  const chip=e.target.closest('.chip'); if(chip){
+    const box=chip.parentElement;
+    if(box.classList.contains('single')) box.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===chip));
+    else chip.classList.toggle('on');
+  }
+  if(e.target.id==='teamDim')closeModal();
+});
+// tabs
+const pLinks=[...document.querySelectorAll('#pnav a')];
+pLinks.forEach(l=>l.onclick=e=>{e.preventDefault();document.querySelector(l.getAttribute('href')).scrollIntoView({behavior:'smooth',block:'start'})});
+window.addEventListener('scroll',()=>{let cur=pLinks[0];pLinks.forEach(l=>{if(document.querySelector(l.getAttribute('href')).getBoundingClientRect().top<220)cur=l});pLinks.forEach(l=>l.classList.toggle('on',l===cur))},{passive:true});
+// modal
+const dim=document.getElementById('teamDim');
+function openModal(){document.getElementById('mForm').style.display='';document.getElementById('mDone').style.display='none';dim.classList.add('on')}
+function closeModal(){dim.classList.remove('on')}
+document.getElementById('submitTeam').onclick=()=>{
+  document.getElementById('secMsg').style.display=document.getElementById('secChk').checked?'inline':'none';
+  document.getElementById('mForm').style.display='none';document.getElementById('mDone').style.display='';
+};
+// ---- calculator ----
+const FX=1443;
+const OFF={glm:{i:1.40,c:.26,o:4.40},kimi:{i:3.00,c:.30,o:15.00}};
+const US={a:{glm:{i:.90,c:.17,o:2.82},kimi:{i:2.40,c:.24,o:12.00}},b:{glm:{i:.84,c:.16,o:2.64},kimi:{i:2.10,c:.21,o:10.50}}};
+const MOTIF={i:.20,c:.04,o:.80};
+const MIX={coding:[21.5,71.8,6.7],service:[60,25,15],batch:[80,5,15]};
+const USE_L={coding:'코딩 에이전트',service:'서비스 탑재',batch:'대량 처리'};
+const MOD_L={glm:'GLM 5.3',kimi:'Kimi K3',both:'GLM·Kimi 반반'};
+const W={glm:{glm:1},kimi:{kimi:1},both:{glm:.5,kimi:.5}};
+const st={use:'coding',model:'glm',mode:'cost',inten:8,ppl:5};
+const $=id=>document.getElementById(id);
+const usd=v=>'$'+(v>=100?Math.round(v).toLocaleString():v.toFixed(2));
+const krw=v=>'₩'+(Math.round(v*FX/1000)*1000).toLocaleString();
+function setMix(){const m=MIX[st.use];$('mI').value=m[0];$('mC').value=m[1];$('mO').value=m[2]}
+function mix(){let a=[+$('mI').value||0,+$('mC').value||0,+$('mO').value||0];const t=a[0]+a[1]+a[2]||1;return a.map(x=>x/t)}
+const per=(p,m)=>p.i*m[0]+p.c*m[1]+p.o*m[2];
+function calc(){
+  const ph=document.body.dataset.phase,m=mix(),w=W[st.model];
+  let offPer=0,usPer=0;for(const k in w){offPer+=w[k]*per(OFF[k],m);usPer+=w[k]*per(US[ph][k],m)}
+  let T;
+  if(st.mode==='cost')T=+$('rCost').value/offPer;
+  else if(st.mode==='people')T=st.ppl*st.inten*21;
+  else T=+$('rTok').value;
+  const s=+$('rMot').value/100;
+  const off=T*offPer, motif=T*s*per(MOTIF,m);
+  const rows=[];let us=motif;
+  for(const k in w){const t=T*(1-s)*w[k],c=t*per(US[ph][k],m);us+=c;rows.push([k==='glm'?'GLM 5.3':'Kimi K3',t,c])}
+  if(s>0)rows.push(['Motif 3',T*s,motif]);
+  const save=off-us,pct=off?save/off:0;
+  $('oOff').textContent=usd(off);$('oUs').textContent=usd(us);
+  $('bUs').style.width=(us/off*100)+'%';
+  $('oSave').textContent=usd(save);$('oPct').textContent='−'+Math.round(pct*100)+'%';
+  $('oYr').textContent='1년이면 약 '+krw(save*12)+' · 매달 약 '+krw(save);
+  $('oBd').innerHTML='<tr><th>모델</th><th>토큰</th><th>Morfac 비용</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]>=10?Math.round(r[1]).toLocaleString():r[1].toFixed(1)}M</td><td>${usd(r[2])}</td></tr>`).join('');
+  const mm=mix().map(x=>Math.round(x*1000)/10);
+  $('oBasis').textContent=`입력 ${mm[0]}% · 캐시 ${mm[1]}% · 출력 ${mm[2]}% 기준 · 2026년 10월 공식가 · ₩${FX.toLocaleString()}/$ · 실제 비용은 캐시 적중률에 따라 달라져요`;
+  if(st.mode==='cost'){const c=+$('rCost').value;$('vCost').textContent='$'+c.toLocaleString();$('hCost').textContent='약 '+krw(c)}
+  $('vTok').textContent=(+$('rTok').value).toLocaleString()+'M';
+  $('vPpl').textContent=st.ppl+'명';
+  $('vMot').textContent=Math.round(s*100)+'%';
+  const base=st.mode==='cost'?'월 $'+(+$('rCost').value).toLocaleString():st.mode==='people'?st.ppl+'명이 사용':Math.round(T).toLocaleString()+'M 토큰';
+  $('scT').textContent=`${USE_L[st.use]} · ${MOD_L[st.model]} · ${base} 기준`;
+  $('scV').textContent='월 '+usd(save);
+  $('scS').textContent=`연 약 ${krw(save*12)} · 공식 API 대비 −${Math.round(pct*100)}%`;
+  $('spUrl').textContent=`morfac.ai/calc?u=${st.use}&m=${st.model}&${st.mode==='cost'?'c='+$('rCost').value:st.mode==='people'?'p='+st.ppl+'&d='+st.inten:'t='+$('rTok').value}${s?'&motif='+Math.round(s*100):''}`;
+  const team=st.mode==='people'&&st.ppl>1;
+  $('teamA').style.visibility=$('teamB').style.visibility=team?'visible':'hidden';
+}
+document.querySelectorAll('.calc .opts').forEach(g=>g.addEventListener('click',e=>{
+  const o=e.target.closest('.opt');if(!o)return;
+  g.querySelectorAll('.opt').forEach(x=>x.classList.toggle('on',x===o));
+  const k=g.dataset.k;st[k]=k==='inten'?+o.dataset.v:o.dataset.v;
+  if(k==='use')setMix();calc();
+}));
+document.querySelectorAll('.mseg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.mseg button').forEach(x=>x.classList.toggle('on',x===b));
+  st.mode=b.dataset.v;document.querySelectorAll('.mode').forEach(m=>m.hidden=m.dataset.m!==st.mode);calc();
+});
+document.querySelectorAll('.step button').forEach(b=>b.onclick=()=>{st.ppl=Math.min(50,Math.max(1,st.ppl+ +b.dataset.d));calc()});
+['rCost','rTok','rMot','mI','mC','mO'].forEach(id=>$(id).addEventListener('input',calc));
+$('shareBtn').onclick=e=>{e.stopPropagation();$('sharePop').classList.toggle('on')};
+document.addEventListener('click',e=>{if(!e.target.closest('.sharewrap'))$('sharePop').classList.remove('on')});
+$('copyLink').onclick=()=>{const b=$('copyLink');b.textContent='링크를 복사했어요 ✓';setTimeout(()=>b.textContent='링크 복사',1600)};
+document.querySelectorAll('#phaseSeg button').forEach(b=>b.addEventListener('click',calc));
+setMix();calc();
+
+
+// hero model cycle
+(()=>{const ms=[...document.querySelectorAll('.hx-m')],ps=[],t=document.getElementById('hxModel');let i=0;
+function set(n){i=n;ms.forEach((m,k)=>m.classList.toggle('on',k===n));ps.forEach((p,k)=>p.classList.toggle('on',k===n));t.style.opacity=0;setTimeout(()=>{t.textContent='"'+ms[n].dataset.id+'"';t.style.opacity=1},180)}
+ms.forEach((m,k)=>m.onmouseenter=()=>set(k));set(0);setInterval(()=>set((i+1)%3),2400)})();
+</script>
+</body>
+</html>
