@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Morfac 메인 목업</title>
+<title>MoFAC 메인 목업</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
@@ -539,32 +539,322 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
 .hx-mb{display:flex;justify-content:space-between;align-items:center;gap:6px}
 .hx-mb .run{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--sub)}
 .hx-mb .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;flex:none;box-shadow:0 0 0 3px rgba(14,159,116,.18);animation:led 1.6s ease-in-out infinite}
+
+.cta-note{margin-top:12px;font-size:13.5px;color:var(--sub)}
+.cta-note b{color:var(--mint2)}
+.gwn small.gwfee{display:block;font-size:11.5px;font-weight:700;color:#8A6420;margin-top:2px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.fact small{display:block;font-size:13.5px;color:var(--sub)}
+.fact b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--mint2);line-height:1.2;margin:4px 0}
+body[data-phase="a"] .fact b.only-a,body[data-phase="b"] .fact b.only-b{display:block!important}
+.fact span{font-size:13px;color:var(--mute)}
+
+mark.tb{background:#FFF0CC;color:#8A5A00;border-radius:4px;padding:0 3px;font-weight:700}
+body[data-phase="a"] .fact.only-a,body[data-phase="b"] .fact.only-b{display:block!important}
+body[data-phase="a"] .gwn small.only-a,body[data-phase="b"] .gwn small.only-b{display:block!important}
+
+.jr{background:radial-gradient(900px 420px at 60% 50%,#13254A 0%,#0B1020 70%);border:1px solid #1E2A44;border-radius:24px;padding:28px 32px 22px;color:#E6ECF7;box-shadow:0 30px 60px -30px rgba(10,20,40,.6)}
+.jr-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.jr-h b{font-size:19px;color:#9CC2FF;letter-spacing:-.01em}
+.jr-h span{font-size:13.5px;color:#8A97B2}
+.jr-tag{font-size:12.5px!important;font-weight:700;color:#30E8B0!important;background:rgba(48,232,176,.1);border:1px solid rgba(48,232,176,.3);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.jr-svg{display:block;width:100%;height:auto;margin-top:6px;font-family:Pretendard,sans-serif}
+.jr-main-bg{fill:none;stroke:rgba(127,178,255,.18);stroke-width:14;stroke-linecap:round}
+.jr-main{fill:none;stroke:url(#jg);stroke-width:4;stroke-linecap:round}
+.jr-ret{fill:none;stroke:rgba(127,178,255,.35);stroke-width:1.6;stroke-dasharray:3 6}
+.jr-block{fill:none;stroke:#E0626A;stroke-width:2;stroke-dasharray:7 7}
+.jr-x{fill:#1A0F14;stroke:#E0626A;stroke-width:2}
+.jr-xl{stroke:#E0626A;stroke-width:2.4;stroke-linecap:round}
+.jr-node{fill:#0B1020;stroke:#9CC2FF;stroke-width:3}
+.jr-core{fill:#123F31;stroke:#30E8B0;stroke-width:3}
+.jr-gpu rect{fill:rgba(255,255,255,.15);stroke:#30E8B0;stroke-width:1}
+.jr-num{fill:#0B1020;stroke:#C9D6EE;stroke-width:1.6}
+.jr-numt{fill:#fff;font-size:14px;font-weight:800}
+.jr-t{fill:#fff;font-size:17px;font-weight:800}
+.jr-s{fill:#8A97B2;font-size:13px}
+.jr-mute{fill:#6F7C98;font-size:12.5px}
+.jr-red{fill:#F0858C;font-size:14px;font-weight:800}
+.jr-redsub{fill:#B9797E;font-size:12.5px}
+.jr-foot{text-align:center;color:#F0858C;font-weight:700;font-size:14px;padding-top:6px}
+body[data-phase="a"] .jr-tag.only-a,body[data-phase="b"] .jr-tag.only-b{display:inline-block!important}
+
+.hv2{position:relative;border-radius:26px;overflow:hidden;background:radial-gradient(520px 380px at 45% 50%,#14294F 0%,#0B1222 62%,#090E1A 100%);border:1px solid #1E2A44;box-shadow:0 40px 80px -30px rgba(9,14,26,.55),0 0 0 6px rgba(255,255,255,.55)}
+.hv2-svg{display:block;width:100%;height:auto;font-family:Pretendard,sans-serif}
+.hv2-relay{fill:none;stroke:#E0626A;stroke-width:1.6;stroke-dasharray:5 6;opacity:.75}
+.hv2-relaybox{fill:rgba(224,98,106,.08);stroke:rgba(224,98,106,.45);stroke-width:1}
+.hv2-relayt{fill:#E9A0A5;font-size:12.5px;font-weight:700;text-decoration:line-through}
+.hv2-x{fill:#1A0F14;stroke:#E0626A;stroke-width:1.6}
+.hv2-xl{stroke:#E0626A;stroke-width:2;stroke-linecap:round}
+.hv2-main{stroke:url(#h2line);stroke-width:4;stroke-linecap:round}
+.hv2-app{fill:#111A2E;stroke:#7FB2FF;stroke-width:1.5}
+.hv2-appt{fill:#fff;font-size:15px;font-weight:800}
+.hv2-apps{fill:#8FA3C6;font-size:12px}
+.hv2-ring{fill:none;stroke:rgba(48,232,176,.35);stroke-width:1;transform-origin:265px 240px;animation:hv2pulse 3s ease-out infinite}
+.hv2-ring.r2{animation-delay:1.5s}
+@keyframes hv2pulse{0%{opacity:.9;transform:scale(.75)}100%{opacity:0;transform:scale(1.25)}}
+.hv2-core{fill:#0F3A2D;stroke:#30E8B0;stroke-width:2.5}
+body[data-phase="b"] .hv2-core{fill:#1F6B52}
+.hv2-gpu rect{fill:rgba(255,255,255,.12);stroke:#30E8B0;stroke-width:1}
+.hv2-gpu .led{fill:#30E8B0;animation:led 1.4s ease-in-out infinite}
+.hv2-gpu .led.d2{animation-delay:.3s}.hv2-gpu .led.d3{animation-delay:.6s}
+.hv2-ct{fill:#fff;font-size:17px;font-weight:800}
+.hv2-cs{fill:#30E8B0;font-size:12.5px;font-weight:600}
+.hv2-lk{fill:none;stroke:rgba(127,178,255,.28);stroke-width:2;transition:stroke .3s}
+.hv2-lk.on{stroke:#30E8B0;stroke-width:2.5}
+.hv2-pt{fill:#fff;opacity:0;transition:opacity .3s}
+.hv2-pt.on{opacity:1}
+.hv2-m{cursor:pointer}
+.hv2-pill{fill:#111A2E;stroke:rgba(127,178,255,.3);stroke-width:1;transition:all .3s}
+.hv2-m.on .hv2-pill{fill:#0F2A24;stroke:#30E8B0;stroke-width:1.8}
+.hv2-dot{fill:#30E8B0}
+.hv2-mn{fill:#fff;font-size:15px;font-weight:800}
+.hv2-ms{fill:#7F8FAE;font-size:11.5px}
+.hv2-off{fill:#30E8B0;font-size:15px;font-weight:800}
+.hv2-off.kr{fill:#FFC861}
+.hv2-cap{fill:rgba(255,255,255,.05);stroke:rgba(156,194,255,.2)}
+.hv2-capt{fill:#9FB2D4;font-size:12px;font-weight:600}
+
+/* hero visual · light, no card */
+.hv2{background:none!important;border:0!important;box-shadow:none!important;overflow:visible}
+.hv2-svg rect[fill="url(#h2grid)"]{display:none}
+.hv2-relay{stroke:#E0626A;opacity:.55}
+.hv2-relaybox{fill:#FFF5F5;stroke:#F2C2C5}
+.hv2-relayt{fill:#C9545C}
+.hv2-x{fill:#fff;stroke:#E0626A}
+.hv2-app{fill:#fff;stroke:#C9D6EA;stroke-width:1.5;filter:drop-shadow(0 6px 14px rgba(19,32,27,.08))}
+.hv2-appt{fill:#13201B}
+.hv2-apps{fill:#77837F}
+.hv2-ring{stroke:rgba(14,159,116,.35)}
+.hv2-core{fill:#E8F7F1;stroke:#0E9F74;stroke-width:2.5;filter:drop-shadow(0 10px 24px rgba(14,159,116,.25))}
+body[data-phase="b"] .hv2-core{fill:#1F6B52;stroke:#1F6B52}
+.hv2-gpu rect{fill:#fff;stroke:#0E9F74}
+body[data-phase="b"] .hv2-gpu rect{fill:rgba(255,255,255,.15);stroke:#BFE6D5}
+.hv2-gpu .led{fill:#0E9F74}
+body[data-phase="b"] .hv2-gpu .led{fill:#30E8B0}
+.hv2-ct{fill:#13201B}
+.hv2-cs{fill:#0B8762}
+.hv2-lk{stroke:#D3DBD7}
+.hv2-lk.on{stroke:#0E9F74}
+.hv2-pt{fill:#0E9F74}
+.hv2-pill{fill:#fff;stroke:#DCE3E0;filter:drop-shadow(0 6px 14px rgba(19,32,27,.06))}
+.hv2-m.on .hv2-pill{fill:#F1FAF6;stroke:#0E9F74}
+.hv2-dot{fill:#0E9F74}
+.hv2-mn{fill:#13201B}
+.hv2-ms{fill:#8B9792}
+.hv2-off{fill:#0B8762}
+.hv2-off.kr{fill:#B7791F}
+.hv2-cap{fill:#fff;stroke:#DCE3E0}
+.hv2-capt{fill:#56635E}
+.hv2-flow{fill:#7FB2FF}
+.hv2-main{stroke:#9CC9B8!important;stroke-width:3}
+.hero h1.big{font-size:42px;word-break:keep-all;white-space:nowrap}
+body[data-phase="a"] .jr-h b.only-a,body[data-phase="b"] .jr-h b.only-b{display:block!important}
+
+.ln-k{fill:#8A97B2;font-size:15px;font-weight:800}
+.ln-k.hi{fill:#30E8B0}
+.ln-ks{fill:#6F7C98;font-size:13px}
+.ln-ks.hi{fill:#BFE6D5}
+.ln-dim{fill:none;stroke:rgba(156,170,200,.35);stroke-width:2;stroke-dasharray:4 5}
+.ln-dot-dim{fill:#8A97B2}
+.ln-box{fill:#111A2E;stroke:rgba(156,170,200,.35);stroke-width:1.2}
+.ln-box.hi{stroke:#7FB2FF;stroke-width:1.6}
+.ln-box.sm{fill:#0E1526}
+.ln-bt{fill:#fff;font-size:15px;font-weight:800}
+.ln-st{fill:#AEB9D0;font-size:13.5px;font-weight:700}
+.ln-fee{fill:#E9A0A5;font-size:12.5px;font-weight:700}
+.ln-sum-dim{fill:#8A97B2;font-size:15px}
+.ln-sum{fill:#fff;font-size:15.5px;font-weight:700}
+.ln-div{stroke:rgba(156,170,200,.18);stroke-width:1}
+.ln-hi-bg{stroke:rgba(127,178,255,.18);stroke-width:14;stroke-linecap:round}
+.ln-hi{stroke:url(#jg2);stroke-width:4;stroke-linecap:round}
+
+.teamband{justify-content:space-between;align-items:center;gap:24px;background:linear-gradient(135deg,#1F6B52,#144C3A);color:#fff;border-radius:22px;padding:34px 40px}
+.teamband .kicker{color:#9FF0D1}
+.teamband h3{margin:0 0 6px;font-size:26px;letter-spacing:-.02em}
+.teamband p{margin:0;color:#CFEDE1;font-size:15.5px}
+.teamband .btn.pri{background:#fff;color:#144C3A}
+.teamband .btn.sec{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff}
+body[data-phase="a"] #team > .wrap > div.only-a{display:block!important}
+
+.team-feat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#p-team .fact b.only-a,#p-team .fact b.only-b{display:none!important}
+body[data-phase="a"] #p-team .fact b.only-a,body[data-phase="b"] #p-team .fact b.only-b{display:block!important}
+body[data-phase="a"] .btn.only-a{display:inline-flex!important}
+
+.fact em.why{font-style:normal;font-size:11.5px;font-weight:800;border-radius:6px;padding:2px 7px;margin-right:8px}
+.fact em.why.c{background:var(--mintbg);color:var(--mint2)}
+.fact em.why.f{background:#E8F0FF;color:#2B5CE6}
+.lead b.hk{color:var(--fg);font-weight:700}
+.ln-tag{fill:#30E8B0;font-size:12.5px;font-weight:800}
+
+.cs{stroke:#0B1222;stroke-width:2}
+.cs.g{fill:#24314D}
+.cs.r{fill:#4A2530}
+.cs.lr{fill:#3A2A35;stroke-dasharray:0}
+.cs-t.lr{fill:#E9B9BD}
+.cs.m{fill:#155A45}
+.cs-t{fill:#E6ECF7;font-size:14px;font-weight:800}
+.cs-t.r{fill:#F3B0B5}
+.cs-t.m{fill:#E9FFF6}
+.cs-s{fill:#C98990;font-size:11px;font-weight:600}
+.cs-s.g{fill:#8FA0BF}
+.cs-s.m{fill:#BFE6D5}
+.cs-ghost{fill:none;stroke:#E0626A;stroke-width:1.8;stroke-dasharray:6 6}
+.cs-gt{fill:#F0858C;font-size:13px;font-weight:800;text-decoration:line-through}
+.cs-gt2{fill:#F0858C;font-size:12px;font-weight:700}
+.cs-row{fill:#AEB9D0;font-size:15px;font-weight:800}
+.cs-row.hi{fill:#30E8B0}
+.cs-row2{fill:#6F7C98;font-size:12.5px}
+.cs-row2.hi{fill:#BFE6D5}
+.cs-guide{stroke:rgba(156,170,200,.35);stroke-width:1;stroke-dasharray:3 5}
+.cs-arrow{stroke:#30E8B0;stroke-width:2.5}
+.cs-arrowh{fill:none;stroke:#30E8B0;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.cs-save{fill:#30E8B0;font-size:16px;font-weight:800}
+body[data-phase="b"] .jr.only-b,body[data-phase="a"] .jr.only-a{display:block!important}
+
+.cap{font-size:14px;font-weight:800;color:var(--fg);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.cap em.why{font-style:normal;font-size:11.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cap em.why.c{background:var(--mintbg);color:var(--mint2)}
+.cap em.why.f{background:#E8F0FF;color:#2B5CE6}
+body[data-phase="b"] .cap.only-b{display:flex!important}
+
+.why2{grid-template-columns:1.62fr 1fr;gap:16px}
+body[data-phase="b"] .why2.only-b{display:grid!important}
+.why2 .jr{padding:20px 20px 14px;height:calc(100% - 32px)}
+.why2 .cap{display:flex}
+.ln-sum-dim.sm,.ln-sum.sm{font-size:14px}
+.cs-t.sm{font-size:12.5px}
+.cs-save.sm{font-size:14px}
+.cs-row.sm{font-size:14px}
+body[data-phase="a"] .kicker.only-a,body[data-phase="b"] .kicker.only-b{display:block!important}
+body[data-phase="a"] #s-why .facts{grid-template-columns:1fr 1fr}
+#s-why .fact b{font-size:34px}
+#s-why .fact span{font-size:14.5px;color:var(--sub)}
+
+.cut{animation:cutA 4.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.cut1{animation-delay:.3s}.cut2{animation-delay:.6s}
+.cut-line{stroke:#FF6B74;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:84;stroke-dashoffset:84;animation:cutL 4.2s ease-in-out infinite}
+.cut1 .cut-line{animation-delay:.3s}.cut2 .cut-line{animation-delay:.6s}
+@keyframes cutA{0%,18%{opacity:1;transform:translateY(0)}32%{opacity:1;transform:translateY(0)}44%{opacity:0;transform:translateY(-18px)}88%{opacity:0;transform:translateY(-18px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes cutL{0%,14%{stroke-dashoffset:84}26%,40%{stroke-dashoffset:0}44%,100%{stroke-dashoffset:84}}
+.ghostg,.savg{animation:ghostA 4.2s ease-in-out infinite}
+@keyframes ghostA{0%,50%{opacity:0}62%,88%{opacity:1}96%,100%{opacity:0}}
+.eyebrow-l{font-size:15px;font-weight:700;color:var(--mint2);margin-bottom:14px}
+body[data-phase="b"] .eyebrow-l.only-b{display:block!important}
+.hero h1.big + p.lead{margin-top:0}
+
+/* receipt hero */
+.rcw{position:relative;height:540px}
+body:not([data-hv="flow"]) .hv2{display:none}
+body[data-hv="flow"] .rcw{display:none}
+.rc{position:absolute;width:330px;background:#fff;border-radius:14px 14px 0 0;padding:24px 24px 30px;box-shadow:0 24px 50px -20px rgba(19,32,27,.28);font-size:14px;
+  -webkit-mask:radial-gradient(circle 7px at 50% 100%,transparent 6.5px,#000 7px) bottom/16px 100% repeat-x;mask:radial-gradient(circle 7px at 50% 100%,transparent 6.5px,#000 7px) bottom/16px 100% repeat-x}
+.rc-relay{left:10px;top:0;animation:rcRelay 7s ease-in-out infinite}
+.rc-us{right:10px;top:90px;border:0;animation:rcUs 7s ease-in-out infinite}
+.rc-h{display:flex;justify-content:space-between;align-items:center}
+.rc-h b{font-size:15.5px}
+.rc-h span{font-size:12px;color:var(--mute)}
+.rc-logo{display:flex;align-items:center;gap:7px}
+.rc-logo i{width:18px;height:18px;border-radius:5px;background:conic-gradient(from 200deg,var(--mint),#5BC8FF,var(--mint));display:block}
+.rc-sub{font-size:12.5px;color:var(--sub);margin-top:4px}
+.rc-sep{border-top:1.5px dashed var(--line2);margin:14px 0}
+.rc-l{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;position:relative}
+.rc-l span small{display:block;font-size:11.5px;color:var(--mute);margin-top:1px}
+.rc-l b{font-family:var(--mono);font-weight:600}
+.rc-l b.zero{color:var(--mint2)}
+.rc-l.fee{color:#B4434B}
+.rc-l .strike{position:absolute;left:-4px;right:-4px;top:50%;height:2.5px;background:#E0626A;border-radius:2px;transform:scaleX(0);transform-origin:left;animation:rcStrike 7s ease-in-out infinite}
+.rc-tot{display:flex;justify-content:space-between;align-items:baseline}
+.rc-tot span{font-weight:700}
+.rc-tot b{font-family:var(--mono);font-size:26px;font-weight:800;letter-spacing:-.02em}
+.rc-tot.us b{color:var(--mint2)}
+.stamp{position:absolute;right:-14px;top:52px;z-index:3;background:var(--mint);color:#fff;border-radius:14px;padding:10px 16px;font-weight:800;font-size:19px;text-align:center;box-shadow:0 12px 26px -8px rgba(14,159,116,.6);animation:rcStamp 7s cubic-bezier(.3,1.6,.5,1) infinite}
+.stamp small{display:block;font-size:12.5px;opacity:.85;font-weight:700}
+.rc-cap{position:absolute;left:10px;bottom:0;font-size:12px;color:var(--mute)}
+@keyframes rcRelay{0%,34%{transform:none;opacity:1;filter:none}44%,90%{transform:translate(-6px,-10px) scale(.94);opacity:.55;filter:grayscale(1)}100%{transform:none;opacity:1;filter:none}}
+@keyframes rcStrike{0%,12%{transform:scaleX(0)}24%,92%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes rcUs{0%,34%{opacity:0;transform:translateX(50px)}46%,90%{opacity:1;transform:none}98%,100%{opacity:0;transform:translateX(50px)}}
+@keyframes rcStamp{0%,54%{opacity:0;transform:scale(1.6) rotate(-14deg)}62%,90%{opacity:1;transform:scale(1) rotate(-6deg)}98%,100%{opacity:0;transform:scale(1) rotate(-6deg)}}
+body[data-phase="b"] .rc-l.only-b.flex{display:flex!important}
+body[data-phase="a"] .rc-l small.only-a,body[data-phase="b"] .rc-l small.only-b{display:block!important}
+.rc-l>span{max-width:190px}
+
+.rc-l.ded{animation:rcDed 7s ease-out infinite;opacity:0}
+.rc-l.ded.d2{animation-delay:.45s}.rc-l.ded.d3{animation-delay:.9s}
+.rc-l.ded em{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--mint);border-radius:5px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.rc-l.ded b{color:var(--mint2);font-size:15px}
+.rc-l.ded:not(.minor){background:linear-gradient(90deg,rgba(14,159,116,.10),transparent);margin:2px -10px;padding:6px 10px;border-radius:8px}
+.rc-l.minor{color:var(--mute);font-size:13px}
+.rc-l.minor b{color:var(--mute)!important;font-size:13px!important}
+@keyframes rcDed{0%,42%{opacity:0;transform:translateX(12px)}50%,90%{opacity:1;transform:none}98%,100%{opacity:0}}
+.rc-l>span{max-width:210px}
+#s-hero .wrap{align-items:start}
+#s-hero .wrap>div:first-child{padding-top:24px}
+
+/* receipts side by side */
+.rcw{display:flex;gap:14px;align-items:flex-start;height:auto!important;padding:10px 0 40px}
+.rc{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:auto!important;flex:1;animation:none!important;opacity:1!important;transform:none!important;filter:none!important;padding:20px 18px 26px!important;font-size:13px}
+.rc-relay{background:#FBFCFC}
+.rc-us{box-shadow:0 0 0 2px var(--mint),0 24px 50px -20px rgba(14,159,116,.35)!important}
+.rc-h b{font-size:14px}
+.rc-h span{font-size:11px}
+.rc-l>span{max-width:none!important}
+.rc-tot b{font-size:22px}
+.rc-l.ded{margin:2px -8px!important;padding:6px 8px!important}
+.rc-l.ded b{font-size:13.5px}
+@keyframes rcDed{0%,8%{opacity:0;transform:translateX(10px)}18%,94%{opacity:1;transform:none}100%{opacity:0}}
+.rc-l.ded.d2{animation-delay:.5s}.rc-l.ded.d3{animation-delay:1s}
+@keyframes rcStamp{0%,30%{opacity:0;transform:scale(1.6) rotate(-14deg)}38%,94%{opacity:1;transform:scale(1) rotate(-6deg)}100%{opacity:0;transform:scale(1) rotate(-6deg)}}
+.stamp{top:auto!important;bottom:6px;right:auto!important;left:24px;font-size:17px}
+.rc-l b{white-space:nowrap;margin-left:8px}
+.rcw{padding-bottom:0!important}
+.rc-cap{bottom:-4px!important}
+.rc-relay .rc-tot b{color:var(--fg)}
+.rc-us .stamp{position:static!important;display:flex;justify-content:flex-end;align-items:baseline;gap:8px;margin-top:10px;padding:8px 12px;border-radius:10px;font-size:16px;box-shadow:none;transform-origin:right center}
+.rc-us .stamp small{display:inline;font-size:13px}
+@keyframes rcStamp{0%,30%{opacity:0;transform:scale(.8)}38%,94%{opacity:1;transform:scale(1)}100%{opacity:0}}
+.rc-ex{font-style:normal;font-size:10.5px;font-weight:700;color:var(--sub);background:var(--card2);border-radius:4px;padding:1px 5px;margin-left:4px}
+.rc-l.ref b{color:var(--mute);font-weight:500}
+.rc-l.ref s{text-decoration-thickness:1.5px}
+
+.btn.ol{background:#fff;border:1.5px solid var(--mint);color:var(--mint2)}
+.btn.ol:hover{background:var(--mintbg)}
+.teamband .btn.ol{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}
+a.tlink{color:var(--mint2);font-weight:600;white-space:nowrap}
+#team .contact p{max-width:560px}
 </style>
 </head>
 <body data-phase="a">
 
 <div class="viewer">
   <div class="seg" id="phaseSeg">
-    <button data-phase="a" class="on">정식 오픈 시점</button>
-    <button data-phase="b">자체 서빙 후</button>
+    <button data-phase="a" class="on">퍼블릭 오픈</button>
+    <button data-phase="b">정식 오픈</button>
+  </div>
+  <span class="gap"></span>
+  <div class="seg" id="hvSeg">
+    <button data-hv="rcpt" class="on">히어로: 영수증</button>
+    <button data-hv="flow">히어로: 구조도</button>
   </div>
   <span class="gap"></span>
   <div class="seg" id="pageSeg">
     <button data-page="skel">구조</button>
     <button data-page="home" class="on">메인</button>
+    <button data-page="team">팀</button>
     <button data-page="security">보안·데이터 처리</button>
   </div>
 </div>
 
 <!-- ============ HOME ============ -->
 <div class="page on" id="p-home">
-  <div class="promo only-a"><b>정식 오픈 진입가</b> · GLM·Kimi 공식가보다 최대 36% 저렴<span class="dot">|</span>첫 충전하면 보너스 크레딧 $10</div>
-  <div class="promo only-b"><b>최저가 캠페인</b> · 직접 서빙 원가로 GLM·Kimi 최저가<span class="dot">|</span>카드 등록하면 $5 크레딧<span class="dot">|</span>팀원 초대하면 서로 $5</div>
+  <div class="promo only-a"><b>퍼블릭 오픈</b> · GLM 5.3·Kimi K3를 부담없는 가격으로<span class="dot">|</span>카드 등록하면 체험 크레딧 $5 (3일)</div>
+  <div class="promo only-b"><b>정식 오픈</b> · 자체 장비 원가로 최저가 캠페인<span class="dot">|</span>카드 등록만 하고 $5<span class="dot">|</span><a href="#" data-go="team" style="text-decoration:underline">팀 기능 오픈 →</a></div>
 
   <header class="site"><div class="wrap">
-    <a class="logo" href="#"><i></i>Morfac</a>
+    <a class="logo" href="#"><i></i>MoFAC</a>
     <nav class="gnb">
-      <a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#">Docs</a>
+      <a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#" data-go="team">팀</a><a href="#">Docs</a>
     </nav>
     <div class="hright"><a class="btn ghost" href="#">로그인</a><a class="btn pri" href="#">시작하기</a></div>
   </div></header>
@@ -572,45 +862,188 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
   <section class="hero" id="s-hero"><div class="wrap">
     <div>
       
-      <h1 class="big only-a" style="margin-top:0">GLM·Kimi를 <em>더 싸게,</em><br>국산 모델 Motif 3까지<br>API 키 하나로</h1>
-      <h1 class="big only-b" style="margin-top:0">같은 오픈웨이트 모델,<br>직접 돌려서 <em>더 싸고<br>더 안정적입니다</em></h1>
-      <p class="lead only-a">충전 수수료 0%, 원화 결제. 쓰던 도구에서 주소와 키만 바꾸면 바로 이어서 작업할 수 있어요.</p>
-      <p class="lead only-b">다른 공급사로 넘기지 않고 장비부터 추론 엔진까지 직접 운영해요.</p>
+      <h1 class="big only-a" style="margin-top:0">GLM·Kimi 코딩 에이전트,<br>키만 바꾸면 <em>더 싸고 빠르게</em></h1>
+      <h1 class="big only-b" style="margin-top:0">GLM·Kimi 코딩 에이전트,<br>키만 바꾸면 <em>더 싸고 빠르게</em></h1>
+      <p class="lead only-b">중계 수수료 0%, 임대료 0.<br>국내 추론 기술에 GPU·데이터센터까지 직접 운영해요.</p>
+      <p class="lead only-a">중계 수수료 0%, 국내 추론 기술로 직접 서빙해요.</p>
       <div class="ctas">
-        <a class="btn pri lg" href="#">무료로 시작하기</a>
-        <a class="btn sec lg only-a" href="#s-models">요금 비교 보기</a>
-        <a class="btn sec lg only-b" href="#team">팀으로 시작하기</a>
+        <a class="btn pri lg" href="#">카드 등록하고 무료로 시작하기</a>
       </div>
+      
       <div class="trust">
-        <span>충전 수수료 0%</span><span>원화 결제 · 세금계산서</span><span>입력이 모델 개발사로 가지 않아요 <a href="#" data-go="security">→</a></span>
+        <span class="only-a">충전 수수료 0% · 원화 결제</span><span class="only-a">OpenAI·Anthropic 호환 · 키만 바꾸면 끝</span><span class="only-b">충전 수수료 0% · 원화 결제</span><span class="only-b">속도·툴콜 오류율 <a href="#">매일 공개 →</a></span>
       </div>
     </div>
     <div class="hero-r">
-      <div class="hx">
-        <div class="hx-code">
-          <div class="hx-bar"><i></i><i></i><i></i><span>request.py</span><em>OpenAI · Anthropic 호환</em></div>
-          <div class="hx-l"><span class="k">base_url</span><span class="v">"https://api.morfac.ai/v1"</span></div>
-          <div class="hx-l"><span class="k">api_key</span><span class="v">"mf-••••••••3f9a"</span><span class="note">키 하나</span></div>
-          <div class="hx-l"><span class="k">model</span><span class="v" id="hxModel">"glm-5.3"</span><span class="caret"></span></div>
+      <div class="rcw">
+        <div class="rc rc-relay">
+          <div class="rc-h"><b>다른 중계형 서비스</b><em class="rc-ex">예시</em></div>
+          <div class="rc-sub">같은 사용량 기준</div>
+          <div class="rc-sep"></div>
+          <div class="rc-l"><span>모델 사용료<small>공급사 평균 단가</small></span><b>$237.00</b></div>
+          <div class="rc-l fee"><span>중계 수수료 5.5%</span><b>$13.04</b></div>
+          <div class="rc-sep"></div>
+          <div class="rc-tot"><span>합계</span><b>$250.04</b></div>
         </div>
-        <svg class="hx-ln" viewBox="0 0 10 40" preserveAspectRatio="none"><path class="flow" d="M5 0 V40"/></svg>
-        <div class="hx-box">
-          <div class="hx-boxh only-a flex"><span class="hx-logo"></span><div><b>Morfac</b><small>다른 공급사로 넘기지 않고 Morfac이 응답해요</small></div><span class="hx-badge">라우팅 없음</span></div>
-          <div class="hx-boxh only-b flex"><svg class="hx-gpu" viewBox="0 0 40 40"><rect x="4" y="6" width="32" height="8" rx="2"/><rect x="4" y="16" width="32" height="8" rx="2"/><rect x="4" y="26" width="32" height="8" rx="2"/><circle class="led" cx="30" cy="10" r="1.6"/><circle class="led d2" cx="30" cy="20" r="1.6"/><circle class="led d3" cx="30" cy="30" r="1.6"/></svg><div><b>Morfac GPU · 추론 엔진</b><small>자체 데이터센터에서 직접 서빙</small></div><span class="hx-badge">직접 운영</span></div>
-          <div class="hx-models">
-            <div class="hx-m on" data-id="glm-5.3"><b class="hx-n">GLM 5.3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off only-a">−36%</span><span class="off only-b">−40%</span></div></div>
-            <div class="hx-m" data-id="kimi-k3"><b class="hx-n">Kimi K3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off only-a">−20%</span><span class="off only-b">−30%</span></div></div>
-            <div class="hx-m" data-id="motif-3"><b class="hx-n">Motif 3</b><div class="hx-mb"><span class="run"><span class="dot"></span>Morfac</span><span class="off kr">국산</span></div></div>
-          </div>
+        <div class="rc rc-us">
+          <div class="rc-h"><b class="rc-logo"><i></i>MoFAC</b><em class="rc-ex">예시</em></div>
+          <div class="rc-sub">같은 사용량 기준</div>
+          <div class="rc-sep"></div>
+          <div class="rc-l ref"><span>같은 토큰<small>공급사 평균 단가라면</small></span><b><s>$237.00</s></b></div>
+          <div class="rc-l ded d1"><span><em>기술</em>Moreh 최적화<small>같은 GPU로 더 많이 처리</small></span><b><span class="only-a">−$44.00</span><span class="only-b">−$32.00</span></b></div>
+          <div class="rc-l ded d2 only-b flex"><span><em>장비</em>자체 GPU·DC<small>임대료 0</small></span><b>−$24.00</b></div>
+          <div class="rc-l ded d3 minor"><span>중계 수수료</span><b>$0.00</b></div>
+          <div class="rc-sep"></div>
+          <div class="rc-tot us"><span>합계</span><b><span class="only-a">$193.00</span><span class="only-b">$181.00</span></b></div>
+          <div class="stamp"><span class="only-a">−$57 절약</span><span class="only-b">−$69 절약</span><small><span class="only-a">−23%</span><span class="only-b">−28%</span></small></div>
         </div>
       </div>
+      <div class="hv2">
+        <svg viewBox="0 0 600 480" class="hv2-svg" role="img" aria-label="API 키 하나로 MoFAC 자체 추론 엔진에서 모델을 직접 서빙">
+          <defs>
+            <radialGradient id="h2core"><stop offset="0" stop-color="#30E8B0" stop-opacity=".28"/><stop offset=".6" stop-color="#30E8B0" stop-opacity=".06"/><stop offset="1" stop-color="#30E8B0" stop-opacity="0"/></radialGradient>
+            <linearGradient id="h2line" x1="0" x2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient>
+            <pattern id="h2grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(156,194,255,.12)"/></pattern>
+          </defs>
+          <rect width="600" height="480" fill="url(#h2grid)"/>
+          <!-- app -> core -->
+          <path d="M104 240 L 212 240" class="hv2-main"/>
+          <circle r="5" class="hv2-flow"><animateMotion dur="1.2s" repeatCount="indefinite" path="M104 240 L 212 240"/></circle>
+          <!-- app node -->
+          <g transform="translate(70,240)">
+            <rect x="-46" y="-36" width="92" height="72" rx="16" class="hv2-app"/>
+            <text y="-6" text-anchor="middle" class="hv2-appt">내 앱</text>
+            <text y="14" text-anchor="middle" class="hv2-apps">API 키 하나</text>
+          </g>
+          <!-- core -->
+          <circle cx="265" cy="240" r="110" fill="url(#h2core)"/>
+          <circle cx="265" cy="240" r="72" class="hv2-ring r1"/>
+          <circle cx="265" cy="240" r="90" class="hv2-ring r2"/>
+          <circle cx="265" cy="240" r="53" class="hv2-core"/>
+          <g transform="translate(247,214)" class="hv2-gpu"><rect width="36" height="8" rx="2"/><rect y="13" width="36" height="8" rx="2"/><rect y="26" width="36" height="8" rx="2"/><circle cx="30" cy="4" r="1.7" class="led"/><circle cx="30" cy="17" r="1.7" class="led d2"/><circle cx="30" cy="30" r="1.7" class="led d3"/></g>
+          <g class="only-a"><text x="265" y="330" text-anchor="middle" class="hv2-ct">MoFAC 추론 엔진</text><text x="265" y="350" text-anchor="middle" class="hv2-cs">중계 없이 직접 서빙</text></g>
+          <g class="only-b"><text x="265" y="330" text-anchor="middle" class="hv2-ct">MoFAC DC · 자체 GPU</text><text x="265" y="350" text-anchor="middle" class="hv2-cs">우리 데이터센터에서 직접 서빙</text></g>
+          <!-- core -> models -->
+          <path class="hv2-lk" data-i="0" d="M318 240 C 370 240, 360 130, 414 130"/><circle class="hv2-pt" data-i="0" r="4"><animateMotion dur="1.4s" repeatCount="indefinite" path="M318 240 C 370 240, 360 130, 414 130"/></circle><path class="hv2-lk" data-i="1" d="M318 240 C 370 240, 360 240, 414 240"/><circle class="hv2-pt" data-i="1" r="4"><animateMotion dur="1.4s" repeatCount="indefinite" path="M318 240 C 370 240, 360 240, 414 240"/></circle><path class="hv2-lk" data-i="2" d="M318 240 C 370 240, 360 350, 414 350"/><circle class="hv2-pt" data-i="2" r="4"><animateMotion dur="1.4s" repeatCount="indefinite" path="M318 240 C 370 240, 360 350, 414 350"/></circle>
+          <g class="hv2-m" data-i="0" data-id="glm-5.3">
+          <rect x="414" y="104" width="176" height="54" rx="14" class="hv2-pill"/>
+          <circle cx="432" cy="130" r="4" class="hv2-dot"/>
+          <text x="444" y="128" class="hv2-mn">GLM 5.3</text>
+          <text x="444" y="145" class="hv2-ms">MoFAC 서빙</text>
+          <g transform="translate(-6,0)"><text x="582" y="135" class="hv2-off only-a" text-anchor="end">−36%</text><text x="582" y="135" class="hv2-off only-b" text-anchor="end">−40%</text></g>
+        </g><g class="hv2-m" data-i="1" data-id="kimi-k3">
+          <rect x="414" y="214" width="176" height="54" rx="14" class="hv2-pill"/>
+          <circle cx="432" cy="240" r="4" class="hv2-dot"/>
+          <text x="444" y="238" class="hv2-mn">Kimi K3</text>
+          <text x="444" y="255" class="hv2-ms">MoFAC 서빙</text>
+          <g transform="translate(-6,0)"><text x="582" y="245" class="hv2-off only-a" text-anchor="end">−20%</text><text x="582" y="245" class="hv2-off only-b" text-anchor="end">−30%</text></g>
+        </g><g class="hv2-m" data-i="2" data-id="motif-3">
+          <rect x="414" y="324" width="176" height="54" rx="14" class="hv2-pill"/>
+          <circle cx="432" cy="350" r="4" class="hv2-dot"/>
+          <text x="444" y="348" class="hv2-mn">Motif 3</text>
+          <text x="444" y="365" class="hv2-ms">MoFAC 서빙</text>
+          <g transform="translate(-6,0)"><text x="582" y="355" class="hv2-off kr" text-anchor="end">국산</text></g>
+        </g>
+          <!-- bottom caption -->
+          <g transform="translate(300,430)"><rect x="-150" y="-16" width="300" height="32" rx="16" class="hv2-cap"/><text y="5" text-anchor="middle" class="hv2-capt">base_url · 키만 바꾸면 · OpenAI·Anthropic 호환</text></g>
+        </svg>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- why cheap -->
+  <section class="blk" id="s-why"><div class="wrap">
+    <div class="kicker">왜 싸고 빠른가요</div>
+    <h2 class="h only-a" style="margin-bottom:32px">중계 없이 직접 서빙해요</h2>
+    <h2 class="h only-b" style="margin-bottom:32px">우리 데이터센터와 GPU로 직접 서빙해요</h2>
+    <div class="jr only-a">
+      <svg class="jr-svg" viewBox="0 0 1100 420" role="img" aria-label="중계형과 직접 서빙 비교">
+        <defs>
+          <linearGradient id="jg2" x1="0" x2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient>
+          <radialGradient id="jglow2"><stop offset="0" stop-color="#30E8B0" stop-opacity=".45"/><stop offset="1" stop-color="#30E8B0" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- lane 1: relay -->
+        <text x="40" y="44" class="ln-k">다른 중계형 서비스</text>
+        <text x="200" y="44" class="ln-ks">요청을 받아 다른 공급사에 넘기는 방식</text>
+        <path d="M150 130 L 330 130" class="ln-dim"/>
+        <path d="M410 130 C 470 130, 480 80, 560 80" class="ln-dim"/>
+        <path d="M410 130 L 560 130" class="ln-dim"/>
+        <path d="M410 130 C 470 130, 480 180, 560 180" class="ln-dim"/>
+        <circle r="4" class="ln-dot-dim"><animateMotion dur="3.2s" repeatCount="indefinite" path="M150 130 L 330 130 L 370 130 L 410 130 C 470 130, 480 180, 560 180"/></circle>
+        <g transform="translate(110,130)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+        <g transform="translate(370,130)"><rect x="-52" y="-22" width="104" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중계 서비스</text></g>
+        <text x="370" y="176" text-anchor="middle" class="ln-fee">중계 수수료</text>
+        <g transform="translate(615,80)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
+        <g transform="translate(615,130)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
+        <g transform="translate(615,180)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
+        <g><g class="only-a"><text x="720" y="110" class="ln-sum-dim">공급사 가격 + 중계 수수료</text><text x="720" y="136" class="ln-sum-dim">한 번 더 거쳐서 가고</text><text x="720" y="158" class="ln-sum-dim">공급사마다 결과가 달라요</text></g><g class="only-b"><text x="720" y="110" class="ln-sum-dim">중계를 한 번 더 거치고</text><text x="720" y="136" class="ln-sum-dim">어느 공급사가 받느냐에 따라</text><text x="720" y="158" class="ln-sum-dim">속도·결과가 달라요</text></g></g>
+        
+        <!-- divider -->
+        <line x1="40" y1="230" x2="1060" y2="230" class="ln-div"/>
+        <!-- lane 2: MoFAC -->
+        <text x="40" y="274" class="ln-k hi">MoFAC</text>
+        <text x="120" y="274" class="ln-ks hi only-a">직접 서빙</text><text x="120" y="274" class="ln-ks hi only-b">우리 DC · 우리 GPU</text>
+        <path d="M150 350 L 560 350" class="ln-hi-bg"/>
+        <path d="M150 350 L 560 350" class="ln-hi"/>
+        <circle r="5" fill="#fff"><animateMotion dur="1.6s" repeatCount="indefinite" path="M150 350 L 570 350"/></circle>
+        <g transform="translate(110,350)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+        <circle cx="615" cy="350" r="62" fill="url(#jglow2)"/>
+        <circle cx="615" cy="350" r="30" class="jr-core"/>
+        <g class="jr-gpu" transform="translate(601,337)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
+        <text x="615" y="404" text-anchor="middle" class="ln-bt only-a">MoFAC 추론 엔진</text><text x="615" y="404" text-anchor="middle" class="ln-bt only-b">MoFAC 자체 GPU</text>
+        <g class="only-a"><text x="720" y="332" class="ln-sum">중계 수수료 0%</text><text x="720" y="358" class="ln-sum">Moreh 최적화로 원가 ↓ 속도 ↑</text></g>
+        <g class="only-b"><text x="720" y="332" class="ln-sum">우리 GPU 한 곳에서 처리해서</text><text x="720" y="358" class="ln-sum">매번 같은 속도·같은 품질</text></g>
+      </svg>
+    </div>
+    <div class="why2 only-b">
+      <div><div class="cap">요청 경로</div><div class="jr"><svg class="jr-svg" viewBox="0 0 640 420" role="img" aria-label="요청 경로 비교">
+          <text x="24" y="40" class="ln-k">다른 중계형 서비스</text>
+          <path d="M120 110 L 250 110" class="ln-dim"/><path d="M320 110 C 370 110, 380 62, 440 62" class="ln-dim"/><path d="M320 110 L 440 110" class="ln-dim"/><path d="M320 110 C 370 110, 380 158, 440 158" class="ln-dim"/>
+          <circle r="4" class="ln-dot-dim"><animateMotion dur="3s" repeatCount="indefinite" path="M120 110 L 320 110 C 370 110, 380 158, 440 158"/></circle>
+          <g transform="translate(78,110)"><rect x="-40" y="-20" width="80" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <g transform="translate(285,110)"><rect x="-48" y="-20" width="96" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중계 서비스</text></g>
+          <text x="285" y="150" text-anchor="middle" class="ln-fee">중계 수수료</text>
+          <g transform="translate(500,62)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
+          <g transform="translate(500,110)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
+          <g transform="translate(500,158)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
+          <text x="24" y="200" class="ln-sum-dim sm">중계를 거치고, 공급사마다 속도·결과가 달라요</text>
+          <line x1="24" y1="222" x2="616" y2="222" class="ln-div"/>
+          <text x="24" y="258" class="ln-k hi">MoFAC</text><text x="94" y="258" class="ln-ks hi">우리 DC · 우리 GPU</text>
+          <path d="M120 330 L 450 330" class="ln-hi-bg"/><path d="M120 330 L 450 330" class="ln-hi"/>
+          <circle r="5" fill="#fff"><animateMotion dur="1.4s" repeatCount="indefinite" path="M120 330 L 460 330"/></circle>
+          <g transform="translate(78,330)"><rect x="-40" y="-20" width="80" height="40" rx="11" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <circle cx="500" cy="330" r="56" fill="url(#jglow2)"/><circle cx="500" cy="330" r="28" class="jr-core"/>
+          <g class="jr-gpu" transform="translate(486,317)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
+          <text x="500" y="285" text-anchor="middle" class="ln-bt">MoFAC 자체 GPU</text>
+          <text x="24" y="400" class="ln-sum sm">매번 같은 속도·같은 품질</text>
+        </svg></div></div>
+      <div><div class="cap">원가 구성</div><div class="jr"><svg class="jr-svg" viewBox="0 0 380 420" role="img" aria-label="원가 구성 비교">
+          <text x="24" y="40" class="ln-k">원가 구성</text>
+          <rect x="60" y="304" width="104" height="56" rx="5" class="cs lr"/><text x="112.0" y="337.0" text-anchor="middle" class="cs-t sm lr">DC 임대료</text><rect x="60" y="200" width="104" height="104" rx="5" class="cs g"/><text x="112.0" y="257.0" text-anchor="middle" class="cs-t sm g">GPU 원가</text><rect x="60" y="150" width="104" height="50" rx="5" class="cs r"/><text x="112.0" y="180.0" text-anchor="middle" class="cs-t sm r">GPU 임대 마진</text><rect x="60" y="108" width="104" height="42" rx="5" class="cs g"/><text x="112.0" y="134.0" text-anchor="middle" class="cs-t sm g">공급사 마진</text><rect x="60" y="78" width="104" height="30" rx="5" class="cs r"/><text x="112.0" y="98.0" text-anchor="middle" class="cs-t sm r">중계 수수료</text><rect x="216" y="320" width="104" height="40" rx="5" class="cs m"/><text x="268.0" y="338.0" text-anchor="middle" class="cs-t sm m">자체 DC 운영</text><text x="268.0" y="353.0" text-anchor="middle" class="cs-s m">전력·냉각</text><rect x="216" y="216" width="104" height="104" rx="5" class="cs m"/><text x="268.0" y="273.0" text-anchor="middle" class="cs-t sm m">GPU 원가</text><rect x="216" y="174" width="104" height="42" rx="5" class="cs m"/><text x="268.0" y="200.0" text-anchor="middle" class="cs-t sm m">MoFAC 마진</text>
+          <g class="ghostg"><rect x="216" y="78" width="104" height="96" rx="5" class="cs-ghost"/>
+          <text x="268" y="114.0" text-anchor="middle" class="cs-gt">GPU 임대 마진</text><text x="268" y="130.0" text-anchor="middle" class="cs-gt">DC 임대료</text><text x="268" y="146.0" text-anchor="middle" class="cs-gt">중계 수수료</text></g>
+          <g class="cut cut0"><rect x="216" y="78" width="104" height="30" rx="5" class="cs r"/><text x="268" y="98.0" text-anchor="middle" class="cs-t sm r">중계 수수료</text><line x1="226" y1="93.0" x2="310" y2="93.0" class="cut-line"/></g><g class="cut cut1"><rect x="216" y="108" width="104" height="34" rx="5" class="cs r"/><text x="268" y="130.0" text-anchor="middle" class="cs-t sm r">GPU 임대 마진</text><line x1="226" y1="125.0" x2="310" y2="125.0" class="cut-line"/></g><g class="cut cut2"><rect x="216" y="142" width="104" height="32" rx="5" class="cs lr"/><text x="268" y="163.0" text-anchor="middle" class="cs-t sm lr">DC 임대료</text><line x1="226" y1="158.0" x2="310" y2="158.0" class="cut-line"/></g>
+          <line x1="164" y1="78" x2="216" y2="78" class="cs-guide"/>
+          <g class="savg"><g transform="translate(346,78)"><path d="M0 4 L0 90" class="cs-arrow"/><path d="M-6 80 L0 92 L6 80" class="cs-arrowh"/></g>
+          <text x="346" y="68" text-anchor="middle" class="cs-save sm">원가 ↓</text></g>
+          <line x1="40" y1="360" x2="340" y2="360" class="ln-div"/>
+          <text x="112" y="384" text-anchor="middle" class="cs-row sm">다른 중계형</text><text x="112" y="402" text-anchor="middle" class="cs-row2">서비스</text>
+          <text x="268" y="384" text-anchor="middle" class="cs-row sm hi">MoFAC</text><text x="268" y="402" text-anchor="middle" class="cs-row2 hi">자체 GPU·DC</text>
+        </svg></div></div>
+    </div>
+    <div class="facts num">
+      <div class="fact only-a"><small><em class="why c">싼 이유</em></small><b>중계 수수료 0%</b><span>중계가 없어서 싸요</span></div>
+      <div class="fact only-a"><small><em class="why c">싼 이유</em><em class="why f">빠른 이유</em></small><b>Moreh 추론 기술로 최적화</b><span>같은 GPU라도 더 많이, 더 빠르게 처리해요</span></div>
+      <div class="fact only-b"><small><em class="why c">싼 이유</em></small><b>중계 수수료 0%</b><span>중계가 없어서 싸요</span></div>
+      <div class="fact only-b"><small><em class="why c">싼 이유</em></small><b>자체 GPU·DC</b><span>빌리지 않아서 임대료가 없어요</span></div>
+      <div class="fact only-b"><small><em class="why c">싼 이유</em><em class="why f">빠른 이유</em></small><b>Moreh 최적화</b><span>같은 GPU라도 더 많이, 더 빠르게 처리해요</span></div>
     </div>
   </div></section>
 
   <!-- models -->
   <section class="blk" id="s-models"><div class="wrap">
     <div class="kicker">모델 · 가격</div>
-    <h2 class="h only-a">많이 쓰는 오픈 모델을, 공식가보다 싸게</h2>
+    <h2 class="h only-a">코딩 에이전트에 최적화된 오픈웨이트 모델, 더 싸게</h2>
     <h2 class="h only-b">직접 서빙하는 모델, 가장 부담없는 가격으로</h2>
     <p class="hsub">100만 토큰당 가격 · 입력 / 캐시 / 출력</p>
     <div class="models">
@@ -645,35 +1078,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
         <a class="go" href="#">플레이그라운드에서 써보기 →</a>
       </div>
     </div>
-    <div class="foot"><span>원화 · 국내 카드 결제 · 충전 수수료 0%<span class="only-b"> · 카드 등록 결제</span> · 2026년 10월 모델사 공식가 기준</span><a href="#calc">내 사용량으로 계산해 보기 ↓</a></div>
-  </div></section>
-
-  <!-- B: stability -->
-  <section class="blk only-b" id="s-stab"><div class="wrap">
-    <div class="kicker">안정성</div>
-    <h2 class="h">같은 모델이라도, 어디서 돌리느냐에 따라 끊깁니다</h2>
-    <p class="hsub">요청이 공급사를 오가지 않아서, 속도와 오류가 매번 달라지지 않아요</p>
-<div class="gw">
-      <div class="gwc">
-        <div class="gwh"><b>일반 게이트웨이</b><span>공급사가 바뀔 때마다</span></div>
-        <div class="gwrow">
-          <div class="gwn">내 요청</div><span class="gwa">→</span><div class="gwn">라우터</div><span class="gwa">→</span>
-          <div class="gwp">
-            <div><i></i><b>공급사 A</b><small>빠르지만 툴콜 오류</small></div>
-            <div><i></i><b>공급사 B</b><small>싸지만 느림</small></div>
-            <div><i></i><b>공급사 C</b><small>가끔 다운</small></div>
-          </div>
-        </div>
-        <div class="gwf"><span class="pill warn">속도·오류가 매번 달라요</span></div>
-      </div>
-      <div class="gwc us">
-        <div class="gwh"><b>Morfac</b><span>처음부터 끝까지 직접</span></div>
-        <div class="gwrow">
-          <div class="gwn">내 요청</div><span class="gwa">→</span><div class="gwn dk">Morfac GPU · 추론 엔진</div>
-          <span class="pill ok" style="margin-left:auto">매번 같은 품질</span>
-        </div>
-      </div>
-    </div>
+    <div class="foot"><span>원화 · 국내 카드 결제 · 충전 수수료 0%<span class="only-b"> · 카드 등록 결제</span> · 2026년 10월 모델사 공식가 기준 · DeepSeek 등 모델 계속 추가</span><a href="#calc">내 사용량으로 계산해 보기 ↓</a></div>
   </div></section>
 
   <!-- calculator -->
@@ -748,7 +1153,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
         <div class="ro-h">한 달 예상 비용</div>
         <div class="cmpbars num">
           <div class="cb"><div class="cbl"><span>모델사 공식 API</span><b id="oOff">$300</b></div><div class="cbt"><i id="bOff" style="width:100%"></i></div></div>
-          <div class="cb us"><div class="cbl"><span>Morfac</span><b id="oUs">$193</b></div><div class="cbt"><i id="bUs" style="width:64%"></i></div></div>
+          <div class="cb us"><div class="cbl"><span>MoFAC</span><b id="oUs">$193</b></div><div class="cbt"><i id="bUs" style="width:64%"></i></div></div>
         </div>
         <div class="savebox num">
           <small>매달 아끼는 금액</small>
@@ -763,7 +1168,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
             <button class="btn pri lg" id="shareBtn" style="width:100%">↗ 팀에 공유하기</button>
             <div class="sharepop" id="sharePop">
               <div class="scard num">
-                <div class="sc-top"><span class="logo" style="font-size:14px"><i style="width:16px;height:16px"></i>Morfac</span><span style="font-size:11.5px;color:var(--mute)">비용 계산 결과</span></div>
+                <div class="sc-top"><span class="logo" style="font-size:14px"><i style="width:16px;height:16px"></i>MoFAC</span><span style="font-size:11.5px;color:var(--mute)">비용 계산 결과</span></div>
                 <div class="sc-t" id="scT">코딩 에이전트 · GLM 5.3 · 월 $300 기준</div>
                 <div class="sc-v"><span id="scV">월 $107</span> 절약</div>
                 <div class="sc-s" id="scS">연 약 ₩1,840,000 · 공식 API 대비 −36%</div>
@@ -777,85 +1182,20 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
           </div>
         </div>
         <div class="teamline only-a" id="teamA">여러 명이 함께 쓸 계획이라면 <a href="#" data-open="team">팀으로 쓰고 싶어요 →</a></div>
-        <div class="teamline only-b" id="teamB">여러 명이 함께 쓴다면 <a href="#">팀 만들기 →</a> 멤버별 한도와 세금계산서까지</div>
+        <div class="teamline only-b" id="teamB">여러 명이 함께 쓴다면 <a href="#" data-go="team">팀으로 쓰기 →</a> 멤버별 한도와 세금계산서까지</div>
       </div>
     </div>
   </div></section>
 
   <!-- persona -->
   <section class="blk" id="s-persona"><div class="wrap">
-    <div class="kicker">이런 분께</div>
-    <h2 class="h">어떤 게 가장 필요하세요?</h2>
-    <p class="hsub">쓰는 방식에 맞게 골라 보세요</p>
-    <nav class="pnav" id="pnav">
-      <a href="#per-1" class="on"><span class="n">1</span>비용을 줄이고 싶어요</a>
-      <a href="#per-2"><span class="n">2</span>데이터가 모델사로 가는 게 찝찝해요</a>
-      <a href="#per-3"><span class="n">3</span>국산 모델 Motif를 쓰고 싶어요</a>
-    </nav>
-
-    <div class="ppanel" id="per-1" data-p="1">
-      <div>
-        <h3>구독 한도에 막혀도 작업은 계속.<br>쓰던 도구에 모델만 바꿔 끼우세요</h3>
-        <p class="d">Claude Code·Cline·OpenCode에서 주소와 키만 바꾸면 GLM·Kimi로 이어서 작업해요. 쓰는 만큼만 충전해서 쓰면 돼요.</p>
-        <ul class="chk">
-          <li>공식 API보다 최대 <span class="only-a">36%</span><span class="only-b">40%</span> 저렴</li>
-          <li>Anthropic·OpenAI 호환 엔드포인트</li>
-          <li>원화 결제 · 국내 카드, 충전 수수료 0%</li>
-          <li class="only-b">카드 등록해 두면 충전이 한 번에</li>
-        </ul>
-        <div class="pbtns"><a class="btn pri" href="#">3분 설정 가이드</a><a class="btn line" href="#calc">내 사용량으로 계산해 보기</a></div>
-      </div>
-      <div class="vis">
-        <div class="sv-h"><span>코딩 에이전트 · GLM 5.3 · 월 $300 쓰던 만큼</span></div>
-        <div class="sv-big num"><span class="only-a">$107</span><span class="only-b">$119</span><small class="only-a">−36%</small><small class="only-b">−40%</small></div>
-        <div class="sv-krw num">매달 아끼는 금액 · 1년이면 약 <span class="only-a">₩1,846,000</span><span class="only-b">₩2,061,000</span></div>
-        <div class="duo num">
-          <div class="r"><span>공식 API</span><div class="t"><i style="width:100%;background:var(--line2)"></i></div><b>$300</b></div>
-          <div class="r"><span>Morfac</span><div class="t"><i class="only-a" style="width:64%"></i><i class="only-b" style="width:60%"></i></div><b><span class="only-a">$193</span><span class="only-b">$181</span></b></div>
-        </div>
-        <a href="#calc" style="display:block;margin-top:18px;font-size:13.5px;color:var(--mint);font-weight:600">내 사용량으로 다시 계산하기 →</a>
-      </div>
-    </div>
-
-    <div class="ppanel" id="per-2" data-p="2">
-      <div>
-        <h3 class="only-a">GLM·Kimi를 써도<br>입력은 모델 개발사로 가지 않아요</h3>
-        <h3 class="only-b">정식 서비스에 모델을 넣어도<br>데이터는 우리 장비 밖으로 나가지 않아요</h3>
-        <p class="d only-a">공개된 모델 가중치로 직접 서빙해서, 모델 개발사 API를 거치지 않아요. 프롬프트와 응답 본문은 저장하지 않아요.</p>
-        <p class="d only-b">장비부터 추론 엔진까지 직접 운영하고, 다른 공급사로 넘기지 않아요. 가드레일로 민감정보를 막고, 팀 키와 한도로 관리해요.</p>
-        <ul class="chk only-a">
-          <li>모델 개발사 API·중국 경유 없음</li>
-          <li>프롬프트·응답 본문 미저장, 학습에 쓰지 않음</li>
-          <li>보관하는 기록과 기간을 모두 공개</li>
-          <li class="soon">팀 키·멤버 관리, 세금계산서, 민감정보 차단 <span class="tag gray">준비 중</span></li>
-        </ul>
-        <ul class="chk only-b">
-          <li>Morfac 데이터센터에서만 처리, 다른 공급사로 넘기지 않음</li>
-          <li>프롬프트·응답 본문 미저장, 학습에 쓰지 않음</li>
-          <li>가드레일: 개인정보 마스킹·입력 필터</li>
-          <li>팀 키·멤버별 한도·세금계산서</li>
-        </ul>
-        <div class="pbtns only-a flex"><a class="btn pri" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn line" href="#">PDF로 받기</a></div>
-        <div class="pbtns only-b flex"><a class="btn pri" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn line" href="#">도입 문의</a></div>
-      </div>
-      <div class="vis">
-        <div class="path">
-          <div class="node"><div class="ic">⌘</div><div><b>내 애플리케이션</b><small>API 키로 요청</small></div></div>
-          <div class="arr">↓</div>
-          <div class="node"><div class="ic">⇆</div><div><b>Morfac 게이트웨이</b><small>인증·과금 · 본문 기록 없음</small></div></div>
-          <div class="arr">↓</div>
-          <div class="node hl"><div class="ic">▣</div><div>
-            <b class="only-a">추론 서버 · 일본 데이터센터</b><b class="only-b">Morfac 데이터센터 · 직접 운영</b>
-            <small>공개 가중치로 GLM·Kimi 서빙</small></div></div>
-          <div class="blocked"><s>Z.ai · Moonshot API</s> 거치지 않음</div>
-        </div>
-      </div>
-    </div>
-
+    <div class="kicker">국산 모델</div>
+    <h2 class="h">국산 모델 Motif 3도, 같은 키로</h2>
+    <p class="hsub">GLM·Kimi에 쓰던 키 그대로 모델 이름만 바꾸면 돼요</p>
     <div class="ppanel" id="per-3" data-p="3">
       <div>
-        <h3>국산 모델 Motif 3,<br>같은 API 키로 바로</h3>
-        <p class="d">GLM·Kimi를 쓰던 키 그대로 모델 이름만 바꾸면 돼요. 가볍고 저렴해서 서비스 기능이나 대량 처리에도 부담 없어요.</p>
+        <h3>가볍고 저렴해서,<br>서비스 기능과 대량 처리에</h3>
+        <p class="d">코딩은 GLM·Kimi로, 요약·분류·변환 같은 반복 작업은 Motif 3로 나눠 쓰면 비용이 더 내려가요.</p>
         <ul class="chk">
           <li>종합 지능 지수 47 · SWE-bench 76.2 · Terminal-Bench 74.9</li>
           <li>입력 $0.20 / 출력 $0.80 (100만 토큰)</li>
@@ -882,23 +1222,19 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
 
   <!-- team -->
   <section class="blk" id="team"><div class="wrap">
-    <div class="kicker">팀 · 조직 <span class="tag gray only-a" style="margin-left:6px">준비 중</span></div>
-    <h2 class="h">팀 AI 비용을 한 곳에서</h2>
-    <p class="hsub only-a">팀 기능을 준비하고 있어요. 신청하시면 열리는 대로 가장 먼저 알려드릴게요</p>
-    <p class="hsub only-b">개인 계정에서 팀으로 넘어오면 결제·키·정책을 한 번에 관리해요</p>
-    <div class="team4">
-      <div class="tbox"><div class="ic">👥</div><b>멤버 초대</b><span>역할별 권한, 초대하면 서로 $5 크레딧</span><em class="soonb only-a">준비 중</em></div>
-      <div class="tbox"><div class="ic">🔑</div><b>팀 키 · 한도</b><span>멤버·프로젝트별 키와 월 사용 한도</span><em class="soonb only-a">준비 중</em></div>
-      <div class="tbox"><div class="ic">₩</div><b>원화 결제 · 세금계산서</b><span class="only-a">원화 카드 결제는 지금 가능, 세금계산서는 준비 중</span><span class="only-b">카드 등록 결제, 세금계산서 발행</span><em class="soonb only-a" style="background:var(--mintbg);color:var(--mint2)">일부 제공</em></div>
-      <div class="tbox"><div class="ic">🛡</div><b>가드레일</b><span>민감정보 차단, 허용 모델 지정</span><em class="soonb only-a">준비 중</em></div>
+    <div class="teamband only-b flex">
+      <div><div class="kicker" style="margin:0 0 6px">팀 · 조직</div><h3>팀으로 쓰시나요?</h3><p>팀 키·멤버별 한도·세금계산서, 그리고 우리 DC에서 처리하는 보안까지 한 번에.</p></div>
+      <div class="pbtns"><a class="btn pri lg" href="#" data-go="team">팀 페이지 보기</a><a class="btn ol lg" href="#">도입 문의</a></div>
     </div>
-    <div class="contact only-a flex" style="margin-top:20px">
-      <div><h3>팀으로 쓸 계획이신가요?</h3><p>인원과 필요한 기능을 알려주시면 팀 기능이 열리는 대로 먼저 안내해 드려요.</p></div>
-      <div class="pbtns"><a class="btn line" href="#" data-go="security">보안·데이터 처리 안내</a><button class="btn pri" data-open="team">팀으로 쓰고 싶어요</button></div>
+    <div class="only-a">
+    <div class="contact flex">
+      <div><div class="kicker" style="margin:0 0 6px">팀 · 조직 <span class="tag gray" style="margin-left:6px">준비 중</span></div><h3>팀으로 쓸 계획이신가요?</h3><p>팀 키·멤버별 한도·세금계산서·가드레일을 준비하고 있어요. 신청하시면 열리는 대로 먼저 안내해 드려요. <a href="#" data-go="team" class="tlink">팀 기능 자세히 보기 →</a></p></div>
+      <div class="pbtns"><button class="btn pri" data-open="team">팀으로 쓰고 싶어요</button><a class="btn ol" href="#" data-go="security">보안·데이터 처리 안내</a></div>
     </div>
     <div class="contact only-b flex" style="margin-top:20px">
-      <div><h3>보안 검토가 필요하신가요?</h3><p>보안·데이터 처리 안내서와 질문지 대응, 파일럿 크레딧을 드려요.</p></div>
-      <div class="pbtns"><a class="btn line" href="#" data-go="security">보안·데이터 처리 안내</a><a class="btn pri" href="#">팀 만들기</a><a class="btn sec" href="#">도입 문의</a></div>
+      <div><h3>보안 검토가 필요하신가요?</h3><p>보안·데이터 처리 안내서와 보안 질문지 대응을 도와드려요.</p></div>
+      <div class="pbtns"><a class="btn pri" href="#">팀 만들기</a><a class="btn ol" href="#">도입 문의</a><a class="btn ol" href="#" data-go="security">보안·데이터 처리 안내</a></div>
+    </div>
     </div>
   </div></section>
 
@@ -914,13 +1250,88 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
   <section class="blk" id="s-cta" style="border-top:0;padding-top:20px"><div class="wrap">
     <div class="closing">
       <div><h2>내 작업에 충분한지, 먼저 비교해 보세요</h2><p>플레이그라운드에서 GLM·Kimi·Motif 3를 나란히 써보고 시작하세요.</p></div>
-      <div class="pbtns"><a class="btn sec lg" href="#">플레이그라운드 열기</a><a class="btn pri lg" href="#">무료로 시작하기</a></div>
+      <div class="pbtns"><a class="btn sec lg" href="#">플레이그라운드 열기</a><a class="btn pri lg" href="#">시작하기</a></div>
     </div>
   </div></section>
 
   <footer class="site"><div class="wrap">
-    <div>© Morfac · 주식회사 모르팩<br><span class="only-a">추론 처리 위치: 일본 (국외 이전 고지)</span><span class="only-b">추론 처리: Morfac 자체 데이터센터</span></div>
+    <div>© MoFAC · 주식회사 모르팩<br><span class="only-a">추론 처리 위치: 일본 (국외 이전 고지)</span><span class="only-b">추론 처리: MoFAC 자체 데이터센터</span></div>
     <nav><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#" data-go="security">보안·데이터 처리</a><a class="only-b" href="#">상태 페이지</a></nav>
+  </div></footer>
+</div>
+
+<!-- ============ TEAM ============ -->
+<div class="page" id="p-team">
+  <header class="site"><div class="wrap">
+    <a class="logo" href="#" data-go="home"><i></i>MoFAC</a>
+    <nav class="gnb">
+      <a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#" data-go="team" class="on">팀</a><a href="#">Docs</a>
+    </nav>
+    <div class="hright"><a class="btn ghost" href="#">로그인</a><a class="btn pri" href="#">시작하기</a></div>
+  </div></header>
+
+  <section class="hero"><div class="wrap">
+    <div>
+      <div class="kicker">MoFAC for Teams <span class="tag gray only-a" style="margin-left:6px">Coming soon</span></div>
+      <h1 class="big only-a" style="margin-top:8px">팀 키·한도·세금계산서까지,<br>팀 기능을 준비하고 있어요.</h1>
+      <h1 class="big only-b" style="margin-top:8px">팀이 쓰는 모델,<br>우리 DC·우리 GPU에서<br><em>더 안전하고 싸게</em></h1>
+      <p class="lead only-a">인원과 필요한 기능을 알려주시면 열리는 대로 먼저 안내해 드려요.</p>
+      <p class="lead only-b">수수료 0%, 임대료 0. 국내 추론 기술에 GPU·데이터센터까지 직접.</p>
+      <div class="ctas">
+        <button class="btn pri lg only-a" data-open="team">팀으로 쓰고 싶어요</button>
+        <a class="btn pri lg only-b" href="#">팀 만들기</a>
+        <a class="btn ol lg only-b" href="#">도입 문의</a>
+        <a class="btn ol lg" href="#" data-go="security">보안·데이터 처리 안내</a>
+      </div>
+      
+      <div class="trust"><span>입력이 모델 개발사(중국 등)로 가지 않아요</span><span>프롬프트·응답 본문 미저장</span></div>
+    </div>
+    <div class="team-feat">
+      <div class="tbox"><div class="ic">👥</div><b>멤버 초대 · 권한</b><span>역할별 권한, 초대하면 서로 크레딧</span><em class="soonb only-a">준비 중</em></div>
+      <div class="tbox"><div class="ic">🔑</div><b>팀 키 · 한도</b><span>멤버·프로젝트별 키와 월 사용 한도</span><em class="soonb only-a">준비 중</em></div>
+      <div class="tbox"><div class="ic">📊</div><b>사용량 · 세금계산서</b><span>멤버별 사용량 리포트, 세금계산서 발행</span><em class="soonb only-a">준비 중</em></div>
+      <div class="tbox"><div class="ic">🛡</div><b>가드레일</b><span>개인정보 마스킹, 입력 필터, 허용 모델 지정</span><em class="soonb only-a">준비 중</em></div>
+    </div>
+  </div></section>
+
+  <section class="blk only-b"><div class="wrap">
+    <div class="kicker">왜 더 안전한가요</div>
+    <h2 class="h">우리 DC, 우리 GPU 안에서만 처리하니까</h2>
+    <p class="hsub">요청이 여러 공급사를 오가지 않아서, 데이터가 어디서 처리되는지 분명해요</p>
+    <div class="jr">
+      <svg class="jr-svg" viewBox="0 0 1100 420" role="img" aria-label="중계형과 MoFAC 데이터 처리 비교">
+        <defs><linearGradient id="jg3" x1="0" x2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient><radialGradient id="jglow3"><stop offset="0" stop-color="#30E8B0" stop-opacity=".45"/><stop offset="1" stop-color="#30E8B0" stop-opacity="0"/></radialGradient></defs>
+        <text x="40" y="44" class="ln-k">다른 중계형 서비스</text><text x="200" y="44" class="ln-ks">요청을 받아 다른 공급사에 넘기는 방식</text>
+        <path d="M150 130 L 330 130" class="ln-dim"/><path d="M410 130 C 470 130, 480 80, 560 80" class="ln-dim"/><path d="M410 130 L 560 130" class="ln-dim"/><path d="M410 130 C 470 130, 480 180, 560 180" class="ln-dim"/>
+        <circle r="4" class="ln-dot-dim"><animateMotion dur="3.2s" repeatCount="indefinite" path="M150 130 L 410 130 C 470 130, 480 80, 560 80"/></circle>
+        <g transform="translate(110,130)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">팀 앱</text></g>
+        <g transform="translate(370,130)"><rect x="-40" y="-22" width="80" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">라우터</text></g>
+        <g transform="translate(615,80)"><rect x="-62" y="-18" width="124" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">외부 DC A</text></g>
+        <g transform="translate(615,130)"><rect x="-62" y="-18" width="124" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">외부 DC B</text></g>
+        <g transform="translate(615,180)"><rect x="-62" y="-18" width="124" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">외부 DC C</text></g>
+        <text x="720" y="110" class="ln-sum-dim">어느 공급사의 데이터센터가</text><text x="720" y="136" class="ln-sum-dim">처리할지 매번 달라서</text><text x="720" y="158" class="ln-sum-dim">보안 검토 범위가 넓어져요</text>
+        <line x1="40" y1="230" x2="1060" y2="230" class="ln-div"/>
+        <text x="40" y="274" class="ln-k hi">MoFAC</text><text x="120" y="274" class="ln-ks hi">우리 DC · 우리 GPU</text>
+        <path d="M150 350 L 560 350" class="ln-hi-bg"/><path d="M150 350 L 560 350" stroke="url(#jg3)" stroke-width="4" stroke-linecap="round"/>
+        <circle r="5" fill="#fff"><animateMotion dur="1.6s" repeatCount="indefinite" path="M150 350 L 570 350"/></circle>
+        <g transform="translate(110,350)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">팀 앱</text></g>
+        <circle cx="615" cy="350" r="62" fill="url(#jglow3)"/><circle cx="615" cy="350" r="30" class="jr-core"/>
+        <g class="jr-gpu" transform="translate(601,337)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
+        <text x="615" y="404" text-anchor="middle" class="ln-bt">MoFAC DC · GPU</text>
+        <text x="720" y="332" class="ln-sum">외부 공급사도, 모델 개발사도 거치지 않고</text><text x="720" y="358" class="ln-sum">우리 데이터센터 안에서만 처리해서</text><text x="720" y="380" class="ln-sum">데이터가 어디 있는지 분명해요</text>
+      </svg>
+    </div>
+    <div class="facts num">
+      <div class="fact"><small>처리 위치</small><b class="only-a" style="display:block">외부 GPU</b><b class="only-b" style="display:block">우리 DC</b><span class="only-a">국외 데이터센터 처리 고지</span><span class="only-b">외부 공급사를 거치지 않아요</span></div>
+      <div class="fact"><small>본문 보관</small><b>저장 안 함</b><span>프롬프트·응답은 추론 후 바로 폐기</span></div>
+      <div class="fact"><small>모델 개발사</small><b>전송 안 함</b><span>입력이 모델 개발사(중국 등)로 가지 않아요</span></div>
+    </div>
+  </div></section>
+
+
+  <footer class="site"><div class="wrap">
+    <div>© MoFAC · 주식회사 모르팩</div>
+    <nav><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#" data-go="security">보안·데이터 처리</a></nav>
   </div></footer>
 </div>
 
@@ -928,10 +1339,10 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
 <div class="page" id="p-skel">
   <div class="wrap" style="padding-top:44px;padding-bottom:80px">
     <h1 style="font-size:28px;letter-spacing:-.02em;margin:0 0 6px">메인 화면 구조</h1>
-    <p style="color:var(--sub);margin:0 0 28px">블록을 누르면 해당 시점 화면의 그 섹션으로 이동해요 · 진한 테두리가 핵심 4블록</p>
+    <p style="color:var(--sub);margin:0 0 28px">블록을 누르면 해당 시점 화면의 그 섹션으로 이동해요 · 진한 테두리가 핵심 블록</p>
     <div class="skc">
-      <div><div class="skt">정식 오픈 시점</div><div class="skcol" data-ph="a"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>GLM·Kimi를 더 싸게, 국산 모델 Motif 3까지 API 키 하나로</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">키 하나 → Morfac API → 모델 3</div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>② 모델 · 가격</b><span>↗</span></div><p>GLM 5.3 · Kimi K3 · Motif 3 — 가격 · 공식가 취소선 · 할인율 + 결제 조건</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div><div class="sk ghost"><div class="sk-h"><b>③ 자체 서빙 · 안정성</b><span class="tag gray">자체 서빙 후 노출</span></div><p>장비 투입·실측 확보 전이라 섹션 없음</p></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산(방식·모델·사용량·Motif 비율) → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:70px"></div><div class="m" style="height:70px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 이런 분께</b><span>↗</span></div><p>앵커 3개 → 비용 · 데이터가 모델사로 · 국산 모델 블록이 차례로 펼쳐짐, 블록마다 CTA</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:16px"></div><div style="height:16px"></div><div style="height:16px"></div></div><div class="sk-grid" style="margin-top:6px"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 · 조직 <span class="tag gray">준비 중</span></b><span>↗</span></div><p>4개 기능 준비 중 표시 + 팀으로 쓰고 싶어요(신청)</p><div class="sk-grid" style="grid-template-columns:repeat(4,1fr)"><div></div><div></div><div></div><div></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 무료로 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
-      <div><div class="skt b">자체 서빙 후</div><div class="skcol" data-ph="b"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>같은 오픈웨이트 모델, 직접 돌려서 더 싸고 더 안정적입니다</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">키 하나 → Morfac GPU → 모델 3</div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>② 모델 · 가격</b><span>↗</span></div><p>GLM 5.3 · Kimi K3 · Motif 3 — 가격 · 공식가 취소선 · 할인율 + 결제 조건</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div><div class="sk core" data-jump="s-stab"><div class="sk-h"><b>③ 자체 서빙 · 안정성</b><span>↗</span></div><p>일반 게이트웨이 vs Morfac</p><div class="sk-grid" style="grid-template-columns:1.25fr 1fr"><div></div><div class="m"></div></div></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산(방식·모델·사용량·Motif 비율) → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:70px"></div><div class="m" style="height:70px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 이런 분께</b><span>↗</span></div><p>앵커 3개 → 비용 · 데이터가 모델사로 · 국산 모델 블록이 차례로 펼쳐짐, 블록마다 CTA</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:16px"></div><div style="height:16px"></div><div style="height:16px"></div></div><div class="sk-grid" style="margin-top:6px"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 · 조직</b><span>↗</span></div><p>4개 기능 제공 + 팀 만들기 · 도입 문의</p><div class="sk-grid" style="grid-template-columns:repeat(4,1fr)"><div></div><div></div><div></div><div></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 무료로 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
+      <div><div class="skt">퍼블릭 오픈 · 12월</div><div class="skcol" data-ph="a"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>GLM·Kimi 코딩 에이전트, 키만 바꾸면 더 싸고 빠르게 · [카드 등록하고 무료로 시작하기]</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">내 앱 → MoFAC 추론 엔진 → 모델 3</div></div></div><div class="sk core" data-jump="s-why"><div class="sk-h"><b>② 왜 싸고 빠른가요</b><span>↗</span></div><p>중계형 vs MoFAC 두 줄 비교 + 싼 이유 ①수수료 0% ②원가 직접 최적화 · 빠른 이유 직행</p><div class="sk-grid" style="grid-template-columns:1fr"><div style="height:30px"></div><div class="m" style="height:30px"></div></div><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>③ 모델 · 가격</b><span>↗</span></div><p>코딩 에이전트에 최적화된 오픈웨이트 모델 — 가격 · 공식가 취소선 · 할인율</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:44px"></div><div style="height:44px"></div><div style="height:44px"></div></div></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산 → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:60px"></div><div class="m" style="height:60px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 국산 모델</b><span>↗</span></div><p>Motif 3 단독 소개 — 같은 키로 모델 이름만 바꿔서</p><div class="sk-grid" style="grid-template-columns:repeat(2,1fr)"><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 · 조직 <span class="tag gray">Coming soon</span></b><span>↗</span></div><p>팀 띠: [팀으로 쓰고 싶어요] [보안·데이터 처리 안내] · 기능 카드는 /team</p><div class="sk-grid" style="grid-template-columns:repeat(4,1fr)"><div style="height:44px"></div><div style="height:44px"></div><div style="height:44px"></div><div style="height:44px"></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
+      <div><div class="skt b">정식 오픈 · 27년 2월</div><div class="skcol" data-ph="b"><div class="sk core" data-jump="s-hero"><div class="sk-h"><b>① 히어로</b><span>↗</span></div><p>(수수료 0%, 임대료 0…) GLM·Kimi 코딩 에이전트, 키만 바꾸면 더 싸고 빠르게 · [카드 등록하고 무료로 시작하기] · [무료로 시작하기] [팀으로 쓰기]</p><div class="sk-hero"><div><div class="sk-lines"><i style="width:90%"></i><i style="width:70%"></i><i style="width:45%"></i></div><div class="sk-btns"><i class="p"></i><i></i></div></div><div class="sk-pic">내 앱 → MoFAC DC·GPU → 모델 3</div></div></div><div class="sk core" data-jump="s-why"><div class="sk-h"><b>② 왜 싸고 빠른가요</b><span>↗</span></div><p>중계형 vs MoFAC 두 줄 비교 + 경로 그림(빠른 이유) + 원가 구성 그림(싼 이유: GPU·DC 임대 마진·라우터 수수료 없음) + 숫자 카드</p><div class="sk-grid" style="grid-template-columns:1fr"><div style="height:30px"></div><div class="m" style="height:30px"></div></div><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:30px"></div><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk core" data-jump="s-models"><div class="sk-h"><b>③ 모델 · 가격</b><span>↗</span></div><p>코딩 에이전트에 최적화된 오픈웨이트 모델 — 가격 · 공식가 취소선 · 할인율</p><div class="sk-grid" style="grid-template-columns:repeat(3,1fr)"><div style="height:44px"></div><div style="height:44px"></div><div style="height:44px"></div></div></div><div class="sk core" data-jump="calc"><div class="sk-h"><b>④ 비용 계산기</b><span>↗</span></div><p>내 사용량으로 계산 → 공식 API 대비 절감액 → 팀에 공유</p><div class="sk-grid" style="grid-template-columns:1.15fr .85fr"><div style="height:60px"></div><div class="m" style="height:60px"></div></div></div><div class="sk " data-jump="s-persona"><div class="sk-h"><b>⑤ 국산 모델</b><span>↗</span></div><p>Motif 3 단독 소개 — 같은 키로 모델 이름만 바꿔서</p><div class="sk-grid" style="grid-template-columns:repeat(2,1fr)"><div style="height:30px"></div><div style="height:30px"></div></div></div><div class="sk " data-jump="team"><div class="sk-h"><b>⑥ 팀 띠 → 팀 페이지</b><span>↗</span></div><p>"팀으로 쓰시나요?" 한 줄 + [팀 페이지 보기] [도입 문의] · 보안·팀 기능은 /team에서</p><div class="sk-grid"><div class="m" style="height:34px"></div></div></div><div class="sk " data-jump="s-tools"><div class="sk-h"><b>⑦ 연결 · 시작하기</b><span>↗</span></div><p>쓰던 도구 그대로 → 플레이그라운드 / 시작하기</p><div class="sk-lines"><i style="width:60%"></i></div></div></div></div>
     </div>
   </div>
 </div>
@@ -939,14 +1350,14 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
 <!-- ============ SECURITY ============ -->
 <div class="page" id="p-security">
   <header class="site"><div class="wrap">
-    <a class="logo" href="#" data-go="home"><i></i>Morfac</a>
-    <nav class="gnb"><a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#">Docs</a></nav>
+    <a class="logo" href="#" data-go="home"><i></i>MoFAC</a>
+    <nav class="gnb"><a href="#">모델</a><a href="#">요금</a><a href="#">플레이그라운드</a><a href="#" data-go="team">팀</a><a href="#">Docs</a></nav>
     <div class="hright"><a class="btn ghost" href="#">로그인</a><a class="btn pri" href="#">시작하기</a></div>
   </div></header>
 
   <div class="wrap">
     <div class="sec-hero">
-      <div class="crumb"><a href="#" data-go="home">Morfac</a> › 보안·데이터 처리</div>
+      <div class="crumb"><a href="#" data-go="home">MoFAC</a> › 보안·데이터 처리</div>
       <span class="eyebrow">보안·구매 검토 담당자를 위한 요약</span>
       <h1>보낸 데이터가 어디를 지나고,<br>무엇이 얼마나 남는지 모두 공개합니다</h1>
       <p class="lead" style="margin:0">팀 내부 보안 검토나 구매 검토에 그대로 쓸 수 있도록 한 페이지로 정리했어요.</p>
@@ -975,7 +1386,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
             <div class="node"><div class="ic">⇆</div><div><b>API 게이트웨이</b><small>AWS 서울 리전<br>인증·과금·사용량 기록</small></div></div>
             <div class="a">→</div>
             <div class="node hl"><div class="ic">▣</div><div>
-              <b class="only-a">추론 서버(GPU)</b><b class="only-b">Morfac 데이터센터</b>
+              <b class="only-a">추론 서버(GPU)</b><b class="only-b">MoFAC 데이터센터</b>
               <small class="only-a">일본 데이터센터에서 처리</small><small class="only-b">데이터센터·GPU·추론 엔진 직접 운영<br>다른 공급사로 넘기지 않음</small></div></div>
             <div class="a">→</div>
             <div class="node"><div class="ic">↩</div><div><b>응답 반환</b><small>본문은 남지 않음</small></div></div>
@@ -1005,7 +1416,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
             <tbody>
               <tr><td>Amazon Web Services</td><td class="sm">회원 정보, 크레딧 원장, 요청 기록 저장</td><td>한국</td></tr>
               <tr class="only-a"><td>GPU 인프라 제공사</td><td class="sm">추론 서버(GPU) 제공</td><td>일본</td></tr>
-              <tr class="only-b"><td>Morfac (직접 운영)</td><td class="sm">데이터센터·GPU·추론 엔진</td><td>자체 데이터센터</td></tr>
+              <tr class="only-b"><td>MoFAC (직접 운영)</td><td class="sm">데이터센터·GPU·추론 엔진</td><td>자체 데이터센터</td></tr>
               <tr><td>토스페이먼츠</td><td class="sm">카드 결제<span class="only-b"> · 카드 등록 결제</span></td><td>한국</td></tr>
               <tr><td>메일·고객지원 도구</td><td class="sm">인증·알림 메일, 문의 응대</td><td>미국</td></tr>
             </tbody>
@@ -1021,7 +1432,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
 
         <div id="s6"><h2>자주 받는 질문</h2><p class="s">&nbsp;</p>
           <div class="faq">
-            <details open><summary>중국 모델을 쓰면 데이터가 중국으로 가나요?</summary><p class="only-a">아니요. 공개된 모델 가중치로 일본 데이터센터에서 서빙해요. 모델 개발사는 요청을 받지 않아요.</p><p class="only-b">아니요. 공개된 모델 가중치로 Morfac 데이터센터에서 직접 서빙해요. 모델 개발사는 요청을 받지 않아요.</p></details>
+            <details open><summary>중국 모델을 쓰면 데이터가 중국으로 가나요?</summary><p class="only-a">아니요. 공개된 모델 가중치로 일본 데이터센터에서 서빙해요. 모델 개발사는 요청을 받지 않아요.</p><p class="only-b">아니요. 공개된 모델 가중치로 MoFAC 데이터센터에서 직접 서빙해요. 모델 개발사는 요청을 받지 않아요.</p></details>
             <details class="only-a"><summary>국내에서 처리되나요?</summary><p>지금은 일본에서 처리해요. 국내 데이터센터 일정이 정해지면 이 페이지에서 알려드려요.</p></details>
             <details><summary>장애나 남용을 조사할 때 본문을 보나요?</summary><p>본문 없이 요청 기록과 탐지 결과만으로 대응해요.</p></details>
             <details><summary>보안 질문지에 답해 줄 수 있나요?</summary><p>네. 아래 버튼으로 보내 주시면 담당자가 회신해요.</p></details>
@@ -1041,7 +1452,7 @@ body[data-phase] .hx-box .hx-m .off.only-a,body[data-phase] .hx-box .hx-m .off.o
   </div>
 
   <footer class="site"><div class="wrap">
-    <div>© Morfac · 주식회사 모르팩</div>
+    <div>© MoFAC · 주식회사 모르팩</div>
     <nav><a href="#">이용약관</a><a href="#">개인정보처리방침</a><a href="#">보안·데이터 처리</a></nav>
   </div></footer>
 </div>
@@ -1162,7 +1573,7 @@ function calc(){
   $('bUs').style.width=(us/off*100)+'%';
   $('oSave').textContent=usd(save);$('oPct').textContent='−'+Math.round(pct*100)+'%';
   $('oYr').textContent='1년이면 약 '+krw(save*12)+' · 매달 약 '+krw(save);
-  $('oBd').innerHTML='<tr><th>모델</th><th>토큰</th><th>Morfac 비용</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]>=10?Math.round(r[1]).toLocaleString():r[1].toFixed(1)}M</td><td>${usd(r[2])}</td></tr>`).join('');
+  $('oBd').innerHTML='<tr><th>모델</th><th>토큰</th><th>MoFAC 비용</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]>=10?Math.round(r[1]).toLocaleString():r[1].toFixed(1)}M</td><td>${usd(r[2])}</td></tr>`).join('');
   const mm=mix().map(x=>Math.round(x*1000)/10);
   $('oBasis').textContent=`입력 ${mm[0]}% · 캐시 ${mm[1]}% · 출력 ${mm[2]}% 기준 · 2026년 10월 공식가 · ₩${FX.toLocaleString()}/$ · 실제 비용은 캐시 적중률에 따라 달라져요`;
   if(st.mode==='cost'){const c=+$('rCost').value;$('vCost').textContent='$'+c.toLocaleString();$('hCost').textContent='약 '+krw(c)}
@@ -1197,9 +1608,10 @@ setMix();calc();
 
 
 // hero model cycle
-(()=>{const ms=[...document.querySelectorAll('.hx-m')],ps=[],t=document.getElementById('hxModel');let i=0;
-function set(n){i=n;ms.forEach((m,k)=>m.classList.toggle('on',k===n));ps.forEach((p,k)=>p.classList.toggle('on',k===n));t.style.opacity=0;setTimeout(()=>{t.textContent='"'+ms[n].dataset.id+'"';t.style.opacity=1},180)}
-ms.forEach((m,k)=>m.onmouseenter=()=>set(k));set(0);setInterval(()=>set((i+1)%3),2400)})();
+(()=>{const ms=[...document.querySelectorAll('.hv2-m')],lk=[...document.querySelectorAll('.hv2-lk')],pt=[...document.querySelectorAll('.hv2-pt')];let i=0;
+function set(n){i=n;[ms,lk,pt].forEach(g=>g.forEach((e,k)=>e.classList.toggle('on',k===n)))}
+ms.forEach((m,k)=>m.addEventListener('mouseenter',()=>set(k)));set(0);setInterval(()=>set((i+1)%3),2400)})();
+document.querySelectorAll('#hvSeg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#hvSeg button').forEach(x=>x.classList.toggle('on',x===b));document.body.dataset.hv=b.dataset.hv});
 </script>
 </body>
 </html>
