@@ -720,7 +720,10 @@ body[data-phase="b"] .jr.only-b,body[data-phase="a"] .jr.only-a{display:block!im
 body[data-phase="b"] .cap.only-b{display:flex!important}
 
 .why2{grid-template-columns:1.62fr 1fr;gap:16px}
-body[data-phase="b"] .why2.only-b{display:grid!important}
+.why2{display:grid}
+body[data-phase="a"] .why2{grid-template-columns:1fr;max-width:760px;margin:0 auto}
+body[data-phase="a"] .why2 .jr{height:auto}
+body[data-phase="b"] .why2 > div.only-b{display:block!important}
 .why2 .jr{padding:20px 20px 14px;height:calc(100% - 32px)}
 .why2 .cap{display:flex}
 .ln-sum-dim.sm,.ln-sum.sm{font-size:14px}
@@ -823,6 +826,34 @@ body[data-phase="a"] .rc-l small.only-a,body[data-phase="b"] .rc-l small.only-b{
 .teamband .btn.ol{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}
 a.tlink{color:var(--mint2);font-weight:600;white-space:nowrap}
 #team .contact p{max-width:560px}
+
+.gpuS{transform-box:fill-box;transform-origin:50% 100%;animation:gpuS 4.2s ease-in-out infinite}
+@keyframes gpuS{0%,46%{transform:scaleY(1)}58%,90%{transform:scaleY(.7)}98%,100%{transform:scaleY(1)}}
+.drop{animation:dropA 4.2s ease-in-out infinite}
+@keyframes dropA{0%,46%{transform:translateY(0)}58%,90%{transform:translateY(31px)}98%,100%{transform:translateY(0)}}
+.mtag{opacity:0;animation:mtagA 4.2s ease-in-out infinite;fill:#9FF5DA!important;font-weight:700}
+@keyframes mtagA{0%,52%{opacity:0}60%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes ghostA{0%,58%{opacity:0}66%,90%{opacity:1}96%,100%{opacity:0}}
+.cs-gt2{fill:#30E8B0;font-size:12px;font-weight:800}
+.vs-c{fill:#1B2540;stroke:rgba(156,170,200,.45);stroke-width:1}
+.vs-t{fill:#C9D6EE;font-size:11px;font-weight:800;letter-spacing:.04em}
+
+.tune-tag{fill:rgba(48,232,176,.14);stroke:rgba(48,232,176,.5)}
+.tune-t{fill:#30E8B0;font-size:11.5px;font-weight:800}
+.race-k{fill:#6F7C98;font-size:12px;font-weight:700}
+.race-bg{fill:rgba(156,170,200,.15)}
+.race-f{transform-box:fill-box;transform-origin:0 50%}
+.race-f.slow{fill:#6E7A96;animation:raceS 4.2s linear infinite}
+.race-f.fast{fill:#30E8B0;animation:raceF 4.2s ease-out infinite}
+@keyframes raceS{0%,10%{transform:scaleX(0)}85%,96%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes raceF{0%,10%{transform:scaleX(0)}48%,96%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+.race-n{fill:#8A97B2;font-size:12px;font-weight:600}
+.race-n.hi{fill:#BFE6D5;font-weight:700}
+.race-done{font-size:12px;font-weight:800;opacity:0}
+.slow-d{fill:#AEB9D0;animation:doneS 4.2s linear infinite}
+.fast-d{fill:#30E8B0;animation:doneF 4.2s linear infinite}
+@keyframes doneS{0%,85%{opacity:0}88%,96%{opacity:1}100%{opacity:0}}
+@keyframes doneF{0%,48%{opacity:0}52%,96%{opacity:1}100%{opacity:0}}
 </style>
 </head>
 <body data-phase="a">
@@ -956,79 +987,49 @@ a.tlink{color:var(--mint2);font-weight:600;white-space:nowrap}
     <div class="kicker">왜 싸고 빠른가요</div>
     <h2 class="h only-a" style="margin-bottom:32px">중계 없이 직접 서빙해요</h2>
     <h2 class="h only-b" style="margin-bottom:32px">우리 데이터센터와 GPU로 직접 서빙해요</h2>
-    <div class="jr only-a">
-      <svg class="jr-svg" viewBox="0 0 1100 420" role="img" aria-label="중계형과 직접 서빙 비교">
-        <defs>
-          <linearGradient id="jg2" x1="0" x2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient>
-          <radialGradient id="jglow2"><stop offset="0" stop-color="#30E8B0" stop-opacity=".45"/><stop offset="1" stop-color="#30E8B0" stop-opacity="0"/></radialGradient>
-        </defs>
-        <!-- lane 1: relay -->
-        <text x="40" y="44" class="ln-k">다른 중계형 서비스</text>
-        <text x="200" y="44" class="ln-ks">요청을 받아 다른 공급사에 넘기는 방식</text>
-        <path d="M150 130 L 330 130" class="ln-dim"/>
-        <path d="M410 130 C 470 130, 480 80, 560 80" class="ln-dim"/>
-        <path d="M410 130 L 560 130" class="ln-dim"/>
-        <path d="M410 130 C 470 130, 480 180, 560 180" class="ln-dim"/>
-        <circle r="4" class="ln-dot-dim"><animateMotion dur="3.2s" repeatCount="indefinite" path="M150 130 L 330 130 L 370 130 L 410 130 C 470 130, 480 180, 560 180"/></circle>
-        <g transform="translate(110,130)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
-        <g transform="translate(370,130)"><rect x="-52" y="-22" width="104" height="44" rx="12" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중계 서비스</text></g>
-        <text x="370" y="176" text-anchor="middle" class="ln-fee">중계 수수료</text>
-        <g transform="translate(615,80)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
-        <g transform="translate(615,130)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
-        <g transform="translate(615,180)"><rect x="-55" y="-18" width="110" height="36" rx="10" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
-        <g><g class="only-a"><text x="720" y="110" class="ln-sum-dim">공급사 가격 + 중계 수수료</text><text x="720" y="136" class="ln-sum-dim">한 번 더 거쳐서 가고</text><text x="720" y="158" class="ln-sum-dim">공급사마다 결과가 달라요</text></g><g class="only-b"><text x="720" y="110" class="ln-sum-dim">중계를 한 번 더 거치고</text><text x="720" y="136" class="ln-sum-dim">어느 공급사가 받느냐에 따라</text><text x="720" y="158" class="ln-sum-dim">속도·결과가 달라요</text></g></g>
-        
-        <!-- divider -->
-        <line x1="40" y1="230" x2="1060" y2="230" class="ln-div"/>
-        <!-- lane 2: MoFAC -->
-        <text x="40" y="274" class="ln-k hi">MoFAC</text>
-        <text x="120" y="274" class="ln-ks hi only-a">직접 서빙</text><text x="120" y="274" class="ln-ks hi only-b">우리 DC · 우리 GPU</text>
-        <path d="M150 350 L 560 350" class="ln-hi-bg"/>
-        <path d="M150 350 L 560 350" class="ln-hi"/>
-        <circle r="5" fill="#fff"><animateMotion dur="1.6s" repeatCount="indefinite" path="M150 350 L 570 350"/></circle>
-        <g transform="translate(110,350)"><rect x="-44" y="-22" width="88" height="44" rx="12" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
-        <circle cx="615" cy="350" r="62" fill="url(#jglow2)"/>
-        <circle cx="615" cy="350" r="30" class="jr-core"/>
-        <g class="jr-gpu" transform="translate(601,337)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
-        <text x="615" y="404" text-anchor="middle" class="ln-bt only-a">MoFAC 추론 엔진</text><text x="615" y="404" text-anchor="middle" class="ln-bt only-b">MoFAC 자체 GPU</text>
-        <g class="only-a"><text x="720" y="332" class="ln-sum">중계 수수료 0%</text><text x="720" y="358" class="ln-sum">Moreh 최적화로 원가 ↓ 속도 ↑</text></g>
-        <g class="only-b"><text x="720" y="332" class="ln-sum">우리 GPU 한 곳에서 처리해서</text><text x="720" y="358" class="ln-sum">매번 같은 속도·같은 품질</text></g>
-      </svg>
-    </div>
-    <div class="why2 only-b">
-      <div><div class="cap">요청 경로</div><div class="jr"><svg class="jr-svg" viewBox="0 0 640 420" role="img" aria-label="요청 경로 비교">
-          <text x="24" y="40" class="ln-k">다른 중계형 서비스</text>
-          <path d="M120 110 L 250 110" class="ln-dim"/><path d="M320 110 C 370 110, 380 62, 440 62" class="ln-dim"/><path d="M320 110 L 440 110" class="ln-dim"/><path d="M320 110 C 370 110, 380 158, 440 158" class="ln-dim"/>
-          <circle r="4" class="ln-dot-dim"><animateMotion dur="3s" repeatCount="indefinite" path="M120 110 L 320 110 C 370 110, 380 158, 440 158"/></circle>
-          <g transform="translate(78,110)"><rect x="-40" y="-20" width="80" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
-          <g transform="translate(285,110)"><rect x="-48" y="-20" width="96" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중계 서비스</text></g>
-          <text x="285" y="150" text-anchor="middle" class="ln-fee">중계 수수료</text>
-          <g transform="translate(500,62)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
-          <g transform="translate(500,110)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
-          <g transform="translate(500,158)"><rect x="-60" y="-17" width="120" height="34" rx="9" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
-          <text x="24" y="200" class="ln-sum-dim sm">중계를 거치고, 공급사마다 속도·결과가 달라요</text>
-          <line x1="24" y1="222" x2="616" y2="222" class="ln-div"/>
-          <text x="24" y="258" class="ln-k hi">MoFAC</text><text x="94" y="258" class="ln-ks hi">우리 DC · 우리 GPU</text>
-          <path d="M120 330 L 450 330" class="ln-hi-bg"/><path d="M120 330 L 450 330" class="ln-hi"/>
-          <circle r="5" fill="#fff"><animateMotion dur="1.4s" repeatCount="indefinite" path="M120 330 L 460 330"/></circle>
-          <g transform="translate(78,330)"><rect x="-40" y="-20" width="80" height="40" rx="11" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
-          <circle cx="500" cy="330" r="56" fill="url(#jglow2)"/><circle cx="500" cy="330" r="28" class="jr-core"/>
-          <g class="jr-gpu" transform="translate(486,317)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
-          <text x="500" y="285" text-anchor="middle" class="ln-bt">MoFAC 자체 GPU</text>
-          <text x="24" y="400" class="ln-sum sm">매번 같은 속도·같은 품질</text>
+    <div class="why2">
+      <div><div class="cap only-b"><em class="why f">빠른 이유</em>왜 빠른가</div><div class="jr"><svg class="jr-svg" viewBox="0 0 640 420" role="img" aria-label="요청 경로와 응답 속도 비교">
+          <defs><linearGradient id="jg2" x1="0" x2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient><linearGradient id="vhl" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#30E8B0"/></linearGradient>
+          <radialGradient id="vglow"><stop offset="0" stop-color="#30E8B0" stop-opacity=".45"/><stop offset="1" stop-color="#30E8B0" stop-opacity="0"/></radialGradient></defs>
+          <text x="24" y="36" class="ln-k">요청 경로 · 응답 속도</text>
+          <path d="M175 92 L175 140" class="ln-dim"/>
+          <path d="M175 180 C175 206,75 202,75 226" class="ln-dim"/><path d="M175 180 L175 226" class="ln-dim"/><path d="M175 180 C175 206,275 202,275 226" class="ln-dim"/>
+          <circle r="4" class="ln-dot-dim"><animateMotion dur="1.4s" repeatCount="indefinite" path="M175 92 L175 180 C175 206,275 202,275 226"/></circle>
+          <g transform="translate(175,74)"><rect x="-46" y="-18" width="92" height="36" rx="10" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <g transform="translate(175,160)"><rect x="-56" y="-20" width="112" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중계 서비스</text></g>
+          <text x="242" y="165" class="ln-fee">중계 수수료</text>
+          <g transform="translate(75,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
+          <g transform="translate(175,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
+          <g transform="translate(275,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
+          <path d="M490 92 L490 196" class="ln-hi-bg"/><path d="M490 92 L490 196" stroke="url(#vhl)" stroke-width="4" stroke-linecap="round"/>
+          <circle r="5" fill="#fff"><animateMotion dur="1.4s" repeatCount="indefinite" path="M490 92 L490 200"/></circle>
+          <g transform="translate(490,74)"><rect x="-46" y="-18" width="92" height="36" rx="10" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <circle cx="490" cy="226" r="50" fill="url(#vglow)"/><circle cx="490" cy="226" r="26" class="jr-core"/>
+          <g class="jr-gpu" transform="translate(476,213)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
+          <g transform="translate(560,226)"><rect x="-6" y="-12" width="78" height="24" rx="12" class="tune-tag"/><text x="33" y="4.5" text-anchor="middle" class="tune-t">Moreh 튜닝</text></g>
+          <!-- speed race -->
+          <text x="24" y="290" class="race-k">응답 생성</text>
+          <rect x="75" y="300" width="200" height="12" rx="6" class="race-bg"/><rect x="75" y="300" width="200" height="12" rx="6" class="race-f slow"/>
+          <text x="75" y="334" class="race-n">[000] tok/s</text><text x="275" y="334" text-anchor="end" class="race-done slow-d">완료</text>
+          <rect x="390" y="300" width="200" height="12" rx="6" class="race-bg"/><rect x="390" y="300" width="200" height="12" rx="6" class="race-f fast"/>
+          <text x="390" y="334" class="race-n hi">[000] tok/s</text><text x="590" y="334" text-anchor="end" class="race-done fast-d">완료 ✓</text>
+          <line x1="40" y1="360" x2="600" y2="360" class="ln-div"/>
+          <text x="175" y="384" text-anchor="middle" class="cs-row sm">다른 중계형</text><text x="175" y="402" text-anchor="middle" class="cs-row2">서비스</text>
+          <g transform="translate(332,390)"><circle r="14" class="vs-c"/><text y="4.5" text-anchor="middle" class="vs-t">VS</text></g>
+          <text x="490" y="384" text-anchor="middle" class="cs-row sm hi">MoFAC</text><text x="490" y="402" text-anchor="middle" class="cs-row2 hi only-b">자체 GPU·DC</text><text x="490" y="402" text-anchor="middle" class="cs-row2 hi only-a">직접 서빙</text>
         </svg></div></div>
-      <div><div class="cap">원가 구성</div><div class="jr"><svg class="jr-svg" viewBox="0 0 380 420" role="img" aria-label="원가 구성 비교">
+      <div class="only-b"><div class="cap"><em class="why c">싼 이유</em>왜 싼가</div><div class="jr"><svg class="jr-svg" viewBox="0 0 380 420" role="img" aria-label="원가 구성 비교">
           <text x="24" y="40" class="ln-k">원가 구성</text>
-          <rect x="60" y="304" width="104" height="56" rx="5" class="cs lr"/><text x="112.0" y="337.0" text-anchor="middle" class="cs-t sm lr">DC 임대료</text><rect x="60" y="200" width="104" height="104" rx="5" class="cs g"/><text x="112.0" y="257.0" text-anchor="middle" class="cs-t sm g">GPU 원가</text><rect x="60" y="150" width="104" height="50" rx="5" class="cs r"/><text x="112.0" y="180.0" text-anchor="middle" class="cs-t sm r">GPU 임대 마진</text><rect x="60" y="108" width="104" height="42" rx="5" class="cs g"/><text x="112.0" y="134.0" text-anchor="middle" class="cs-t sm g">공급사 마진</text><rect x="60" y="78" width="104" height="30" rx="5" class="cs r"/><text x="112.0" y="98.0" text-anchor="middle" class="cs-t sm r">중계 수수료</text><rect x="216" y="320" width="104" height="40" rx="5" class="cs m"/><text x="268.0" y="338.0" text-anchor="middle" class="cs-t sm m">자체 DC 운영</text><text x="268.0" y="353.0" text-anchor="middle" class="cs-s m">전력·냉각</text><rect x="216" y="216" width="104" height="104" rx="5" class="cs m"/><text x="268.0" y="273.0" text-anchor="middle" class="cs-t sm m">GPU 원가</text><rect x="216" y="174" width="104" height="42" rx="5" class="cs m"/><text x="268.0" y="200.0" text-anchor="middle" class="cs-t sm m">MoFAC 마진</text>
-          <g class="ghostg"><rect x="216" y="78" width="104" height="96" rx="5" class="cs-ghost"/>
-          <text x="268" y="114.0" text-anchor="middle" class="cs-gt">GPU 임대 마진</text><text x="268" y="130.0" text-anchor="middle" class="cs-gt">DC 임대료</text><text x="268" y="146.0" text-anchor="middle" class="cs-gt">중계 수수료</text></g>
+          <rect x="60" y="304" width="104" height="56" rx="5" class="cs lr"/><text x="112.0" y="337.0" text-anchor="middle" class="cs-t sm lr">DC 임대료</text><rect x="60" y="200" width="104" height="104" rx="5" class="cs g"/><text x="112.0" y="257.0" text-anchor="middle" class="cs-t sm g">GPU 원가</text><rect x="60" y="150" width="104" height="50" rx="5" class="cs r"/><text x="112.0" y="180.0" text-anchor="middle" class="cs-t sm r">GPU 임대 마진</text><rect x="60" y="108" width="104" height="42" rx="5" class="cs g"/><text x="112.0" y="134.0" text-anchor="middle" class="cs-t sm g">공급사 마진</text><rect x="60" y="78" width="104" height="30" rx="5" class="cs r"/><text x="112.0" y="98.0" text-anchor="middle" class="cs-t sm r">중계 수수료</text><rect x="216" y="320" width="104" height="40" rx="5" class="cs m"/><text x="268.0" y="338.0" text-anchor="middle" class="cs-t sm m">자체 DC 운영</text><text x="268.0" y="353.0" text-anchor="middle" class="cs-s m">전력·냉각</text><rect x="216" y="216" width="104" height="104" rx="5" class="cs m gpuS"/><text x="268" y="279" text-anchor="middle" class="cs-t sm m">GPU 원가</text><text x="268" y="296" text-anchor="middle" class="cs-s m mtag">Moreh 최적화로 ↓</text><g class="drop"><rect x="216" y="174" width="104" height="42" rx="5" class="cs m"/><text x="268.0" y="200.0" text-anchor="middle" class="cs-t sm m">MoFAC 마진</text></g>
+          <g class="ghostg"><rect x="216" y="78" width="104" height="127" rx="5" class="cs-ghost"/>
+          <text x="268" y="116" text-anchor="middle" class="cs-gt">중계 수수료</text><text x="268" y="134" text-anchor="middle" class="cs-gt">GPU 임대 마진</text><text x="268" y="152" text-anchor="middle" class="cs-gt">DC 임대료</text><text x="268" y="176" text-anchor="middle" class="cs-gt2">+ Moreh 최적화</text></g>
           <g class="cut cut0"><rect x="216" y="78" width="104" height="30" rx="5" class="cs r"/><text x="268" y="98.0" text-anchor="middle" class="cs-t sm r">중계 수수료</text><line x1="226" y1="93.0" x2="310" y2="93.0" class="cut-line"/></g><g class="cut cut1"><rect x="216" y="108" width="104" height="34" rx="5" class="cs r"/><text x="268" y="130.0" text-anchor="middle" class="cs-t sm r">GPU 임대 마진</text><line x1="226" y1="125.0" x2="310" y2="125.0" class="cut-line"/></g><g class="cut cut2"><rect x="216" y="142" width="104" height="32" rx="5" class="cs lr"/><text x="268" y="163.0" text-anchor="middle" class="cs-t sm lr">DC 임대료</text><line x1="226" y1="158.0" x2="310" y2="158.0" class="cut-line"/></g>
           <line x1="164" y1="78" x2="216" y2="78" class="cs-guide"/>
-          <g class="savg"><g transform="translate(346,78)"><path d="M0 4 L0 90" class="cs-arrow"/><path d="M-6 80 L0 92 L6 80" class="cs-arrowh"/></g>
+          <g class="savg"><g transform="translate(346,78)"><path d="M0 4 L0 121" class="cs-arrow"/><path d="M-6 111 L0 123 L6 111" class="cs-arrowh"/></g>
           <text x="346" y="68" text-anchor="middle" class="cs-save sm">원가 ↓</text></g>
           <line x1="40" y1="360" x2="340" y2="360" class="ln-div"/>
           <text x="112" y="384" text-anchor="middle" class="cs-row sm">다른 중계형</text><text x="112" y="402" text-anchor="middle" class="cs-row2">서비스</text>
-          <text x="268" y="384" text-anchor="middle" class="cs-row sm hi">MoFAC</text><text x="268" y="402" text-anchor="middle" class="cs-row2 hi">자체 GPU·DC</text>
+          <g transform="translate(190,390)"><circle r="14" class="vs-c"/><text y="4.5" text-anchor="middle" class="vs-t">VS</text></g><text x="268" y="384" text-anchor="middle" class="cs-row sm hi">MoFAC</text><text x="268" y="402" text-anchor="middle" class="cs-row2 hi">자체 GPU·DC</text>
         </svg></div></div>
     </div>
     <div class="facts num">
