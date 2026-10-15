@@ -141,6 +141,28 @@
     .tf-chip.sel { border-color:#0f9d6e; color:#0f766e; font-weight:700; background:#ecfdf5; }
     .tf-consent { list-style:none; margin:6px 0 0 22px; padding:10px 12px; background:#f8fafc; border-radius:8px; font-size:11px; color:#475569; line-height:1.7; } .tf-consent b { display:inline-block; width:56px; color:#334155; }
     .tf-ok { width:52px; height:52px; border-radius:50%; background:#ecfdf5; color:#0f9d6e; font-size:26px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; }
+    /* M-01 애니메이션 (USP 목업 그대로, 10/15) */
+    .ua-relay { animation:uaRelay 7s ease-in-out infinite; }
+    .ua-us { animation:uaUs 7s ease-in-out infinite; box-shadow:0 0 0 2px #34d399,0 18px 36px -18px rgba(14,159,116,.4); }
+    .ua-strike { position:absolute; left:-4px; right:-4px; top:50%; height:2px; background:#e0626a; border-radius:2px; transform:scaleX(0); transform-origin:left; animation:uaStrike 7s ease-in-out infinite; }
+    .ua-ded { opacity:0; animation:uaDed 7s ease-out infinite; } .ua-ded.d2 { animation-delay:.5s; }
+    .ua-stamp { display:flex; justify-content:flex-end; align-items:baseline; gap:6px; margin-top:8px; padding:7px 10px; border-radius:9px; background:#0f9d6e; color:#fff; font-weight:800; font-size:14px; transform-origin:right center; opacity:0; animation:uaStamp 7s cubic-bezier(.3,1.6,.5,1) infinite; }
+    .ua-stamp small { font-size:11px; opacity:.85; }
+    @keyframes uaRelay { 0%,34%{transform:none;opacity:1;filter:none} 44%,90%{transform:translate(-4px,-6px) scale(.96);opacity:.55;filter:grayscale(1)} 100%{transform:none;opacity:1;filter:none} }
+    @keyframes uaStrike { 0%,12%{transform:scaleX(0)} 24%,92%{transform:scaleX(1)} 100%{transform:scaleX(0)} }
+    @keyframes uaUs { 0%,34%{opacity:0;transform:translateX(40px)} 46%,90%{opacity:1;transform:none} 98%,100%{opacity:0;transform:translateX(40px)} }
+    @keyframes uaDed { 0%,48%{opacity:0;transform:translateX(10px)} 56%,90%{opacity:1;transform:none} 98%,100%{opacity:0} }
+    @keyframes uaStamp { 0%,62%{opacity:0;transform:scale(.8)} 70%,90%{opacity:1;transform:scale(1)} 98%,100%{opacity:0} }
+    .ua-slow,.ua-fast { transform-origin:0 50%; }
+    .ua-slow { animation:uaRaceS 4.2s linear infinite; } .ua-fast { animation:uaRaceF 4.2s ease-out infinite; }
+    @keyframes uaRaceS { 0%,10%{transform:scaleX(0)} 85%,96%{transform:scaleX(1)} 100%{transform:scaleX(0)} }
+    @keyframes uaRaceF { 0%,10%{transform:scaleX(0)} 48%,96%{transform:scaleX(1)} 100%{transform:scaleX(0)} }
+    .ua-slow-d { animation:uaDoneS 4.2s linear infinite; } .ua-fast-d { animation:uaDoneF 4.2s linear infinite; }
+    @keyframes uaDoneS { 0%,85%{opacity:0} 88%,96%{opacity:1} 100%{opacity:0} }
+    @keyframes uaDoneF { 0%,48%{opacity:0} 52%,96%{opacity:1} 100%{opacity:0} }
+    .ua-flow { border-left:0 !important; width:2px !important; background:repeating-linear-gradient(to bottom,#34d399 0 4px,transparent 4px 9px); background-size:2px 18px; animation:uaFlow 1s linear infinite; }
+    @keyframes uaFlow { to { background-position:0 18px; } }
+    @media (prefers-reduced-motion: reduce) { .ua-relay,.ua-us,.ua-strike,.ua-ded,.ua-stamp,.ua-slow,.ua-fast,.ua-slow-d,.ua-fast-d,.ua-flow { animation:none !important; opacity:1 !important; transform:none !important; } }
     .screen-section { 
       min-height: 600px;
       display: flex; 
@@ -767,8 +789,8 @@
           <div class="space-y-8">
             <div>
               <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🚀 v4.1 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">10/12 ~ 10/15 · 결제 · 퍼블릭 오픈 메인 · 브랜드</span></h2></div>
-              <table class="h-table"><thead><tr><th style="width:64px">날짜</th><th style="width:56px">영역</th><th style="width:120px">화면</th><th>변경 내용</th></tr></thead><tbody><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">—</td><td>메일 주소 도메인 mofac.io로 통일 (help@ · contact@ · security@ · 운영자 · 예시 계정)</td></tr>
-<tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">—</td><td>서비스명을 MoFAC으로 통일 (Morfac · MorphFactory · 모르팩 → MoFAC, 회사명 “주식회사 모르팩”은 유지)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-01</td><td>서비스 메인을 퍼블릭 오픈 USP 버전으로 교체 — 히어로(키만 바꾸면 더 싸고 빠르게) · 왜 싸고 빠른가요 · 모델·가격 · 비용 계산기 · 국산 모델 · 팀 준비 중 · 쓰던 도구. 상단 띠 “카드 등록하면 체험 크레딧 $5 (3일)”, GNB에서 [팀] 제외</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-11</td><td>보안·데이터 처리 페이지 신규 (static, TBD 덮개) — 푸터 · 팀 띠에서 진입</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-12</td><td>“팀으로 쓰고 싶어요” 신청 모달 신규 — 인원 · 용도 · 필요한 기능 · 시기 · 비용 · 현재 사용처 + 완료 화면</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-11</td><td>온보딩 가이드: 오픈 후 2주는 설문 $20 → 과금 시작 후 “카드 등록하고 $5 → API 키 → 첫 요청”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800">A-04 · C-11</td><td>가입 크레딧은 접속 시점 기준 — 오픈 2주 안에는 설문 $20, 이후 접속하면 카드 등록 $5 (설문 안 한 기존 가입자 포함, $20 받은 사람도 $5 중복 가능)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03 · M-10</td><td>상품 아래 “크레딧 구매 후 최대 1년까지 이용할 수 있습니다.” (토스 심사 기준)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/14</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03</td><td>결제 수단에 [결제 관리] (토스 결제 관리 화면), 카드 삭제 버튼 제거 — 삭제는 토스 화면에서</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-a">인증</span></td><td class="whitespace-nowrap font-bold text-slate-800">A-02 · A-08</td><td>가입 동의: [필수] 개인정보 수집 및 이용 동의 복원 (법무 회신), [필수] 만 18세 이상 삭제 (약관에서 미성년자 처리)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-e">메일</span></td><td class="whitespace-nowrap font-bold text-slate-800">E-07</td><td>충전 완료 메일 발송 안 함 → 토스페이먼츠 결제 완료 메일로 대체</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/12</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03</td><td>충전: 결제 수단 라디오(등록 카드로 결제 / 일반 결제), [🎁 첫 카드 등록하고 5크레딧 받기], 첫 충전 보너스 ⌊N/2⌋, [기타]를 눌러야 직접 입력, 환불 처리 중 안내는 상태 버튼으로</td></tr></tbody></table>
+              <table class="h-table"><thead><tr><th style="width:64px">날짜</th><th style="width:56px">영역</th><th style="width:120px">화면</th><th>변경 내용</th></tr></thead><tbody>
+<tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">—</td><td>서비스명을 MoFAC으로 통일 (Morfac · MorphFactory · 모르팩 → MoFAC, 회사명 “주식회사 모르팩”은 유지)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-01</td><td>서비스 메인을 퍼블릭 오픈 USP 버전으로 교체 — 히어로(키만 바꾸면 더 싸고 빠르게) · 왜 싸고 빠른가요 · 모델·가격 · 비용 계산기 · 국산 모델 · 팀 준비 중 · 쓰던 도구. 상단 띠 “카드 등록하면 체험 크레딧 $5 (3일)”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-11</td><td>보안·데이터 처리 페이지 신규 (static, TBD 덮개) — 푸터 · 팀 띠에서 진입</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-12</td><td>“팀으로 쓰고 싶어요” 신청 모달 신규 — 인원 · 용도 · 필요한 기능 · 시기 · 비용 · 현재 사용처 + 완료 화면</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-11</td><td>온보딩 가이드: 오픈 후 2주는 설문 $20 → 과금 시작 후 “카드 등록하고 $5 → API 키 → 첫 요청”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800">A-04 · C-11</td><td>가입 크레딧은 접속 시점 기준 — 오픈 2주 안에는 설문 $20, 이후 접속하면 카드 등록 $5 (설문 안 한 기존 가입자 포함, $20 받은 사람도 $5 중복 가능)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03 · M-10</td><td>상품 아래 “크레딧 구매 후 최대 1년까지 이용할 수 있습니다.” (토스 심사 기준)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/14</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03</td><td>결제 수단에 [결제 관리] (토스 결제 관리 화면), 카드 삭제 버튼 제거 — 삭제는 토스 화면에서</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-a">인증</span></td><td class="whitespace-nowrap font-bold text-slate-800">A-02 · A-08</td><td>가입 동의: [필수] 개인정보 수집 및 이용 동의 복원 (법무 회신), [필수] 만 18세 이상 삭제 (약관에서 미성년자 처리)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-e">메일</span></td><td class="whitespace-nowrap font-bold text-slate-800">E-07</td><td>충전 완료 메일 발송 안 함 → 토스페이먼츠 결제 완료 메일로 대체</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/12</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800">C-03</td><td>충전: 결제 수단 라디오(등록 카드로 결제 / 일반 결제), [🎁 첫 카드 등록하고 5크레딧 받기], 첫 충전 보너스 ⌊N/2⌋, [기타]를 눌러야 직접 입력, 환불 처리 중 안내는 상태 버튼으로</td></tr></tbody></table>
             </div>
             <div>
               <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🧩 v4.0 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">9/28 ~ 10/9 · 멀티모델 · 콘솔 개편</span></h2></div>
@@ -1020,21 +1042,21 @@
                 <div class="flex flex-wrap gap-4 text-xs text-slate-500 mt-5"><span class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span>충전 수수료 0% · 원화 결제</span><span class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span>OpenAI·Anthropic 호환 · 키만 바꾸면 끝</span></div>
               </div>
               <div class="grid grid-cols-2 gap-3 text-xs">
-                <div class="u-rcpt">
+                <div class="u-rcpt ua-relay">
                   <div class="flex justify-between"><b class="text-slate-800">다른 중계형 서비스</b><span class="u-ex">예시</span></div>
                   <div class="text-[11px] text-slate-400 mb-3">같은 사용량 기준</div>
                   <div class="u-rl"><span>모델 사용료<small>공급사 평균 단가</small></span><b>$237.00</b></div>
-                  <div class="u-rl text-rose-600"><span>중계 수수료 5.5%</span><b>$13.04</b></div>
+                  <div class="u-rl text-rose-600" style="position:relative"><span>중계 수수료 5.5%</span><b>$13.04</b><i class="ua-strike"></i></div>
                   <div class="u-rt"><span>합계</span><b>$250.04</b></div>
                 </div>
-                <div class="u-rcpt u-rcpt-me">
+                <div class="u-rcpt u-rcpt-me ua-us">
                   <div class="flex justify-between"><b class="text-slate-800">MoFAC</b><span class="u-ex">예시</span></div>
                   <div class="text-[11px] text-slate-400 mb-3">같은 사용량 기준</div>
                   <div class="u-rl"><span>같은 토큰<small>공급사 평균 단가라면</small></span><b class="line-through text-slate-400">$237.00</b></div>
-                  <div class="u-rl u-hl"><span><em class="u-mini">기술</em> Moreh 최적화<small>같은 GPU로 더 많이 처리</small></span><b class="text-emerald-700">−$44.00</b></div>
-                  <div class="u-rl text-slate-400"><span>중계 수수료</span><b>$0.00</b></div>
+                  <div class="u-rl u-hl ua-ded"><span><em class="u-mini">기술</em> Moreh 최적화<small>같은 GPU로 더 많이 처리</small></span><b class="text-emerald-700">−$44.00</b></div>
+                  <div class="u-rl text-slate-400 ua-ded d2"><span>중계 수수료</span><b>$0.00</b></div>
                   <div class="u-rt"><span>합계</span><b class="text-emerald-700">$193.00</b></div>
-                  <div class="text-right text-[11px] font-bold text-emerald-700 mt-1">−$57 절약 · −23%</div>
+                  <div class="ua-stamp">−$57 절약 <small>−23%</small></div>
                 </div>
               </div>
             </section>
@@ -1050,14 +1072,14 @@
                     <div class="u-node">내 앱</div><div class="u-vline"></div>
                     <div class="u-node">중계 서비스 <span class="text-rose-300 text-[10px] ml-1">중계 수수료</span></div><div class="u-vline"></div>
                     <div class="flex gap-2 justify-center"><span class="u-node">공급사 A</span><span class="u-node">공급사 B</span><span class="u-node">공급사 C</span></div>
-                    <div class="u-bar mt-4"><i style="width:55%;background:#94a3b8"></i></div><div class="text-[10px] text-slate-400 mt-1 text-left">[000] tok/s</div>
+                    <div class="u-bar mt-4"><i class="ua-slow" style="width:100%;background:#94a3b8"></i></div><div class="flex justify-between text-[10px] mt-1"><span class="text-slate-400">[000] tok/s</span><span class="text-slate-300 ua-slow-d">완료</span></div>
                     <div class="mt-3 text-slate-300 font-bold">다른 중계형 서비스</div>
                   </div>
                   <div>
-                    <div class="u-node" style="border-color:#93c5fd">내 앱</div><div class="u-vline" style="height:40px"></div>
+                    <div class="u-node" style="border-color:#93c5fd">내 앱</div><div class="u-vline ua-flow" style="height:40px"></div>
                     <div class="u-node" style="border-color:#34d399;color:#34d399">MoFAC 추론 엔진 <span class="text-[10px] ml-1">Moreh 튜닝</span></div>
                     <div style="height:38px"></div>
-                    <div class="u-bar mt-4"><i style="width:100%;background:#34d399"></i></div><div class="flex justify-between text-[10px] mt-1"><span class="text-slate-400">[000] tok/s</span><span class="text-emerald-300">완료 ✓</span></div>
+                    <div class="u-bar mt-4"><i class="ua-fast" style="width:100%;background:#34d399"></i></div><div class="flex justify-between text-[10px] mt-1"><span class="text-slate-400">[000] tok/s</span><span class="text-emerald-300 ua-fast-d">완료 ✓</span></div>
                     <div class="mt-3 text-emerald-300 font-bold">MoFAC · 직접 서빙</div>
                   </div>
                 </div>
@@ -1210,6 +1232,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -1384,6 +1407,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -1575,6 +1599,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -1725,6 +1750,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-blue-600 font-bold">개발자 문서</a>
               </nav>
             </div>
@@ -1834,6 +1860,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -1915,6 +1942,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -2129,6 +2157,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -2273,6 +2302,7 @@
               <nav class="flex gap-6 text-sm font-medium ml-8">
                 <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
                 <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
                 <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
               </nav>
             </div>
@@ -3347,6 +3377,7 @@
             <nav class="flex gap-6 text-sm font-medium ml-8">
               <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
               <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+              <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">플레이그라운드</a>
               <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
             </nav>
           </div>
