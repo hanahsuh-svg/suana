@@ -195,6 +195,29 @@
     .db-case { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 18px; margin:16px 0; }
     .db-hist { display:none !important; } #db-root[data-ph="pre"][data-tr="yes"] .db-hist { display:inline-flex !important; }
     .db-bal-zero { display:none; } #db-root[data-bal="zero"] .db-bal-zero { display:inline; } #db-root[data-bal="zero"] .db-bal-ok { display:none; }
+    .o04-wd-banner { display:flex; gap:10px; align-items:flex-start; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px 14px; font-size:12px; color:#78350f; margin:0 0 12px; }
+    .o04-src { display:inline-block; font-size:10px; font-weight:700; padding:2px 7px; border-radius:9999px; background:#f1f5f9; color:#475569; white-space:nowrap; }
+    .o04-src-wd { background:#fef3c7; color:#92400e; }
+    .o04-wd-row td { background:#fffdf5; }
+    .o04-sub td { background:#fffdf5; font-size:12px; color:#475569; }
+    .o04-tab-cnt { display:inline-block; background:#dc2626; color:#fff; font-size:10px; font-weight:800; border-radius:9999px; padding:0 6px; margin-left:4px; }
+    /* O-04 운영 흐름 (10/28) */
+    .fl-col { display:flex; flex-direction:column; align-items:stretch; gap:6px; }
+    .fl-node { border:1px solid #e2e8f0; border-radius:12px; padding:10px 12px; background:#fff; }
+    .fl-node.fl-end { border-color:#6ee7b7; background:#ecfdf5; } .fl-node.fl-warn { border-color:#fcd34d; background:#fffbeb; }
+    .fl-t { font-size:13px; font-weight:800; color:#0f172a; margin-top:4px; } .fl-d { font-size:11px; color:#64748b; margin-top:2px; line-height:1.5; }
+    .fl-lane { display:inline-block; font-size:10px; font-weight:800; padding:1px 8px; border-radius:9999px; }
+    .fl-u { background:#dbeafe; color:#1d4ed8; } .fl-s { background:#e2e8f0; color:#334155; } .fl-o { background:#fef3c7; color:#92400e; }
+    .fl-ar { text-align:center; color:#94a3b8; font-size:16px; line-height:1; }
+    .fl-dia { align-self:center; font-size:12px; font-weight:800; color:#0f172a; background:#f8fafc; border:1.5px dashed #94a3b8; border-radius:9999px; padding:6px 16px; }
+    .fl-split { display:flex; gap:12px; align-items:flex-start; }
+    .fl-branch { flex:1; display:flex; flex-direction:column; gap:6px; border-left:2px solid #e2e8f0; padding-left:10px; }
+    .fl-yn { font-size:11px; font-weight:800; color:#475569; }
+    .o04-filter { cursor:pointer; }
+    #pnl-done:not(.o04-is-disabled), #wdm-done:not(.o04-is-disabled) { background:#dc2626; border-color:#dc2626; color:#fff; }
+    .wdm-confirm { display:flex; align-items:center; gap:8px; margin-top:14px; padding:12px 14px; border:1.5px solid #fca5a5; background:#fef2f2; border-radius:10px; font-size:13px; font-weight:700; color:#7f1d1d; cursor:pointer; }
+    tr.o04-empty { display:none; } tr.o04-empty td { text-align:center; color:#94a3b8; padding:22px 0; font-size:12px; }
+    .o04-flash { animation:o04flash 1.4s ease-out; } @keyframes o04flash { 0%,30% { box-shadow:0 0 0 4px #f97316; } 100% { box-shadow:0 0 0 0 rgba(249,115,22,0); } }
     .screen-section { 
       min-height: 600px;
       display: flex; 
@@ -262,6 +285,7 @@
     input:checked + .slider:before { transform: translateX(22px); }
 
     /* ---- E-07 / E-08 메일 템플릿 ---- */
+    .e-grp-head{display:flex;align-items:baseline;gap:10px;margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid #0f172a}.e-grp-title{font-size:16px;font-weight:800;color:#0f172a}.e-grp-sub{font-size:12px;color:#64748b}.e-cell>.wf-card{margin-bottom:12px}.e-cell{min-width:0}.e-grp-head+.e07-mail-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.e-cell .p-8{padding:24px}
     .e07-mail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-bottom: 24px; }
     .e07-mail-body { padding: 28px 24px; background: #fff; }
     .e07-mail { max-width: 600px; margin: 0 auto; }
@@ -458,7 +482,16 @@
     .wd-a { font-size: 12px; color: #475569; margin-top: 3px; line-height: 1.6; }
     .wd-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #334155; }
     #wd-root .wd-v { display: none; }
-    #wd-root[data-state="paid"] .wd-v-paid, #wd-root[data-state="refunding"] .wd-v-refunding, #wd-root[data-state="zero"] .wd-v-zero { display: block; }
+    #wd-root[data-state="paid"] .wd-v-paid, #wd-root[data-state="zero"] .wd-v-zero { display: block; }
+    .wd-alerts { display:flex; gap:16px; align-items:flex-start; justify-content:center; background:#e2e8f0; border-radius:12px; padding:20px; }
+    .wd-al-lbl { font-size:11px; font-weight:700; color:#475569; margin-bottom:6px; }
+    .wd-al-arrow { font-size:22px; color:#64748b; padding-top:60px; }
+    .wd-modal { background:#fff; border-radius:14px; width:330px; padding:18px; box-shadow:0 10px 24px rgba(15,23,42,.15); }
+    #wd-root .wd-lbl-zero { display:none; } #wd-root[data-state="zero"] .wd-lbl-zero { display:inline; } #wd-root[data-state="zero"] .wd-lbl-paid { display:none; }
+    .wd-flow { list-style:decimal; padding-left:18px; font-size:12px; line-height:1.9; }
+    .wd-step { display:flex; gap:12px; align-items:flex-start; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; background:#fff; }
+    .wd-sn { width:26px; height:26px; border-radius:50%; background:#e2e8f0; color:#475569; font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .wd-step.done .wd-sn { background:#10b981; color:#fff; } .wd-step.now { border-color:#93c5fd; background:#eff6ff; } .wd-step.now .wd-sn { background:#2563eb; color:#fff; }
     #wd-submit:disabled { opacity: .4; cursor: not-allowed; }
     .tbd-overlay { position: absolute; inset: 0; z-index: 25; background: rgba(15,23,42,.55); border-radius: 8px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(1px); }
     .tbd-box { text-align: center; color: #fff; }
@@ -596,6 +629,7 @@
     .sm-main, .sm-side, .sm-mail { position: relative; z-index: 1; }
     .sm-main { background: rgba(255,255,255,.92); }
     .sm-mail { width: 150px; flex-shrink: 0; }
+    .sm-mgrp{font-size:9px;font-weight:800;color:#0e7490;margin:6px 0 -4px;padding-top:6px;border-top:1px dashed #a5f3fc}.sm-mgrp:first-child{border-top:0;padding-top:0;margin-top:0}
     .sm-mail-inner { display: flex; flex-direction: column; gap: 10px; }
     .ml { display: block; background: #ecfeff; border: 1.5px solid #67e8f9; border-radius: 6px; padding: 6px 8px; text-decoration: none; color: #0f172a; }
     .ml:hover { border-color: #0891b2; box-shadow: 0 4px 10px rgba(8,145,178,.15); }
@@ -822,9 +856,9 @@
 
           <div class="space-y-8">
             <div>
-              <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🚀 v4.1 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">10/12 ~ 10/27 · 결제 · 퍼블릭 오픈 메인 · 브랜드 · 모델 · 요금</span></h2></div>
+              <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🚀 v4.1 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">10/12 ~ 10/28 · 결제 · 퍼블릭 오픈 메인 · 브랜드 · 모델 · 요금</span></h2></div>
               <table class="h-table"><thead><tr><th style="width:64px">날짜</th><th style="width:56px">영역</th><th style="width:120px">화면</th><th>변경 내용</th></tr></thead><tbody>
-<tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">푸터</td><td>사업자 정보를 주식회사 모프 기준으로 통일 (통신판매업 · 연락처는 확인 후 기재)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-01</a></td><td>잔액 박스에 케이스별 버튼 1개 (설문 $20 / 내역 보기 / 카드 등록 $5 / 충전), 잔액 $0이면 빨간색</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>과금 전 화면 신규 (잔액 · 내역만, 설문 미참여자 유도, 잔액 $0이면 충전 문의 안내), 첫 충전 보너스 있는 안 / 없는 안 토글</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/20</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-02')" class="h-link">C-02</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a></td><td>“어디에서 써보실 건가요?” 블록 신규 (플레이그라운드 · 도구별 연결 버튼), 메인 하단 도구 칩도 같은 버튼으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/19</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-08')" class="h-link">M-08</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-10')" class="h-link">M-10</a></td><td>모델 · 요금 페이지 정리 — M-08 카드 문구 교체 · 카드 숫자는 비교표로 · 모델 순서 GLM 5.3 → Kimi K3 → Motif 3, M-09 모델 상세 제외, M-10 충전 상품 · 계산기 제외(하단 CTA로 메인 계산기 · C-03 연결) · 유상 크레딧 유효기간 1년, 메인 Motif 3 포지셔닝 “명세 기반 코딩”으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">—</td><td>서비스명을 MoFAC으로 통일 (Morfac · MorphFactory · 모르팩 → MoFAC, 회사명 “주식회사 모르팩”은 유지)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a></td><td>서비스 메인을 퍼블릭 오픈 USP 버전으로 교체 — 히어로(키만 바꾸면 더 싸고 빠르게) · 왜 싸고 빠른가요 · 모델·가격 · 비용 계산기 · 국산 모델 · 팀 준비 중 · 쓰던 도구. 상단 띠 “카드 등록하면 체험 크레딧 $5 (3일)”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-11')" class="h-link">M-11</a></td><td>보안·데이터 처리 페이지 신규 (static, TBD 덮개) — 푸터 · 팀 띠에서 진입</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-12')" class="h-link">M-12</a></td><td>“팀으로 쓰고 싶어요” 신청 모달 신규 — 인원 · 용도 · 필요한 기능 · 시기 · 비용 · 현재 사용처 + 완료 화면</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-11</a></td><td>온보딩 가이드: 오픈 후 2주는 설문 $20 → 과금 시작 후 “카드 등록하고 $5 → API 키 → 첫 요청”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-a','a-04')" class="h-link">A-04</a> · <a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-11</a></td><td>가입 크레딧은 접속 시점 기준 — 오픈 2주 안에는 설문 $20, 이후 접속하면 카드 등록 $5 (설문 안 한 기존 가입자 포함, $20 받은 사람도 $5 중복 가능)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-10')" class="h-link">M-10</a></td><td>상품 아래 “크레딧 구매 후 최대 1년까지 이용할 수 있습니다.” (토스 심사 기준)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/14</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>결제 수단에 [결제 관리] (토스 결제 관리 화면), 카드 삭제 버튼 제거 — 삭제는 토스 화면에서</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-a">인증</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-a','a-02')" class="h-link">A-02</a> · <a href="javascript:void(0)" onclick="smGo('tab-a','a-08')" class="h-link">A-08</a></td><td>가입 동의: [필수] 개인정보 수집 및 이용 동의 복원 (법무 회신), [필수] 만 18세 이상 삭제 (약관에서 미성년자 처리)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-e">메일</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-e','e-07')" class="h-link">E-07</a></td><td>충전 완료 메일 발송 안 함 → 토스페이먼츠 결제 완료 메일로 대체</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/12</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>충전: 결제 수단 라디오(등록 카드로 결제 / 일반 결제), [🎁 첫 카드 등록하고 5크레딧 받기], 첫 충전 보너스 ⌊N/2⌋, [기타]를 눌러야 직접 입력, 환불 처리 중 안내는 상태 버튼으로</td></tr></tbody></table>
+<tr><td class="whitespace-nowrap font-mono text-slate-500">10/28</td><td><span class="h-tag h-e">메일</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-e','e-09')" class="h-link">E-09</a> · <a href="javascript:void(0)" onclick="smGo('tab-e','e-10')" class="h-link">E-10</a> · <a href="javascript:void(0)" onclick="smGo('tab-e','e-12')" class="h-link">E-12</a></td><td>자동 메일 3종 신규 — 시작 가이드 · 크레딧 만료 예정(30일 · 24시간 전) · 크레딧 지급 안내, 4개 그룹으로 정리</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/28</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a> · <a href="javascript:void(0)" onclick="smGo('tab-o','o-02')" class="h-link">O-02</a></td><td>크레딧 내역에 '내용' 열 추가, 관리자 지급은 회원에게 보이는 내용 · 유효기간(기본 7일) 입력</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/28</td><td><span class="h-tag h-a">인증</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-a','a-02')" class="h-link">A-02</a> · <a href="javascript:void(0)" onclick="smGo('tab-a','a-08')" class="h-link">A-08</a></td><td><b>가입 동의</b> — [필수] 만 19세 이상 추가 (법무 검토)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/28</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-10-1')" class="h-link">C-10-1</a> · <a href="javascript:void(0)" onclick="smGo('tab-a','a-01')" class="h-link">A-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-o','o-01')" class="h-link">O-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a> · <a href="javascript:void(0)" onclick="smGo('tab-e','e-11')" class="h-link">E-11</a></td><td><b>회원 탈퇴 정책 변경</b> (법무 검토)<div>· 결제 크레딧이 있으면 탈퇴 신청 시 환불 함께 접수 (<a href="javascript:void(0)" onclick="smGo('tab-c','c-10-1')" class="h-link">C-10-1</a>)</div><div>· 확인 · 완료 얼럿 → 로그아웃 (<a href="javascript:void(0)" onclick="smGo('tab-c','c-10-1')" class="h-link">C-10-1</a>)</div><div>· 탈퇴 처리 중 계정 로그인 불가 (<a href="javascript:void(0)" onclick="smGo('tab-a','a-01')" class="h-link">A-01</a>)</div><div>· 계정 상태 '탈퇴 처리 중' (<a href="javascript:void(0)" onclick="smGo('tab-o','o-01')" class="h-link">O-01</a>)</div><div>· 어드민 [탈퇴 관리] 탭 · 운영 흐름 (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div><div>· 탈퇴 완료 메일 신규 (<a href="javascript:void(0)" onclick="smGo('tab-e','e-11')" class="h-link">E-11</a>)</div></td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/28</td><td><span class="h-tag h-o">어드민</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a></td><td><b>환불 처리 방식</b><div>· 탭 순서 결제 내역 → 환불 수기 관리 → 탈퇴 관리 (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div><div>· 환불 취소는 토스 상점관리자에서 수기(전액 · 부분 모두 가능), 어드민은 내부 장부 처리만 (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div><div>· “수기 취소했습니다” 확인 체크 → [환불 완료 처리] · [탈퇴 처리] (운영자 실수 방지, 금액 · 거래번호 입력 없음) (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div><div>· 환불 사유 유형 선택 (탈퇴는 자동) (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div><div>· 환불 · 탈퇴 운영 흐름 플로우차트 (설계 참고용) (<a href="javascript:void(0)" onclick="smGo('tab-o','o-04')" class="h-link">O-04</a>)</div></td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">푸터</td><td>사업자 정보를 주식회사 모프 기준으로 통일 (통신판매업 · 연락처는 확인 후 기재)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-01</a></td><td>잔액 박스에 케이스별 버튼 1개 (설문 $20 / 내역 보기 / 카드 등록 $5 / 충전), 잔액 $0이면 빨간색</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/27</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>과금 전 화면 신규 (잔액 · 내역만, 설문 미참여자 유도, 잔액 $0이면 충전 문의 안내), 첫 충전 보너스 있는 안 / 없는 안 토글</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/20</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-02')" class="h-link">C-02</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a></td><td>“어디에서 써보실 건가요?” 블록 신규 (플레이그라운드 · 도구별 연결 버튼), 메인 하단 도구 칩도 같은 버튼으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/19</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-08')" class="h-link">M-08</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-10')" class="h-link">M-10</a></td><td>모델 · 요금 페이지 정리 — M-08 카드 문구 교체 · 카드 숫자는 비교표로 · 모델 순서 GLM 5.3 → Kimi K3 → Motif 3, M-09 모델 상세 제외, M-10 충전 상품 · 계산기 제외(하단 CTA로 메인 계산기 · C-03 연결) · 유상 크레딧 유효기간 1년, 메인 Motif 3 포지셔닝 “명세 기반 코딩”으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">—</td><td>서비스명을 MoFAC으로 통일 (Morfac · MorphFactory · 모르팩 → MoFAC, 회사명 “주식회사 모르팩”은 유지)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a></td><td>서비스 메인을 퍼블릭 오픈 USP 버전으로 교체 — 히어로(키만 바꾸면 더 싸고 빠르게) · 왜 싸고 빠른가요 · 모델·가격 · 비용 계산기 · 국산 모델 · 팀 준비 중 · 쓰던 도구. 상단 띠 “카드 등록하면 체험 크레딧 $5 (3일)”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-11')" class="h-link">M-11</a></td><td>보안·데이터 처리 페이지 신규 (static, TBD 덮개) — 푸터 · 팀 띠에서 진입</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-12')" class="h-link">M-12</a></td><td>“팀으로 쓰고 싶어요” 신청 모달 신규 — 인원 · 용도 · 필요한 기능 · 시기 · 비용 · 현재 사용처 + 완료 화면</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-11</a></td><td>온보딩 가이드: 오픈 후 2주는 설문 $20 → 과금 시작 후 “카드 등록하고 $5 → API 키 → 첫 요청”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-a','a-04')" class="h-link">A-04</a> · <a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-11</a></td><td>가입 크레딧은 접속 시점 기준 — 오픈 2주 안에는 설문 $20, 이후 접속하면 카드 등록 $5 (설문 안 한 기존 가입자 포함, $20 받은 사람도 $5 중복 가능)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/15</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-10')" class="h-link">M-10</a></td><td>상품 아래 “크레딧 구매 후 최대 1년까지 이용할 수 있습니다.” (토스 심사 기준)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/14</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>결제 수단에 [결제 관리] (토스 결제 관리 화면), 카드 삭제 버튼 제거 — 삭제는 토스 화면에서</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-a">인증</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-a','a-02')" class="h-link">A-02</a> · <a href="javascript:void(0)" onclick="smGo('tab-a','a-08')" class="h-link">A-08</a></td><td>가입 동의: [필수] 개인정보 수집 및 이용 동의 복원 (법무 회신), [필수] 만 18세 이상 삭제 (약관에서 미성년자 처리)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/13</td><td><span class="h-tag h-e">메일</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-e','e-07')" class="h-link">E-07</a></td><td>충전 완료 메일 발송 안 함 → 토스페이먼츠 결제 완료 메일로 대체</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">10/12</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>충전: 결제 수단 라디오(등록 카드로 결제 / 일반 결제), [🎁 첫 카드 등록하고 5크레딧 받기], 첫 충전 보너스 ⌊N/2⌋, [기타]를 눌러야 직접 입력, 환불 처리 중 안내는 상태 버튼으로</td></tr></tbody></table>
             </div>
             <div>
               <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🧩 v4.0 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">9/28 ~ 10/9 · 멀티모델 · 콘솔 개편</span></h2></div>
@@ -917,7 +951,7 @@
               </a></div><div class="tr-child"><a href="javascript:void(0)" onclick="smGo('tab-c','c-10-1')" class="pg" data-pg="C-10-1">
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-title"></div><div class="tb-row3"><i></i><i></i><i></i></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-btn" style="width:40%;margin:0 auto"></div></div>
-                <div class="pg-label"><span class="sm-id">C-10-1</span> 회원 탈퇴 <span class="sm-new">NEW</span></div><div class="pg-note">크레딧 환불 후 탈퇴</div>
+                <div class="pg-label"><span class="sm-id">C-10-1</span> 회원 탈퇴 <span class="sm-new">NEW</span></div><div class="pg-note">탈퇴 신청 · 환불 함께 접수</div>
               </a></div></div></div>
             </div>
               <div class="sm-footer">
@@ -944,7 +978,7 @@
             <!-- 자동 메일 -->
             <div class="sm-mail">
               <div class="sm-area-title">자동 메일</div>
-              <div class="sm-mail-inner"><a href="javascript:void(0)" onclick="smGo('tab-e','e-05')" class="ml" data-mail="E-05">
+              <div class="sm-mail-inner"><div class="sm-mgrp">계정 · 인증</div><a href="javascript:void(0)" onclick="smGo('tab-e','e-05')" class="ml" data-mail="E-05">
                 <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-05</span></div>
                 <div class="ml-name">소셜 계정 연동 완료</div>
                 <div class="ml-trig">같은 이메일 연동(A-09) 시</div>
@@ -956,14 +990,6 @@
                 <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-02</span></div>
                 <div class="ml-name">가입 완료 안내</div>
                 <div class="ml-trig">온보딩 완료 시</div>
-              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-07')" class="ml" data-mail="E-07">
-                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-07</span></div>
-                <div class="ml-name">충전 완료 안내</div>
-                <div class="ml-trig">결제 완료 시</div>
-              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-08')" class="ml" data-mail="E-08">
-                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-08</span></div>
-                <div class="ml-name">환불 완료 안내</div>
-                <div class="ml-trig">운영자 환불 처리(O-04) 완료 시</div>
               </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-03')" class="ml" data-mail="E-03">
                 <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-03</span></div>
                 <div class="ml-name">비밀번호 재설정 OTP</div>
@@ -972,7 +998,31 @@
                 <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-04</span></div>
                 <div class="ml-name">비밀번호 변경 알림</div>
                 <div class="ml-trig">비밀번호 변경 완료 시</div>
-              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-06')" class="ml" data-mail="E-06">
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-11')" class="ml" data-mail="E-11">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-11</span> <span class="sm-new">NEW</span></div>
+                <div class="ml-name">탈퇴 완료 안내</div>
+                <div class="ml-trig">탈퇴 처리 완료(계정 삭제) 시</div>
+              </a><div class="sm-mgrp">크레딧</div><a href="javascript:void(0)" onclick="smGo('tab-e','e-07')" class="ml" data-mail="E-07">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-07</span></div>
+                <div class="ml-name">충전 완료 안내</div>
+                <div class="ml-trig">결제 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-08')" class="ml" data-mail="E-08">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-08</span></div>
+                <div class="ml-name">환불 완료 안내</div>
+                <div class="ml-trig">운영자 환불 처리(O-04) 완료 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-12')" class="ml" data-mail="E-12">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-12</span> <span class="sm-new">NEW</span></div>
+                <div class="ml-name">크레딧 지급 안내</div>
+                <div class="ml-trig">관리자 지급(O-02) 시</div>
+              </a><a href="javascript:void(0)" onclick="smGo('tab-e','e-10')" class="ml" data-mail="E-10">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-10</span> <span class="sm-new">NEW</span></div>
+                <div class="ml-name">크레딧 만료 예정</div>
+                <div class="ml-trig">만료 30일 전 + 24시간 전</div>
+              </a><div class="sm-mgrp">리마인드</div><a href="javascript:void(0)" onclick="smGo('tab-e','e-09')" class="ml" data-mail="E-09">
+                <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-09</span> <span class="sm-new">NEW</span></div>
+                <div class="ml-name">시작 가이드 (도구 연결)</div>
+                <div class="ml-trig">가입 24시간 후 API 호출 0건</div>
+              </a><div class="sm-mgrp">문의</div><a href="javascript:void(0)" onclick="smGo('tab-e','e-06')" class="ml" data-mail="E-06">
                 <div class="ml-head"><span class="ml-ico">✉️</span><span class="sm-id">E-06</span></div>
                 <div class="ml-name">문의 답변</div>
                 <div class="ml-trig">운영자 답변(O-06) 시 · 연결 화면 없음</div>
@@ -1843,7 +1893,7 @@
             <section class="u-sec">
               <h2 class="u-h2">무엇을, 얼마나 보관하나요</h2>
               <table class="wf-table border rounded-lg overflow-hidden mt-4 bg-white text-xs"><thead><tr><th>데이터</th><th>보관 기간</th><th>이유</th></tr></thead><tbody><tr><td>프롬프트·응답 본문</td><td class="font-bold">저장 안 함</td><td class="text-slate-500">추론 처리 후 즉시 폐기</td></tr><tr><td>요청 기록 (시각·모델·토큰·상태 코드·응답 시간)</td><td class="font-bold">1년</td><td class="text-slate-500">콘솔 로그 조회, 과금 분쟁·환불 대응</td></tr><tr><td>접속 기록 (IP·브라우저 정보·로그인)</td><td class="font-bold">1년</td><td class="text-slate-500">부정 이용 탐지, 보안 사고 대응</td></tr><tr><td>일별·모델별 사용량 집계</td><td class="font-bold">탈퇴 시까지</td><td class="text-slate-500">콘솔 전체 기간 사용량 조회</td></tr><tr><td>크레딧 충전·사용 기록</td><td class="font-bold">5년</td><td class="text-slate-500">전자상거래법 (대금 결제 기록)</td></tr><tr><td>팀 이용 신청 정보</td><td class="font-bold">출시 안내 후 파기 (최대 1년)</td><td class="text-slate-500">팀 기능 출시 안내·수요 조사</td></tr><tr><td>카드 번호</td><td class="font-bold">저장 안 함</td><td class="text-slate-500">토스페이먼츠가 처리</td></tr></tbody></table>
-              <p class="text-xs text-slate-500 mt-3">탈퇴하면 계정, API 키, 요청 기록을 영업일 5일 이내에 파기해요. 법으로 정한 결제 기록만 기간 동안 따로 보관해요.</p>
+              <p class="text-xs text-slate-500 mt-3">탈퇴가 완료되면(결제한 크레딧이 있으면 환불 후) 계정, API 키, 요청 기록을 영업일 5일 이내에 파기해요. 법으로 정한 결제 기록만 기간 동안 따로 보관해요.</p>
             </section>
             <section class="u-sec">
               <h2 class="u-h2">데이터를 맡기는 곳</h2>
@@ -2315,7 +2365,7 @@
 
           <div class="w-full border-t my-4"></div>
           <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">[ 공통 완료 파이프라인 ]</div>
-          <div class="flow-node w-full max-w-sm"><a href="#a-04">A-04 온보딩 설문 (2문항)</a></div>
+          <div class="flow-node w-full max-w-sm"><a href="#a-04">A-04 온보딩 설문 (과금 전)</a></div>
           <div class="flow-arrow">↓</div>
           <div class="flow-node-action w-full max-w-sm bg-emerald-700"><a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="text-white underline">가입 완료 메일 발송 ➔ 콘솔 대시보드 (C-01)</a></div>
         </div>
@@ -2415,6 +2465,10 @@
                   <p>비밀번호 입력 실패 5회 이상으로 1분간 잠금됩니다.</p>
                   <p>비밀번호를 잊으셨다면 <a href="#a-05" class="underline text-red-600 hover:text-red-700">비밀번호 찾기</a>를 이용하세요</p>
                 </div>
+                <div id="a01-error-withdrawing" class="hidden mt-2 p-3 rounded text-xs bg-slate-50 text-slate-700 border border-slate-200 space-y-1">
+                  <div class="font-bold">탈퇴 처리 중인 계정입니다</div>
+                  <p>환불이 끝나면 계정이 삭제되며, 완료되면 가입한 이메일로 알려드립니다. 문의: <a href="mailto:help@mofac.io" class="underline text-blue-600">help@mofac.io</a></p>
+                </div>
               </div>
 
               <button onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary">로그인</button>
@@ -2494,6 +2548,9 @@
                   <input type="checkbox" class="w-3 h-3"> 모두 동의합니다.
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-3 h-3"> [필수] 만 19세 이상입니다.
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" class="w-3 h-3"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
@@ -2514,11 +2571,11 @@
         </div>
       </div>
 
-      <div class="mm-note mm-note-out">📝 <b>가입 동의 메모 (10/13 업데이트)</b> — 이메일 가입(A-02) · 소셜 가입(A-08) 공통. 항목: □ 모두 동의합니다. / [필수] 서비스 이용약관에 동의합니다. [보기 → M-03] / [필수] 개인정보 수집 및 이용에 동의합니다. [보기 → M-04 처리방침 제1조 ① 가.] / [선택] 마케팅 정보 수신에 동의합니다. [보기 → A-08-1 전문].
+      <div class="mm-note mm-note-out">📝 <b>가입 동의 메모 (10/13 업데이트)</b> — 이메일 가입(A-02) · 소셜 가입(A-08) 공통. 항목: □ 모두 동의합니다. / [필수] 만 19세 이상입니다.(10/28 추가) / [필수] 서비스 이용약관에 동의합니다. [보기 → M-03] / [필수] 개인정보 수집 및 이용에 동의합니다. [보기 → M-04 처리방침 제1조 ① 가.] / [선택] 마케팅 정보 수신에 동의합니다. [보기 → A-08-1 전문].
         <b>개인정보 필수 동의 복원(10/13)</b>: 법무(이재규 변호사) 회신 — 계약 이행 필요 정보는 동의 없이 수집이 원칙적으로 가능하나(개인정보 보호법 제15조 ① 4호), 기술적으로 어렵지 않으면 동의를 받는 것이 리스크가 더 낮음. 동의를 안 받으면 실태 점검 때 더 엄격한 잣대로 평가받을 수 있음 → 체크박스로 받기로. 계약 이행에 필요한 최소 정보만 수집 · 목적 달성/기간 경과 시 파기는 그대로 지킬 것.
         <b>법무 질문 처리방침-6 원문(10/9)</b>: 가입 화면에서 [필수] 개인정보 수집·이용 동의 체크박스를 없애고 “※ 개인정보 수집 및 이용 안내 [보기]”(처리방침 제1조 ① 가.)로 대체해도 되는지 — 근거: 개인정보 보호법 제15조 ① 4호(계약 이행), 개인정보보호위원회 필수동의 관행 개선 방향 / 같은 방식: 네이버 클라우드 플랫폼 · 쿠팡 · 리디, 필수 동의 방식: 카카오 · 업스테이지.
         <b>이재규 변호사 답변(10/12)</b>: <i>“결론: (원칙적으로) 가능. 다만, 기술적으로 어렵지 않다면, 동의를 받는 것이 리스크를 더욱 낮출 수는 있음. (개발/관리 측면의 burden에 따라 달리 판단할 수 있을 것임) — 개보위는 24. 9. 필수동의의 관행 개선에 관한 정책을 발표함. 그 후 각 사업자들이 자율적으로 정책을 수립하고 있으며, 이에 따라 각각의 입장 및 처리 방식이 조금씩 다른 것으로 파악됨. — 다만, 동의를 받는 방식을 취하지 않는 경우에는 향후 개인정보 관리 실태 점검 시 더욱 엄격한 잣대에 따라 평가받을 가능성이 있으며, 계약 이행 또는 계약 체결에 반드시 필요한 최소한의 정보만을 처리하고 목적 달성 또는 기간 경과 시 파기할 의무 등을 철저히 준수해야 한다는 점 등을 유의할 필요가 있음. (개보위 발행 안내서 등에서도 일관되게 강조하고 있음)”</i>
-        <b>[필수] 만 18세 이상 항목 삭제(10/13)</b>: 변호사 의견상 기준은 만 19세(미성년자) — 동의 항목에서는 빼고 이용약관에 미성년자 이용 조항으로 반영. 확인 필요: 미성년자가 가입한 경우 처리(법정대리인 동의 · 계약 취소권) 문구를 약관에 넣을지.
+        <b>(10/28) [필수] 만 19세 이상 항목 추가</b> — 미성년자는 가입 제외 대상(약관 반영)이라 가입 단계에서 확인. <s>[필수] 만 18세 이상 항목 삭제(10/13)</s>: 변호사 의견상 기준은 만 19세(미성년자) — 동의 항목에서는 빼고 이용약관에 미성년자 이용 조항으로 반영. 확인 필요: 미성년자가 가입한 경우 처리(법정대리인 동의 · 계약 취소권) 문구를 약관에 넣을지.
         “모두 동의”는 선택 항목까지 체크, 선택 해제해도 가입 진행. 마케팅 수신 동의 여부 · 일시는 계정에 저장, 계정 설정(C-09)에서 철회 가능.</div>
 
       <!-- A-03: OTP 인증 -->
@@ -3055,6 +3112,9 @@
             <div class="bg-white border p-4 rounded-md mb-6 space-y-3 text-xs text-slate-600">
               <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800 border-b pb-3 mb-1">
                 <input type="checkbox" class="w-4 h-4 rounded text-slate-800 cursor-pointer"> 모두 동의합니다.
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 만 19세 이상입니다.
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" class="w-3.5 h-3.5 rounded cursor-pointer"> [필수] 서비스 이용약관에 동의합니다. <a href="#m-03" onclick="switchToMTab()" class="ml-auto underline text-blue-600">보기</a>
@@ -3935,10 +3995,10 @@ for await (const chunk of stream) {
                   <div class="c03-block">
                     <div class="c03-section-title"><span class="c03-marker">2</span>크레딧 내역</div>
                     <table class="wf-table border rounded-lg overflow-hidden">
-                      <thead><tr><th>일시</th><th>크레딧</th><th>결제금액</th><th>주문번호</th><th>상태</th></tr></thead>
+                      <thead><tr><th>일시</th><th>크레딧</th><th>내용</th><th>결제금액</th><th>주문번호</th><th>상태</th></tr></thead>
                       <tbody>
-                        <tr class="c03-svy-yes-row"><td class="c03-mono">2026-10-27 10:02</td><td>$20 <span class="c03-muted" style="font-size:11px;">· 온보딩 설문 보상</span></td><td class="c03-muted">—</td><td class="c03-muted">—</td><td><span class="c03-exp-tag" title="2026-11-10 만료">14일 후 만료</span></td></tr>
-                        <tr class="c03-svy-no-row"><td colspan="5" class="text-center text-xs text-slate-400" style="padding:28px 0">아직 크레딧 내역이 없어요</td></tr>
+                        <tr class="c03-svy-yes-row"><td class="c03-mono">2026-10-27 10:02</td><td>$20</td><td>설문 체험 크레딧</td><td class="c03-muted">—</td><td class="c03-muted">—</td><td><span class="c03-exp-tag" title="2026-11-10 만료">14일 후 만료</span></td></tr>
+                        <tr class="c03-svy-no-row"><td colspan="6" class="text-center text-xs text-slate-400" style="padding:28px 0">아직 크레딧 내역이 없어요</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -4001,61 +4061,68 @@ for await (const chunk of stream) {
                     <div class="c03-section-title"><span class="c03-marker">3</span>크레딧 내역</div>
                     <table class="wf-table border rounded-lg overflow-hidden">
                       <thead>
-                        <tr><th>일시</th><th>크레딧</th><th>결제금액</th><th>주문번호</th><th>상태</th></tr>
+                        <tr><th>일시</th><th>크레딧</th><th>내용</th><th>결제금액</th><th>주문번호</th><th>상태</th></tr>
                       </thead>
                       <tbody>
                         <tr class="fb-row fb-bonus-row">
                           <td class="c03-mono">2026-10-12 15:20</td>
-                          <td>$50 <span class="c03-muted" style="font-size:11px;">· 첫 충전 보너스</span></td>
+                          <td>$50</td><td>첫 충전 보너스</td>
                           <td class="c03-muted">—</td>
                           <td class="c03-muted">—</td>
                           <td><span class="c03-exp-tag" title="만료일 확인 필요">N일 후 만료</span></td>
                         </tr>
                         <tr class="fb-row">
                           <td class="c03-mono">2026-10-12 15:20</td>
-                          <td>$100</td>
+                          <td>$100</td><td>충전</td>
                           <td>155,320원</td>
                           <td class="c03-mono">20261012-0042</td>
                           <td><span class="c03-status">✓ 결제완료</span></td>
                         </tr>
                         <tr class="bp-reg-row">
                           <td class="c03-mono">2026-10-08 11:05</td>
-                          <td>$5 <span class="c03-muted" style="font-size:11px;">· 카드 등록 프로모션</span></td>
+                          <td>$5</td><td>카드 등록 크레딧</td>
                           <td class="c03-muted">—</td>
                           <td class="c03-muted">—</td>
                           <td><span class="c03-exp-tag" title="2026-10-11 만료">3일 후 만료</span></td>
                         </tr>
                         <tr>
+                          <td class="c03-mono">2026-09-20 18:40</td>
+                          <td>$3</td><td>관리자 지급 <span class="c03-muted" style="font-size:11px;">· 9/19 응답 지연 보상</span></td>
+                          <td class="c03-muted">—</td>
+                          <td class="c03-muted">—</td>
+                          <td><span class="c03-exp-tag" title="만료일 확인 필요">N일 후 만료</span></td>
+                        </tr>
+                        <tr>
                           <td class="c03-mono">2026-09-14 10:02</td>
-                          <td>$20 <span class="c03-muted" style="font-size:11px;">· 온보딩 설문 보상</span></td>
+                          <td>$20</td><td>설문 체험 크레딧</td>
                           <td class="c03-muted">—</td>
                           <td class="c03-muted">—</td>
                           <td><span class="c03-exp-tag" title="2026-09-28 만료">13일 후 만료</span></td>
                         </tr>
                         <tr>
                           <td class="c03-mono">2026-09-12 14:22</td>
-                          <td>$20</td>
+                          <td>$20</td><td>충전</td>
                           <td>30,800원</td>
                           <td class="c03-mono">20260912-0031</td>
                           <td><span class="c03-status">✓ 결제완료</span></td>
                         </tr>
                         <tr>
                           <td class="c03-mono">2026-09-03 09:10</td>
-                          <td>$10</td>
+                          <td>$10</td><td>충전</td>
                           <td>15,400원</td>
                           <td class="c03-mono">20260903-0017</td>
                           <td><span class="c03-status">⏳ 환불 처리중</span></td>
                         </tr>
                         <tr>
                           <td class="c03-mono">2026-08-21 17:45</td>
-                          <td>$10</td>
+                          <td>$10</td><td>충전</td>
                           <td>15,400원</td>
                           <td class="c03-mono">20260821-0008</td>
                           <td><span class="c03-status">✓ 결제완료</span></td>
                         </tr>
                         <tr>
                           <td class="c03-mono">2026-08-02 11:30</td>
-                          <td>$50</td>
+                          <td>$50</td><td>충전</td>
                           <td>77,000원</td>
                           <td class="c03-mono">20260802-0002</td>
                           <td><span class="c03-status">↩️ 환불완료</span></td>
@@ -4103,7 +4170,9 @@ for await (const chunk of stream) {
                   <div class="c03-spec-item">
                     <div class="c03-spec-title">③ 크레딧 내역 · 인터랙션</div>
                     <ul>
-                      <li>컬럼 순서: 일시 · 크레딧 · 결제금액 · 주문번호 · 상태</li>
+                      <li>컬럼 순서: 일시 · 크레딧 · <b>내용</b> · 결제금액 · 주문번호 · 상태</li>
+                      <li><b>관리자 지급 유효기간</b>(10/28): O-02에서 지급할 때 운영자가 직접 선택, 기본값 7일(3 · 7 · 14 · 30일 · 직접 입력 1~365일). 만료 딱지 · E-10 만료 메일은 다른 크레딧과 같은 규칙.</li>
+                      <li><b>내용</b>(10/28): 충전 · 첫 충전 보너스 · 카드 등록 크레딧 · 설문 체험 크레딧 · 관리자 지급(+ O-02 “회원에게 보이는 내용”) · 관리자 차감 — E-10 만료 메일의 건 이름도 “일시 날짜 + 내용”으로 같은 값 사용(예: 2026-11-27 충전)</li>
 <li>결제 건 + 지급 건을 한 표에 표시, 일시 <b>최신순</b></li>
                       <li>지급 건(설문 보상·관리자 지급)은 결제금액·주문번호 <b>—</b>, 상태는 비움(만료 임박 딱지만 노출)</li>
                       <li>상태는 <b>결제 건에만</b> 표기 (지급 건은 상태값 없음)</li>
@@ -4230,49 +4299,38 @@ for await (const chunk of stream) {
                 <div class="wf-header">
                   <span class="flex items-center gap-2">C-10-1 회원 탈퇴 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">v4.0 신규</span></span>
                   <div class="flex items-center gap-1 flex-wrap justify-end">
-                    <span class="text-xs text-slate-500 font-normal">잔액</span>
-                    <button onclick="wdState('paid')" class="state-toggle-btn wd-st active" data-s="paid">환불 가능 크레딧 있음</button>
-                    <button onclick="wdState('refunding')" class="state-toggle-btn wd-st" data-s="refunding">환불 처리 중</button>
-                    <button onclick="wdState('zero')" class="state-toggle-btn wd-st" data-s="zero">탈퇴 가능</button>
+                    <span class="text-xs text-slate-500 font-normal">상태:</span>
+                    <button onclick="wdState('paid')" class="state-toggle-btn wd-st active" data-s="paid">결제 크레딧 있음</button>
+                    <button onclick="wdState('zero')" class="state-toggle-btn wd-st" data-s="zero">결제 크레딧 없음</button>
                   </div>
                 </div>
                 <div class="wf-body p-8" id="wd-root" data-state="paid">
-                  <div class="max-w-2xl mx-auto space-y-8">
+                  <!-- 탈퇴 신청 화면 (결제 크레딧 있음 / 없음) -->
+                  <div class="max-w-2xl mx-auto space-y-8 wd-form">
                     <div>
                       <div class="text-xs text-slate-400 mb-1"><a href="javascript:void(0)" onclick="openAccountSettingModal('security')" class="underline">계정 설정</a> › 보안 › 회원 탈퇴</div>
                       <h2 class="text-2xl font-extrabold text-slate-900">회원 탈퇴</h2>
                       <p class="text-sm text-slate-500 mt-1">탈퇴하기 전에 아래 내용을 꼭 확인해 주세요.</p>
                     </div>
-
-                    <!-- ① 잔액 -->
+                    <!-- ① 남은 크레딧 -->
                     <div>
                       <h3 class="wd-h">남은 크레딧</h3>
                       <div class="wd-bal max-w-sm">
-                        <div class="text-xs text-slate-500 mb-1">환불 가능한 크레딧</div>
+                        <div class="text-xs text-slate-500 mb-1">환불받을 크레딧 (결제한 크레딧)</div>
                         <div class="wd-v wd-v-paid"><span class="text-2xl font-extrabold text-slate-900">$12.40</span></div>
-                        <div class="wd-v wd-v-refunding"><span class="text-2xl font-extrabold text-slate-900">$12.40</span> <span class="wd-tag">⏳ 환불 처리 중</span></div>
                         <div class="wd-v wd-v-zero"><span class="text-2xl font-extrabold text-slate-900">$0</span></div>
                       </div>
-                      <div class="text-[11px] text-slate-400 mt-2">무료로 받은 크레딧 $6.66은 환불되지 않습니다.</div>
-
-                      <div class="wd-v wd-v-paid wd-alert red mt-3">
-                        <div class="font-bold mb-1">크레딧 환불을 먼저 신청해 주세요</div>
-                        <div>환불 가능한 크레딧이 $0이 되어야 탈퇴할 수 있어요.</div>
-                        <a href="mailto:help@mofac.io?subject=%ED%99%98%EB%B6%88%20%EC%8B%A0%EC%B2%AD" class="wf-btn wf-btn-dark text-xs w-auto px-4 mt-3 no-underline text-white inline-flex">help@mofac.io로 환불 신청하기</a>
-                      </div>
+                      <div class="text-[11px] text-slate-400 mt-2">무료로 받은 크레딧 $6.66은 탈퇴를 신청하면 사라지고 환불되지 않아요.</div>
                     </div>
-
                     <!-- ② 자주 묻는 질문 -->
                     <div>
                       <h3 class="wd-h">탈퇴하기 전에 확인해 주세요</h3>
                       <div class="space-y-4">
-                    <div class="wd-faq"><div class="wd-q">Q. 남은 크레딧은 어떻게 되나요?</div><div class="wd-a">결제한 크레딧은 환불을 받은 뒤에 탈퇴할 수 있어요. 무료로 받은 크레딧은 탈퇴하면 사라지고 환불되지 않아요.</div></div>
-                    <div class="wd-faq"><div class="wd-q">Q. API 키는 어떻게 되나요?</div><div class="wd-a">탈퇴하면 모든 API 키가 바로 사용 중지돼요. 키를 연결해 둔 서비스나 도구의 호출도 바로 실패해요.</div></div>
-                    <div class="wd-faq"><div class="wd-q">Q. 같은 이메일로 다시 가입할 수 있나요?</div><div class="wd-a">탈퇴 후 30일이 지나면 같은 이메일로 다시 가입할 수 있어요. 편법 이용행위를 방지하기 위해 이메일을 암호화하여 보관합니다.</div></div>
-                    <div class="wd-faq"><div class="wd-q">Q. 제 정보와 사용 기록은 어떻게 되나요?</div><div class="wd-a">계정 정보와 요청 기록은 삭제돼요. 결제 기록은 관련 법령에 따라 정해진 기간 동안 보관해요.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. 남은 크레딧은 어떻게 되나요?</div><div class="wd-a">결제한 크레딧은 탈퇴 신청과 함께 환불이 접수되고, 3영업일 안에 처리합니다. 무료로 받은 크레딧은 탈퇴를 신청하면 사라지고 환불되지 않습니다.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. API 키는 어떻게 되나요?</div><div class="wd-a">탈퇴를 신청하면 모든 API 키가 바로 사용 중지됩니다.</div></div>
+                    <div class="wd-faq"><div class="wd-q">Q. 같은 이메일로 다시 가입할 수 있나요?</div><div class="wd-a">탈퇴 후 30일이 지나면 같은 이메일로 다시 가입할 수 있습니다. 편법 이용행위를 방지하기 위해 이메일을 암호화하여 보관합니다.</div></div>
                       </div>
                     </div>
-
                     <!-- ③ 본인 확인 -->
                     <div>
                       <h3 class="wd-h">본인 확인</h3>
@@ -4280,27 +4338,38 @@ for await (const chunk of stream) {
                       <input type="email" class="wf-input mb-1 max-w-xs" placeholder="user@mofac.io">
                       <div class="text-[11px] text-red-500"><span class="text-slate-400">(불일치 시)</span> 가입한 이메일 주소와 일치하지 않아요.</div>
                     </div>
-
                     <!-- ④ 동의 · 버튼 -->
                     <div class="space-y-3">
-                      <div class="wd-alert amber">⚠️ 탈퇴한 계정은 다시 복구할 수 없어요.</div>
+                      <div class="wd-alert amber">⚠️ 탈퇴를 신청하면 취소하거나 계정을 복구할 수 없어요.</div>
                       <label class="flex items-center gap-2 justify-center text-sm font-semibold text-slate-700"><input type="checkbox"> 위 내용을 모두 확인했으며, 탈퇴에 동의합니다.</label>
                       <div class="flex gap-2 justify-center">
                         <button onclick="switchToCTab('#c-01')" class="wf-btn w-auto px-8">취소</button>
-                        <button id="wd-submit" class="wf-btn w-auto px-8 border-none font-bold" style="background:#dc2626;color:#fff" disabled>회원 탈퇴</button>
+                        <button id="wd-submit"  class="wf-btn w-auto px-8 border-none font-bold" style="background:#dc2626;color:#fff"><span class="wd-lbl-paid">탈퇴 · 환불 신청</span><span class="wd-lbl-zero">회원 탈퇴</span></button>
                       </div>
-                      <div class="text-center text-[11px] text-slate-400 wd-v wd-v-paid">크레딧 환불이 끝나야 탈퇴할 수 있어요</div>
-                      <div class="text-center text-[11px] text-slate-400 wd-v wd-v-refunding">환불이 완료되면 탈퇴할 수 있어요</div>
+                      <div class="text-center text-[11px] text-slate-400 wd-v wd-v-zero">결제한 크레딧이 없어 바로 탈퇴가 완료돼요.</div>
+                    </div>
+                  </div>
+                  <!-- 신청 얼럿 (펼쳐 둠, 10/28) -->
+                  <div class="mt-10">
+                    <div class="text-xs font-bold text-slate-500 mb-3">얼럿 (화면에서 바로 보이도록 펼쳐 둠)</div>
+                    <div class="wd-alerts">
+                      <div><div class="wd-al-lbl">① [탈퇴 · 환불 신청] 누르면</div><div class="wd-modal"><div class="text-base font-extrabold text-slate-900">탈퇴를 신청할까요?</div><p class="text-xs text-slate-600 mt-2 leading-relaxed">결제한 크레딧 $12.40은 환불이 함께 접수됩니다. 무료 크레딧은 사라지고, API 키는 바로 사용 중지됩니다.</p><div class="flex gap-2 justify-end mt-4"><span class="wf-btn w-auto px-4 text-xs">취소</span><span class="wf-btn w-auto px-4 text-xs border-none font-bold" style="background:#dc2626;color:#fff">탈퇴 신청</span></div></div></div>
+                      <div class="wd-al-arrow">→</div>
+                      <div><div class="wd-al-lbl">② [탈퇴 신청] 누르면 · 결제 크레딧 있음</div><div class="wd-modal"><div class="text-base font-extrabold text-slate-900">탈퇴 신청이 완료되었습니다</div><p class="text-xs text-slate-600 mt-2 leading-relaxed">환불이 끝나면 계정이 삭제됩니다. 완료되면 가입한 이메일로 알려드릴게요.</p><div class="flex gap-2 justify-end mt-4"><span class="wf-btn wf-btn-dark w-auto px-5 text-xs">확인</span></div><div class="text-[10px] text-slate-400 mt-2 text-right">[확인] → 로그아웃 → M-01</div></div>
+                      <div class="wd-al-lbl mt-4">② 결제 크레딧 없음</div><div class="wd-modal"><div class="text-base font-extrabold text-slate-900">탈퇴가 완료되었습니다</div><p class="text-xs text-slate-600 mt-2 leading-relaxed">그동안 MoFAC을 이용해 주셔서 감사합니다.</p><div class="flex gap-2 justify-end mt-4"><span class="wf-btn wf-btn-dark w-auto px-5 text-xs">확인</span></div><div class="text-[10px] text-slate-400 mt-2 text-right">[확인] → 로그아웃 → M-01</div></div></div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="mm-note mm-note-out">📝 <b>C-10-1 탈퇴 정책 변경 (10/28 · 법무 검토)</b> — <b>탈퇴 신청 시 환불 함께 접수</b>(환불 먼저 받고 탈퇴 → 폐기). 흐름: 탈퇴 신청 → API 키 폐기 · 무상 크레딧 소멸 · 유상 잔액 동결 → 계정 상태 “탈퇴 처리 중” → 환불 완료(3영업일 안에 결제 취소 요청, O-04) → 계정 삭제 → 5영업일 안에 파기. <b>유상 잔액이 없으면 바로 탈퇴 완료</b>.
+                화면: 헤더 [결제 크레딧 있음 / 없음 / 탈퇴 처리 중]. 있음 = 버튼 [탈퇴 · 환불 신청](흐름 안내 박스는 10/28 삭제 — FAQ로 충분), 없음 = [회원 탈퇴] + “바로 탈퇴가 완료돼요”. <b>(10/28) 신청 흐름</b>(얼럿은 화면 하단에 펼쳐 둠): [탈퇴 · 환불 신청] → 확인 얼럿 “탈퇴를 신청할까요?”(환불 · 무료 크레딧 · API 키 한 줄) → 완료 얼럿 “탈퇴 신청이 완료되었습니다 / 환불이 끝나면 계정이 삭제됩니다. 완료되면 가입한 이메일로 알려드릴게요.” → [확인] 시 <b>로그아웃</b> → M-01. 결제 크레딧이 없으면 완료 얼럿 문구는 “탈퇴가 완료되었습니다.” 한 줄. <b>탈퇴 처리 중 계정은 로그인 불가</b>(A-01 안내), 환불 완료 → 계정 삭제 시 E-11 탈퇴 완료 메일. 버튼 활성 조건은 본인 확인 + 동의 체크만(잔액 조건 없음).
+                <b>확인 필요</b>: E-08 환불 완료 메일과 E-11 합칠지 · 처리 중 재가입 차단 · 이용약관 · 처리방침 문구를 이 흐름으로 맞추기.</div>
               <div class="mm-note mm-note-out">📝 <b>C-10-1 회원 탈퇴 메모 (9/29)</b> — 계정 설정 › 보안(C-10) [탈퇴 진행하기]로 들어오는 전용 화면. 헤더 버튼으로 잔액 3상태 전환. 구성은 리디 탈퇴 화면을 참고해 ① 남은 크레딧 → ② 확인 사항(Q&amp;A) → ③ 본인 확인 → ④ 복구 불가 경고 · 동의 · 버튼. 탈퇴 사유는 받지 않음(9/29 삭제 — 처리방침에 수집 항목을 늘리지 않기 위해).
-                <b>잔액 정책</b>: 결제(유상) 크레딧이 $0보다 크면 [회원 탈퇴] 비활성 + 환불 신청 경로(help 메일) 표시 → 운영자가 O-04에서 환불 완료하면 $0이 되어 탈퇴 가능. 환불 처리 중(동결)인 동안에도 비활성. 무료(무상) 크레딧은 탈퇴 시 소멸 — 결제 크레딧만 카드로 크게, 무료 크레딧은 아래 한 줄로 작게(“무료로 받은 크레딧 $N은 환불되지 않습니다.”). 환불 처리 중에는 금액 옆 상태 표시만(별도 안내 박스 없음). 화면 표기는 섹션 제목 “남은 크레딧” 아래 카드 라벨 “환불 가능한 크레딧”(= 결제 크레딧 잔액, 무료 크레딧 제외 — C-01의 “남은 크레딧” 합계와 구분), 환불 안내는 두 줄로 가볍게 + help 메일 버튼(메일에 적을 내용은 자동 입력 제목 · 본문 템플릿으로).
-                <b>[회원 탈퇴] 활성 조건</b>: 결제 크레딧 $0 · 환불 처리 중 아님 · 본인 확인 완료 · 동의 체크.
+                <s><b>잔액 정책(9/29, 10/28 변경)</b>: 결제(유상) 크레딧이 $0보다 크면 [회원 탈퇴] 비활성 + 환불 신청 경로(help 메일) 표시 → 운영자가 O-04에서 환불 완료하면 $0이 되어 탈퇴 가능. 환불 처리 중(동결)인 동안에도 비활성. 무료(무상) 크레딧은 탈퇴 시 소멸 — 결제 크레딧만 카드로 크게, 무료 크레딧은 아래 한 줄로 작게(“무료로 받은 크레딧 $N은 환불되지 않습니다.”). 환불 처리 중에는 금액 옆 상태 표시만(별도 안내 박스 없음). 화면 표기는 섹션 제목 “남은 크레딧” 아래 카드 라벨 “환불 가능한 크레딧”(= 결제 크레딧 잔액, 무료 크레딧 제외 — C-01의 “남은 크레딧” 합계와 구분), 환불 안내는 두 줄로 가볍게 + help 메일 버튼(메일에 적을 내용은 자동 입력 제목 · 본문 템플릿으로).
+                <b>[회원 탈퇴] 활성 조건</b>: 결제 크레딧 $0 · 환불 처리 중 아님 · 본인 확인 완료 · 동의 체크.</s>
                 <b>재가입</b>: 화면 문구 “편법 이용행위를 방지하기 위해 이메일을 암호화하여 보관합니다.” — 실제로는 정규화한 이메일의 해시만 탈퇴 후 30일 보관(재가입 쿨다운과 같은 기간) → 기간이 지나면 해시 삭제, 같은 이메일로 재가입 가능(A-02 쿨다운 에러와 연결).
                 <b>본인 확인</b>(10/2 변경): 가입 유형과 관계없이 <b>가입 이메일 주소 입력</b>으로 통일 — Google 가입자는 비밀번호가 없어서. 입력값이 계정 이메일과 일치해야 다음 단계 가능(대소문자 무시, 앞뒤 공백 제거), 불일치 시 입력칸 아래 빨간 한 줄. 입력칸 placeholder에 계정 이메일을 미리 보여 줌(따라 입력하기 쉽게, GitHub 저장소 삭제 방식). 로그인된 세션에서만 들어오는 화면이라 재인증은 생략.
-                <b>확인 필요</b>: 30일 후 재가입 시 가입 크레딧($20) 재지급 여부 · 이메일 정규화 규칙(대소문자, Gmail 점 · + 별칭 처리) · 탈퇴 완료 안내 메일(E-09) 필요 여부.
+                <b>확인 필요</b>: 30일 후 재가입 시 가입 크레딧($20) 재지급 여부 · 이메일 정규화 규칙(대소문자, Gmail 점 · + 별칭 처리) · 탈퇴 완료 안내 메일(E-11) 필요 여부.
               </div>
             </div>
 
@@ -4517,6 +4586,7 @@ for await (const chunk of stream) {
                       <select class="wf-input w-auto text-xs font-semibold mb-0">
                         <option value="all">전체 상태 보기</option>
                         <option value="active">정상</option>
+                        <option value="withdrawing">탈퇴 처리 중</option>
                         <option value="withdrawn">탈퇴</option>
                       </select>
                     </div>
@@ -4527,6 +4597,14 @@ for await (const chunk of stream) {
                       <tr><th>이메일</th><th>가입유형</th><th>가입일</th><th>최근 로그인</th><th>상태</th><th class="text-right">관리</th></tr>
                     </thead>
                     <tbody>
+                      <tr>
+                        <td class="font-bold">leaving@mofac.io</td>
+                        <td><span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">이메일</span></td>
+                        <td class="text-xs text-slate-500">2026-09-02 10:11</td>
+                        <td class="text-xs text-slate-700 font-medium">2026-10-28 14:20</td>
+                        <td><span class="text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded border border-amber-200">탈퇴 처리 중</span> <span class="text-[10px] text-slate-400 block mt-0.5">환불 대기 $12.40 · O-04</span></td>
+                        <td class="text-right"><button class="text-xs text-blue-600 underline border-none bg-transparent cursor-pointer">상세</button></td>
+                      </tr>
                       <tr>
                         <td class="font-bold">user@mofac.io</td>
                         <td><span class="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded font-medium">Google</span></td>
@@ -4571,8 +4649,23 @@ for await (const chunk of stream) {
                       </div>
                     </div>
                     <div>
-                      <label class="block text-xs font-bold text-slate-700 mb-1">지급/차감 사유 <span class="text-red-500">*</span></label>
-                      <input type="text" class="wf-input" placeholder="예: 온보딩 설문 참여 보상 지급">
+                      <label class="block text-xs font-bold text-slate-700 mb-1">유효기간 <span class="text-red-500">*</span> <span class="font-normal text-slate-400">지급(+)일 때만 · 지급 시점부터</span></label>
+                      <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-xs px-3 py-1.5 rounded-md border border-slate-300 text-slate-600">3일</span>
+                        <span class="text-xs px-3 py-1.5 rounded-md border-2 border-slate-900 bg-slate-900 text-white font-bold">7일</span>
+                        <span class="text-xs px-3 py-1.5 rounded-md border border-slate-300 text-slate-600">14일</span>
+                        <span class="text-xs px-3 py-1.5 rounded-md border border-slate-300 text-slate-600">30일</span>
+                        <span class="text-xs px-3 py-1.5 rounded-md border border-slate-300 text-slate-600">직접 입력</span>
+                        <span class="text-[11px] text-slate-400">→ 2026-11-04 14:20 만료</span>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">회원에게 보이는 내용 <span class="text-red-500">*</span> <span class="font-normal text-slate-400">크레딧 내역(C-03) · 만료 메일(E-10)에 표시</span></label>
+                      <input type="text" class="wf-input" placeholder="예: 9/19 응답 지연 보상">
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold text-slate-700 mb-1">내부 메모 <span class="font-normal text-slate-400">선택 · 회원에게 안 보임</span></label>
+                      <input type="text" class="wf-input" placeholder="예: 문의 #1234 · 9/19 장애 대응">
                     </div>
                     <button onclick="alert('크레딧이 정상적으로 처리되었습니다.')" class="wf-btn wf-btn-dark text-xs py-2.5">크레딧 처리 실행</button>
                   </div>
@@ -4898,9 +4991,83 @@ for await (const chunk of stream) {
             <!-- O-04 결제·환불 관리 -->
             <div id="o-04" class="screen-section">
 
-      <div class="wf-card">
+      <!-- ① 결제 내역 탭 -->
+      <div class="o04-part-label">① [결제 내역] 탭</div>
+      <div class="wf-card" id="o04-pay">
         <div class="wf-header">
-          <span><span class="o04-screen-id">O-04</span>결제·환불 관리</span>
+          <span><span class="o04-screen-id">O-04</span>결제·환불 관리 — 결제 내역</span>
+          <span class="wf-badge">적용환율 스냅샷 · 행에서 환불 건 등록 진입</span>
+        </div>
+        <div style="padding:22px;">
+          <div class="o04-tabs">
+            <div class="o04-tab o04-active" onclick="o04Go('o04-pay')" style="cursor:pointer">결제 내역</div>
+            <div class="o04-tab" onclick="o04Go('o04-main')" style="cursor:pointer">환불 수기 관리 <span class="o04-tab-cnt">2</span></div>
+            <div class="o04-tab" onclick="o04Go('o04-wd')" style="cursor:pointer">탈퇴 관리 <span class="o04-tab-cnt">1</span></div>
+          </div>
+
+          <div class="o04-table-scroll">
+            <table class="o04-wf-table">
+              <thead>
+                <tr>
+                  <th>결제일시</th><th>회원</th><th>주문번호</th><th>상품</th><th>결제금액</th>
+                  <th>적용환율</th><th>건별 잔여</th><th>상태</th><th>액션</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="o04-mono">2026-09-12 14:22</td>
+                  <td>user***@gmail.com</td>
+                  <td class="o04-mono">20260912-0031</td>
+                  <td>$20</td>
+                  <td>30,800원</td>
+                  <td class="o04-mono">1,400원/$1</td>
+                  <td>20.00 <span class="o04-tag">🔒</span></td>
+                  <td><span class="o04-status">⏳ 환불 처리중</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
+                </tr>
+                <tr>
+                  <td class="o04-mono">2026-09-03 09:10</td>
+                  <td>dev***@corp.kr</td>
+                  <td class="o04-mono">20260903-0017</td>
+                  <td>$10</td>
+                  <td>15,400원</td>
+                  <td class="o04-mono">1,400원/$1</td>
+                  <td>10.00</td>
+                  <td><span class="o04-status">✓ 결제완료</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-reg')">환불 등록</button></td>
+                </tr>
+                <tr>
+                  <td class="o04-mono">2026-08-21 17:45</td>
+                  <td>dev***@corp.kr</td>
+                  <td class="o04-mono">20260821-0008</td>
+                  <td>$10</td>
+                  <td>15,400원</td>
+                  <td class="o04-mono">1,400원/$1</td>
+                  <td>6.42 <span class="o04-tag">🔒</span></td>
+                  <td><span class="o04-status">⏳ 환불 처리중</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
+                </tr>
+                <tr>
+                  <td class="o04-mono">2026-08-02 11:30</td>
+                  <td>ops***@mofac.io</td>
+                  <td class="o04-mono">20260802-0002</td>
+                  <td>$50</td>
+                  <td>77,000원</td>
+                  <td class="o04-mono">1,400원/$1</td>
+                  <td>0.00</td>
+                  <td><span class="o04-status">✓ 결제완료</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="o04-part-label">② [환불 수기 관리] 탭 · <a href="javascript:void(0)" onclick="document.getElementById('o04-flow-rf').classList.remove('hidden')" class="underline text-blue-600">🧭 운영 흐름 보기 (설계 참고용)</a></div>
+      <div class="wf-card" id="o04-main">
+        <div class="wf-header">
+          <span><span class="o04-screen-id">O-04</span>결제·환불 관리 — 환불 수기 관리</span>
           <span class="wf-badge">환불 건 등록 · PG 취소 결과 입력 · 결제 내역 조회</span>
         </div>
 
@@ -4908,19 +5075,20 @@ for await (const chunk of stream) {
 
           <!-- ① 탭 -->
           <div class="o04-tabs">
-            <div class="o04-tab o04-active">환불 관리</div>
-            <div class="o04-tab">결제 내역</div>
+            <div class="o04-tab" onclick="o04Go('o04-pay')" style="cursor:pointer">결제 내역</div>
+            <div class="o04-tab o04-active" onclick="o04Go('o04-main')" style="cursor:pointer">환불 수기 관리 <span class="o04-tab-cnt">2</span></div>
+            <div class="o04-tab" onclick="o04Go('o04-wd')" style="cursor:pointer">탈퇴 관리 <span class="o04-tab-cnt">1</span></div>
           </div>
 
           <!-- ② 상태 필터 + 액션 -->
           <div class="o04-filterbar">
             <div class="o04-filters">
-              <span class="o04-filter o04-active">전체</span>
-              <span class="o04-filter">⏳ 처리중 (2)</span>
-              <span class="o04-filter">✓ 완료 (14)</span>
-              <span class="o04-filter">⚠️ 취소 (1)</span>
+              <span class="o04-filter o04-active" onclick="o04Filter(this,'all')">전체</span>
+              <span class="o04-filter" onclick="o04Filter(this,'ing')">⏳ 처리중 (2)</span>
+              <span class="o04-filter" onclick="o04Filter(this,'done')">✓ 완료 (14)</span>
+              <span class="o04-filter" onclick="o04Filter(this,'cancel')">⚠️ 취소 (1)</span>
             </div>
-            <button class="o04-wf-btn o04-wf-btn-dark">＋ 환불 건 등록</button>
+            <button class="o04-wf-btn o04-wf-btn-dark" onclick="o04Go('o04-reg')">＋ 환불 건 등록</button>
           </div>
 
           <!-- ③ 환불 관리 큐 -->
@@ -4933,7 +5101,7 @@ for await (const chunk of stream) {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr data-st="ing">
                   <td class="o04-mono">2026-09-13 16:20</td>
                   <td>user***@gmail.com</td>
                   <td class="o04-mono">20260912-0031</td>
@@ -4941,9 +5109,9 @@ for await (const chunk of stream) {
                   <td>20.00</td>
                   <td>30,800원</td>
                   <td><span class="o04-status">⏳ 처리중</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm">처리</button></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-pnl')">처리</button></td>
                 </tr>
-                <tr>
+                <tr data-st="ing">
                   <td class="o04-mono">2026-09-12 10:05</td>
                   <td>dev***@corp.kr</td>
                   <td class="o04-mono">20260821-0008</td>
@@ -4951,9 +5119,9 @@ for await (const chunk of stream) {
                   <td>6.42</td>
                   <td>9,887원</td>
                   <td><span class="o04-status">⏳ 처리중</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm">처리</button></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-pnl')">처리</button></td>
                 </tr>
-                <tr>
+                <tr data-st="cancel">
                   <td class="o04-mono">2026-09-05 11:40</td>
                   <td>ops***@mofac.io</td>
                   <td class="o04-mono">20260802-0002</td>
@@ -4961,8 +5129,19 @@ for await (const chunk of stream) {
                   <td>0.00</td>
                   <td class="o04-muted">0원</td>
                   <td><span class="o04-status">⚠️ 취소</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm">처리</button></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-pnl')">처리</button></td>
                 </tr>
+                <tr data-st="done">
+                  <td class="o04-mono">2026-09-08 15:30</td>
+                  <td>kim***@gmail.com</td>
+                  <td class="o04-mono">20260830-0011</td>
+                  <td>15,400원</td>
+                  <td>10.00</td>
+                  <td>15,400원</td>
+                  <td><span class="o04-status">✓ 완료</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-pnl')">처리</button></td>
+                </tr>
+                <tr class="o04-empty"><td colspan="8">해당하는 건이 없어요</td></tr>
               </tbody>
             </table>
           </div>
@@ -4971,8 +5150,8 @@ for await (const chunk of stream) {
       </div>
 
       <!-- ③ 환불 건 등록 모달 -->
-      <div class="o04-part-label">③ [＋ 환불 건 등록] 모달</div>
-      <div class="wf-card">
+      <div class="o04-part-label">②-1 [＋ 환불 건 등록] 모달</div>
+      <div class="wf-card" id="o04-reg">
         <div class="wf-header">
           <span><span class="o04-screen-id">O-04</span>환불 건 등록 모달</span>
           <span class="wf-badge">주문번호 조회 → 계산 자동 표시 → 등록 시 동결</span>
@@ -5012,11 +5191,15 @@ for await (const chunk of stream) {
                 <input class="o04-input o04-mono" value="2026-09-12 10:05">
               </div>
               <div class="o04-field">
-                <label class="o04-field-label">사유</label>
-                <input class="o04-input" value="사용할 일이 없어져서">
+                <label class="o04-field-label">사유 유형</label>
+                <select class="o04-input"><option selected>더 이상 사용하지 않음</option><option>모델 품질 · 성능 불만</option><option>가격 · 비용 부담</option><option>잘못 · 중복 결제</option><option>서비스 장애 · 연동 문제</option><option>다른 서비스로 이동</option><option>기타</option></select>
+              </div>
+              <div class="o04-field">
+                <label class="o04-field-label">상세 <span class="o04-muted" style="font-weight:400">선택 · 회원이 메일에 적은 내용</span></label>
+                <input class="o04-input" value="사이드 프로젝트를 접어서">
               </div>
 
-              <div class="o04-note-inline"><span>🔒</span><span>등록하면 이 결제 건의 잔여 크레딧이 <b>즉시 동결</b>되고 상태가 <b>처리중</b>이 됩니다.</span></div>
+              <div class="o04-note-inline"><span>🔒</span><span>등록하면 이 결제 건의 잔여 크레딧이 <b>즉시 동결</b>되고 상태가 <b>처리중</b>이 됩니다. 취소는 토스 상점관리자에서 진행한 뒤 상세 패널에서 [환불 완료 처리]를 누르세요.</span></div>
             </div>
             <div class="o04-modal-foot">
               <button class="o04-wf-btn">취소</button>
@@ -5027,7 +5210,7 @@ for await (const chunk of stream) {
       </div>
 
       <!-- ③-1 조회 결과 분기 -->
-      <div class="o04-part-label">③-1 [조회] 결과 분기 — 등록 가능 / 차단</div>
+      <div class="o04-part-label">②-2 [조회] 결과 분기 — 등록 가능 / 차단</div>
       <div class="wf-card">
         <div class="wf-header">
           <span><span class="o04-screen-id">O-04</span>조회 결과 분기</span>
@@ -5067,11 +5250,11 @@ for await (const chunk of stream) {
       </div>
 
       <!-- ④ 상세 처리 패널 -->
-      <div class="o04-part-label">④ 상세 처리 패널 (우측 슬라이드)</div>
-      <div class="wf-card">
+      <div class="o04-part-label">②-3 상세 처리 패널 (우측 슬라이드)</div>
+      <div class="wf-card" id="o04-pnl">
         <div class="wf-header">
           <span><span class="o04-screen-id">O-04</span>환불 건 상세 · 처리</span>
-          <span class="wf-badge">큐에서 [처리] 클릭 시 우측에서 슬라이드</span>
+          <span class="wf-badge">큐에서 [처리] 클릭 시 우측 슬라이드 — 상점관리자 취소 → 확인 체크 → [환불 완료 처리]</span>
         </div>
         <div class="o04-panel-stage">
           <div class="o04-panel">
@@ -5084,7 +5267,7 @@ for await (const chunk of stream) {
                 <div class="o04-kv"><dt>결제일</dt><dd>2026-08-21 17:45</dd></div>
                 <div class="o04-kv"><dt>결제수단</dt><dd>신용카드 (하나 1234)</dd></div>
                 <div class="o04-kv"><dt>접수 경로</dt><dd>문의 메일 (2026-09-12 10:05)</dd></div>
-                <div class="o04-kv"><dt>사유</dt><dd>사용할 일이 없어져서</dd></div>
+                <div class="o04-kv"><dt>사유</dt><dd><span class="o04-src">더 이상 사용하지 않음</span> 사이드 프로젝트를 접어서</dd></div>
               </dl>
 
               <div class="o04-kv-title">계산 내역 (동결 시점 기준)</div>
@@ -5096,110 +5279,120 @@ for await (const chunk of stream) {
                 <div class="o04-kv-total"><span>환불 가능액</span><span>9,887원</span></div>
               </dl>
 
-              <div class="o04-kv-title">PG 처리</div>
+              <div class="o04-kv-title">PG 처리 (수기)</div>
               <ol class="o04-steps">
-                <li>토스 상점관리자에서 해당 결제 건 부분취소 실행</li>
-                <li>결과를 아래에 입력</li>
+                <li>토스 상점관리자 › 결제조회 › 신용·체크카드 › 이 결제 건 [취소하기]</li>
+                <li>취소액 <b>9,887원</b> 입력 → [완료] (미사용 건이면 [전액입력])</li>
+                <li>취소가 끝나면 아래 확인 체크 → [환불 완료 처리] — 내부 장부 처리</li>
               </ol>
 
-              <label class="o04-field-label">처리 결과</label>
-              <div class="o04-radio-row"><span>○ 성공</span><span>○ 실패</span></div>
-
-              <div class="o04-field">
-                <label class="o04-field-label">실제 취소금액</label>
-                <div class="o04-row-inline"><input class="o04-input o04-short o04-mono" value="9,887"><span style="font-size:12.5px;">원</span></div>
-              </div>
-              <div class="o04-field">
-                <label class="o04-field-label">PG 거래번호</label>
-                <input class="o04-input" value="">
-              </div>
+              <label class="wdm-confirm"><input type="checkbox" id="pnl-ok" onchange="document.getElementById('pnl-done').classList.toggle('o04-is-disabled', !this.checked)"> 토스 상점관리자에서 9,887원을 수기 취소했습니다.</label>
+              <div class="text-[11px] text-slate-500 mt-2" style="margin-bottom:12px">[환불 완료 처리]를 누르면 동결분 차감 · ✓ 완료 · E-08 발송이 진행되고 되돌릴 수 없어요.</div>
               <div class="o04-field">
                 <label class="o04-field-label">메모</label>
                 <input class="o04-input" value="">
               </div>
             </div>
             <div class="o04-panel-foot">
-              <button class="o04-wf-btn">취소 처리</button>
+              <button class="o04-wf-btn">환불 철회</button>
               <div style="text-align:center;">
-                <button class="o04-wf-btn o04-is-disabled">완료 처리</button>
-                <div style="font-size:10px;color:#94a3b8;margin-top:3px;">처리 결과 “성공” 선택 시 활성</div>
+                <button id="pnl-done" class="o04-wf-btn o04-is-disabled">환불 완료 처리</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ⑤ 결제 내역 탭 -->
-      <div class="o04-part-label">⑤ [결제 내역] 탭</div>
-      <div class="wf-card">
+      <!-- ⑤ 탈퇴 관리 탭 (10/28) -->
+      <div class="o04-part-label">③ [탈퇴 관리] 탭 · <a href="javascript:void(0)" onclick="document.getElementById('o04-flow').classList.remove('hidden')" class="underline text-blue-600">🧭 운영 흐름 보기 (설계 참고용)</a></div>
+      <div class="wf-card" id="o04-wd">
         <div class="wf-header">
-          <span><span class="o04-screen-id">O-04</span>결제 내역 탭</span>
-          <span class="wf-badge">적용환율 스냅샷 · 행에서 환불 건 등록 진입</span>
+          <span><span class="o04-screen-id">O-04</span>탈퇴 관리</span>
+          <span class="wf-badge">탈퇴 신청 → 환불 → 계정 삭제 · 회원 단위</span>
         </div>
         <div style="padding:22px;">
           <div class="o04-tabs">
-            <div class="o04-tab">환불 관리</div>
-            <div class="o04-tab o04-active">결제 내역</div>
+            <div class="o04-tab" onclick="o04Go('o04-pay')" style="cursor:pointer">결제 내역</div>
+            <div class="o04-tab" onclick="o04Go('o04-main')" style="cursor:pointer">환불 수기 관리 <span class="o04-tab-cnt">2</span></div>
+            <div class="o04-tab o04-active" onclick="o04Go('o04-wd')" style="cursor:pointer">탈퇴 관리 <span class="o04-tab-cnt">1</span></div>
           </div>
-
+          <div class="o04-filterbar">
+            <div class="o04-filters">
+              <span class="o04-filter o04-active" onclick="o04Filter(this,'all')">전체</span>
+              <span class="o04-filter" onclick="o04Filter(this,'ing')">⏳ 환불 진행 (1)</span>
+              <span class="o04-filter" onclick="o04Filter(this,'done')">✓ 탈퇴 완료 (6)</span>
+              <span class="o04-filter" onclick="o04Filter(this,'hold')">⚠️ 보류 (0)</span>
+            </div>
+          </div>
           <div class="o04-table-scroll">
             <table class="o04-wf-table">
-              <thead>
-                <tr>
-                  <th>결제일시</th><th>회원</th><th>주문번호</th><th>상품</th><th>결제금액</th>
-                  <th>적용환율</th><th>건별 잔여</th><th>상태</th><th>액션</th>
-                </tr>
-              </thead>
+              <thead><tr><th>신청일시</th><th>회원</th><th>환불 건</th><th>건별 잔여</th><th>환불 합계</th><th>상태</th><th>상세</th></tr></thead>
               <tbody>
-                <tr>
-                  <td class="o04-mono">2026-09-12 14:22</td>
-                  <td>user***@gmail.com</td>
-                  <td class="o04-mono">20260912-0031</td>
-                  <td>$20</td>
-                  <td>30,800원</td>
-                  <td class="o04-mono">1,400원/$1</td>
-                  <td>20.00 <span class="o04-tag">🔒</span></td>
-                  <td><span class="o04-status">⏳ 환불 처리중</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
+                <tr data-st="ing" class="o04-wd-row">
+                  <td class="o04-mono">2026-10-28 14:20</td>
+                  <td>leaving@mofac.io <span class="text-[10px] text-slate-400 block">회원 이메일</span></td>
+                  <td>0 / 2 완료</td>
+                  <td>12.40</td>
+                  <td>19,259원</td>
+                  <td><span class="o04-status">⏳ 환불 진행</span></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-wdm')">상세</button></td>
                 </tr>
-                <tr>
-                  <td class="o04-mono">2026-09-03 09:10</td>
-                  <td>dev***@corp.kr</td>
-                  <td class="o04-mono">20260903-0017</td>
-                  <td>$10</td>
-                  <td>15,400원</td>
-                  <td class="o04-mono">1,400원/$1</td>
-                  <td>10.00</td>
-                  <td><span class="o04-status">✓ 결제완료</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm">환불 등록</button></td>
-                </tr>
-                <tr>
-                  <td class="o04-mono">2026-08-21 17:45</td>
-                  <td>dev***@corp.kr</td>
-                  <td class="o04-mono">20260821-0008</td>
-                  <td>$10</td>
-                  <td>15,400원</td>
-                  <td class="o04-mono">1,400원/$1</td>
-                  <td>6.42 <span class="o04-tag">🔒</span></td>
-                  <td><span class="o04-status">⏳ 환불 처리중</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
-                </tr>
-                <tr>
-                  <td class="o04-mono">2026-08-02 11:30</td>
-                  <td>ops***@mofac.io</td>
-                  <td class="o04-mono">20260802-0002</td>
-                  <td>$50</td>
-                  <td>77,000원</td>
-                  <td class="o04-mono">1,400원/$1</td>
+                <tr data-st="done">
+                  <td class="o04-mono">2026-10-20 09:12</td>
+                  <td>bye***@gmail.com</td>
+                  <td>1 / 1 완료</td>
                   <td>0.00</td>
-                  <td><span class="o04-status">✓ 결제완료</span></td>
-                  <td><button class="o04-wf-btn o04-wf-btn-sm o04-is-disabled">환불 등록</button></td>
+                  <td>15,532원</td>
+                  <td><span class="o04-status">✓ 탈퇴 완료</span><div class="text-[10px] text-slate-400">10/22 계정 삭제 · E-11</div></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-wdm')">상세</button></td>
                 </tr>
+                <tr data-st="done">
+                  <td class="o04-mono">2026-10-18 21:40</td>
+                  <td>test***@corp.kr</td>
+                  <td class="o04-muted">없음</td>
+                  <td>0.00</td>
+                  <td class="o04-muted">0원</td>
+                  <td><span class="o04-status">✓ 탈퇴 완료</span><div class="text-[10px] text-slate-400">결제 크레딧 없음 · 즉시</div></td>
+                  <td><button class="o04-wf-btn o04-wf-btn-sm" onclick="o04Go('o04-wdm')">상세</button></td>
+                </tr>
+                <tr class="o04-empty"><td colspan="7">해당하는 건이 없어요</td></tr>
               </tbody>
             </table>
           </div>
+          <div class="o04-note-inline" style="margin-top:12px"><span>ℹ️</span><span>환불 건은 탈퇴 신청 때 <b>자동 등록 · 동결</b>돼요(수기 등록 없음). [상세]에서 “상점관리자에서 수기 취소했습니다” 확인 체크 → [탈퇴 처리] 한 번이면 되고, 모두 완료되면 계정 삭제 · E-11 발송이 자동으로 이어져요.</span></div>
+
+          <!-- 탈퇴 상세 모달 (10/28) -->
+          <div class="o04-modal-stage" id="o04-wdm" style="margin-top:18px">
+            <div class="o04-modal" style="width:820px;max-width:100%">
+              <div class="o04-modal-head"><span>탈퇴 상세 · <span class="font-mono text-slate-500">{탈퇴 신청 회원 이메일}</span></span><span class="o04-muted">✕</span></div>
+              <div class="o04-modal-body">
+                <dl style="margin:0 0 14px">
+                  <div class="o04-kv"><dt>탈퇴 신청</dt><dd>2026-10-28 14:20</dd></div>
+                  <div class="o04-kv"><dt>환불 사유</dt><dd><span class="o04-src o04-src-wd">탈퇴</span> (자동)</dd></div>
+                  <div class="o04-kv"><dt>소멸된 무료 크레딧</dt><dd>6.66</dd></div>
+                  <div class="o04-kv-total"><span>환불 합계 (2건)</span><span>19,259원</span></div>
+                </dl>
+                <div class="o04-kv-title">결제 건별 환불 — 토스 상점관리자 › 결제조회 › 신용·체크카드 › [취소하기] → 취소액 입력 → [완료] (미사용 = [전액입력], 쓰던 건 = 환불액 입력)</div>
+                <div class="o04-table-scroll">
+                  <table class="o04-wf-table">
+                    <thead><tr><th>주문번호</th><th>동결 잔여</th><th>환불액</th><th>취소 구분</th></tr></thead>
+                    <tbody>
+                      <tr><td class="o04-mono">20261015-0102<div class="text-[10px] text-slate-400">10.00 중 7.60 사용</div></td><td>2.40 🔒</td><td><b>3,727원</b></td><td><span class="o04-src o04-src-wd">부분취소</span></td></tr>
+                      <tr><td class="o04-mono">20261020-0140<div class="text-[10px] text-slate-400">미사용</div></td><td>10.00 🔒</td><td><b>15,532원</b></td><td><span class="o04-src">전액취소</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <label class="wdm-confirm"><input type="checkbox" id="wdm-ok" onchange="document.getElementById('wdm-done').classList.toggle('o04-is-disabled', !this.checked)"> 토스 상점관리자에서 위 2건을 모두 수기 취소했습니다.</label>
+                <div class="text-[11px] text-slate-500 mt-2">[탈퇴 처리]를 누르면 크레딧 차감 → 계정 삭제 → E-11 발송 → 파기 예약이 진행되고 되돌릴 수 없어요. 취소가 안 된 건이 있으면 체크하지 말고 닫아 두세요(보류).</div>
+              </div>
+              <div class="o04-modal-foot"><button class="o04-wf-btn">닫기</button><button id="wdm-done" class="o04-wf-btn o04-is-disabled">탈퇴 처리</button></div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="mm-note mm-note-out">📝 <b>O-04 탭 구분 (10/28)</b> — [환불 수기 관리](문의 메일로 받은 환불, 운영자가 직접 등록) · [결제 내역] · [탈퇴 관리](C-10-1 탈퇴 신청, 회원 단위). 탈퇴 관리는 회원 한 줄 + [상세] → <b>탈퇴 상세 모달</b>(신청일 · 소멸 무료 크레딧 · 환불 합계 + 결제 건별 환불 표). 환불 건은 탈퇴 신청 때 자동 등록 · 동결이라 <b>[＋ 환불 건 등록] 수기 등록은 하지 않음</b> — <b>취소 방법(10/28 · OBT)</b>: 전액 · 부분 모두 <b>토스 상점관리자 수기 취소</b>(토스 상점관리자 › 결제조회 › 신용·체크카드 › [취소하기] → 취소액 입력 → [완료]) → 모달 하단 확인 체크 “토스 상점관리자에서 위 N건을 모두 수기 취소했습니다.”(운영자 실수 방지) → [탈퇴 처리](빨간 버튼, 체크 시 활성, 누르는 순간 개발에서 차감 → 계정 삭제 → E-11 → 파기 예약). 상점관리자 취소 = 회원 환불, 어드민 = 내부 장부 처리라 취소금액 · PG 거래번호 입력은 받지 않음. 취소 안 된 건이 있으면 체크하지 않고 닫아 둠(보류). 토스 안내상 부분취소도 상점관리자에서 가능하고 원거래 수수료도 반환. 토스 취소 API 연동은 환불 건수가 늘면 정식 오픈 때 검토. <b>예외</b>: 선불 · 지역화폐 · 기프트 · 구매전용카드는 부분취소 시 카드사에서 반송 → 보류 처리(전액취소 후 차액 재결제 등 매뉴얼). 결제 1년 초과는 상점관리자 취소 불가 → 토스 고객센터 문의, 보류. 운영 흐름은 [🧭 운영 흐름 보기] 모달. 상태: ⏳ 환불 진행 → ✓ 탈퇴 완료(마지막 환불 완료 시 계정 자동 삭제 · E-11 · 5영업일 안 파기) / ⚠️ 보류(PG 취소 실패 등, 계정 삭제 멈춤 · 매뉴얼 처리). <b>환불 건이 여러 개인 경우</b>: 크레딧은 유효기간 임박분부터 차감(유상은 결제일 순 FIFO)이라, 사용 중인 결제 건은 최대 1건(부분취소)이고 그 뒤 결제 건은 전부 미사용(전액취소). 예: 10/15 10크레딧 중 2.40 남음(부분) + 10/20 10크레딧 그대로(전액). 결제 크레딧이 없는 탈퇴도 기록용으로 “즉시 탈퇴 완료” 한 줄. 탈퇴 건의 환불은 [환불 수기 관리]에는 나오지 않음(중복 방지). 처리 기한(3영업일) 표시는 제외(10/28 — 영업일 계산 개발 부담). 확인 필요: 보류 처리 기준.</div>
+
+
 
   <div class="o04-spec-panel">
     <div class="o04-spec-panel-head">📝 화면 주석 — 아래 내용은 설명용이며 실제 화면에 노출하지 않습니다</div>
@@ -5210,9 +5403,19 @@ for await (const chunk of stream) {
         <ul>
           <li>유저 콘솔(C-03)에 <b>환불 버튼 없음</b> — 모든 환불은 help 메일로 접수</li>
           <li>담당자가 이 화면에서 건을 직접 등록해 처리 (<b>등록 = 동결 = 처리중</b>)</li>
-          <li><b>PG 취소는 토스 상점관리자에서 수동 실행</b>, 여기에는 결과만 입력</li>
+          <li><b>PG 취소는 토스 상점관리자에서 수동 실행</b>(토스 상점관리자 › 결제조회 › 신용·체크카드 › [취소하기] → 취소액 입력([전액입력] 가능) → [완료] — 전액 · 부분 모두 가능, 원거래 수수료 반환), 어드민은 확인 체크 → [환불 완료 처리]로 내부 장부만 처리 — 취소금액 · 거래번호 · 성공/실패 입력 없음(금액은 계산값 그대로)</li>
           <li>핵심 동선: 주문번호 입력 → [조회] → 계산 자동 표시 → 등록</li>
           <li>결제 내역 탭의 행에서도 [환불 등록] 진입 — 주문번호가 채워진 상태로 모달 오픈</li>
+        </ul>
+      </div>
+
+      <div class="o04-spec-item">
+        <div class="o04-spec-item-title">환불 사유 유형 (10/28)</div>
+        <ul>
+          <li>등록 시 운영자가 메일 내용을 보고 <b>유형 1개 선택</b> + 상세(선택, 회원이 적은 문장)</li>
+          <li>유형: 더 이상 사용하지 않음 · 모델 품질 · 성능 불만 · 가격 · 비용 부담 · 잘못 · 중복 결제 · 서비스 장애 · 연동 문제 · 다른 서비스로 이동 · 기타</li>
+          <li>탈퇴로 생긴 환불은 <b>“탈퇴” 자동</b> (선택 없음)</li>
+          <li>목적: 이탈 원인 집계 — O-03 대시보드 · 위클리 리포트에서 유형별 건수 · 금액</li>
         </ul>
       </div>
 
@@ -5220,10 +5423,10 @@ for await (const chunk of stream) {
         <div class="o04-spec-item-title">상태 3종 (수동 운영 기준)</div>
         <ul>
           <li><b>⏳ 처리중</b> — 등록되는 순간 시작. 등록 시 잔여 크레딧 자동 동결</li>
-          <li><b>✓ 완료</b> — PG 취소 성공 결과 입력 후 종결. 동결분은 차감 확정</li>
+          <li><b>✓ 완료</b> — 상점관리자 취소 후 [환불 완료]로 종결. 동결분은 차감 확정</li>
           <li><b>⚠️ 취소</b> — 고객 철회 / 잔여 0 / PG 취소 실패 등으로 종결. <b>동결 자동 해제</b>, 사유 입력 필수</li>
           <li>‘접수’는 별도 상태로 두지 않음 — 메일을 받아 담당자가 등록하는 순간이 곧 처리 시작</li>
-          <li>[완료 처리]는 처리 결과 <b>“성공”</b> 선택 시에만 활성 (와이어프레임은 비활성 상태)</li>
+          <li>[환불 완료 처리] — “수기 취소했습니다” 확인 체크 시 활성(운영자 실수 방지), 누르면 동결분 차감 확정 · ✓ 완료 · E-08 발송. [환불 철회] = 고객 철회 등으로 종결(⚠️ 취소, 동결 해제)</li>
         </ul>
       </div>
 
@@ -5232,7 +5435,7 @@ for await (const chunk of stream) {
         <ul>
           <li>크레딧당 단가 = 결제금액 ÷ 충전 크레딧 (15,400 ÷ 10 = <b>1,540원</b>)</li>
           <li>환불 가능액 = <b>이 결제 건의</b> 잔여 × 단가 (6.42 × 1,540 = <b>9,887원</b>, 원 단위 절사)</li>
-          <li>토스 취소 API는 <b>결제 건(paymentKey) 단위</b> — 계정 잔액 단위 취소는 없음</li>
+          <li>토스 취소는 <b>결제 건 단위</b> — 계정 잔액 단위 취소는 없음. 선불 · 지역화폐 · 기프트 · 구매전용카드는 부분취소 불가(카드사 반송)</li>
           <li>한 회원이 전액 환불을 원하면 <b>결제 건 수만큼 환불 건을 각각 등록</b>. 잔여는 FIFO(먼저 산 것부터 차감) 기준으로 건별 계산</li>
           <li>무상 크레딧은 결제 건이 없으므로 환불 대상에서 제외</li>
           <li>계산 기준 시점은 <b>동결 시점</b> — 등록 후 사용분은 반영하지 않음</li>
@@ -5259,7 +5462,7 @@ for await (const chunk of stream) {
       <div class="wf-card mb-6">
         <div class="wf-header">
           <span>📧 E 시리즈 - 자동 메일 발송 (자동화된 이메일 템플릿)</span>
-          <span class="wf-badge bg-green-100 text-green-800 font-bold">8가지 이메일 템플릿</span>
+          <span class="wf-badge bg-green-100 text-green-800 font-bold">12가지 · 4개 그룹</span>
         </div>
         <div class="p-6 bg-white text-sm text-slate-600 space-y-2">
           <p>사용자 여정의 주요 단계에서 자동으로 발송되는 이메일 템플릿입니다.</p>
@@ -5267,6 +5470,10 @@ for await (const chunk of stream) {
         </div>
       </div>
 
+
+      <div class="e-grp-head"><span class="e-grp-title">🔐 계정 · 인증</span><span class="e-grp-sub">가입 · 로그인 · 비밀번호 · 탈퇴</span></div>
+      <div class="e07-mail-grid">
+      <div class="e-cell">
       <!-- E-01: 회원가입 이메일 인증 (OTP) -->
       <div id="e-01" class="wf-card mb-6">
         <div class="wf-header">
@@ -5312,7 +5519,8 @@ for await (const chunk of stream) {
           </div>
         </div>
       </div>
-
+      </div>
+      <div class="e-cell">
       <!-- E-02: 가입 완료 안내 -->
       <div id="e-02" class="wf-card mb-6">
         <div class="wf-header">
@@ -5373,88 +5581,8 @@ for await (const chunk of stream) {
       </div>
 
         <div class="mm-note mm-note-out">📝 <b>E-02 가입 환영 (10/1)</b> — 제목 “MoFAC 가입을 환영합니다.” 아래 한 줄 소개(GLM · Kimi · Motif를 API 키 하나로) → 시작 3단계를 <b>링크 블록 3개</b>로(API 키 → 콘솔 키 관리 C-02 · Playground → C-07 · Docs → M-02, 블록 전체가 링크) → 콘솔 CTA. 서비스 소개 표(같은 모델 · 더 안전하게 · 더 싸게)와 가입 크레딧 $20 안내는 일단 제외 — 가격 · 크레딧 지급 시점 확정 후 다시 검토. 확인 필요: 메일 내 서비스명 표기 MoFAC으로 통일(10/15).</div>
-
-      <!-- E-03: 비밀번호 재설정 OTP -->
-      <div id="e-03" class="wf-card mb-6">
-        <div class="wf-header">
-          <span>E-03 비밀번호 재설정 OTP</span>
-          <span class="wf-badge">보안</span>
-        </div>
-        <div class="p-8 bg-white">
-          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
-            <div style="text-align: center; padding-bottom: 24px;">
-              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span>
-            </div>
-
-
-            <div style="text-align: center; margin-bottom: 24px;">
-              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호를 재설정해 주세요</h1>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 14px; color: #64748b; margin: 0;">아래 인증번호를 입력하여 새 비밀번호를 설정하세요.</p>
-            </div>
-
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 12px; color: #64748b; margin: 0 0 12px 0; font-weight: 500;">인증번호</p>
-              <div style="font-size: 32px; font-weight: bold; color: #0f172a; letter-spacing: 6px; font-family: monospace;">654321</div>
-              <p style="font-size: 11px; color: #94a3b8; margin: 12px 0 0 0;">이 코드는 10분간 유효합니다</p>
-            </div>
-
-            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
-              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
-            </div>
-
-            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
-              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
-              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
-              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <!-- E-04: 비밀번호 재설정 알림 -->
-      <div id="e-04" class="wf-card mb-6">
-        <div class="wf-header">
-          <span>E-04 비밀번호 재설정 알림</span>
-          <span class="wf-badge">보안</span>
-        </div>
-        <div class="p-8 bg-white">
-          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
-            <div style="text-align: center; padding-bottom: 24px;">
-              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span>
-            </div>
-
-
-            <div style="text-align: center; margin-bottom: 24px;">
-              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호가 변경되었습니다</h1>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 14px; color: #64748b; margin: 0;">MoFAC 계정의 비밀번호가 성공적으로 변경되었습니다.</p>
-            </div>
-
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">변경 정보</h3>
-              <div style="font-size: 13px; color: #475569; line-height: 1.8;">
-                <p style="margin: 0;"><strong>변경 시간:</strong> 2024년 8월 31일 14:30</p>
-              </div>
-            </div>
-
-            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
-              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
-            </div>
-
-            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
-              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
-              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
-              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <div class="e-cell">
       <!-- E-05: 소셜 계정 연동 완료 알림 -->
       <div id="e-05" class="wf-card mb-6">
         <div class="wf-header">
@@ -5498,12 +5626,13 @@ for await (const chunk of stream) {
           </div>
         </div>
       </div>
-
-      <!-- E-06: 운영메일 답변 -->
-      <div id="e-06" class="wf-card mb-6">
+      </div>
+      <div class="e-cell">
+      <!-- E-03: 비밀번호 재설정 OTP -->
+      <div id="e-03" class="wf-card mb-6">
         <div class="wf-header">
-          <span>E-06 운영메일 답변</span>
-          <span class="wf-badge">운영 / 고객지원</span>
+          <span>E-03 비밀번호 재설정 OTP</span>
+          <span class="wf-badge">보안</span>
         </div>
         <div class="p-8 bg-white">
           <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
@@ -5513,34 +5642,113 @@ for await (const chunk of stream) {
 
 
             <div style="text-align: center; margin-bottom: 24px;">
-              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">문의에 대한 답변입니다</h1>
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호를 재설정해 주세요</h1>
             </div>
 
             <div style="text-align: center; margin-bottom: 32px;">
-              <p style="font-size: 14px; color: #64748b; margin: 0;">안녕하세요. MoFAC 운영팀입니다.</p>
+              <p style="font-size: 14px; color: #64748b; margin: 0;">아래 인증번호를 입력하여 새 비밀번호를 설정하세요.</p>
             </div>
 
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">📋 문의 내용</h3>
-              <div style="border-left: 3px solid #3b82f6; padding-left: 12px; margin-bottom: 16px;">
-                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.6;">고객님께서 문의하신 내용에 대해 검토 완료했습니다. 아래의 답변을 참고 부탁드립니다.</p>
-              </div>
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 12px 0; font-weight: 500;">인증번호</p>
+              <div style="font-size: 32px; font-weight: bold; color: #0f172a; letter-spacing: 6px; font-family: monospace;">654321</div>
+              <p style="font-size: 11px; color: #94a3b8; margin: 12px 0 0 0;">이 코드는 10분간 유효합니다</p>
+            </div>
 
-              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 8px 0;">💬 답변</h3>
-              <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.6;">운영팀의 답변 내용이 이곳에 표시됩니다. 고객님의 문의에 대해 자세하고 친절한 답변을 제공합니다.</p>
+            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
             </div>
 
             <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
-              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">추가 도움이 필요하신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
               <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
               <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
             </div>
           </div>
         </div>
       </div>
+      </div>
+      <div class="e-cell">
+      <!-- E-04: 비밀번호 재설정 알림 -->
+      <div id="e-04" class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-04 비밀번호 재설정 알림</span>
+          <span class="wf-badge">보안</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span>
+            </div>
 
-      <!-- E-07 / E-08: 결제·환불 자동 발송 메일 (나란히 배치) -->
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">비밀번호가 변경되었습니다</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">MoFAC 계정의 비밀번호가 성공적으로 변경되었습니다.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">변경 정보</h3>
+              <div style="font-size: 13px; color: #475569; line-height: 1.8;">
+                <p style="margin: 0;"><strong>변경 시간:</strong> 2024년 8월 31일 14:30</p>
+              </div>
+            </div>
+
+            <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; padding: 16px; border-radius: 4px; margin-bottom: 32px;">
+              <p style="font-size: 12px; color: #991b1b; margin: 0; font-weight: 500;">⚠️ 본인이 요청하지 않은 경우 즉시 계정을 보호하세요. <a href="#" style="color: #991b1b; text-decoration: underline; font-weight: bold;">계정 관리</a></p>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">궁금한 점이 있으신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="e-cell">
+      <!-- ===================== E-11 탈퇴 완료 (10/28) ===================== -->
+      <div id="e-11" class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-11 탈퇴 완료 안내</span>
+          <span class="wf-badge">계정 삭제 시 자동 발송 (환불 완료 후)</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;"><span style="font-size: 24px; font-weight: bold; color: #0f172a;">MoFAC</span></div>
+            <div style="text-align: center; margin-bottom: 24px;"><h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">회원 탈퇴가 완료되었습니다</h1></div>
+            <div style="text-align: center; margin-bottom: 32px;"><p style="font-size: 14px; color: #64748b; margin: 0;">그동안 MoFAC을 이용해 주셔서 감사합니다.</p></div>
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">탈퇴 정보</h3>
+              <div style="font-size: 13px; color: #475569; line-height: 1.9;">
+                <p style="margin: 0;"><strong>계정:</strong> {{email}}</p>
+                <p style="margin: 0;"><strong>탈퇴 신청:</strong> {{requested_at}}</p>
+                <p style="margin: 0;"><strong>탈퇴 완료:</strong> {{deleted_at}}</p>
+                <p style="margin: 0;"><strong>환불 금액:</strong> {{refund_amount}}원 <span style="color:#94a3b8">(결제한 크레딧이 있었던 경우)</span></p>
+              </div>
+            </div>
+            <div style="font-size: 12px; color: #64748b; line-height: 1.8; margin-bottom: 32px;">
+              <p style="margin: 0;">· 계정 정보와 요청 기록은 5영업일 안에 파기됩니다. 결제 기록은 관련 법령에 따라 정해진 기간 동안 보관됩니다.</p>
+              <p style="margin: 0;">· 같은 이메일로는 탈퇴 후 30일이 지나면 다시 가입할 수 있습니다.</p>
+            </div>
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>E-11 탈퇴 완료 안내 (10/28)</b> — 계정 삭제 시점에 1회 발송. 결제 크레딧이 있으면 O-04 환불 완료 → 계정 삭제 → 발송(E-08 환불 완료 메일과 따로 보낼지, E-11 하나로 합칠지 결정 필요), 없으면 탈퇴 신청 즉시 발송. 변수: {{email}} · {{requested_at}} · {{deleted_at}} · {{refund_amount}}(없으면 줄 숨김). 발송 후 계정 삭제 → 5영업일 안 파기.</div>
+      </div>
+      </div>
+
+      <div class="e-grp-head"><span class="e-grp-title">💳 크레딧</span><span class="e-grp-sub">결제 · 환불 · 지급 · 만료</span></div>
       <div class="e07-mail-grid">
+      <div class="e-cell">
       <!-- ===================== E-07 ===================== -->
       <div id="e-07" class="wf-card mb-6 tbd-card tbd-tall tbd-light"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge" style="background:#e2e8f0">발송 안 함</div><div class="tbd-title">토스페이먼츠 메일로 대체</div><div class="tbd-sub">결제 완료 메일은 토스페이먼츠가 자동으로 보내요 (10/13)</div><div class="tbd-hint">클릭하면 기존 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
         <div class="wf-header">
@@ -5606,7 +5814,8 @@ for await (const chunk of stream) {
         </div>
       <div style="padding:0 16px 16px"><div class="mm-note mm-note-out">📝 <b>E-07 충전 완료 메일 — 발송하지 않음 (10/13)</b> — 결제가 완료되면 토스페이먼츠가 “고객님, 토스페이먼츠에서 결제한 내역이 도착했어요.” 메일을 자동 발송(구매 상품 · 결제 금액 · 결제 수단 · 결제 일시). 내용이 대부분 겹쳐 두 번 받을 필요가 없고 관리 포인트를 줄이기 위해 우리 쪽 E-07은 일단 빼고 토스 메일로 대체(채상님 슬랙 10/13). 확인 필요: 토스 결제 완료 메일 발송 옵션(끌 수 있는지 · 상품명 표기 “10 credits” 문구 설정) · 보너스 · 프로모션 크레딧 지급 안내는 콘솔 토스트 · 크레딧 내역으로만.</div></div>
       </div>
-
+      </div>
+      <div class="e-cell">
       <!-- ===================== E-08 ===================== -->
 
       <div id="e-08" class="wf-card mb-6">
@@ -5674,6 +5883,175 @@ for await (const chunk of stream) {
         </div>
       </div>
       </div>
+      <div class="e-cell">
+      <!-- ===================== E-12 크레딧 지급 안내 (10/28) ===================== -->
+      <div id="e-12" class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-12 크레딧 지급 안내</span>
+          <span class="wf-badge">O-02 관리자 지급(+) 시 자동 발송</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; font-size:12px; color:#475569; margin-bottom:24px;">제목 · <b style="color:#0f172a">{{name}}님, 크레딧 $3.00이 지급되었어요</b><div style="color:#94a3b8; margin-top:2px;">미리보기 · 9/19 응답 지연 보상 · 2026년 9월 27일(일) 18:40까지 사용 가능</div></div>
+            <div style="padding-bottom: 20px;"><span style="font-size: 20px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span></div>
+            <h1 style="font-size: 22px; font-weight: bold; color: #0f172a; margin: 0 0 12px; line-height: 1.4;">크레딧이 지급되었어요</h1>
+            <p style="font-size: 14px; color: #475569; margin: 0 0 24px; line-height: 1.7;">{{name}}님 계정에 크레딧이 추가되었어요. 바로 사용할 수 있어요.</p>
+
+            <div style="background:#ecfdf5; border-radius:10px; padding:18px 20px; margin-bottom:12px;">
+              <div style="font-size:12px; color:#047857;">지급 금액</div>
+              <div style="font-size:32px; font-weight:800; color:#047857; margin-top:4px;">+$3.00</div>
+            </div>
+            <div style="border:1px solid #e2e8f0; border-radius:10px; padding:6px 18px; margin-bottom:24px;">
+              <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                <tr><td style="padding:10px 0; color:#64748b; border-bottom:1px solid #f1f5f9;">계정</td><td style="padding:10px 0; text-align:right; color:#0f172a; border-bottom:1px solid #f1f5f9;">{{email}}</td></tr>
+                <tr><td style="padding:10px 0; color:#64748b; border-bottom:1px solid #f1f5f9;">지급 내용</td><td style="padding:10px 0; text-align:right; color:#0f172a; border-bottom:1px solid #f1f5f9;">9/19 응답 지연 보상</td></tr>
+                <tr><td style="padding:10px 0; color:#64748b; border-bottom:1px solid #f1f5f9;">지급 일시</td><td style="padding:10px 0; text-align:right; color:#0f172a; border-bottom:1px solid #f1f5f9;">2026년 9월 20일(일) 18:40</td></tr>
+                <tr><td style="padding:10px 0; color:#64748b;">사용 기한</td><td style="padding:10px 0; text-align:right; color:#0f172a; font-weight:bold;">2026년 9월 27일(일) 18:40까지</td></tr>
+              </table>
+            </div>
+
+            <div style="text-align:center; margin-bottom:28px;"><a href="#" style="display:inline-block; background-color:#10b981; color:white; padding:12px 32px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:14px;">크레딧 내역 보기</a></div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>E-12 크레딧 지급 안내 (10/28 · CBT 메일 기반)</b> — O-02에서 지급(+) 실행 시 바로 1회 발송. 차감(−)은 보내지 않음. 변경점(CBT 대비): 제목 · 본문에 {{name}} 개인화(없으면 이메일 @ 앞부분) · “요청하신” 삭제(요청 없이 주는 보상도 있음) · 지급 내용 = O-02 “회원에게 보이는 내용”(내부 메모는 안 나감) · <b>사용 기한</b> 줄 추가(O-02 유효기간, 기본 7일) · 일시는 KST · 요일 포함으로 다른 메일과 통일 · CTA [크레딧 내역 보기](C-03). 변수: {{name}} · {{email}} · {{amount}} · {{label}} · {{granted_at}} · {{expires_at}}. 설문 · 카드 등록 · 첫 충전 보너스처럼 화면에서 바로 토스트로 알려 주는 자동 지급에는 보내지 않음.</div>
+      </div>
+      <div class="e-cell">
+      <!-- ===================== E-10 크레딧 만료 예정 (10/28) ===================== -->
+      <style>#e-10[data-v="d30"] .e10-d1{display:none}#e-10[data-v="d1"] .e10-d30{display:none}.e10-tg{font-size:11px;padding:3px 10px;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:#475569;cursor:pointer;margin-left:4px}#e-10[data-v="d30"] .e10-tg[data-k="d30"],#e-10[data-v="d1"] .e10-tg[data-k="d1"]{background:#0f172a;color:#fff;border-color:#0f172a}</style>
+      <div id="e-10" class="wf-card mb-6" data-v="d30">
+        <div class="wf-header">
+          <span>E-10 크레딧 만료 예정</span>
+          <span><span class="wf-badge">만료 30일 전 + 24시간 전 · 남은 크레딧 있을 때</span><button class="e10-tg" data-k="d30" onclick="document.getElementById('e-10').dataset.v='d30'">30일 전</button><button class="e10-tg" data-k="d1" onclick="document.getElementById('e-10').dataset.v='d1'">24시간 전</button></span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; font-size:12px; color:#475569; margin-bottom:24px;">제목 · <b style="color:#0f172a"><span class="e10-d30">{{name}}님, 크레딧 $8.20이 30일 후 만료돼요</span><span class="e10-d1">{{name}}님, 크레딧 $8.20이 내일 만료돼요</span></b><div style="color:#94a3b8; margin-top:2px;">미리보기 · 2027년 11월 27일(토) 14:20에 만료돼요.</div></div>
+            <div style="padding-bottom: 20px;"><span style="font-size: 20px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span> <span style="float:right; font-size:11px; font-weight:bold; color:#b45309; background:#fef3c7; border-radius:10px; padding:3px 9px;">⏰ <span class="e10-d30">30일 후 만료</span><span class="e10-d1">내일 만료</span></span></div>
+            <h1 style="font-size: 22px; font-weight: bold; color: #0f172a; margin: 0 0 12px; line-height: 1.4;">크레딧 $8.20이<br><span class="e10-d30">30일 후 만료돼요</span><span class="e10-d1">내일 만료돼요</span></h1>
+            <p style="font-size: 14px; color: #475569; margin: 0 0 24px; line-height: 1.7;"><b style="color:#0f172a">{{name}}</b>님, 아래 크레딧이 <b style="color:#0f172a">2027년 11월 27일(토) 14:20</b>에 만료돼요.</p>
+
+            <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:16px 18px; margin-bottom:24px;">
+              <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                <tr><td style="padding:6px 0; color:#78716c;">만료 예정 크레딧 <span style="color:#a8a29e; font-size:12px;">(2026-11-27 충전)</span></td><td style="padding:6px 0; text-align:right; color:#0f172a; font-weight:bold;">$8.20</td></tr>
+                <tr><td style="padding:6px 0; color:#78716c;">만료 일시</td><td style="padding:6px 0; text-align:right; color:#0f172a; font-weight:bold;">2027-11-27(토) 14:20</td></tr>
+                <tr><td style="padding:8px 0 4px; color:#78716c; border-top:1px solid #fde68a;">만료 후 남는 크레딧</td><td style="padding:8px 0 4px; text-align:right; color:#0f172a; font-weight:bold; border-top:1px solid #fde68a;">$41.80</td></tr>
+              </table>
+            </div>
+
+            <div style="text-align:center; margin-bottom:28px;"><a href="#" style="display:inline-block; background-color:#10b981; color:white; padding:12px 32px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:14px;">크레딧 내역 보기</a></div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>E-10 크레딧 만료 예정 (10/28)</b> — 모든 크레딧 공통(유상 · 무상), 지급 건별로 <b>만료 30일 전 + 24시간 전</b> 2회, 그 건에 남은 크레딧이 있을 때만. 유효기간이 30일보다 짧은 건(설문 체험 $20 · 14일 / 카드 등록 $5 · 3일)은 <b>24시간 전 1회만</b>. “만료 예정 크레딧” 옆 괄호 = C-03 크레딧 내역의 “일시 날짜 + 내용”(예: 2026-11-27 충전 · 2026-10-27 설문 체험 크레딧 · 2026-09-20 관리자 지급 · 9/19 응답 지연 보상). 같은 날 만료되는 건이 여러 개면 한 통으로 묶고 합계 아래 건별 줄로 나눔. 개인화: {{name}}(없으면 이메일 @ 앞부분) · 만료 금액 · 만료 일시(요일 포함, KST) · 만료 후 남는 크레딧(= 현재 잔액 − 만료분). 이용 재촉 · 혜택 문구 없이 만료 사실만 안내, CTA는 [크레딧 내역 보기](C-03) 하나. 확인 필요: 크레딧 소멸 안내가 광고성 정보인지 법무 확인(광고면 수신 동의자만 · (광고) 표시) · 최소 발송 금액(예: $0.50 미만 제외).</div>
+      </div>
+      </div>
+
+      <div class="e-grp-head"><span class="e-grp-title">🧭 리마인드</span><span class="e-grp-sub">시작 가이드</span></div>
+      <div class="e07-mail-grid">
+      <div class="e-cell">
+      <!-- ===================== E-09 첫 호출 리마인드 (10/28) ===================== -->
+      <div id="e-09" class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-09 시작 가이드 (도구 연결)</span>
+          <span class="wf-badge">가입 후 24시간 · API 호출 0건이면 1회 · 서비스 안내</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; font-size:12px; color:#475569; margin-bottom:24px;">제목 · <b style="color:#0f172a">MoFAC 시작 가이드 — 쓰던 코딩 도구에 연결하는 방법</b><div style="color:#94a3b8; margin-top:2px;">미리보기 · API 키를 만들고, 쓰던 도구에 주소와 키만 넣으면 돼요.</div></div>
+            <div style="padding-bottom: 20px;"><span style="font-size: 20px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span></div>
+            <h1 style="font-size: 22px; font-weight: bold; color: #0f172a; margin: 0 0 12px; line-height: 1.4;">MoFAC 시작 가이드</h1>
+            <p style="font-size: 14px; color: #475569; margin: 0 0 24px; line-height: 1.7;">{{name}}님, MoFAC을 지금 쓰는 코딩 도구에 연결하는 방법을 안내해 드려요.<br>API 키를 만들고, 도구에 주소와 키만 넣으면 돼요.</p>
+
+            <div style="border:1px solid #e2e8f0; border-radius:10px; padding:16px 18px; margin-bottom:10px;">
+              <table style="width:100%; border-collapse:collapse;"><tr>
+                <td style="width:30px; vertical-align:top;"><span style="display:inline-block; width:22px; height:22px; border-radius:11px; background:#10b981; color:#fff; font-size:12px; font-weight:bold; text-align:center; line-height:22px;">1</span></td>
+                <td style="vertical-align:top;"><div style="font-size:14px; font-weight:bold; color:#0f172a;">API 키 만들기</div><div style="font-size:12px; color:#64748b; margin-top:3px;">이미 만든 키가 있다면 그대로 쓰면 돼요.</div></td>
+                <td style="width:120px; text-align:right; vertical-align:middle;"><a href="#" style="display:inline-block; background:#10b981; color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:bold;">API 키 만들기</a></td>
+              </tr></table>
+            </div>
+            <div style="border:1px solid #e2e8f0; border-radius:10px; padding:16px 18px; margin-bottom:24px;">
+              <table style="width:100%; border-collapse:collapse;"><tr>
+                <td style="width:30px; vertical-align:top;"><span style="display:inline-block; width:22px; height:22px; border-radius:11px; background:#10b981; color:#fff; font-size:12px; font-weight:bold; text-align:center; line-height:22px;">2</span></td>
+                <td style="vertical-align:top;"><div style="font-size:14px; font-weight:bold; color:#0f172a;">쓰는 도구에 연결하기</div><div style="font-size:12px; color:#64748b; margin-top:3px;">도구를 고르면 설정 가이드로 바로 가요.</div>
+                  <div style="margin-top:10px;">
+                    <a href="#" style="display:inline-block; border:1px solid #a7f3d0; background:#ecfdf5; color:#047857; padding:5px 10px; border-radius:14px; font-size:12px; text-decoration:none; margin:0 4px 6px 0;">Hermes Agent</a><a href="#" style="display:inline-block; border:1px solid #a7f3d0; background:#ecfdf5; color:#047857; padding:5px 10px; border-radius:14px; font-size:12px; text-decoration:none; margin:0 4px 6px 0;">Claude Code</a><a href="#" style="display:inline-block; border:1px solid #a7f3d0; background:#ecfdf5; color:#047857; padding:5px 10px; border-radius:14px; font-size:12px; text-decoration:none; margin:0 4px 6px 0;">OpenCode</a><a href="#" style="display:inline-block; border:1px solid #a7f3d0; background:#ecfdf5; color:#047857; padding:5px 10px; border-radius:14px; font-size:12px; text-decoration:none; margin:0 4px 6px 0;">내 코드에서 호출</a>
+                  </div></td>
+              </tr></table>
+            </div>
+
+            <div style="font-size:13px; font-weight:bold; color:#0f172a; margin-bottom:8px;">OpenAI 호환 도구라면 이 두 값만 바꾸세요</div>
+            <div style="border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; margin-bottom:8px;"><div style="font-size:11px; color:#94a3b8;">Base URL</div><div style="font-size:13px; color:#0f172a; font-family:ui-monospace,Menlo,Consolas,monospace; font-weight:600;">https://api.morfac.io/v1</div></div>
+            <div style="border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; margin-bottom:28px;"><div style="font-size:11px; color:#94a3b8;">모델 ID</div><div style="font-size:13px; color:#0f172a; font-family:ui-monospace,Menlo,Consolas,monospace; font-weight:600;">motif-3</div></div>
+
+            <div style="text-align:center; margin-bottom:28px;"><a href="#" style="font-size:13px; color:#047857; font-weight:bold; text-decoration:none;">코드 없이 먼저 써보기 — 플레이그라운드 →</a></div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>E-09 시작 가이드 (10/28)</b> — 가입 후 24시간 시점에 API 호출 0건이면 1회 발송(플레이그라운드 호출은 제외 · 이미 호출했으면 안 보냄). 수신 동의 없이 보내는 <b>서비스 이용 안내</b>로 두기 위해 이용 방법만 담음 — 크레딧 · 혜택 · 이용 재촉 문구 넣지 않기(한 줄이라도 섞이면 메일 전체가 광고성 정보). 개인화: {{name}}(없으면 이메일 @ 앞부분). 도구 칩 = C-02 · M-01의 “어디에서 써보실 건가요?”와 같은 목록 · 링크(개발자 문서 도구별 가이드). [API 키 만들기] → C-02. 확인 필요: 서비스 안내로 봐도 되는지 법무 확인 · 키가 이미 있으면 1번 버튼을 [API 키 보기]로 바꿀지.</div>
+      </div>
+      </div>
+
+      <div class="e-grp-head"><span class="e-grp-title">💬 문의</span><span class="e-grp-sub">운영자 답변</span></div>
+      <div class="e07-mail-grid">
+      <div class="e-cell">
+      <!-- E-06: 운영메일 답변 -->
+      <div id="e-06" class="wf-card mb-6">
+        <div class="wf-header">
+          <span>E-06 운영메일 답변</span>
+          <span class="wf-badge">운영 / 고객지원</span>
+        </div>
+        <div class="p-8 bg-white">
+          <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+            <div style="text-align: center; padding-bottom: 24px;">
+              <span style="font-size: 24px; font-weight: bold; color: #0f172a;">🎯 MoFAC</span>
+            </div>
+
+
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h1 style="font-size: 24px; font-weight: bold; color: #0f172a; margin: 0; line-height: 1.4;">문의에 대한 답변입니다</h1>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 32px;">
+              <p style="font-size: 14px; color: #64748b; margin: 0;">안녕하세요. MoFAC 운영팀입니다.</p>
+            </div>
+
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 12px 0;">📋 문의 내용</h3>
+              <div style="border-left: 3px solid #3b82f6; padding-left: 12px; margin-bottom: 16px;">
+                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.6;">고객님께서 문의하신 내용에 대해 검토 완료했습니다. 아래의 답변을 참고 부탁드립니다.</p>
+              </div>
+
+              <h3 style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 8px 0;">💬 답변</h3>
+              <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.6;">운영팀의 답변 내용이 이곳에 표시됩니다. 고객님의 문의에 대해 자세하고 친절한 답변을 제공합니다.</p>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center;">
+              <p style="font-size: 12px; color: #475569; margin: 0 0 8px 0; font-weight: 500;">추가 도움이 필요하신가요?</p>
+              <p style="font-size: 12px; color: #475569; margin: 0 0 16px 0;">문의: <a href="mailto:help@mofac.io" style="color: #2563eb; text-decoration: none; font-weight: bold;">help@mofac.io</a></p>
+              <p style="font-size: 10px; color: #94a3b8; margin: 0;">© 2026 MoFAC. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
 
     </div>
 
@@ -5795,7 +6173,7 @@ for await (const chunk of stream) {
         </div>
         <div class="sec-box">
           <div class="sec-h text-red-700" style="color:#b91c1c">회원 탈퇴</div>
-          <p class="text-[11px] text-slate-600 leading-relaxed mb-3">탈퇴하면 API 키와 계정 정보가 삭제되고 다시 복구할 수 없어요. 환불 가능한 크레딧이 있으면 환불을 먼저 받아야 해요.</p>
+          <p class="text-[11px] text-slate-600 leading-relaxed mb-3">탈퇴하면 API 키와 계정 정보가 삭제되고 다시 복구할 수 없어요. 결제한 크레딧이 남아 있으면 탈퇴를 신청할 때 환불도 함께 접수돼요.</p>
           <div class="flex justify-end"><button onclick="closeAccountSettingModal(); switchToCTab('#c-10-1')" class="wf-btn text-xs w-auto px-4 text-red-600 border-red-200">탈퇴 진행하기 →</button></div>
         </div>
         <div class="flex justify-end pt-4 border-t">
@@ -6299,6 +6677,27 @@ for await (const chunk of stream) {
       document.querySelectorAll('.bp-b').forEach(b => b.classList.toggle('active', b.dataset.c === (many ? 'many' : c)));
     }
     function pmSel(m) { document.querySelectorAll('.pm-opt').forEach(o => o.classList.toggle('sel', o.dataset.pm === m)); }
+    function wdmAll(on) {
+      document.querySelectorAll('.wdm-ck').forEach(c => c.checked = on); wdmCheck();
+    }
+    function wdmCheck() {
+      const all = [...document.querySelectorAll('.wdm-ck')].every(c => c.checked);
+      document.getElementById('wdm-done').classList.toggle('o04-is-disabled', !all);
+      const a = document.getElementById('wdm-all'); if (a) a.checked = all;
+    }
+    function o04Go(id) {
+      const el = document.getElementById(id); if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.classList.remove('o04-flash'); void el.offsetWidth; el.classList.add('o04-flash');
+    }
+    function o04Filter(chip, f) {
+      const bar = chip.closest('.o04-filterbar');
+      bar.querySelectorAll('.o04-filter').forEach(c => c.classList.toggle('o04-active', c === chip));
+      let tb = bar.nextElementSibling; while (tb && !tb.querySelector('tbody')) tb = tb.nextElementSibling;
+      const rows = tb.querySelectorAll('tbody tr[data-st]'); let n = 0;
+      rows.forEach(r => { const on = f === 'all' || r.dataset.st === f; r.style.display = on ? '' : 'none'; if (on) n++; });
+      const em = tb.querySelector('tr.o04-empty'); if (em) em.style.display = n ? 'none' : 'table-row';
+    }
     function suToggle() {
       const r = document.getElementById('su-root'); r.dataset.on = r.dataset.on === '1' ? '0' : '1';
     }
@@ -6588,7 +6987,8 @@ for await (const chunk of stream) {
         'a01-error-invalid-email',
         'a01-error-not-found',
         'a01-error-wrong-password',
-        'a01-error-account-locked'
+        'a01-error-account-locked',
+        'a01-error-withdrawing'
       ];
 
       // 모든 에러 숨기기
@@ -6731,7 +7131,7 @@ for await (const chunk of stream) {
     }
 
     /* v4.0 멀티모델: 카탈로그 용도 칩 · 플레이그라운드 대화 상태 */
-    const SM_LINKS = [['A-03','E-01'],['A-02','E-05'],['A-04','E-02'],['A-05','E-03'],['A-05','E-04'],['C-03','E-07'],['C-03','E-08'],['ACCT','E-04'],['ACCT','E-05']];
+    const SM_LINKS = [['A-03','E-01'],['A-02','E-05'],['A-04','E-02'],['A-05','E-03'],['A-05','E-04'],['C-03','E-07'],['C-03','E-08'],['C-10-1','E-11'],['C-02','E-09'],['C-03','E-10'],['C-03','E-12'],['ACCT','E-04'],['ACCT','E-05']];
     function drawSitemapLinks() {
       const lay = document.getElementById('sm-layout'), svg = document.getElementById('sm-links');
       if (!lay || !svg || lay.offsetParent === null) return;
@@ -6809,7 +7209,6 @@ for await (const chunk of stream) {
     function wdState(st) {
       const r = document.getElementById('wd-root'); r.dataset.state = st;
       document.querySelectorAll('.wd-st').forEach(b => b.classList.toggle('active', b.dataset.s === st));
-      document.getElementById('wd-submit').disabled = st !== 'zero';
     }
     function pgConnect(open) { document.getElementById('pg-connect').classList.toggle('hidden', !open); }
     function pgConnTab(i) {
@@ -6855,5 +7254,81 @@ for await (const chunk of stream) {
       });
     }
   </script>
+
+  <!-- O-04 탈퇴 운영 흐름 모달 (10/28) -->
+  <div id="o04-flow" class="hidden fixed inset-0 z-50 flex items-start justify-center overflow-auto" style="background:rgba(15,23,42,.55);padding:40px 16px" onclick="if(event.target===this)this.classList.add('hidden')">
+    <div class="bg-white rounded-2xl shadow-2xl w-full" style="max-width:860px">
+      <div class="flex justify-between items-center px-6 py-4 border-b"><div class="font-extrabold text-slate-900">🧭 탈퇴 · 환불 운영 흐름</div><button class="text-slate-400 text-lg border-none bg-transparent cursor-pointer" onclick="document.getElementById('o04-flow').classList.add('hidden')">✕</button></div>
+      <div class="p-6">
+        <div class="flex gap-2 text-[11px] mb-4"><span class="fl-lane fl-u">👤 회원</span><span class="fl-lane fl-s">⚙️ 시스템 자동</span><span class="fl-lane fl-o">🛠️ 운영자</span></div>
+        <div class="fl-col">
+          <div class="fl-node "><span class="fl-lane fl-u">👤 회원</span><div class="fl-t">C-10-1 [탈퇴 · 환불 신청]</div><div class=fl-d>확인 얼럿 → 완료 얼럿 → 로그아웃</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-node "><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">탈퇴 처리 시작</div><div class=fl-d>API 키 폐기 · 무료 크레딧 소멸 · 결제 크레딧 동결 · 결제 건별 환불 건 자동 등록 · O-01 상태 “탈퇴 처리 중” (로그인 불가)</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-dia">결제 크레딧이 남아 있나요?</div>
+          <div class="fl-split">
+            <div class="fl-branch"><div class="fl-yn">아니오</div><div class="fl-node fl-end"><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">즉시 탈퇴 완료</div><div class=fl-d>계정 삭제 → E-11 발송 → 5영업일 안 파기</div></div></div>
+            <div class="fl-branch" style="flex:2.2"><div class="fl-yn">예</div>
+              <div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">O-04 [탈퇴 관리] → [상세]</div><div class=fl-d>결제 건별 환불 목록 확인</div></div>
+              <div class="fl-ar">↓</div>
+              <div class="fl-dia">결제 건마다 토스 상점관리자에서 취소</div>
+              <div class="fl-split">
+                <div class="fl-branch"><div class="fl-yn">미사용 → 전액취소</div><div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">상점관리자 전액취소</div><div class=fl-d>[취소하기] → [전액입력] → [완료]</div></div></div>
+                <div class="fl-branch"><div class="fl-yn">쓰던 건 → 부분취소</div><div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">상점관리자 부분취소</div><div class=fl-d>[취소하기] → 취소액(잔여 × 단가) 입력 → [완료]</div></div></div>
+              </div>
+              <div class="fl-ar">↓</div>
+              <div class="fl-node fl-end"><span class="fl-lane fl-u">👤 회원</span><div class="fl-t">고객에게 환불 완료</div><div class=fl-d>토스가 카드 취소 처리 → 회원 카드로 환불 (원거래 수수료 반환)</div></div>
+              <div class="fl-ar">↓</div>
+              <div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">어드민 탈퇴 상세 — “수기 취소했습니다” 확인 체크</div><div class=fl-d>내부 장부 처리 — 회원 환불과 별개</div></div>
+              <div class="fl-ar">↓</div>
+              <div class="fl-dia">모든 건 취소했나요?</div>
+              <div class="fl-split">
+                <div class="fl-branch"><div class="fl-yn">아니오 (취소 안 되는 건 있음)</div><div class="fl-node fl-warn"><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">⚠️ 보류</div><div class=fl-d>계정 삭제 멈춤 · 매뉴얼 처리 (부분취소 불가 카드 · 1년 초과 등)</div></div></div>
+                <div class="fl-branch"><div class="fl-yn">예 → 확인 체크 → [탈퇴 처리]</div><div class="fl-node fl-end"><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">탈퇴 완료</div><div class=fl-d>계정 삭제 → E-11 발송 → 5영업일 안 파기 · O-01 “탈퇴”</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-500 mt-5 border-t pt-3">· 동결 시점 잔여 기준으로 환불액 계산 (단가 = 결제금액 ÷ 충전 크레딧, 원 단위 절사) · 사용 중인 결제 건은 최대 1건(유효기간 임박분부터 차감)이라 부분취소는 보통 1건</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- O-04 환불 운영 흐름 모달 (10/28) -->
+  <div id="o04-flow-rf" class="hidden fixed inset-0 z-50 flex items-start justify-center overflow-auto" style="background:rgba(15,23,42,.55);padding:40px 16px" onclick="if(event.target===this)this.classList.add('hidden')">
+    <div class="bg-white rounded-2xl shadow-2xl w-full" style="max-width:860px">
+      <div class="flex justify-between items-center px-6 py-4 border-b"><div class="font-extrabold text-slate-900">🧭 환불 운영 흐름 (문의 메일 접수 · 수기)</div><button class="text-slate-400 text-lg border-none bg-transparent cursor-pointer" onclick="document.getElementById('o04-flow-rf').classList.add('hidden')">✕</button></div>
+      <div class="p-6">
+        <div class="flex gap-2 text-[11px] mb-4"><span class="fl-lane fl-u">👤 회원</span><span class="fl-lane fl-s">⚙️ 시스템 자동</span><span class="fl-lane fl-o">🛠️ 운영자</span></div>
+        <div class="fl-col">
+          <div class="fl-node "><span class="fl-lane fl-u">👤 회원</span><div class="fl-t">help@mofac.io로 환불 요청</div><div class=fl-d>콘솔(C-03)에는 환불 버튼 없음 · 주문번호 또는 결제일 안내</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">O-04 [＋ 환불 건 등록] → 주문번호 [조회]</div><div class=fl-d>회원 · 결제 정보 · 이 건의 잔여 · 단가 · 환불 가능액 자동 계산 (잔여 × 단가, 원 단위 절사)</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-dia">등록할 수 있나요?</div>
+          <div class="fl-split">
+            <div class="fl-branch"><div class="fl-yn">잔여 0 · 이미 등록됨</div><div class="fl-node fl-warn"><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">등록 차단</div><div class=fl-d>[등록] 비활성 → 회원에게 환불할 금액이 없다고 답변</div></div></div>
+            <div class="fl-branch"><div class="fl-yn">결제 1년 초과</div><div class="fl-node fl-warn"><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">등록 차단</div><div class=fl-d>상점관리자 취소 불가 → 토스 고객센터 문의 · 매뉴얼 처리</div></div></div>
+            <div class="fl-branch" style="flex:1.3"><div class="fl-yn">가능</div><div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">[등록]</div><div class=fl-d>접수 경로 · 일시 · 사유 입력</div></div></div>
+          </div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-node "><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">잔여 크레딧 동결 · 상태 ⏳ 처리중</div><div class=fl-d>환불 중에 남은 크레딧을 쓰지 못하게 · 계산액 고정</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">토스 상점관리자에서 취소</div><div class=fl-d>결제조회 › 신용·체크카드 › [취소하기] → 취소액 입력 → [완료] — 미사용 건은 [전액입력], 쓰던 건은 환불 가능액 입력</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-node fl-end"><span class="fl-lane fl-u">👤 회원</span><div class="fl-t">고객에게 환불 완료</div><div class=fl-d>토스가 카드 취소 처리 → 회원 카드로 환불 (원거래 수수료 반환)</div></div>
+          <div class="fl-ar">↓</div>
+          <div class="fl-dia">취소 결과는?</div>
+          <div class="fl-split">
+            <div class="fl-branch" style="flex:1.4"><div class="fl-yn">성공</div><div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">어드민 상세 패널 — 확인 체크 → [환불 완료 처리]</div><div class=fl-d>내부 장부 처리 — 입력 없음, 계산된 환불액 그대로</div></div><div class="fl-ar">↓</div><div class="fl-node fl-end"><span class="fl-lane fl-s">⚙️ 시스템 자동</span><div class="fl-t">✓ 완료</div><div class=fl-d>동결분 차감 확정 · E-08 환불 완료 메일 발송</div></div></div>
+            <div class="fl-branch"><div class="fl-yn">실패 · 부분취소 불가 카드</div><div class="fl-node fl-warn"><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">회원 안내 후 매뉴얼 처리</div><div class=fl-d>선불 · 지역화폐 · 기프트 · 구매전용카드는 부분취소 반송 → 전액취소 후 차액 재결제 등</div></div></div>
+            <div class="fl-branch"><div class="fl-yn">고객 철회</div><div class="fl-node "><span class="fl-lane fl-o">🛠️ 운영자</span><div class="fl-t">[환불 철회]</div><div class=fl-d>⚠️ 취소 · 동결 자동 해제 · 사유 입력</div></div></div>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-500 mt-5 border-t pt-3">· 토스는 돈(결제 · 취소)만 알고 크레딧은 모름 → 어드민 등록(동결) · 완료(차감)로 크레딧 장부를 맞춤 · 여러 결제 건을 환불하면 결제 건마다 각각 등록 · 원거래 수수료는 반환돼 환불 비용 부담 없음</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
