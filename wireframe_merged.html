@@ -6800,6 +6800,18 @@ for await (const chunk of stream) {
       });
     }
     window.addEventListener('resize', drawSitemapLinks);
+    /* 주소 #화면ID로 바로 열기 (예: wireframe_merged.html#c-03) */
+    const HASH_ALIAS = { 'o-03': 'sec-dashboard', 'c-11': 'sidebar-onboarding-expanded', 'c-04': 'c-03', 'c-05': 'c-03-1', 'c-06': 'c-03' };
+    function goHash() {
+      let id = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase();
+      if (!id) return;
+      id = HASH_ALIAS[id] || id;
+      const el = document.getElementById(id);
+      const tab = el && el.closest('.tab-content');
+      if (tab) smGo(tab.id, id);
+    }
+    window.addEventListener('load', () => setTimeout(goHash, 150));
+    window.addEventListener('hashchange', goHash);
     function smGo(tab, id) {
       openTab(tab);
       setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
