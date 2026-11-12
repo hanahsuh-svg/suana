@@ -94,9 +94,92 @@
     .lg-tk td:first-child { text-align:left; color:#94a3b8; } .lg-tk tr.sum td { border-top:1px solid #e2e8f0; font-weight:700; padding-top:6px; } .lg-tk tr.sum td:first-child { color:#64748b; }
     .lg-json { background:#f8fafc; border-radius:10px; padding:10px 12px; font-family:ui-monospace,monospace; font-size:11px; color:#334155; white-space:pre-wrap; word-break:break-word; margin:0; }
     /* M-01 USP (10/15) */
-    .u-promo { background:#3579F6; color:#fff; font-size:12px; font-weight:600; text-align:center; padding:8px; }
+    .u-promo { position:relative; background:#3579F6; color:#fff; font-size:12px; font-weight:600; text-align:center; padding:8px 40px; }
+    .u-promo-x { position:absolute; right:12px; top:50%; transform:translateY(-50%); width:24px; height:24px; border:0; background:transparent; color:#fff; font-size:16px; line-height:1; cursor:pointer; opacity:.8; }
+    .u-promo-x:hover { opacity:1; }
     .u-page { background:#f8fafc; }
     .u-sec { padding:36px 48px; border-top:1px solid #eef2f0; }
+    /* ② 왜 싼가요 애니메이션 (Main_USP_mockup에서 이식) */
+    .wy-grid{display:grid;grid-template-columns:1fr 1.62fr;gap:12px}
+    .wy-cap{font-size:13px;font-weight:800;color:#0f172a;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+    .wy-cap em{font-style:normal;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px;background:#e8f0fe;color:#1d5fd8}
+    .wy .jr{background:radial-gradient(900px 420px at 60% 50%,#13254A 0%,#0B1020 70%);border:1px solid #1E2A44;border-radius:18px;padding:18px 18px 12px;height:100%}
+    .wy .jr-svg{display:block;width:100%;height:auto}
+    .wy .jr-core{fill:#12306b;stroke:#7AA7F9;stroke-width:3}
+    .wy .jr-gpu rect{fill:rgba(255,255,255,.15);stroke:#7AA7F9;stroke-width:1}
+    .wy .ln-k{fill:#8A97B2;font-size:15px;font-weight:800}
+    .wy .ln-dim{fill:none;stroke:rgba(156,170,200,.35);stroke-width:2;stroke-dasharray:4 5}
+    .wy .ln-dot-dim{fill:#8A97B2}
+    .wy .ln-box{fill:#111A2E;stroke:rgba(156,170,200,.35);stroke-width:1.2}
+    .wy .ln-box.hi{stroke:#7FB2FF;stroke-width:1.6}
+    .wy .ln-box.sm{fill:#0E1526}
+    .wy .ln-bt{fill:#fff;font-size:15px;font-weight:800}
+    .wy .ln-st{fill:#AEB9D0;font-size:13.5px;font-weight:700}
+    .wy .ln-fee{fill:#E9A0A5;font-size:12.5px;font-weight:700}
+    .wy .ln-div{stroke:rgba(156,170,200,.18);stroke-width:1}
+    .wy .ln-hi-bg{stroke:rgba(127,178,255,.18);stroke-width:14;stroke-linecap:round}
+    .wy .tune-tag{fill:rgba(122,167,249,.14);stroke:rgba(122,167,249,.5)}
+    .wy .tune-t{fill:#7AA7F9;font-size:11.5px;font-weight:800}
+    .wy .race-k{fill:#6F7C98;font-size:12px;font-weight:700}
+    .wy .race-bg{fill:rgba(156,170,200,.15)}
+    .wy .race-f{transform-box:fill-box;transform-origin:0 50%}
+    .wy .race-f.slow{fill:#6E7A96;animation:wyRaceS 4.2s linear infinite}
+    .wy .race-f.fast{fill:#7AA7F9;animation:wyRaceF 4.2s ease-out infinite}
+    .wy .race-n{fill:#8A97B2;font-size:12px;font-weight:600}
+    .wy .race-n.hi{fill:#c7d7fb;font-weight:700}
+    .wy .race-done{font-size:12px;font-weight:800;opacity:0}
+    .wy .slow-d{fill:#AEB9D0;animation:wyDoneS 4.2s linear infinite}
+    .wy .fast-d{fill:#7AA7F9;animation:wyDoneF 4.2s linear infinite}
+    .wy .vs-c{fill:#1B2540;stroke:rgba(156,170,200,.45);stroke-width:1}
+    .wy .vs-t{fill:#C9D6EE;font-size:11px;font-weight:800;letter-spacing:.04em}
+    .wy .cs{stroke:#0B1222;stroke-width:2}
+    .wy .cs.g{fill:#24314D} .wy .cs.r{fill:#4A2530} .wy .cs.lr{fill:#3A2A35} .wy .cs.m{fill:#1d4ed8}
+    .wy .cs-t{fill:#E6ECF7;font-size:12.5px;font-weight:800}
+    .wy .cs-t.r{fill:#F3B0B5} .wy .cs-t.lr{fill:#E9B9BD} .wy .cs-t.m{fill:#eef4ff}
+    .wy .cs-s{font-size:11px;font-weight:600} .wy .cs-s.m{fill:#c7d7fb}
+    .wy .cs-ghost{fill:none;stroke:#E0626A;stroke-width:1.8;stroke-dasharray:6 6}
+    .wy .cs-gt{fill:#F0858C;font-size:13px;font-weight:800;text-decoration:line-through}
+    .wy .cs-gt2{fill:#7AA7F9;font-size:12px;font-weight:800}
+    .wy .cs-row{fill:#AEB9D0;font-size:14px;font-weight:800} .wy .cs-row.hi{fill:#7AA7F9}
+    .wy .cs-row2{fill:#6F7C98;font-size:12.5px} .wy .cs-row2.hi{fill:#c7d7fb}
+    .wy .cs-guide{stroke:rgba(156,170,200,.35);stroke-width:1;stroke-dasharray:3 5}
+    .wy .cs-arrow{stroke:#7AA7F9;stroke-width:2.5}
+    .wy .cs-arrowh{fill:none;stroke:#7AA7F9;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .wy .cs-save{fill:#7AA7F9;font-size:14px;font-weight:800}
+    .wy .cut{animation:wyCutA 4.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    .wy .cut1{animation-delay:.3s} .wy .cut2{animation-delay:.6s}
+    .wy .cut-line{stroke:#FF6B74;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:84;stroke-dashoffset:84;animation:wyCutL 4.2s ease-in-out infinite}
+    .wy .cut1 .cut-line{animation-delay:.3s} .wy .cut2 .cut-line{animation-delay:.6s}
+    .wy .ghostg,.wy .savg{animation:wyGhostA 4.2s ease-in-out infinite}
+    .wy .gpuS{transform-box:fill-box;transform-origin:50% 100%;animation:wyGpuS 4.2s ease-in-out infinite}
+    .wy .drop{animation:wyDropA 4.2s ease-in-out infinite}
+    .wy .mtag{opacity:0;animation:wyMtagA 4.2s ease-in-out infinite;fill:#dbe7ff!important;font-weight:700}
+    @keyframes wyRaceS{0%,10%{transform:scaleX(0)}85%,96%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+    @keyframes wyRaceF{0%,10%{transform:scaleX(0)}48%,96%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+    @keyframes wyDoneS{0%,85%{opacity:0}88%,96%{opacity:1}100%{opacity:0}}
+    @keyframes wyDoneF{0%,48%{opacity:0}52%,96%{opacity:1}100%{opacity:0}}
+    @keyframes wyCutA{0%,18%{opacity:1;transform:translateY(0)}32%{opacity:1;transform:translateY(0)}44%{opacity:0;transform:translateY(-18px)}88%{opacity:0;transform:translateY(-18px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes wyCutL{0%,14%{stroke-dashoffset:84}26%,40%{stroke-dashoffset:0}44%,100%{stroke-dashoffset:84}}
+    @keyframes wyGhostA{0%,58%{opacity:0}66%,90%{opacity:1}96%,100%{opacity:0}}
+    @keyframes wyGpuS{0%,46%{transform:scaleY(1)}58%,90%{transform:scaleY(.7)}98%,100%{transform:scaleY(1)}}
+    @keyframes wyDropA{0%,46%{transform:translateY(0)}58%,90%{transform:translateY(31px)}98%,100%{transform:translateY(0)}}
+    @keyframes wyMtagA{0%,52%{opacity:0}60%,90%{opacity:1}96%,100%{opacity:0}}
+    @media (prefers-reduced-motion: reduce){.wy .race-f,.wy .race-done,.wy .cut,.wy .cut-line,.wy .ghostg,.wy .savg,.wy .gpuS,.wy .drop,.wy .mtag{animation:none!important}}
+
+    .hx-box { position:relative; height:330px; }
+    .hx-map { position:absolute; left:80px; top:29px; width:328px; height:300px; }
+    .hx-app { position:absolute; left:0; top:122px; width:92px; height:58px; background:#fff; border:1.5px solid #c7d2fe; border-radius:12px; text-align:center; padding-top:9px; box-shadow:0 4px 12px rgba(15,23,42,.06); }
+    .hx-core { position:absolute; left:182px; top:94px; width:112px; height:112px; border-radius:9999px; background:#1d5fd8; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 18px rgba(53,121,246,.10); animation:hxPulse 2.4s ease-in-out infinite; }
+    .hx-lbl { position:absolute; left:118px; top:216px; width:240px; text-align:center; }
+    .hx-m { position:absolute; left:372px; width:150px; height:58px; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 12px rgba(15,23,42,.05); }
+    .hx-m b.hx-off { font-size:20px; font-weight:900; color:#1d5fd8; font-family:ui-monospace,monospace; }
+    .hx-line { stroke-dasharray:4 6; animation:hxDash 1.2s linear infinite; }
+    .hx-pill { position:absolute; left:110px; top:332px; width:300px; text-align:center; font-size:11px; color:#64748b; background:#fff; border:1px solid #e2e8f0; border-radius:9999px; padding:6px 0; font-weight:600; }
+    .u-ts { background:#dcfce7; color:#15803d; }
+    @keyframes hxDash { to { stroke-dashoffset:-20; } }
+    @keyframes hxPulse { 0%,100% { box-shadow:0 0 0 14px rgba(53,121,246,.10); } 50% { box-shadow:0 0 0 24px rgba(53,121,246,.05); } }
+    @media (prefers-reduced-motion: reduce) { .hx-line,.hx-core { animation:none !important; } }
+
     .u-eyebrow { font-size:11px; font-weight:800; color:#3579F6; }
     .u-h2 { font-size:24px; font-weight:800; color:#0f172a; margin-top:4px; }
     .u-btn { display:inline-block; background:#3579F6; color:#fff !important; font-weight:700; font-size:13px; padding:11px 18px; border-radius:10px; text-decoration:none; }
@@ -878,7 +961,7 @@
           <div class="space-y-8">
             <div>
               <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🎯 v5.0 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">11/3 ~ 11/5 · 멀티모델 OBT · 체험 크레딧 · 브랜드</span></h2></div>
-              <table class="h-table"><thead><tr><th style="width:64px">날짜</th><th style="width:56px">영역</th><th style="width:120px">화면</th><th>변경 내용</th></tr></thead><tbody><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">전체</td><td>OBT 멀티모델(Motif 3 · GLM 5.3 · Kimi K3)로 확정</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a> · A-04</td><td>체험 크레딧을 가입 즉시 10크레딧(14일) 자동 지급으로, 온보딩 설문(A-04) 삭제</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>쿠폰 등록 추가 — [쿠폰 등록] → 코드 입력 레이어, 내역에 “쿠폰 · 쿠폰 이름”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-07')" class="h-link">C-07</a></td><td>메뉴명 “플레이그라운드” → “모델 체험”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-c','c-08')" class="h-link">C-08</a></td><td>모델 · API 키 필터를 체크박스 다중 선택으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">전체</td><td>브랜드 파란색 · MoFAC 로고 적용, GNB 통일</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-05')" class="h-link">M-05</a></td><td>서비스 상태 개편 — 상태 배너 + 가동률(최근 30일, 모델별)</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-11</td><td>보안 · 데이터 처리 페이지 삭제</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>크레딧 내역에 [영수증 ↗] (토스 영수증)</td></tr></tbody></table>
+              <table class="h-table"><thead><tr><th style="width:64px">날짜</th><th style="width:56px">영역</th><th style="width:120px">화면</th><th>변경 내용</th></tr></thead><tbody><tr><td class="whitespace-nowrap font-mono text-slate-500">11/12</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a></td><td>메인 재정비</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/12</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-05</td><td>서비스 Status OBT 제외 — 페이지 · Footer 링크 삭제</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/12</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-07')" class="h-link">M-07</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-07-1')" class="h-link">M-07-1</a></td><td>새 소식을 목록 + 상세로 분리, 카테고리에 “점검·장애” 추가</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/12</td><td><span class="h-tag h-x">어드민</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-o','o-07')" class="h-link">O-07</a></td><td>새 소식 관리 — 표 목록 · 노출 상태, 종료일 선택 입력, 메뉴명 “공지사항” → “새 소식”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/12</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-m','m-02')" class="h-link">M-02</a></td><td>개발자 문서 레이아웃 — 좌측 메뉴 · 본문 · 우측 “이 페이지에서”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">전체</td><td>OBT 멀티모델(Motif 3 · GLM 5.3 · Kimi K3)로 확정</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">정책</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a> · <a href="javascript:void(0)" onclick="smGo('tab-m','m-01')" class="h-link">M-01</a> · A-04</td><td>체험 크레딧을 가입 즉시 10크레딧(14일) 자동 지급으로, 온보딩 설문(A-04) 삭제</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>쿠폰 등록 추가 — [쿠폰 등록] → 코드 입력 레이어, 내역에 “쿠폰 · 쿠폰 이름”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-07')" class="h-link">C-07</a></td><td>메뉴명 “플레이그라운드” → “모델 체험”</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/5</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-01')" class="h-link">C-01</a> · <a href="javascript:void(0)" onclick="smGo('tab-c','c-08')" class="h-link">C-08</a></td><td>모델 · API 키 필터를 체크박스 다중 선택으로</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-x">전체</span></td><td class="whitespace-nowrap font-bold text-slate-800">전체</td><td>브랜드 파란색 · MoFAC 로고 적용, GNB 통일</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-m">공개</span></td><td class="whitespace-nowrap font-bold text-slate-800">M-11</td><td>보안 · 데이터 처리 페이지 삭제</td></tr><tr><td class="whitespace-nowrap font-mono text-slate-500">11/3</td><td><span class="h-tag h-c">콘솔</span></td><td class="whitespace-nowrap font-bold text-slate-800"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>크레딧 내역에 [영수증 ↗] (토스 영수증)</td></tr></tbody></table>
             </div>
             <div>
               <div class="flex items-baseline justify-between mb-2"><h2 class="text-lg font-bold text-slate-900">🚀 v4.1 변경 내역 <span class="text-xs font-normal text-slate-400 ml-1">10/12 ~ 10/28 · 결제 · 퍼블릭 오픈 메인 · 브랜드 · 모델 · 요금</span></h2></div>
@@ -887,7 +970,7 @@
             </div>
             <div>
               <h2 class="text-lg font-bold text-slate-900 mb-2">⚠️ 결정 필요 <span class="text-xs font-normal text-slate-400 ml-1">와이어프레임에 가정값으로 들어간 것</span></h2>
-              <table class="h-table h-open"><thead><tr><th>항목</th><th style="width:140px">화면</th><th style="width:110px">확인처</th></tr></thead><tbody><tr><td><b>가동률 측정 기준</b> (status에 표시할 항목)</td><td class="font-bold"><a href="javascript:void(0)" onclick="smGo('tab-m','m-05')" class="h-link">M-05</a></td><td>개발</td></tr><tr><td><b>영수증 링크</b> — 결제 승인 시 토스 <code>receipt.url</code> 저장 여부 (11/3)</td><td class="font-bold"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>개발</td></tr></tbody></table>
+              <table class="h-table h-open"><thead><tr><th>항목</th><th style="width:140px">화면</th><th style="width:110px">확인처</th></tr></thead><tbody><tr><td><b>업타임 측정 기준</b> (모델 카탈로그 비교표에 표시)</td><td class="font-bold"><a href="javascript:void(0)" onclick="smGo('tab-m','m-08')" class="h-link">M-08</a></td><td>개발</td></tr><tr><td><b>영수증 링크</b> — 결제 승인 시 토스 <code>receipt.url</code> 저장 여부 (11/3)</td><td class="font-bold"><a href="javascript:void(0)" onclick="smGo('tab-c','c-03')" class="h-link">C-03</a></td><td>개발</td></tr></tbody></table>
             </div>
             <div>
               <h2 class="text-lg font-bold text-slate-900 mb-2">📦 이전 버전</h2>
@@ -975,7 +1058,7 @@
                 <div class="sm-footer-row"><a href="javascript:void(0)" onclick="smGo('tab-m','m-07')" class="pg small" data-pg="M-07">
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
-                <div class="pg-label"><span class="sm-id">M-07</span> 새 소식 </div>
+                <div class="pg-label"><span class="sm-id">M-07</span> 새 소식 </div><div class="pg-note">목록 · 상세(M-07-1)</div>
               </a><a href="javascript:void(0)" onclick="smGo('tab-m','m-03')" class="pg small" data-pg="M-03">
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
@@ -984,10 +1067,6 @@
                 <div class="pg-dots"><i></i><i></i><i></i></div>
                 <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
                 <div class="pg-label"><span class="sm-id">M-04</span> 개인정보처리방침 </div>
-              </a><a href="javascript:void(0)" onclick="smGo('tab-m','m-05')" class="pg small" data-pg="M-05">
-                <div class="pg-dots"><i></i><i></i><i></i></div>
-                <div class="pg-thumb"><div class="tb-title"></div><div class="tb-line"></div><div class="tb-line"></div><div class="tb-line s"></div><div class="tb-line"></div></div>
-                <div class="pg-label"><span class="sm-id">M-05</span> Status </div>
               </a></div>
               </div>
             </div>
@@ -1091,11 +1170,11 @@
       <!-- M-01: 서비스 메인 (Motif 모델 USP 중심 랜딩) -->
       <div id="m-01" class="wf-card">
         <div class="wf-header">
-          <span class="flex items-center gap-2 whitespace-nowrap">M-01 서비스 메인 <span class="wf-badge" style="background:#d1fae5;color:#065f46;font-weight:700">퍼블릭 오픈 · 10/15 USP 반영</span></span>
+          <span class="flex items-center gap-2 whitespace-nowrap">M-01 서비스 메인</span>
           <span class="wf-badge">GNB [로고 · 언어 토글 / 모델 · 요금 · 모델 체험 · 개발자 문서 / 로그인 · 시작하기]</span>
         </div>
         <div class="wf-content-m relative">
-          <div class="u-promo">🎁 지금 가입하면 10크레딧 (14일)</div>
+          <div class="u-promo">🎁 지금 가입하고 10크레딧 받기<button type="button" class="u-promo-x" aria-label="배너 닫기" onclick="this.parentElement.style.display='none'">✕</button></div>
 
           <div class="mock-gnb">
             <div class="flex items-center gap-2">
@@ -1125,59 +1204,88 @@
           <div class="flex-grow u-page">
 
             <!-- ① 히어로 -->
-            <section class="u-sec grid grid-cols-2 gap-8 items-center" style="padding-top:44px">
+            <section class="u-sec grid gap-8 items-center" style="padding-top:44px;grid-template-columns:1fr 540px">
               <div>
-                <h1 class="text-3xl font-extrabold text-slate-900 leading-tight">GLM·Kimi 코딩 에이전트,<br>키만 바꾸면 <span class="text-[#3579F6]">더 싸고 빠르게</span></h1>
-                <p class="text-sm text-slate-500 mt-4">중개 수수료 0%, 국내 추론 기술로 직접 서빙해요.</p>
+                <h1 class="text-3xl font-extrabold text-slate-900 leading-tight">GLM·Kimi 모델,<br>키만 바꾸면 <span class="text-[#3579F6]">더 싸고 빠르게</span></h1>
+                <p class="text-sm text-slate-500 mt-4">국내 데이터센터에서 자체 GPU와 국내 추론 기술로 운영해요.</p>
                 <a href="#a-02" onclick="switchToATab()" class="u-btn mt-6">무료로 시작하기</a>
-                <div class="flex flex-wrap gap-4 text-xs text-slate-500 mt-5"><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>충전 수수료 0% · 원화 결제</span><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>OpenAI·Anthropic 호환 · 키만 바꾸면 끝</span></div>
               </div>
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div class="u-rcpt ua-relay">
-                  <div class="flex justify-between"><b class="text-slate-800">다른 중개형 서비스</b><span class="u-ex">예시</span></div>
-                  <div class="text-[11px] text-slate-400 mb-3">같은 사용량 기준</div>
-                  <div class="u-rl"><span>모델 사용료<small>공급사 평균 단가</small></span><b>$237.00</b></div>
-                  <div class="u-rl text-rose-600" style="position:relative"><span>중개 수수료 5.5%</span><b>$13.04</b><i class="ua-strike"></i></div>
-                  <div class="u-rt"><span>합계</span><b>$250.04</b></div>
-                </div>
-                <div class="u-rcpt u-rcpt-me ua-us">
-                  <div class="flex justify-between"><b class="text-slate-800">MoFAC</b><span class="u-ex">예시</span></div>
-                  <div class="text-[11px] text-slate-400 mb-3">같은 사용량 기준</div>
-                  <div class="u-rl"><span>같은 토큰<small>공급사 평균 단가라면</small></span><b class="line-through text-slate-400">$237.00</b></div>
-                  <div class="u-rl u-hl ua-ded"><span><em class="u-mini">기술</em> Moreh 최적화<small>같은 GPU로 더 많이 처리</small></span><b class="text-[#1d5fd8]">−$xx</b></div>
-                  <div class="u-rl text-slate-400 ua-ded d2"><span>중개 수수료</span><b>$0.00</b></div>
-                  <div class="u-rt"><span>합계</span><b class="text-[#1d5fd8]">$xxx</b></div>
-                  <div class="ua-stamp">−$xx 절약 <small>−x%</small></div>
-                </div>
+              <div class="hx-box text-xs">
+                <svg class="hx-map" viewBox="0 0 374 342" aria-hidden="true"><path d="M188 4L189 7L191 12L192 14L193 16L197 25L200 33L201 34L203 36L204 38L212 49L215 54L218 58L219 58L222 61L222 62L222 64L222 65L224 66L224 67L226 72L226 73L227 73L228 74L230 78L231 80L232 81L232 82L234 85L235 87L236 92L237 94L239 98L240 98L239 99L239 100L238 100L238 101L239 103L239 108L240 111L241 116L241 118L241 120L240 122L239 125L239 128L240 130L240 132L240 138L240 139L238 140L237 142L237 143L237 150L237 151L238 152L238 154L239 156L239 157L239 158L238 158L237 159L237 160L238 160L239 161L240 162L242 161L245 158L245 157L246 158L246 159L247 160L247 161L246 162L244 166L244 167L244 171L242 175L243 177L241 181L240 183L240 184L240 185L241 185L241 186L241 187L241 189L240 191L240 192L239 193L238 194L238 193L238 191L237 190L236 190L236 191L237 191L237 192L237 193L237 194L236 194L236 195L236 196L236 198L235 199L236 200L236 201L235 201L234 202L233 203L232 203L231 204L231 205L231 206L231 207L230 208L230 210L229 211L228 212L228 213L227 213L226 213L225 213L224 213L224 214L225 214L225 215L224 216L223 216L222 216L222 215L220 216L220 217L220 218L219 219L219 218L218 218L218 219L217 219L216 219L216 218L216 216L217 215L217 214L216 214L214 217L214 216L214 215L213 216L213 217L212 217L208 217L208 216L208 215L207 217L206 217L205 216L204 216L204 214L204 213L203 214L203 215L202 214L201 213L200 213L200 211L200 209L199 209L199 210L198 211L199 213L199 214L199 215L200 215L200 216L200 217L200 218L201 218L202 218L201 219L200 219L199 219L199 218L198 217L196 216L195 216L193 216L193 217L193 218L192 218L191 219L189 219L188 220L188 221L188 222L193 219L194 219L194 220L194 221L194 222L193 223L192 223L191 223L191 222L190 223L191 223L191 224L191 225L191 226L191 229L192 229L192 228L193 229L192 230L191 231L190 232L188 232L188 231L190 231L190 230L187 230L186 230L186 229L186 228L187 227L186 225L185 226L185 228L183 228L182 226L181 226L180 226L180 227L180 228L180 229L179 228L177 228L176 228L176 227L175 226L175 227L174 226L173 226L172 226L172 225L173 225L173 224L173 220L173 219L173 218L173 217L173 218L172 219L171 220L170 220L171 222L170 222L169 222L168 223L167 222L167 221L166 221L166 223L166 224L164 225L163 225L162 225L161 225L160 225L160 224L158 225L158 224L157 224L157 223L156 223L156 224L156 225L156 226L155 226L154 228L152 228L152 227L151 226L150 225L150 226L149 227L149 228L150 229L150 231L151 232L152 232L153 233L154 233L155 231L156 231L157 232L158 232L159 231L159 232L159 233L158 235L158 238L157 238L156 239L154 238L153 238L152 240L152 241L152 242L153 244L152 245L151 244L150 244L149 243L149 242L148 241L149 240L149 238L150 237L150 236L149 236L148 234L147 234L147 233L148 233L147 231L147 230L147 229L146 228L146 229L145 231L145 232L143 232L142 232L140 232L139 233L140 233L141 234L142 234L140 235L139 236L139 237L140 236L141 237L140 238L141 240L142 241L144 242L145 244L144 244L143 244L145 245L146 245L146 246L145 247L144 247L143 248L141 246L140 246L139 246L138 247L138 248L139 249L140 249L142 249L143 250L140 252L140 253L139 252L137 254L137 255L138 255L137 255L135 253L134 251L132 249L130 250L130 251L129 251L128 251L128 250L127 249L128 248L129 248L129 247L130 246L131 245L131 244L132 244L132 245L132 246L131 248L132 247L133 247L134 246L134 244L133 243L133 242L133 241L135 240L136 240L136 241L135 241L136 242L136 243L137 243L138 242L138 241L139 240L138 239L138 238L137 238L136 239L135 238L133 236L133 237L132 240L131 241L130 241L128 241L127 242L126 243L124 244L123 245L122 245L122 246L122 247L121 248L121 249L121 250L118 252L118 255L117 254L116 255L116 256L116 257L114 256L113 255L112 255L112 254L112 251L112 250L112 249L112 248L112 247L111 247L110 247L110 248L110 249L110 250L110 251L108 251L109 252L110 253L108 254L107 255L108 255L108 256L107 256L106 256L106 257L104 258L103 259L102 263L102 264L101 264L99 264L98 264L98 262L98 261L97 261L96 261L96 260L97 259L98 258L98 257L97 256L96 256L96 255L96 254L96 253L96 254L96 252L97 252L98 251L99 251L99 250L98 250L98 249L99 249L99 248L98 248L98 249L97 249L96 248L96 249L96 250L95 250L94 250L93 250L92 250L92 249L91 248L90 248L90 247L89 247L89 248L88 248L87 247L87 246L88 245L88 246L88 245L87 244L86 244L86 242L86 240L87 238L87 237L88 237L89 238L90 240L90 241L90 242L90 243L91 245L91 246L94 246L95 247L96 246L95 246L94 246L93 245L93 244L93 243L92 243L92 244L91 243L91 241L92 240L91 239L92 239L95 240L95 241L95 242L96 242L96 243L97 243L98 244L99 245L99 244L98 243L99 243L100 243L101 244L102 244L103 244L102 244L101 244L100 242L99 241L97 239L97 238L95 238L94 238L93 238L92 238L91 238L90 237L91 236L92 236L93 236L95 235L97 237L98 237L99 237L99 236L99 235L99 234L100 234L103 235L104 235L103 234L104 234L105 234L104 233L103 232L101 233L101 232L101 231L101 230L101 229L101 228L100 228L99 229L99 230L100 231L99 231L99 232L98 234L98 235L97 235L96 235L97 234L96 233L96 234L95 234L94 234L93 234L92 234L92 235L91 235L91 234L91 233L92 232L93 231L93 230L93 229L93 228L92 227L92 226L92 225L93 224L94 224L94 223L93 223L92 223L92 224L91 224L91 225L91 226L90 226L89 226L88 226L88 225L89 225L88 225L88 224L88 223L90 224L90 222L91 221L91 220L89 218L88 217L88 218L88 219L87 219L86 218L87 217L85 216L85 215L86 214L87 214L88 214L88 215L89 215L89 214L89 213L90 213L90 214L90 215L90 216L89 216L90 216L90 217L91 218L92 218L93 218L92 219L92 220L93 220L93 221L95 218L95 217L95 216L94 216L94 215L93 215L92 214L91 212L90 211L91 210L91 209L90 208L89 208L88 208L88 207L89 207L90 207L91 207L90 206L91 206L91 205L92 204L91 204L91 203L91 202L92 202L93 200L94 201L95 201L93 199L93 198L93 197L94 195L96 192L97 190L98 190L100 190L102 190L102 189L103 188L104 188L105 189L106 190L106 188L105 187L105 186L98 187L95 186L96 184L97 183L98 182L98 181L100 180L102 179L103 177L103 176L104 175L105 175L105 174L107 174L108 174L110 175L110 176L111 176L111 175L111 174L110 174L109 173L108 172L107 172L107 171L108 170L111 170L112 170L112 169L113 169L114 168L113 168L112 167L108 169L107 169L105 169L102 169L102 168L102 166L100 165L98 166L98 164L102 163L105 163L107 163L108 162L109 163L110 162L112 161L114 160L115 159L115 158L112 159L111 160L110 160L110 161L109 161L107 162L106 162L106 161L105 161L105 160L105 159L104 158L103 158L104 157L103 156L102 156L101 154L100 154L98 153L97 154L97 152L99 152L100 151L102 152L101 150L100 150L99 149L100 146L100 145L101 144L98 143L98 142L101 142L101 141L101 140L100 140L98 140L97 139L97 138L98 138L97 137L98 136L99 136L100 135L102 134L103 134L100 134L99 134L98 136L97 136L97 135L97 134L96 133L96 132L97 131L98 130L97 130L96 130L96 129L96 128L95 127L95 126L96 126L97 126L98 126L98 125L98 124L97 124L96 123L97 122L97 121L96 121L96 120L96 119L97 119L97 118L96 118L96 117L96 118L95 118L94 119L94 120L94 121L94 122L94 124L94 125L93 126L92 125L91 124L91 121L91 120L91 118L90 118L89 118L89 119L88 120L88 121L89 122L89 123L88 124L89 124L89 125L89 126L88 126L87 127L87 126L87 125L88 124L86 122L86 120L86 119L85 119L84 121L83 121L82 121L82 122L81 121L80 120L81 120L83 120L83 119L83 118L82 117L81 117L80 116L80 117L80 119L79 120L79 119L79 118L79 116L80 114L81 114L81 113L81 114L82 115L83 115L83 114L82 114L83 114L84 114L84 113L83 113L82 113L82 112L83 111L82 110L82 109L83 108L84 108L84 109L84 110L85 110L86 110L86 109L87 108L86 106L87 104L88 104L88 105L88 106L88 107L88 109L88 110L88 111L88 112L87 113L86 113L87 114L87 115L87 114L88 114L89 114L90 115L89 112L89 111L90 112L91 112L91 111L92 111L92 110L91 110L91 109L92 109L93 108L93 107L93 106L92 106L91 106L90 105L90 104L91 104L91 103L90 103L89 103L89 102L90 102L91 102L92 103L92 102L94 102L95 103L94 104L94 105L95 104L96 105L96 106L96 107L96 110L96 111L96 112L96 111L97 110L98 107L98 106L98 105L99 106L100 106L100 107L100 108L101 108L101 107L100 106L97 102L98 102L99 103L100 104L101 103L100 103L100 102L99 102L98 101L97 100L97 99L98 99L99 99L100 100L101 101L102 101L102 102L103 102L104 103L104 104L103 104L103 105L104 106L103 107L104 107L104 106L104 104L105 104L105 103L106 102L107 102L108 102L108 103L110 103L110 104L111 105L112 106L111 108L112 107L113 107L113 108L114 110L113 110L113 111L113 112L114 113L114 115L113 116L114 116L114 117L114 115L115 115L115 114L115 112L116 112L117 113L115 111L115 110L116 109L119 108L120 107L121 107L121 106L122 105L121 104L122 104L123 103L124 102L120 103L120 104L120 106L119 106L117 106L115 105L114 104L113 102L116 102L116 101L115 101L116 101L117 101L117 100L116 99L116 98L116 96L115 96L115 97L115 98L115 100L114 100L114 99L113 100L112 100L110 99L110 98L109 98L110 97L109 96L110 95L110 94L111 94L112 93L114 93L115 93L115 92L115 91L114 92L113 92L112 92L112 91L110 91L110 92L108 94L107 95L106 94L106 93L107 92L106 92L105 92L105 91L106 90L107 90L108 89L106 89L106 88L105 88L105 87L106 86L106 87L107 86L108 86L109 87L110 87L110 88L110 89L111 89L112 88L112 87L113 86L114 86L115 86L115 85L114 85L113 85L113 84L112 84L111 84L110 84L108 84L106 82L106 81L107 80L108 79L105 79L104 80L103 79L103 78L104 77L103 76L102 76L102 74L102 73L104 72L103 72L102 72L102 70L102 69L102 68L101 68L101 67L101 66L100 66L100 65L100 64L99 62L99 57L99 56L102 57L103 57L104 56L105 57L105 58L105 60L105 62L106 63L108 64L110 64L109 63L106 61L106 59L107 57L106 56L106 55L106 54L106 53L107 52L106 52L105 52L105 47L105 46L106 45L107 45L108 45L110 43L114 37L115 36L117 35L118 34L118 32L119 30L120 29L123 27L126 25L129 24L132 23L134 23L140 23L144 24L146 24L149 23L158 22L158 23L159 24L160 24L164 24L168 24L172 24L175 23L178 21L181 18L182 16L183 15L184 13L184 11L183 9L183 8L184 7L185 6L188 4ZM92 134L93 136L94 137L94 138L93 137L91 137L90 137L90 136L91 136L91 135L90 136L89 136L90 135L90 134L90 133L90 134L89 134L89 132L89 130L88 129L88 127L89 126L90 126L91 126L91 127L90 128L91 130L92 130L91 131L92 131L92 132L92 133L92 134ZM87 54L88 54L89 54L89 56L88 56L87 56L85 56L84 56L83 56L84 56L84 54L85 53L86 53L87 54ZM119 313L119 314L118 314L118 315L118 316L118 317L117 318L115 320L115 321L114 322L114 323L112 324L111 324L109 325L104 326L102 328L100 328L98 328L96 328L94 328L89 328L88 328L87 330L86 330L85 330L84 328L83 327L81 326L81 324L82 322L82 320L83 320L84 318L86 316L87 316L88 314L90 313L95 312L96 311L101 310L104 309L105 309L109 308L111 308L113 308L113 309L114 310L116 311L117 312L118 313L118 314L119 314L119 313ZM130 253L131 253L132 253L133 253L133 254L133 255L132 256L132 257L130 257L129 257L128 257L127 256L127 255L127 254L128 253L130 253ZM91 252L91 253L91 254L91 255L90 257L90 258L89 258L88 257L88 258L83 260L82 261L80 261L80 260L80 259L79 258L79 259L78 258L78 256L80 254L81 254L82 253L82 252L83 252L84 251L84 250L84 251L85 251L86 251L86 250L86 249L84 248L85 248L86 247L86 248L87 248L88 249L88 250L89 250L90 249L90 250L91 252ZM159 241L160 241L160 242L161 243L161 244L161 245L161 246L160 247L159 247L157 245L157 244L157 243L158 243L158 242L159 242L159 241L158 240L158 239L159 239L160 239L160 240L159 241ZM73 235L73 236L72 236L72 237L71 237L70 236L70 237L70 238L70 239L69 239L68 239L68 238L68 237L68 236L69 235L70 235L71 235L72 235L73 235ZM76 227L76 226L77 227L77 228L77 229L77 230L76 230L75 230L74 230L73 230L72 230L73 229L74 228L74 227L75 228L76 227ZM173 233L173 234L173 235L173 236L173 237L173 238L172 238L173 240L172 240L171 240L170 239L169 240L168 239L168 236L167 236L166 236L166 237L166 239L165 239L164 239L163 238L163 237L163 236L162 232L162 231L162 230L162 229L163 228L164 227L164 226L165 226L166 226L167 227L167 228L166 229L165 230L166 230L166 231L166 232L168 233L168 234L169 233L170 233L171 233L173 233ZM206 230L206 231L206 232L205 231L205 232L206 234L206 235L205 234L204 234L203 234L203 235L202 236L202 237L203 237L204 238L203 238L199 240L198 240L200 238L199 238L199 237L199 236L198 237L197 236L197 235L199 234L199 233L199 232L199 231L198 232L196 233L196 234L195 233L194 232L194 231L194 230L194 229L195 228L196 228L198 227L199 228L200 228L201 229L201 228L200 228L200 227L200 226L200 225L204 223L203 222L203 221L204 220L205 220L205 221L205 224L205 225L206 226L206 227L205 227L204 229L206 229L206 230ZM78 219L77 219L76 219L76 218L76 216L77 215L78 215L78 214L79 213L80 213L81 213L79 214L79 215L79 216L80 217L79 217L79 218L78 218L78 219ZM100 71L101 72L101 73L100 73L99 73L98 74L97 74L97 75L96 75L94 77L93 77L93 76L92 76L92 75L92 76L91 76L91 75L90 74L91 74L93 72L95 72L96 72L97 72L97 70L98 70L99 71L100 71ZM311 69L312 70L312 71L311 73L310 74L310 75L308 74L307 74L306 73L306 72L306 71L307 70L309 70L310 69L311 69ZM97 66L96 66L96 65L96 66L95 66L93 66L92 66L91 64L92 64L93 64L93 63L93 62L92 62L91 59L91 58L91 55L91 54L92 54L92 53L93 52L94 53L95 54L96 54L97 55L98 56L98 57L98 58L98 59L98 60L99 62L98 63L99 63L99 64L98 64L98 66L97 66ZM11 43L12 44L12 45L11 45L10 45L9 45L9 46L10 46L9 47L7 46L6 45L6 43L7 44L10 43L11 43ZM81 238L82 239L81 240L80 240L80 239L79 239L78 239L78 238L77 237L76 236L77 236L78 236L79 236L80 236L80 237L81 237L81 238ZM173 231L174 231L174 232L173 232L171 231L170 232L169 232L168 231L168 230L169 229L170 228L170 227L171 227L171 228L171 229L170 229L170 230L171 230L171 229L172 228L172 229L173 229L173 230L173 231ZM110 264L110 265L109 264L108 265L108 264L107 264L106 264L107 263L106 263L105 262L104 262L104 261L104 260L104 259L105 258L106 258L107 258L108 259L108 260L108 261L109 262L110 264ZM110 259L109 259L110 258L110 257L111 256L112 256L113 256L114 256L113 257L114 257L114 258L115 258L114 258L113 258L113 259L111 259L111 260L110 261L110 260L110 259ZM89 230L90 230L90 232L89 233L89 232L88 231L86 231L85 231L84 231L84 230L85 230L86 230L86 229L87 229L87 228L87 227L88 227L89 228L90 228L90 229L89 229L88 229L88 230L89 230ZM357 87L358 87L357 88L357 87Z" fill="#dce8fd" stroke="#8fb2f5" stroke-width="1.6" stroke-linejoin="round"/><circle cx="358" cy="88" r="2.6" fill="#dce8fd" stroke="#8fb2f5" stroke-width="1.4"/></svg>
+                <svg style="position:absolute;left:0;top:0" width="540" height="330" aria-hidden="true">
+                  <path d="M92 151 L182 150" stroke="#93b4f5" stroke-width="2" fill="none" class="hx-line"/>
+                  <path d="M294 150 C330 150 335 70 372 69" stroke="#cbd5e1" stroke-width="2" fill="none" class="hx-line"/>
+                  <path d="M294 150 L372 151" stroke="#3579F6" stroke-width="2" fill="none" class="hx-line"/>
+                  <path d="M294 150 C330 150 335 233 372 233" stroke="#cbd5e1" stroke-width="2" fill="none" class="hx-line"/>
+                </svg>
+                <div class="hx-app"><div class="font-extrabold text-slate-900 text-sm">내 앱</div><div class="text-[10px] text-slate-400 mt-0.5">API 키 하나</div></div>
+                <div class="hx-core"><svg width="42" height="40" viewBox="0 0 42 40" aria-hidden="true"><rect x="3" y="3" width="36" height="9" rx="2" fill="none" stroke="#dbeafe" stroke-width="2"/><rect x="3" y="15.5" width="36" height="9" rx="2" fill="none" stroke="#dbeafe" stroke-width="2"/><rect x="3" y="28" width="36" height="9" rx="2" fill="none" stroke="#dbeafe" stroke-width="2"/><circle cx="33" cy="7.5" r="1.5" fill="#86efac"/><circle cx="33" cy="20" r="1.5" fill="#86efac"/><circle cx="33" cy="32.5" r="1.5" fill="#86efac"/></svg></div>
+                <div class="hx-lbl"><span class="font-extrabold text-slate-900 text-[15px] bg-white/90 px-3 py-1 rounded-full">국내 데이터센터 · 자체 GPU</span></div>
+                <div class="hx-m" style="top:40px"><div><div class="font-extrabold text-slate-900 text-sm">GLM 5.3</div><div class="text-[10px] text-slate-400">MoFAC 서빙</div></div><b class="hx-off">−x%</b></div>
+                <div class="hx-m" style="top:122px;border:1.5px solid #3579F6;background:#f5f9ff"><div><div class="font-extrabold text-slate-900 text-sm">Kimi K3</div><div class="text-[10px] text-slate-400">MoFAC 서빙</div></div><b class="hx-off">−x%</b></div>
+                <div class="hx-m" style="top:204px"><div><div class="font-extrabold text-slate-900 text-sm">Motif 3</div><div class="text-[10px] text-slate-400">MoFAC 서빙</div></div><b class="text-sm font-extrabold" style="color:#b45309">국산</b></div>
               </div>
             </section>
 
-            <!-- ② 왜 싸고 빠른가요 -->
+            <!-- ② 왜 저렴한가요 -->
             <section class="u-sec">
-              <div class="u-eyebrow">왜 싸고 빠른가요</div>
-              <h2 class="u-h2">중개 없이 직접 서빙해요</h2>
-              <div class="u-dark mt-5">
-                <div class="text-[11px] text-slate-400 mb-3">요청 경로 · 응답 속도</div>
-                <div class="grid grid-cols-2 gap-8 text-center text-xs">
-                  <div>
-                    <div class="u-node">내 앱</div><div class="u-vline"></div>
-                    <div class="u-node">중개 서비스 <span class="text-rose-300 text-[10px] ml-1">중개 수수료</span></div><div class="u-vline"></div>
-                    <div class="flex gap-2 justify-center"><span class="u-node">공급사 A</span><span class="u-node">공급사 B</span><span class="u-node">공급사 C</span></div>
-                    <div class="u-bar mt-4"><i class="ua-slow" style="width:100%;background:#94a3b8"></i></div><div class="flex justify-between text-[10px] mt-1"><span class="text-slate-400">[000] tok/s</span><span class="text-slate-300 ua-slow-d">완료</span></div>
-                    <div class="mt-3 text-slate-300 font-bold">다른 중개형 서비스</div>
-                  </div>
-                  <div>
-                    <div class="u-node" style="border-color:#93c5fd">내 앱</div><div class="u-vline ua-flow" style="height:40px"></div>
-                    <div class="u-node" style="border-color:#7aa7f9;color:#7aa7f9">MoFAC 추론 엔진 <span class="text-[10px] ml-1">Moreh 튜닝</span></div>
-                    <div style="height:38px"></div>
-                    <div class="u-bar mt-4"><i class="ua-fast" style="width:100%;background:#7aa7f9"></i></div><div class="flex justify-between text-[10px] mt-1"><span class="text-slate-400">[000] tok/s</span><span class="text-[#9fc0fb] ua-fast-d">완료 ✓</span></div>
-                    <div class="mt-3 text-[#9fc0fb] font-bold">MoFAC · 직접 서빙</div>
-                  </div>
-                </div>
+              <div class="u-eyebrow">왜 저렴한가요</div>
+              <h2 class="u-h2">우리 GPU와 국내 추론 기술로 직접 제공해요</h2>
+              <div class="wy-grid mt-5">
+                <div class="u-card"><div class="text-2xl font-extrabold text-[#1d5fd8]">중개도, GPU 임대도 없이</div><div class="text-xs text-slate-500 mt-1">우리 GPU로 직접 서빙해 중간에 붙는 비용이 없어요.</div></div>
+                <div class="u-card"><div class="text-2xl font-extrabold text-[#1d5fd8]">같은 GPU로 더 많이 처리</div><div class="text-xs text-slate-500 mt-1">국내 추론 기술로, 단가는 내려가고 속도는 올라가요.</div></div>
               </div>
-              <div class="grid grid-cols-2 gap-3 mt-3">
-                <div class="u-card"><span class="u-tag u-tg">싼 이유</span><div class="text-2xl font-extrabold text-[#1d5fd8] mt-2">중개 수수료 0%</div><div class="text-xs text-slate-500 mt-1">중개가 없어서 싸요</div></div>
-                <div class="u-card"><span class="u-tag u-tg">싼 이유</span> <span class="u-tag u-tb">빠른 이유</span><div class="text-2xl font-extrabold text-[#1d5fd8] mt-2">Moreh 추론 기술로 최적화</div><div class="text-xs text-slate-500 mt-1">같은 GPU라도 더 많이, 더 빠르게 처리해요</div></div>
+              <div class="wy wy-grid mt-3">
+                <div><div class="jr"><svg class="jr-svg" viewBox="0 0 380 420" role="img" aria-label="원가 구성 비교">
+          <text x="24" y="40" class="ln-k">원가 구성</text>
+          <g transform="translate(0,56)">
+          <rect x="60" y="200" width="104" height="104" rx="5" class="cs g"/><text x="112" y="257" text-anchor="middle" class="cs-t">GPU 원가</text>
+          <rect x="60" y="150" width="104" height="50" rx="5" class="cs r"/><text x="112" y="180" text-anchor="middle" class="cs-t r">GPU 임대 마진</text>
+          <rect x="60" y="108" width="104" height="42" rx="5" class="cs g"/><text x="112" y="134" text-anchor="middle" class="cs-t">공급사 마진</text>
+          <rect x="60" y="78" width="104" height="30" rx="5" class="cs r"/><text x="112" y="98" text-anchor="middle" class="cs-t r">중개 수수료</text>
+          <rect x="216" y="200" width="104" height="104" rx="5" class="cs m gpuS"/><text x="268" y="257" text-anchor="middle" class="cs-t m">GPU 원가</text><text x="268" y="276" text-anchor="middle" class="cs-s m mtag">Moreh 최적화로 ↓</text>
+          <g class="drop"><rect x="216" y="158" width="104" height="42" rx="5" class="cs m"/><text x="268" y="184" text-anchor="middle" class="cs-t m">MoFAC 마진</text></g>
+          <g class="ghostg"><rect x="216" y="78" width="104" height="111" rx="5" class="cs-ghost"/>
+          <text x="268" y="112" text-anchor="middle" class="cs-gt">중개 수수료</text><text x="268" y="132" text-anchor="middle" class="cs-gt">GPU 임대 마진</text><text x="268" y="158" text-anchor="middle" class="cs-gt2">+ Moreh 최적화</text></g>
+          <g class="cut cut0"><rect x="216" y="78" width="104" height="30" rx="5" class="cs r"/><text x="268" y="98" text-anchor="middle" class="cs-t r">중개 수수료</text><line x1="226" y1="93" x2="310" y2="93" class="cut-line"/></g>
+          <g class="cut cut1"><rect x="216" y="108" width="104" height="50" rx="5" class="cs r"/><text x="268" y="138" text-anchor="middle" class="cs-t r">GPU 임대 마진</text><line x1="226" y1="133" x2="310" y2="133" class="cut-line"/></g>
+          <line x1="164" y1="78" x2="216" y2="78" class="cs-guide"/>
+          <g class="savg"><g transform="translate(346,78)"><path d="M0 4 L0 109" class="cs-arrow"/><path d="M-6 99 L0 111 L6 99" class="cs-arrowh"/></g><text x="346" y="68" text-anchor="middle" class="cs-save">원가 ↓</text></g>
+          </g>
+          <line x1="40" y1="360" x2="340" y2="360" class="ln-div"/>
+          <text x="112" y="384" text-anchor="middle" class="cs-row">다른 서비스</text><text x="112" y="402" text-anchor="middle" class="cs-row2">중개형</text>
+          <g transform="translate(190,390)"><circle r="14" class="vs-c"/><text y="4.5" text-anchor="middle" class="vs-t">VS</text></g>
+          <text x="268" y="384" text-anchor="middle" class="cs-row hi">MoFAC</text><text x="268" y="402" text-anchor="middle" class="cs-row2 hi">자체 GPU</text>
+        </svg></div></div>
+                <div><div class="jr"><svg class="jr-svg" viewBox="0 0 640 420" role="img" aria-label="요청 경로와 응답 속도 비교">
+          <defs><linearGradient id="vhl" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7FB2FF"/><stop offset="1" stop-color="#3579F6"/></linearGradient>
+          <radialGradient id="vglow"><stop offset="0" stop-color="#7AA7F9" stop-opacity=".45"/><stop offset="1" stop-color="#7AA7F9" stop-opacity="0"/></radialGradient></defs>
+          <text x="24" y="36" class="ln-k">요청 경로 · 응답 속도</text>
+          <path d="M175 92 L175 140" class="ln-dim"/>
+          <path d="M175 180 C175 206,75 202,75 226" class="ln-dim"/><path d="M175 180 L175 226" class="ln-dim"/><path d="M175 180 C175 206,275 202,275 226" class="ln-dim"/>
+          <circle r="4" class="ln-dot-dim"><animateMotion dur="1.4s" repeatCount="indefinite" path="M175 92 L175 180 C175 206,275 202,275 226"/></circle>
+          <g transform="translate(175,74)"><rect x="-46" y="-18" width="92" height="36" rx="10" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <g transform="translate(175,160)"><rect x="-56" y="-20" width="112" height="40" rx="11" class="ln-box"/><text y="5" text-anchor="middle" class="ln-bt">중개 서비스</text></g>
+          <text x="242" y="165" class="ln-fee">중개 수수료</text>
+          <g transform="translate(75,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 A</text></g>
+          <g transform="translate(175,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 B</text></g>
+          <g transform="translate(275,240)"><rect x="-46" y="-15" width="92" height="30" rx="8" class="ln-box sm"/><text y="5" text-anchor="middle" class="ln-st">공급사 C</text></g>
+          <path d="M490 92 L490 196" class="ln-hi-bg"/><path d="M490 92 L490 196" stroke="url(#vhl)" stroke-width="4" stroke-linecap="round"/>
+          <circle r="5" fill="#fff"><animateMotion dur="1.4s" repeatCount="indefinite" path="M490 92 L490 200"/></circle>
+          <g transform="translate(490,74)"><rect x="-46" y="-18" width="92" height="36" rx="10" class="ln-box hi"/><text y="5" text-anchor="middle" class="ln-bt">내 앱</text></g>
+          <circle cx="490" cy="226" r="50" fill="url(#vglow)"/><circle cx="490" cy="226" r="26" class="jr-core"/>
+          <g class="jr-gpu" transform="translate(476,213)"><rect width="28" height="6" rx="1.5"/><rect y="10" width="28" height="6" rx="1.5"/><rect y="20" width="28" height="6" rx="1.5"/></g>
+          <g transform="translate(560,226)"><rect x="-6" y="-12" width="78" height="24" rx="12" class="tune-tag"/><text x="33" y="4.5" text-anchor="middle" class="tune-t">Moreh 튜닝</text></g>
+          <text x="24" y="290" class="race-k">응답 생성</text>
+          <rect x="75" y="300" width="200" height="12" rx="6" class="race-bg"/><rect x="75" y="300" width="200" height="12" rx="6" class="race-f slow"/>
+          <text x="75" y="334" class="race-n">[000] tok/s</text><text x="275" y="334" text-anchor="end" class="race-done slow-d">완료</text>
+          <rect x="390" y="300" width="200" height="12" rx="6" class="race-bg"/><rect x="390" y="300" width="200" height="12" rx="6" class="race-f fast"/>
+          <text x="390" y="334" class="race-n hi">[000] tok/s</text><text x="590" y="334" text-anchor="end" class="race-done fast-d">완료 ✓</text>
+          <line x1="40" y1="360" x2="600" y2="360" class="ln-div"/>
+          <text x="175" y="384" text-anchor="middle" class="cs-row">다른 서비스</text><text x="175" y="402" text-anchor="middle" class="cs-row2">중개형</text>
+          <g transform="translate(332,390)"><circle r="14" class="vs-c"/><text y="4.5" text-anchor="middle" class="vs-t">VS</text></g>
+          <text x="490" y="384" text-anchor="middle" class="cs-row hi">MoFAC</text><text x="490" y="402" text-anchor="middle" class="cs-row2 hi">자체 GPU</text>
+        </svg></div></div>
               </div>
             </section>
 
@@ -1206,7 +1314,7 @@
                   <div style="flex:1;min-height:16px"></div><a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="u-btn2 no-underline text-center" style="padding:8px 12px;font-size:12px">써보기</a>
                 </div>
               </div>
-              <div class="flex justify-between text-[11px] text-slate-400 mt-3"><span>원화 · 국내 카드 결제 · 충전 수수료 0% · 2026년 10월 모델사 공식가 기준 · DeepSeek 등 모델 계속 추가</span><span class="text-[#1d5fd8] font-semibold">내 사용량으로 계산해 보기 ↓</span></div>
+              <div class="flex justify-end text-[11px] text-slate-400 mt-3"><span class="text-[#1d5fd8] font-semibold">내 사용량으로 계산해 보기 ↓</span></div>
             </section>
 
             <!-- ④ 비용 계산기 -->
@@ -1237,12 +1345,12 @@
             <section class="u-sec">
               <div class="u-eyebrow">국산 모델</div>
               <h2 class="u-h2">국산 모델 Motif 3도, 같은 키로</h2>
-              <p class="text-sm text-slate-500 mt-1">쓰던 API 키 그대로, <code class="text-slate-700">model</code> 값만 <code class="text-slate-700">mofac/motif-3</code>로 바꾸면 돼요</p>
+              <p class="text-sm text-slate-500 mt-1">GLM·Kimi에 쓰던 키 그대로 모델 이름만 바꾸면 돼요</p>
               <div class="u-card grid grid-cols-2 gap-8 mt-5 items-center">
                 <div>
-                  <div class="text-xl font-extrabold text-slate-900">명세대로 정확하게,<br>부담 없는 가격으로</div>
-                  <p class="text-xs text-slate-500 mt-2">스펙 문서대로 구현하거나 테스트 실패를 고치는 것처럼 정해진 대로 해야 하는 작업은 Motif 3에 맡기세요. 같은 일을 훨씬 적은 비용으로 끝낼 수 있어요.</p>
-                  <div class="space-y-1.5 text-xs text-slate-700 mt-3"><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>스펙 기반 구현 · DB 연동 코드에 강해요</span><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>SWE-bench 76.2 · Terminal-Bench 74.9</span><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>국산 모델이 필요한 프로젝트에도</span></div>
+                  <div class="text-xl font-extrabold text-slate-900">가볍고 저렴해서,<br>서비스 기능과 대량 처리에</div>
+                  <p class="text-xs text-slate-500 mt-2">코딩은 GLM·Kimi로, 요약·분류·변환 같은 반복 작업은 Motif 3로 나눠 쓰면 비용이 더 내려가요.</p>
+                  <div class="space-y-1.5 text-xs text-slate-700 mt-3"><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>종합 지능 지수 x · SWE-bench x · Terminal-Bench x</span><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>입력 $x / 출력 $x (100만 토큰)</span><span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>도구 호출 · JSON 출력 지원</span></div>
                   <div class="flex gap-2 mt-4"><a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="u-btn no-underline">Motif 3 써보기</a></div>
                 </div>
                 <div class="bg-slate-50 border rounded-xl p-4 text-[11px] space-y-1.5">
@@ -1250,19 +1358,34 @@
                   <div class="u-bl"><b>Motif 3</b><span><i style="width:7%;background:#3579F6"></i></span><b>$x</b></div>
                   <div class="u-bl"><span>GLM 5.3</span><span><i style="width:23%"></i></span><span>$x</span></div>
                   <div class="u-bl"><span>Kimi K3</span><span><i style="width:100%"></i></span><span>$x</span></div>
-                  <div class="text-slate-500 pt-2 border-t mt-2">Motif 3 입력 <b>$x</b> · 캐시 <b>$x</b></div>
+                  <div class="text-slate-400 pt-3">입력 100만 토큰당 가격</div>
+                  <div class="u-bl"><b>Motif 3</b><span><i style="width:9%;background:#3579F6"></i></span><b>$x</b></div>
+                  <div class="u-bl"><span>GLM 5.3</span><span><i style="width:40%"></i></span><span>$x</span></div>
+                  <div class="u-bl"><span>Kimi K3</span><span><i style="width:100%"></i></span><span>$x</span></div>
                 </div>
               </div>
             </section>
 
-            <!-- ⑥ 팀 · 조직 (준비 중) -->
+            <!-- ⑥ 팀 · 회사라면 (안전 + 팀 신청) -->
             <section class="u-sec">
-              <div class="u-card flex justify-between items-center gap-6">
-                <div>
-                  <div class="text-lg font-extrabold text-slate-900 flex items-center gap-2">팀으로 쓸 계획이신가요? <span class="u-tag" style="background:#f1f5f9;color:#475569">준비 중</span></div>
-                  <div class="text-xs text-slate-500 mt-1">팀 키·멤버별 한도·세금계산서·가드레일을 준비하고 있어요. 신청하시면 열리는 대로 먼저 안내해 드려요.</div>
+              <div class="u-eyebrow">팀 · 회사라면</div>
+              <h2 class="u-h2">회사에서 써도 안심하세요</h2>
+              <div class="grid grid-cols-2 gap-3 mt-5">
+                <div class="u-card">
+                  <div class="text-lg font-extrabold text-slate-900">국내 데이터센터 · 자체 장비로 운영</div>
+                  <div class="space-y-1.5 text-xs text-slate-700 mt-3">
+                    <span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>요청 데이터가 해외로 나가지 않아요</span>
+                    <span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>장비를 빌려 쓰지 않고 직접 운영해요</span>
+                    <span class="flex items-center gap-1.5"><span class="text-[#3579F6]">✓</span>프롬프트 · 응답 본문은 저장하지 않아요</span>
+                  </div>
                 </div>
-                <div class="flex gap-2 shrink-0"><a href="#m-12" class="u-btn no-underline">팀으로 쓰고 싶어요</a></div>
+                <div class="u-card flex flex-col justify-between">
+                  <div>
+                    <div class="text-lg font-extrabold text-slate-900 flex items-center gap-2">팀으로 쓸 계획이신가요? <span class="u-tag" style="background:#f1f5f9;color:#475569">준비 중</span></div>
+                    <div class="text-xs text-slate-500 mt-2">팀 키 · 멤버별 한도 · 세금계산서 · 가드레일을 준비하고 있어요. 신청하시면 열리는 대로 먼저 안내해 드려요.</div>
+                  </div>
+                  <div class="mt-4"><a href="#m-12" class="u-btn no-underline">팀으로 쓰고 싶어요</a></div>
+                </div>
               </div>
             </section>
 
@@ -1289,8 +1412,7 @@
             </div>
             <div class="flex gap-4 font-medium text-slate-500 text-xs">
               <a href="#m-03" class="hover:underline">이용약관</a><span>|</span>
-              <a href="#m-04" class="hover:underline">개인정보처리방침</a><span>|</span>
-              <a href="#m-05" class="hover:underline">상태 페이지</a>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
             </div>
           </div>
         </div>
@@ -1300,7 +1422,7 @@
       
 
 
-      <div class="mm-note mm-note-out">📝 <b>M-01 서비스 메인</b><ul class="mm-ul"><li>구성: 상단 띠 → ① 히어로(영수증 비교 카드) → ② 왜 싸고 빠른가요(요청 경로 · 응답 속도) → ③ 모델 · 가격 카드 3종 → ④ 비용 계산기 → ⑤ 국산 모델 Motif 3 → ⑥ 팀 · 조직 준비 중 띠 → ⑦ 쓰던 도구 그대로 + 하단 CTA</li><li>상단 띠: “🎁 지금 가입하면 10크레딧 (14일)”, 히어로 CTA [무료로 시작하기]</li><li>GNB: 모델 · 요금 · 모델 체험 · 개발자 문서 / 로그인 · [시작하기]</li><li>판가 · 할인율 · 절약액 · 계산기 결과는 확정 전이라 x로 비움, 공식가는 취소선으로만 표기</li></ul></div>
+      <div class="mm-note mm-note-out">📝 <b>M-01 서비스 메인</b><ul class="mm-ul"><li>메시지 우선순위: 싸다(핵심) → 빠르다 · 안전하다(덤)</li><li>구성: 상단 띠 → ① 히어로(직접 서빙 구조도) → ② 왜 저렴한가요(카드 2개 → 각 카드 아래 근거 애니메이션: 원가 구성 · 요청 경로/응답 속도) → ③ 모델 · 가격 카드 3종 → ④ 비용 계산기 → ⑤ 국산 모델 Motif 3 → ⑥ 팀 · 회사라면(안전 + 팀 신청) → ⑦ 쓰던 도구 그대로 + 하단 CTA</li><li>히어로 그림: 내 앱 → 국내 데이터센터 · 자체 GPU → 모델 3종, 모델별 할인율을 크게. 연결선은 흐르는 점선</li><li>지도는 와이어용 대략 실루엣 — 디자인 때 정식 지도로, 제주 · 울릉도 · 독도 반드시 포함, 데이터센터 위치 점은 찍지 않음</li><li>속도: tok/s는 실측 비교값 나오면 기재, 그 전엔 “x배 빠름” 같은 표현 쓰지 않음</li><li>안전은 회사 고객 대상 메시지라 팀 신청 옆에 배치</li><li>안전하게: “본문 저장 안 함”은 데이터 보관 정책 확정 전제, 보안 인증 없이 “보안에 강하다” 단정 표현 쓰지 않음</li><li>상단 띠: “🎁 지금 가입하고 10크레딧 받기”, 오른쪽 [✕]로 닫기(닫으면 해당 브라우저에서 다시 안 보임), 히어로 CTA [무료로 시작하기]</li><li>GNB: 모델 · 요금 · 모델 체험 · 개발자 문서 / 로그인 · [시작하기]</li><li>판가 · 할인율 · 절약액 · 계산기 결과는 확정 전이라 x로 비움, 공식가는 취소선으로만 표기</li></ul></div>
 
       <!-- M-08: 모델 카탈로그 (v4.0 신규 · 공개 페이지) -->
       <div id="m-08" class="wf-card">
@@ -1451,8 +1573,6 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
@@ -1497,12 +1617,7 @@
             <!-- 헤더 -->
             <div class="text-center">
               <h1 class="text-3xl font-extrabold text-slate-900 mb-3">같은 모델, 더 낮은 단가</h1>
-              <p class="text-sm text-slate-500 mb-5">중개 수수료 없이 직접 서빙해서 공식 API보다 저렴해요.</p>
-              <div class="flex flex-wrap gap-2 justify-center text-xs">
-                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">💸 공식 API 대비 최대 x% 저렴</span>
-                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">🧾 크레딧 구매 수수료 0%</span>
-                <span class="px-3 py-1.5 rounded-full border bg-white font-semibold">🎁 카드 등록만 하면 $5 무료</span>
-              </div>
+              <p class="text-sm text-slate-500">중개 수수료 없이 직접 서빙해서 공식 API보다 저렴해요.</p>
             </div>
 
             <!-- 모델별 단가 -->
@@ -1535,8 +1650,7 @@
               <h2 class="font-bold text-lg text-slate-900 mb-3">자주 묻는 질문</h2>
               <div class="space-y-2 text-xs">
                 <details class="border rounded-lg p-3" open><summary class="font-bold cursor-pointer">크레딧은 언제까지 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">결제한 크레딧은 결제일로부터 1년, 카드 등록으로 받은 무료 크레딧은 지급일로부터 3일 동안 쓸 수 있어요.</p></details>
-                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">원화로 결제하면 환율은 어떻게 적용되나요?</summary><p class="text-slate-600 mt-2">결제 금액 = 크레딧 수 × 적용 환율 × 1.1(부가세 10%)이에요. 예를 들어 10크레딧은 10 × 1,412원 × 1.1 = 15,532원이에요. 환율은 기준일에 따라 바뀔 수 있고 결제하는 시점의 환율로 확정되며, 충전된 크레딧은 이후 환율이 바뀌어도 그대로예요.</p></details>
-                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">어떤 결제 수단을 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">국내 카드와 토스페이를 지원해요.</p></details>
+                <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">어떤 결제 수단을 쓸 수 있나요?</summary><p class="text-slate-600 mt-2">국내 카드와 간편 결제를 지원해요.</p></details>
                 <details class="border rounded-lg p-3"><summary class="font-bold cursor-pointer">수수료가 정말 없나요?</summary><p class="text-slate-600 mt-2">크레딧 구매 수수료는 없어요. 결제한 금액만큼 크레딧이 충전돼요.</p></details>
               </div>
             </div>
@@ -1554,8 +1668,6 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
@@ -1563,10 +1675,10 @@
       <div class="mm-note mm-note-out">📝 <b>M-10 요금</b><ul class="mm-ul"><li>로그인 전에 크레딧 · 결제 규칙을 볼 수 있는 공개 화면</li><li>단가표는 M-08 · <code>/v1/models</code>와 같은 데이터 + “공식 API 대비” 열</li><li>충전 상품 · 환율 · 결제 금액은 넣지 않음 — [크레딧 충전하기] → C-03(로그인 전이면 로그인 후)</li><li>규칙: 1크레딧 = $1 · 잔액 $ 표기 · 유료 크레딧 1년 · 자동 충전 없음 · 결제 수단 카드(토스페이 포함)</li><li>환불 안내는 넣지 않음(이용약관에서 안내)</li><li>[내 사용량으로 계산해 보기 →] → M-01 비용 계산기</li></ul></div>
 
       <!-- M-02: Docs -->
-      <div id="m-02" class="wf-card tbd-card tbd-tall"><div class="tbd-overlay" onclick="this.parentElement.classList.add('tbd-open')" title="클릭하면 아래 내용을 볼 수 있어요"><div class="tbd-box"><div class="tbd-badge">TBD</div><div class="tbd-title">🚧 화면 내용 정리 중</div><div class="tbd-sub">문구와 구성을 정리하고 있어요.</div><div class="tbd-hint">클릭하면 초안을 볼 수 있어요</div></div></div><button class="tbd-recover" onclick="this.parentElement.classList.remove('tbd-open')">다시 덮기</button>
+      <div id="m-02" class="wf-card">
         <div class="wf-header">
           <span class="flex items-center gap-2">M-02 Docs (개발자 문서)</span>
-          <span class="wf-badge">검색창 추가 · 퀵스타트 · 인증 · 에러 코드 · 엔드포인트</span>
+          <span class="wf-badge">좌측 메뉴 · 본문 · 우측 이 페이지에서</span>
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
@@ -1595,61 +1707,25 @@
           </div>
 
           <div class="flex flex-row flex-grow">
-            <div class="w-64 bg-slate-50 border-r border-slate-200 p-6 space-y-6 flex-shrink-0">
-              <div>
-                <input type="text" placeholder="🔍 Search documentation..." class="w-full text-xs p-2 border rounded bg-white border-slate-300 mb-4">
-                <div class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">Getting Started</div>
-                <ul class="space-y-2 text-sm">
-                  <li class="font-medium text-blue-600 bg-blue-50 p-2 rounded -mx-2">Quickstart</li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Authentication</li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Models <span class="mm-tag" style="background:#ede9fe;color:#6d28d9">NEW</span></li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Context Limits</li>
-                </ul>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">API Reference</div>
-                <ul class="space-y-2 text-sm">
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Chat Completions</li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">List Models (GET /v1/models)</li>
-                  <li class="p-2 -mx-2 hover:bg-slate-100 rounded cursor-pointer">Error Codes (7종)</li>
-                </ul>
+            <div class="w-60 border-r border-slate-200 p-5 space-y-6 flex-shrink-0 bg-white"><div class="flex justify-between items-center border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-400"><span>⌕ 문서 검색</span><span class="font-mono">⌘ K</span></div><div><div class="text-xs font-bold text-slate-800 mb-2 px-3">시작하기</div><ul class="space-y-0.5 text-sm"><li class="px-3 py-2 rounded-md text-slate-600" >빠른 시작</li><li class="px-3 py-2 rounded-md text-slate-600" >인증 및 API 키</li><li class="px-3 py-2 rounded-md font-bold" style="background:#eaf1fe;color:#1d5fd8">모델</li></ul></div><div><div class="text-xs font-bold text-slate-800 mb-2 px-3">도구 연동</div><ul class="space-y-0.5 text-sm"><li class="px-3 py-2 rounded-md text-slate-600" >도구 연동</li><li class="px-3 py-2 rounded-md text-slate-600" >Hermes Agent</li><li class="px-3 py-2 rounded-md text-slate-600" >Claude Code 지원</li><li class="px-3 py-2 rounded-md text-slate-600" >OpenCode</li><li class="px-3 py-2 rounded-md text-slate-600" >Pi / Oh My Pi</li><li class="px-3 py-2 rounded-md text-slate-600" >Cline / Kilo Code / Roo Code</li></ul></div><div><div class="text-xs font-bold text-slate-800 mb-2 px-3">API 레퍼런스</div><ul class="space-y-0.5 text-sm"><li class="px-3 py-2 rounded-md text-slate-600" >채팅 완성</li></ul></div><div><div class="text-xs font-bold text-slate-800 mb-2 px-3">리소스</div><ul class="space-y-0.5 text-sm"><li class="px-3 py-2 rounded-md text-slate-600" >오류 및 문제 해결</li><li class="px-3 py-2 rounded-md text-slate-600" >자주 묻는 질문</li></ul></div><button class="text-xs border border-slate-300 rounded-lg px-3 py-1.5 bg-white text-slate-600">◐ 다크 테마</button></div>
+            <div class="flex-grow p-10 bg-white min-w-0">
+              <div class="max-w-2xl">
+                <div class="text-xs text-slate-400 mb-6">문서 / 모델</div>
+                <div class="text-xs font-bold mb-1" style="color:#1d5fd8">시작하기</div>
+                <h1 class="text-3xl font-bold mb-3">모델</h1>
+                <p class="text-sm text-slate-600 mb-10">아래 모델 식별자를 요청에 사용하세요.</p>
+                <h2 class="text-xl font-bold mb-4">사용 가능한 모델</h2>
+                <div class="border border-slate-200 rounded-xl p-5 mb-3"><div class="font-bold text-sm mb-2">Motif 3</div><div class="font-mono text-sm text-slate-700">mofac/motif-3</div></div><div class="border border-slate-200 rounded-xl p-5 mb-3"><div class="font-bold text-sm mb-2">GLM 5.3</div><div class="font-mono text-sm text-slate-700">mofac/glm-5.3</div></div><div class="border border-slate-200 rounded-xl p-5 mb-3"><div class="font-bold text-sm mb-2">Kimi K3</div><div class="font-mono text-sm text-slate-700">mofac/kimi-k3</div></div>
+                <h2 class="text-xl font-bold mt-10 mb-3">모델 사용하기</h2>
+                <p class="text-sm text-slate-600 mb-3">요청의 model 필드에 위 식별자를 설정하세요.</p>
+                <div class="rounded-xl overflow-hidden mb-10" style="background:#1e293b"><div class="flex justify-between px-4 py-2 text-xs text-slate-300 border-b border-slate-700"><span>Python</span><span>복사</span></div><div class="px-4 py-4 font-mono text-sm"><span style="color:#fca5a5">model</span><span class="text-slate-300">=</span><span style="color:#86efac">"mofac/motif-3"</span></div></div>
+                <div class="grid grid-cols-2 gap-3"><div class="border border-slate-200 rounded-xl p-4"><div class="text-xs text-slate-400">← 이전</div><div class="font-bold text-sm">인증 및 API 키</div></div><div class="border border-slate-200 rounded-xl p-4 text-right"><div class="text-xs text-slate-400">다음 →</div><div class="font-bold text-sm">도구 연동</div></div></div>
               </div>
             </div>
-
-            <div class="p-8 flex-grow overflow-y-auto bg-white">
-              <div class="text-sm text-slate-500 mb-2">Getting Started > Quickstart</div>
-              <h1 class="text-2xl font-bold mb-6">Quickstart</h1>
-              <p class="text-sm text-slate-600 mb-6">Morph API는 OpenAI 표준 규격을 완벽하게 지원합니다. 기존 코드에서 Base URL과 API Key만 변경하여 즉시 사용할 수 있습니다.</p>
-
-              <h3 class="font-bold mb-3 border-b pb-2">1. API Key 발급</h3>
-              <p class="text-sm text-slate-600 mb-4">콘솔에 로그인하여 <code>API Keys (C-02)</code> 메뉴에서 Bearer 인증에 사용할 Secret Key를 발급받습니다.</p>
-
-              <h3 class="font-bold mb-3 border-b pb-2">2. cURL 예제 (Chat Completions)</h3>
-              <div class="bg-slate-800 text-slate-300 p-4 rounded-md font-mono text-xs overflow-x-auto leading-relaxed mb-6">
-                <span class="text-green-400">curl</span> -X POST https://api.morph.com/v1/chat/completions \<br/>
-                &nbsp;&nbsp;-H <span class="text-yellow-300">"Authorization: Bearer $MORPH_API_KEY"</span> \<br/>
-                &nbsp;&nbsp;-H <span class="text-yellow-300">"Content-Type: application/json"</span> \<br/>
-                &nbsp;&nbsp;-d '{<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;"model": "mofac/motif-3", <span class="text-slate-500">// mofac/glm-5.3 · mofac/kimi-k3 로 바꾸면 모델 전환</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;"messages": [<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "system", "content": "You are a helpful assistant."},\br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"role": "user", "content": "Hello!"}<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;],<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;"stream": true<br/>
-                &nbsp;&nbsp;}'
-              </div>
-
-              <h3 class="font-bold mb-3 border-b pb-2">3. 사용 가능한 모델</h3>
-              <table class="wf-table border rounded-lg overflow-hidden mb-3">
-                <thead><tr><th>모델</th><th>모델 ID</th><th>컨텍스트</th><th>잘하는 것</th></tr></thead>
-                <tbody>
-                  <tr><td class="font-bold">Motif 3</td><td><span class="mm-id">mofac/motif-3</span> 📋</td><td>xxxK</td><td class="text-xs">도구 호출 · JSON 구조화 출력</td></tr>
-                  <tr><td class="font-bold">GLM 5.3</td><td><span class="mm-id">mofac/glm-5.3</span> 📋</td><td>xxxK</td><td class="text-xs">코딩 에이전트 · 도구 호출</td></tr>
-                  <tr><td class="font-bold">Kimi K3</td><td><span class="mm-id">mofac/kimi-k3</span> 📋</td><td>xxxK</td><td class="text-xs">긴 문서 · UI 코딩</td></tr>
-                </tbody>
-              </table>
-              <p class="text-xs text-slate-500 mb-2">목록은 <code>GET /v1/models</code>로도 조회할 수 있습니다. 모델별 단가와 성능은 <a href="#m-08" class="underline text-blue-600">모델 카탈로그</a>를 참고하세요.</p>
-              <p class="text-xs text-slate-500">없는 모델 ID를 보내면 <code>404 model_not_found</code>를 돌려줍니다.</p>
+            <div class="w-52 p-6 flex-shrink-0 bg-white">
+              <div class="text-xs font-bold text-slate-800 mb-3">이 페이지에서</div>
+              <ul class="text-xs space-y-2 border-l border-slate-200 pl-3 mb-5"><li class="font-bold" style="color:#1d5fd8">사용 가능한 모델</li><li class="text-slate-500">모델 사용하기</li></ul>
+              <div class="border-t border-slate-200 pt-4 text-xs" style="color:#1d5fd8">문서 개선 제안 ↗</div>
             </div>
           </div>
 
@@ -1666,13 +1742,11 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="mm-note mm-note-out">📝 <b>M-02 모델 표</b><ul class="mm-ul"><li>모델 ID는 <code>mofac/모델명</code>, 컨텍스트는 확정 후 기재</li><li><code>/v1/models</code> 응답과 같은 데이터 사용(이름 · ID · 컨텍스트가 화면마다 다르면 안 됨)</li><li>응답의 <code>model</code> 필드는 내부 이름이 아니라 공개 ID</li></ul></div>
+      <div class="mm-note mm-note-out">📝 <b>M-02 개발자 문서</b><ul class="mm-ul"><li>3단: 좌측 메뉴 · 본문 · 우측 “이 페이지에서”(본문 소제목, 스크롤 위치 강조)</li><li>좌측: 상단 문서 검색(⌘K) · 그룹 4개(시작하기 · 도구 연동 · API 레퍼런스 · 리소스) · 하단 다크 테마</li><li>본문: 경로 · 그룹명 · 제목 · 설명 · 본문 · 하단 이전/다음</li><li>우측 아래 “문서 개선 제안 ↗”</li><li>모델 ID는 <code>mofac/모델명</code>, 컨텍스트는 확정 후 기재</li><li><code>/v1/models</code> 응답과 같은 데이터 사용(이름 · ID · 컨텍스트가 화면마다 다르면 안 됨)</li><li>응답의 <code>model</code> 필드는 내부 이름이 아니라 공개 ID</li></ul></div>
 
       <!-- M-03: 이용약관 -->
       <div id="m-03" class="wf-card">
@@ -1751,8 +1825,6 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
@@ -1844,8 +1916,6 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
@@ -1854,7 +1924,7 @@
       <!-- M-12: 팀으로 쓰고 싶어요 (모달, 10/15) -->
       <div id="m-12" class="wf-card">
         <div class="wf-header">
-          <span class="flex items-center gap-2 whitespace-nowrap">M-12 팀으로 쓰고 싶어요 <span class="text-xs text-slate-400 font-normal">모달</span> <span class="wf-badge" style="background:#d1fae5;color:#065f46;font-weight:700">10/15 신규</span></span>
+          <span class="flex items-center gap-2 whitespace-nowrap">M-12 팀으로 쓰고 싶어요 <span class="text-xs text-slate-400 font-normal">모달</span></span>
           <div class="flex items-center gap-1">
             <span class="text-xs text-slate-500 font-normal">상태:</span>
             <button onclick="tfState('form')" class="state-toggle-btn tf-b active" data-t="form">입력</button>
@@ -1885,8 +1955,8 @@
               <ul class="tf-consent" hidden>
                 <li><b>항목</b> 이메일, 회사·팀 이름, 역할</li>
                 <li><b>목적</b> 팀 기능 수요 조사, 출시 안내, 요청 내용 관련 연락</li>
-                <li><b>보유 기간</b> 팀 기능 출시 안내 후 파기 (최대 1년, 동의 철회 시 즉시 파기)</li>
-                <li>동의를 거부할 수 있으며, 거부하면 신청할 수 없어요. <a href="#m-04" class="underline text-slate-400">자세히</a></li>
+                <li><b>보유 기간</b> 팀 기능 출시 안내 후 파기 (최대 1년)</li>
+                <li>동의를 거부할 수 있으며, 거부하면 신청할 수 없어요.</li>
               </ul>
             </div>
             <div class="flex justify-end items-center mt-4"><span class="u-btn" onclick="m12Submit()" style="cursor:pointer">신청하기</span></div>
@@ -1902,102 +1972,11 @@
       </div>
       <div class="mm-note mm-note-out">📝 <b>M-12 팀으로 쓰고 싶어요</b><ul class="mm-ul"><li>M-01 팀 띠의 [팀으로 쓰고 싶어요]로 여는 모달</li><li>필수: 이메일 · 인원 · 용도 · 필요한 기능(최대 3개) · 개인정보 동의</li><li>인원 · 시기 · 월 비용은 드롭다운, 다중 선택은 칩</li><li>맨 아래 “더 알려주실 내용”(선택 · 최대 500자)</li><li>개인정보 동의는 접어 두고 [보기 ▾]로 펼침, 체크 기본 해제 — 항목(이메일 · 회사·팀 이름 · 역할) · 목적 · 보유 기간(출시 안내 후 파기, 최대 1년) · 거부 권리</li><li>[신청하기] 때 필수 항목이 빠지면 모달 안 얼럿으로 빠진 항목 안내</li><li>응답 수집: 우선 구글 시트 · 메일도 가능</li><li>처리방침에 “팀 이용 신청 정보 — 출시 안내 후 파기” 반영</li></ul></div>
 
-      <!-- M-05: 서비스 Status -->
-      <div id="m-05" class="wf-card">
-        <div class="wf-header">
-          <span class="flex items-center gap-2">M-05 서비스 Status <span class="wf-badge" style="background:#d1fae5;color:#065f46;font-weight:700">11/5 모델별 가동률</span></span>
-          <span class="wf-badge">시스템 상태 · 가동률 · 인시던트 내역</span>
-        </div>
-        <div class="wf-content-m">
-          <div class="mock-gnb">
-            <div class="flex items-center gap-2">
-              <a href="#m-01" onclick="switchToMTab()" class="no-underline mofac-logo text-xl">mo<b>FAC</b></a>
-              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
-              <nav class="flex gap-5 text-sm font-medium ml-6">
-                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
-                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
-                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">모델 체험</a>
-                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
-              </nav>
-            </div>
-            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
-              <div id="gnb-before-login" class="flex items-center gap-3">
-                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
-                <a href="#a-02" onclick="switchToATab()" class="wf-btn text-xs px-4 py-1.5 no-underline w-auto text-white" style="background:#3579F6;border-color:#3579F6">시작하기</a>
-                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
-              </div>
-              <div id="gnb-after-login" class="hidden items-center gap-3">
-                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
-                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
-                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-12 bg-slate-50 flex flex-col items-center flex-grow">
-            <div class="w-full max-w-3xl space-y-8">
-
-              <div class="bg-white border-2 border-green-500 rounded-lg p-6 flex items-center justify-between shadow-sm">
-                <div>
-                  <h2 class="text-2xl font-bold text-slate-800 mb-1">모든 시스템 정상</h2>
-                  <p class="text-sm text-slate-500">마지막 갱신: 2분 전</p>
-                </div>
-                <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl font-bold">✓</div>
-              </div>
-
-              <div class="bg-white border rounded-lg p-6">
-                <h3 class="font-bold text-lg mb-4">가동률 (최근 30일)</h3>
-                <div class="space-y-5">
-                  <div>
-                    <div class="flex justify-between text-sm mb-2 font-medium"><span>API Gateway (MoFAC)</span><span class="text-green-600">xx.xx%</span></div>
-                    <div class="flex gap-1"><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-2 font-medium"><span>Inference Engine (Motif 3)</span><span class="text-green-600">xx.xx%</span></div>
-                    <div class="flex gap-1"><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#facc15" title="일부 장애"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-2 font-medium"><span>Inference Engine (GLM 5.3)</span><span class="text-green-600">xx.xx%</span></div>
-                    <div class="flex gap-1"><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div></div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between text-sm mb-2 font-medium"><span>Inference Engine (Kimi K3)</span><span class="text-green-600">xx.xx%</span></div>
-                    <div class="flex gap-1"><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#e2e8f0" title="데이터 없음"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#facc15" title="일부 장애"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div><div class="h-8 flex-grow rounded-sm" style="background:#4ade80" title="정상"></div></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex justify-between items-center"><span class="text-xs text-slate-500">문제가 있나요? <a href="mailto:help@mofac.io" class="text-blue-600 underline">help@mofac.io</a></span><span class="wf-btn w-auto px-4 text-xs">상태 새로고침</span></div>
-
-            </div>
-          </div>
-
-          <div class="mock-footer flex justify-between items-start">
-            <div class="space-y-1">
-              <div class="font-bold text-slate-700 text-xs mb-2">MoFAC</div>
-              <p>주식회사 모프 | 사업자등록번호 : 412-86-03882 | 통신판매업신고번호 : 2026-경기하남-1924</p>
-              <p>대표이사 : 송소연 | 대표번호 : <a href="tel:07080278283" class="hover:underline">070-8027-8283</a></p>
-              <p>경기도 하남시 미사강변중앙로31번길 30, 1023호(풍산동, 미사동일 넥서스)</p>
-            </div>
-            <div class="flex gap-4 font-medium text-slate-500 text-xs">
-              <a href="#m-07" class="hover:underline text-blue-600 font-semibold">새 소식</a>
-              <span>|</span>
-              <a href="#m-03" class="hover:underline">이용약관</a>
-              <span>|</span>
-              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mm-note mm-note-out">📝 <b>M-05 서비스 상태</b><ul class="mm-ul"><li>구성: 상태 배너 · 가동률(최근 30일) · 문의 안내 · [상태 새로고침]</li><li>상태 배너: 모든 시스템 정상 / 일부 장애 / 장애 / 점검 중 / 상태 정보 갱신 지연(10분 이상 갱신 안 될 때)</li><li>구성요소: API Gateway(MoFAC) + 모델별 Inference Engine — 모델이 추가되면 줄도 추가</li><li>가동률: 30칸 고정, 하루 1칸. 오픈 전 날짜는 회색(데이터 없음)</li><li>% = 장애가 아닌 시간 ÷ 측정한 시간(오픈 이후만, 성능 저하는 가동, 예고 점검은 제외)</li><li>가동률 출처는 Public Prober(외부에서 주기 호출) 이력. 오류율 · 성공률(O-03)은 내부 지표로 따로</li><li>막대 색: 그날 장애 20분 노랑 · 40분 주황 · 60분 빨강</li><li>범례 없이 막대 툴팁: 날짜 · “장애 없음” / “장애 N분” / “데이터 없음”</li><li>현재 장애 · 예정된 점검 · 지난 장애는 오픈 이후 추가. 점검 예고는 O-05 배너 · 새 소식으로</li></ul></div>
       <!-- M-07: 새 소식 (News/Updates) -->
       <div id="m-07" class="wf-card">
         <div class="wf-header">
-          <span>M-07 새 소식</span>
-          <span class="wf-badge">카테고리 필터 · 월별 그룹 · 뉴스 피드</span>
+          <span>M-07 새 소식 — 목록</span>
+          <span class="wf-badge">카테고리 탭 · 목록 · 페이지 이동</span>
         </div>
         <div class="wf-content-m">
           <div class="mock-gnb">
@@ -2026,112 +2005,115 @@
           </div>
 
           <div class="flex-grow bg-white p-8">
-            <div class="max-w-4xl mx-auto">
-              <!-- 페이지 제목 및 설명 -->
-              <div class="mb-8">
+            <div class="max-w-3xl mx-auto">
+              <div class="mb-6">
                 <h1 class="text-3xl font-bold text-slate-900 mb-2">새 소식</h1>
-                <p class="text-sm text-slate-600">MoFAC의 신규 기능, 모델 지원, 요금/결제, 문서 업데이트를 확인할 수 있습니다.</p>
+                <p class="text-sm text-slate-600">MoFAC의 새 기능, 모델, 요금, 점검 소식을 알려드려요.</p>
               </div>
-
-              <!-- 카테고리 탭 -->
-              <div class="flex gap-2 mb-8 border-b pb-4">
-                <button class="px-4 py-2 text-sm font-bold text-white bg-slate-800 rounded-lg hover:bg-slate-900">전체</button>
-                <button class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-50 rounded-lg">신규 기능</button>
-                <button class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-50 rounded-lg">모델</button>
-                <button class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-50 rounded-lg">요금/결제</button>
-                <button class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-50 rounded-lg">문서</button>
+              <div class="flex flex-wrap gap-2 mb-4"><button class="px-3.5 py-1.5 text-sm rounded-full font-bold text-white bg-slate-800">전체</button><button class="px-3.5 py-1.5 text-sm rounded-full font-medium text-slate-600 border border-slate-200 bg-white">신규 기능</button><button class="px-3.5 py-1.5 text-sm rounded-full font-medium text-slate-600 border border-slate-200 bg-white">모델</button><button class="px-3.5 py-1.5 text-sm rounded-full font-medium text-slate-600 border border-slate-200 bg-white">요금·결제</button><button class="px-3.5 py-1.5 text-sm rounded-full font-medium text-slate-600 border border-slate-200 bg-white">문서</button><button class="px-3.5 py-1.5 text-sm rounded-full font-medium text-slate-600 border border-slate-200 bg-white">점검·장애</button></div>
+              <div class="border-t-2 border-slate-800">
+                <a href="javascript:void(0)" onclick="smGo('tab-m','m-07-1')" class="flex items-center gap-4 py-4 border-b border-slate-200 no-underline hover:bg-slate-50 px-2 -mx-2">
+                  <span class="w-20 flex-shrink-0"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#fee2e2;color:#b91c1c">점검·장애</span></span>
+                  <span class="flex-grow text-sm font-medium text-slate-900">GLM 5.3 모델 점검 안내 (11/20 02:00~04:00)</span>
+                  <span class="text-xs text-slate-400 font-mono">2026.11.12</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center gap-4 py-4 border-b border-slate-200 no-underline hover:bg-slate-50 px-2 -mx-2">
+                  <span class="w-20 flex-shrink-0"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#ede9fe;color:#6d28d9">모델</span></span>
+                  <span class="flex-grow text-sm font-medium text-slate-900">Kimi K3 모델 추가</span>
+                  <span class="text-xs text-slate-400 font-mono">2026.11.10</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center gap-4 py-4 border-b border-slate-200 no-underline hover:bg-slate-50 px-2 -mx-2">
+                  <span class="w-20 flex-shrink-0"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#dbeafe;color:#1d4ed8">신규 기능</span></span>
+                  <span class="flex-grow text-sm font-medium text-slate-900">모델 체험에서 응답 속도 · 비용을 함께 보여드려요</span>
+                  <span class="text-xs text-slate-400 font-mono">2026.11.06</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center gap-4 py-4 border-b border-slate-200 no-underline hover:bg-slate-50 px-2 -mx-2">
+                  <span class="w-20 flex-shrink-0"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#dcfce7;color:#15803d">요금·결제</span></span>
+                  <span class="flex-grow text-sm font-medium text-slate-900">카드 등록 시 5크레딧 지급</span>
+                  <span class="text-xs text-slate-400 font-mono">2026.11.03</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center gap-4 py-4 border-b border-slate-200 no-underline hover:bg-slate-50 px-2 -mx-2">
+                  <span class="w-20 flex-shrink-0"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#e0f2fe;color:#0369a1">문서</span></span>
+                  <span class="flex-grow text-sm font-medium text-slate-900">Claude Code 연결 가이드 추가</span>
+                  <span class="text-xs text-slate-400 font-mono">2026.10.30</span>
+                </a>
               </div>
-
-              <!-- 2026년 8월 뉴스 -->
-              <div class="mb-8">
-                <div class="flex items-center gap-2 mb-4">
-                  <span class="text-lg font-bold text-slate-900">2026년 8월</span>
-                  <span class="text-xs text-slate-400">1건</span>
-                </div>
-
-                <div class="border rounded-lg p-5 bg-white hover:shadow-md transition-shadow cursor-pointer mb-4">
-                  <div class="flex items-start justify-between">
-                    <div class="flex-grow">
-                      <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs font-bold text-slate-400">8월 19일</span>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">신규 기능</span>
-                      </div>
-                      <h3 class="font-bold text-slate-900 mb-2">MoFAC v2.0 출시: 새로운 매핑 기능과 향상된 성능</h3>
-                      <p class="text-sm text-slate-600">API 성능이 30% 개선되었으며, 실시간 요청 추적 대시보드가 추가되었습니다. 또한 Motif 3 모델 예측 정확도가 한층 높아졌습니다.</p>
-                      <div class="flex items-center justify-between mt-3">
-                        <span class="text-xs text-slate-400">더보기 →</span>
-                        <span class="text-xs text-slate-400">공개 기간: 2026.08.19 ~</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="flex justify-center items-center gap-1 mt-6 text-sm">
+                <span class="px-2 text-slate-300">‹</span><span class="w-8 h-8 inline-flex items-center justify-center rounded bg-slate-800 text-white font-bold">1</span><span class="w-8 h-8 inline-flex items-center justify-center rounded text-slate-600">2</span><span class="w-8 h-8 inline-flex items-center justify-center rounded text-slate-600">3</span><span class="px-2 text-slate-600">›</span>
               </div>
+              <div class="mt-8 border border-dashed border-slate-300 rounded-lg p-6 text-center text-sm text-slate-400">빈 상태 · 아직 등록된 소식이 없어요.</div>
+            </div>
+          </div>
 
-              <!-- 2026년 7월 뉴스 -->
-              <div class="mb-8">
-                <div class="flex items-center gap-2 mb-4">
-                  <span class="text-lg font-bold text-slate-900">2026년 7월</span>
-                  <span class="text-xs text-slate-400">2건</span>
-                </div>
+          <div class="mock-footer flex justify-between items-start">
+            <div class="space-y-1">
+              <div class="font-bold text-slate-700 text-xs mb-2">MoFAC</div>
+              <p>주식회사 모프 | 사업자등록번호 : 412-86-03882 | 통신판매업신고번호 : 2026-경기하남-1924</p>
+              <p>대표이사 : 송소연 | 대표번호 : <a href="tel:07080278283" class="hover:underline">070-8027-8283</a></p>
+              <p>경기도 하남시 미사강변중앙로31번길 30, 1023호(풍산동, 미사동일 넥서스)</p>
+            </div>
+            <div class="flex gap-4 font-medium text-slate-500 text-xs">
+              <a href="#m-07" class="hover:underline text-blue-600 font-semibold">새 소식</a>
+              <span>|</span>
+              <a href="#m-03" class="hover:underline">이용약관</a>
+              <span>|</span>
+              <a href="#m-04" class="hover:underline">개인정보처리방침</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-note mm-note-out">📝 <b>M-07 새 소식 목록</b><ul class="mm-ul"><li>한 줄: 카테고리 · 제목 · 게시일 (요약문 없음)</li><li>게시일 = O-07 노출 시작일, 최신순 · 한 페이지 10건</li><li>카테고리 탭: 전체 · 신규 기능 · 모델 · 요금·결제 · 문서 · 점검·장애 (O-07과 같은 목록)</li><li>탭은 주소로 유지 (예: <code>/news?category=model</code>)</li><li>노출 OFF · 노출 기간 밖인 글은 목록에서 빠짐</li><li>0건이면 “아직 등록된 소식이 없어요.”</li></ul></div>
 
-                <div class="border rounded-lg p-5 bg-white hover:shadow-md transition-shadow cursor-pointer mb-4">
-                  <div class="flex items-start justify-between">
-                    <div class="flex-grow">
-                      <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs font-bold text-slate-400">7월 28일</span>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">요금/결제</span>
-                      </div>
-                      <h3 class="font-bold text-slate-900 mb-2">결제 계획 가격 인하 및 무료 크레딧 확대</h3>
-                      <p class="text-sm text-slate-600">신규 사용자를 위한 무료 크레딧이 $10에서 $20으로 상향 조정되었습니다. 기존 사용자는 Pro 플랜 구독 시 30% 할인 혜택을 받을 수 있습니다.</p>
-                      <div class="flex items-center justify-between mt-3">
-                        <span class="text-xs text-slate-400">더보기 →</span>
-                        <span class="text-xs text-slate-400">공개 기간: 2026.07.28 ~</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="border rounded-lg p-5 bg-white hover:shadow-md transition-shadow cursor-pointer mb-4">
-                  <div class="flex items-start justify-between">
-                    <div class="flex-grow">
-                      <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs font-bold text-slate-400">7월 15일</span>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">모델</span>
-                      </div>
-                      <h3 class="font-bold text-slate-900 mb-2">Motif 3 모델 베타 공개</h3>
-                      <p class="text-sm text-slate-600">국산 모델 Motif 3가 공개되었습니다. 도구 호출과 JSON 스키마 출력을 지원합니다.</p>
-                      <div class="flex items-center justify-between mt-3">
-                        <span class="text-xs text-slate-400">더보기 →</span>
-                        <span class="text-xs text-slate-400">공개 기간: 2026.07.15 ~</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <!-- M-07-1: 새 소식 상세 -->
+      <div id="m-07-1" class="wf-card">
+        <div class="wf-header">
+          <span>M-07-1 새 소식 — 상세</span>
+          <span class="wf-badge">카테고리 · 제목 · 게시일 · 본문 · 목록으로</span>
+        </div>
+        <div class="wf-content-m">
+          <div class="mock-gnb">
+            <div class="flex items-center gap-2">
+              <a href="#m-01" onclick="switchToMTab()" class="no-underline mofac-logo text-xl">mo<b>FAC</b></a>
+              <button onclick="langToggle()" class="lang-switch ml-1" data-lang="KO" title="언어 전환"><span class="ls-knob"></span><span class="ls-lbl ls-ko">KO</span><span class="ls-lbl ls-en">EN</span></button>
+              <nav class="flex gap-5 text-sm font-medium ml-6">
+                <a href="#m-08" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">모델</a>
+                <a href="#m-10" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">요금</a>
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-07')" class="no-underline text-slate-600 hover:text-slate-900">모델 체험</a>
+                <a href="#m-02" onclick="switchToMTab()" class="no-underline text-slate-600 hover:text-slate-900">개발자 문서</a>
+              </nav>
+            </div>
+            <div id="gnb-auth-state" class="flex items-center gap-3 text-sm">
+              <div id="gnb-before-login" class="flex items-center gap-3">
+                <a href="#a-01" onclick="switchToATab()" class="no-underline text-slate-600 hover:text-slate-900 whitespace-nowrap">로그인</a>
+                <a href="#a-02" onclick="switchToATab()" class="wf-btn text-xs px-4 py-1.5 no-underline w-auto text-white" style="background:#3579F6;border-color:#3579F6">시작하기</a>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인후 전환🔄</button>
               </div>
+              <div id="gnb-after-login" class="hidden items-center gap-3">
+                <a href="javascript:void(0)" onclick="switchToCTab('#c-01')" class="wf-btn wf-btn-primary text-xs px-4 py-1.5 no-underline w-auto text-white">콘솔</a>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">👤 김모프님</span>
+                <button onclick="toggleGnbState()" class="text-[10px] text-slate-400 border px-1.5 py-0.5 rounded bg-slate-50">로그인전 전환🔄</button>
+              </div>
+            </div>
+          </div>
 
-              <!-- 2026년 6월 뉴스 -->
-              <div class="mb-8">
-                <div class="flex items-center gap-2 mb-4">
-                  <span class="text-lg font-bold text-slate-900">2026년 6월</span>
-                  <span class="text-xs text-slate-400">1건</span>
-                </div>
-
-                <div class="border rounded-lg p-5 bg-white hover:shadow-md transition-shadow cursor-pointer mb-4">
-                  <div class="flex items-start justify-between">
-                    <div class="flex-grow">
-                      <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs font-bold text-slate-400">6월 10일</span>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-700">문서</span>
-                      </div>
-                      <h3 class="font-bold text-slate-900 mb-2">완전 개편된 개발자 문서 출시</h3>
-                      <p class="text-sm text-slate-600">더욱 체계적이고 이해하기 쉬운 개발자 가이드가 준비되었습니다. 다양한 언어의 SDK 예제와 베스트 프랙티스를 포함하고 있습니다.</p>
-                      <div class="flex items-center justify-between mt-3">
-                        <span class="text-xs text-slate-400">더보기 →</span>
-                        <span class="text-xs text-slate-400">공개 기간: 2026.06.10 ~</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div class="flex-grow bg-white p-8">
+            <div class="max-w-3xl mx-auto">
+              <div class="text-xs text-slate-400 mb-6"><a href="javascript:void(0)" onclick="smGo('tab-m','m-07')" class="text-slate-500 underline">새 소식</a> › 점검·장애</div>
+              <div class="border-b border-slate-200 pb-5 mb-6">
+                <div class="mb-3"><span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:#fee2e2;color:#b91c1c">점검·장애</span></div>
+                <h1 class="text-2xl font-bold text-slate-900 mb-2">GLM 5.3 모델 점검 안내 (11/20 02:00~04:00)</h1>
+                <div class="text-xs text-slate-400 font-mono">2026.11.12</div>
+              </div>
+              <div class="text-sm text-slate-700 leading-relaxed space-y-5">
+                <p>안녕하세요, MoFAC입니다. 안정적인 서비스를 위해 아래 일정으로 점검을 진행해요.</p>
+                <div><h3 class="font-bold text-slate-900 mb-1">작업 일시</h3><p>2026년 11월 20일(목) 02:00 ~ 04:00 (KST)</p></div>
+                <div><h3 class="font-bold text-slate-900 mb-1">대상</h3><p><code>mofac/glm-5.3</code></p></div>
+                <div><h3 class="font-bold text-slate-900 mb-1">영향 범위</h3><p>점검 중 해당 모델 요청은 <code>503</code>을 돌려줘요. 다른 모델은 정상 이용할 수 있어요.</p></div>
+                <div><h3 class="font-bold text-slate-900 mb-1">이용 안내</h3><p>점검 시간에는 다른 모델로 바꿔 호출해 주세요.</p></div>
+                <div class="border border-dashed border-slate-300 rounded p-6 text-center text-xs text-slate-400">이미지 · 링크 (O-07 에디터로 넣은 내용 그대로)</div>
+              </div>
+              <div class="flex justify-center mt-10 pt-6 border-t border-slate-200">
+                <a href="javascript:void(0)" onclick="smGo('tab-m','m-07')" class="wf-btn text-sm w-auto px-8 no-underline">목록으로</a>
               </div>
             </div>
           </div>
@@ -2149,12 +2131,11 @@
               <a href="#m-03" class="hover:underline">이용약관</a>
               <span>|</span>
               <a href="#m-04" class="hover:underline">개인정보처리방침</a>
-              <span>|</span>
-              <a href="#m-05" class="hover:underline">Status</a>
             </div>
           </div>
         </div>
       </div>
+      <div class="mm-note mm-note-out">📝 <b>M-07-1 새 소식 상세</b><ul class="mm-ul"><li>주소: <code>/news/{id}</code></li><li>상단: 카테고리 · 제목 · 게시일 (조회수 없음)</li><li>본문: O-07 에디터 내용 그대로 (굵게 · 이미지 · 링크)</li><li>[목록으로]: 보던 카테고리 탭으로 돌아감</li><li>노출 OFF · 기간 밖 글을 주소로 열면 “찾을 수 없는 소식이에요” + [목록으로]</li><li>점검 예고는 여기 + O-05 상단 배너로 함께 알림</li></ul></div>
 
     </div>
 
@@ -3806,7 +3787,7 @@ for await (const chunk of stream) {
               <!-- C-03-1 카드 등록 흐름 (토스 브랜드페이, 10/8) -->
               <div class="wf-card mt-6" id="c-03-1">
                 <div class="wf-header">
-                  <span class="flex items-center gap-2 whitespace-nowrap"><span class="c03-screen-id">C-03-1</span>카드 등록 · 결제 흐름 <span class="wf-badge" style="background:#ede9fe;color:#6d28d9;font-weight:700">10/8 신규</span></span>
+                  <span class="flex items-center gap-2 whitespace-nowrap"><span class="c03-screen-id">C-03-1</span>카드 등록 · 결제 흐름</span>
                   <span class="text-xs text-slate-500 font-normal">토스페이먼츠 브랜드페이 · 회색 = 토스가 띄우는 화면</span>
                 </div>
                 <div class="wf-body p-6">
@@ -4018,7 +3999,7 @@ for await (const chunk of stream) {
               <div class="sidebar-menu">
                 <a href="#o-05" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🖼️ O-05 배너 관리</a>
                 <a href="#o-06" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">✉️ O-06 문의 메일 운영</a>
-                <a href="#o-07" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">📢 O-07 공지사항</a>
+                <a href="#o-07" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">📢 O-07 새 소식</a>
                 <a href="#o-08" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">💡 O-08 추천 프롬프트</a>
                 <a href="#o-09" onclick="setAdminActiveMenu(this)" class="sidebar-subitem">🧩 O-09 모델 관리 <span class="mm-tag" style="background:#ede9fe;color:#6d28d9">NEW</span></a>
               </div>
@@ -4426,46 +4407,33 @@ for await (const chunk of stream) {
               </div>
             </div>
 
-            <!-- 6. O-07 공지사항 (카테고리 방식) -->
+            <!-- 6. O-07 새 소식 관리 -->
             <div id="o-07" class="screen-section">
               <div class="wf-card">
-                <div class="wf-header"><span>📢 O-07 공지사항</span></div>
+                <div class="wf-header"><span>📢 O-07 새 소식</span><button onclick="openAdminModal('notice-modal')" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 소식 작성</button></div>
                 <div class="wf-body p-6 space-y-4">
-                  <div class="flex justify-between items-center mb-6">
-                    <div>
-                      <h3 class="font-bold text-lg text-slate-900 mb-1">새 소식</h3>
-                      <p class="text-xs text-slate-600">MoFAC의 신규 기능, 모델 지원, 요금/결제, 문서 업데이트를 확인할 수 있습니다.</p>
-                    </div>
-                    <button onclick="openAdminModal('notice-modal')" class="wf-btn wf-btn-dark text-xs w-auto">+ 새 공지 작성</button>
+                  <div class="flex gap-2 items-center whitespace-nowrap">
+                    <span class="text-xs text-slate-500 font-bold">카테고리</span>
+                    <select class="wf-input text-xs mb-0" style="width:auto;display:inline-block"><option>전체</option><option>신규 기능</option><option>모델</option><option>요금·결제</option><option>문서</option><option>점검·장애</option></select>
+                    <span class="text-xs text-slate-500 font-bold ml-3">상태</span>
+                    <select class="wf-input text-xs mb-0" style="width:auto;display:inline-block"><option>전체</option><option>노출 중</option><option>예약</option><option>종료</option><option>OFF</option></select>
+                    <input type="text" class="wf-input text-xs mb-0" style="width:200px;display:inline-block;margin-left:auto" placeholder="제목 검색">
                   </div>
-
-                  <!-- 카테고리 탭 -->
-                  <div class="flex gap-2 border-b border-slate-200 mb-6">
-                    <button class="px-4 py-2 text-xs font-bold border-b-2 border-slate-900 text-slate-900 bg-transparent cursor-pointer">전체</button>
-                    <button class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 bg-transparent cursor-pointer">신규 기능</button>
-                    <button class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 bg-transparent cursor-pointer">모델</button>
-                    <button class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 bg-transparent cursor-pointer">요금/결제</button>
-                    <button class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 bg-transparent cursor-pointer">문서</button>
-                  </div>
-
-                  <!-- 공지사항 카드 리스트 -->
-                  <div class="space-y-3">
-                    <div class="border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
-                      <div class="flex items-start justify-between mb-2">
-                        <span class="text-xs font-bold text-slate-500">2026-08-28</span>
-                        <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold">신규 기능</span>
-                      </div>
-                      <h4 class="font-bold text-sm text-slate-900 mb-2">Motif 3 모델 파이프라인 업데이트 안내</h4>
-                      <p class="text-xs text-slate-600 mb-3 line-clamp-2">실제 업무 사례를 여러 AI 모델에 동일하게 실행하여 풀질 비교 속도를 한눈에 비교해, 더 나은 모델 선택과 Smart Routing 설정을 위한 근거를 만들 수 있습니다.</p>
-                      <div class="flex justify-between items-center text-xs">
-                        <span class="text-slate-400">노출 기간: 2026.09.01 ~ 2026.09.30</span>
-                        <button onclick="openAdminModal('notice-modal')" class="text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button>
-                      </div>
-                    </div>
-                  </div>
+                  <table class="wf-table border rounded-lg">
+                    <thead><tr><th style="width:96px">게시일</th><th style="width:96px">카테고리</th><th>제목</th><th style="width:120px">노출 기간</th><th style="width:72px">상태</th><th class="text-right whitespace-nowrap" style="width:56px">관리</th></tr></thead>
+                    <tbody>
+                      <tr><td class="font-mono text-xs whitespace-nowrap">2026.11.18</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#dbeafe;color:#1d4ed8">신규 기능</span></td><td class="text-xs font-bold text-slate-800">팀 이용 신청 오픈</td><td class="font-mono text-xs text-slate-500 whitespace-nowrap">11.18 ~</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#e0f2fe;color:#0369a1">예약</span></td><td class="text-right whitespace-nowrap"><button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button></td></tr>
+                      <tr><td class="font-mono text-xs whitespace-nowrap">2026.11.12</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#fee2e2;color:#b91c1c">점검·장애</span></td><td class="text-xs font-bold text-slate-800">GLM 5.3 모델 점검 안내 (11/20 02:00~04:00)</td><td class="font-mono text-xs text-slate-500 whitespace-nowrap">11.12 ~ 11.21</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#dcfce7;color:#15803d">노출 중</span></td><td class="text-right whitespace-nowrap"><button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button></td></tr>
+                      <tr><td class="font-mono text-xs whitespace-nowrap">2026.11.10</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#ede9fe;color:#6d28d9">모델</span></td><td class="text-xs font-bold text-slate-800">Kimi K3 모델 추가</td><td class="font-mono text-xs text-slate-500 whitespace-nowrap">11.10 ~</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#dcfce7;color:#15803d">노출 중</span></td><td class="text-right whitespace-nowrap"><button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button></td></tr>
+                      <tr><td class="font-mono text-xs whitespace-nowrap">2026.10.20</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#dcfce7;color:#15803d">요금·결제</span></td><td class="text-xs font-bold text-slate-800">CBT 감사 크레딧 안내</td><td class="font-mono text-xs text-slate-500 whitespace-nowrap">10.20 ~ 10.31</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#f1f5f9;color:#64748b">종료</span></td><td class="text-right whitespace-nowrap"><button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button></td></tr>
+                      <tr><td class="font-mono text-xs whitespace-nowrap">2026.10.15</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#e0f2fe;color:#0369a1">문서</span></td><td class="text-xs font-bold text-slate-800">(작성 중) 도구 연결 가이드 개편</td><td class="font-mono text-xs text-slate-500 whitespace-nowrap">10.15 ~</td><td><span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:#f1f5f9;color:#94a3b8">OFF</span></td><td class="text-right whitespace-nowrap"><button onclick="openAdminModal('notice-modal')" class="text-xs text-slate-600 hover:underline border-none bg-transparent cursor-pointer font-semibold">수정</button></td></tr>
+                    </tbody>
+                  </table>
+                  <p class="text-[11px] text-slate-500">게시일 = 노출 시작일 — 사용자 화면(M-07)에 이 날짜로 보여요.</p>
                 </div>
               </div>
             </div>
+      <div class="mm-note mm-note-out">📝 <b>O-07 새 소식 관리</b><ul class="mm-ul"><li>상태는 자동: 노출 ON + 시작 전 = 예약, 기간 안 = 노출 중, 종료일 지남 = 종료, 토글 OFF = OFF</li><li>카테고리 목록은 M-07 탭과 같음 (점검·장애 포함)</li><li>종료일은 선택 — 비우면 계속 노출 (점검 안내처럼 끝나는 글만 입력)</li><li>사용자 화면에 보이는 날짜는 노출 시작일</li><li>삭제 없음 — 내릴 때는 OFF</li></ul></div>
 
             <!-- O-08 추천 프롬프트 관리 -->
             <div id="o-08" class="screen-section">
@@ -5976,13 +5944,13 @@ for await (const chunk of stream) {
   <div id="notice-modal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-slate-200 overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-center mb-4 border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">📢 공지사항 등록 및 수정</h3>
+        <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">📢 새 소식 작성 · 수정</h3>
         <button onclick="closeAdminModal('notice-modal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg border-none bg-transparent cursor-pointer">&times;</button>
       </div>
       <div class="space-y-4 text-xs">
         <div>
-          <label class="block font-bold text-slate-700 mb-1">공지 제목 <span class="text-red-500">*</span></label>
-          <input type="text" class="wf-input mb-0" placeholder="예: [안내] Motif 3 모델 파이프라인 업데이트 안내">
+          <label class="block font-bold text-slate-700 mb-1">제목 <span class="text-red-500">*</span></label>
+          <input type="text" class="wf-input mb-0" placeholder="예: GLM 5.3 모델 점검 안내 (카테고리가 따로 보여서 [안내] 같은 말머리는 넣지 않아요)">
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">카테고리 <span class="text-red-500">*</span></label>
@@ -5990,12 +5958,13 @@ for await (const chunk of stream) {
             <option value="">카테고리를 선택해주세요</option>
             <option value="신규-기능">신규 기능</option>
             <option value="모델">모델</option>
-            <option value="요금-결제">요금/결제</option>
+            <option value="요금-결제">요금·결제</option>
             <option value="문서">문서</option>
+            <option value="점검-장애">점검·장애</option>
           </select>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">공지 내용 <span class="text-red-500">*</span></label>
+          <label class="block font-bold text-slate-700 mb-1">본문 <span class="text-red-500">*</span></label>
           <div class="border border-slate-300 rounded-lg overflow-hidden">
             <div class="bg-slate-100 border-b p-2 flex flex-wrap gap-2 items-center text-slate-700">
               <button class="px-2 py-1 bg-white border rounded font-bold hover:bg-slate-50">B</button>
@@ -6005,23 +5974,23 @@ for await (const chunk of stream) {
               <button onclick="alert('이미지 첨부 파일 창 오픈')" class="px-2 py-1 bg-white border rounded font-medium hover:bg-slate-50 flex items-center gap-1">🖼️ 이미지 삽입</button>
               <button class="px-2 py-1 bg-white border rounded font-medium hover:bg-slate-50">🔗 링크</button>
             </div>
-            <textarea class="w-full h-48 p-3 outline-none resize-y border-none text-xs leading-relaxed" placeholder="공지사항 본문 내용을 입력해 주세요."></textarea>
+            <textarea class="w-full h-48 p-3 outline-none resize-y border-none text-xs leading-relaxed" placeholder="본문을 입력해 주세요."></textarea>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-3">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">노출 시작일시 <span class="text-red-500">*</span></label>
+            <label class="block font-bold text-slate-700 mb-1">노출 시작일시 <span class="text-red-500">*</span> <span class="font-normal text-slate-400">= 게시일</span></label>
             <input type="datetime-local" class="wf-input mb-0" value="2026-09-01T00:00">
           </div>
           <div>
-            <label class="block font-bold text-slate-700 mb-1">노출 종료일시 <span class="text-red-500">*</span></label>
-            <input type="datetime-local" class="wf-input mb-0" value="2026-09-30T23:59">
+            <label class="block font-bold text-slate-700 mb-1">노출 종료일시 <span class="font-normal text-slate-400">(선택 · 비우면 계속 노출)</span></label>
+            <input type="datetime-local" class="wf-input mb-0">
           </div>
         </div>
         <div class="flex justify-between items-center p-3 bg-slate-50 border rounded-xl border-t">
           <div>
-            <div class="font-bold text-slate-800">공지 게시판 노출 여부 (ON/OFF)</div>
-            <div class="text-[11px] text-slate-500">OFF로 설정 시 사용자는 해당 공지사항을 볼 수 없습니다.</div>
+            <div class="font-bold text-slate-800">노출 (ON/OFF)</div>
+            <div class="text-[11px] text-slate-500">OFF면 새 소식 목록 · 상세에서 모두 안 보여요.</div>
           </div>
           <label class="toggle-switch">
             <input type="checkbox" checked>
@@ -6031,7 +6000,7 @@ for await (const chunk of stream) {
       </div>
       <div class="flex justify-end gap-2 pt-6 border-t mt-6">
         <button onclick="closeAdminModal('notice-modal')" class="wf-btn text-xs w-auto">취소</button>
-        <button onclick="alert('공지사항이 게시되었습니다.'); closeAdminModal('notice-modal');" class="wf-btn wf-btn-dark text-xs w-auto">공지사항 등록/저장</button>
+        <button onclick="alert('저장했어요.'); closeAdminModal('notice-modal');" class="wf-btn wf-btn-dark text-xs w-auto">저장</button>
       </div>
     </div>
   </div>
