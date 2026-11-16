@@ -3229,7 +3229,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url=&quot;https://api.mofac.io/v1&quot;,
-    api_key=os.environ[&quot;MORFAC_API_KEY&quot;],
+    api_key=os.environ[&quot;MOFAC_API_KEY&quot;],
 )
 
 stream = client.chat.completions.create(
@@ -3248,7 +3248,7 @@ for chunk in stream:
 
 const client = new OpenAI({
   baseURL: &quot;https://api.mofac.io/v1&quot;,
-  apiKey: process.env.MORFAC_API_KEY,
+  apiKey: process.env.MOFAC_API_KEY,
 });
 
 const stream = await client.chat.completions.create({
@@ -3265,7 +3265,7 @@ for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content ?? &quot;&quot;);
 }</pre></div>
                       <div class="cn-code-wrap hidden"><button class="cn-copy" onclick="pgToastC()" title="코드 복사">⧉</button><pre class="cn-code">curl https://api.mofac.io/v1/chat/completions \
-  -H &quot;Authorization: Bearer $MORFAC_API_KEY&quot; \
+  -H &quot;Authorization: Bearer $MOFAC_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{
     &quot;model&quot;: &quot;mofac/glm-5.3&quot;,
@@ -5181,7 +5181,7 @@ for await (const chunk of stream) {
           </div>
         </div>
       </div>
-      <div class="mm-note mm-note-out">📝 <b>E-05 소셜 계정 연동 완료</b><ul class="mm-ul"><li>오픈 시점엔 연동 해제 기능이 없어 해제 대신 보호 안내: [비밀번호를 변경] → C-10 보안 탭, 연동 해제는 help@mofac.io 요청으로 운영 처리</li></ul></div>
+      <div class="mm-note mm-note-out">📝 <b>E-05 소셜 계정 연동 완료</b><ul class="mm-ul"><li>오픈 시점엔 연동 해제 기능이 없어 해제 대신 보호 안내: [비밀번호를 변경] → C-10 보안 탭, 연동 해제는 help@mofac.io 요청으로 운영 수동 처리 — 요청이 쌓이면 어드민 기능화 검토</li></ul></div>
       </div>
       <div class="e-cell">
       <!-- E-03: 비밀번호 재설정 OTP -->
@@ -6680,11 +6680,11 @@ for await (const chunk of stream) {
       if (r.dataset.turn === '2') msgs.push(['assistant',CMP_ANS[cmpM]],['user',CMP_Q2]);
       let code;
       if (cmpL === 0) {
-        code = 'import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://api.mofac.io/v1",\n    api_key=os.environ["MORFAC_API_KEY"],\n)\n\nstream = client.chat.completions.create(\n    model="'+id+'",\n    stream=True,\n    messages=[\n' + msgs.map(m=>'        {"role": "'+m[0]+'", "content": "'+m[1]+'"},').join('\n') + '\n    ],\n)\nfor chunk in stream:\n    print(chunk.choices[0].delta.content or "", end="")';
+        code = 'import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://api.mofac.io/v1",\n    api_key=os.environ["MOFAC_API_KEY"],\n)\n\nstream = client.chat.completions.create(\n    model="'+id+'",\n    stream=True,\n    messages=[\n' + msgs.map(m=>'        {"role": "'+m[0]+'", "content": "'+m[1]+'"},').join('\n') + '\n    ],\n)\nfor chunk in stream:\n    print(chunk.choices[0].delta.content or "", end="")';
       } else if (cmpL === 1) {
-        code = 'import OpenAI from "openai";\n\nconst client = new OpenAI({\n  baseURL: "https://api.mofac.io/v1",\n  apiKey: process.env.MORFAC_API_KEY,\n});\n\nconst stream = await client.chat.completions.create({\n  model: "'+id+'",\n  stream: true,\n  messages: [\n' + msgs.map(m=>'    { role: "'+m[0]+'", content: "'+m[1]+'" },').join('\n') + '\n  ],\n});\nfor await (const chunk of stream) {\n  process.stdout.write(chunk.choices[0]?.delta?.content ?? "");\n}';
+        code = 'import OpenAI from "openai";\n\nconst client = new OpenAI({\n  baseURL: "https://api.mofac.io/v1",\n  apiKey: process.env.MOFAC_API_KEY,\n});\n\nconst stream = await client.chat.completions.create({\n  model: "'+id+'",\n  stream: true,\n  messages: [\n' + msgs.map(m=>'    { role: "'+m[0]+'", content: "'+m[1]+'" },').join('\n') + '\n  ],\n});\nfor await (const chunk of stream) {\n  process.stdout.write(chunk.choices[0]?.delta?.content ?? "");\n}';
       } else {
-        code = 'curl https://api.mofac.io/v1/chat/completions \\\n  -H "Authorization: Bearer $MORFAC_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "model": "'+id+'",\n    "stream": true,\n    "messages": [\n' + msgs.map((m,i)=>'      {"role": "'+m[0]+'", "content": "'+m[1]+'"}'+(i<msgs.length-1?',':'')).join('\n') + '\n    ]\n  }\'';
+        code = 'curl https://api.mofac.io/v1/chat/completions \\\n  -H "Authorization: Bearer $MOFAC_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "model": "'+id+'",\n    "stream": true,\n    "messages": [\n' + msgs.map((m,i)=>'      {"role": "'+m[0]+'", "content": "'+m[1]+'"}'+(i<msgs.length-1?',':'')).join('\n') + '\n    ]\n  }\'';
       }
       document.getElementById('cmp-code-pre').textContent = code;
       document.querySelectorAll('#cmp-connect .cmp-cm').forEach(b => b.classList.toggle('on', b.dataset.m === cmpM));
