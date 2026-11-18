@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>GLM·Kimi 가격 대비 운영 품질</title><style>*{box-sizing:border-box}body{margin:0}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; controls, chart, then threshold table, group table, change log */
+:root{--bg:#f6f7f7;--surface:#fff;--fg:#16191b;--muted:#5d666a;--faint:#8a9296;--line:#dde2e3;--grid:#e8ecec;--accent:#0e8f6c;--dot:#2a78d6;--off:#eb6834;--pass:#b8860b;--goal:#0e8f6c;--goalbg:rgba(14,143,108,.10);
+--sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1f1f;--surface:#292c2c;--fg:#edf1f0;--muted:#a9b2b0;--faint:#7f8886;--line:#3a4040;--grid:#323737;--accent:#30e8b0;--dot:#3987e5;--off:#d95926;--pass:#e0b040;--goal:#30e8b0;--goalbg:rgba(48,232,176,.10);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1f1f1f;--surface:#292c2c;--fg:#edf1f0;--muted:#a9b2b0;--faint:#7f8886;--line:#3a4040;--grid:#323737;--accent:#30e8b0;--dot:#3987e5;--off:#d95926;--pass:#e0b040;--goal:#30e8b0;--goalbg:rgba(48,232,176,.10);color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding-inline:18px;padding-block:36px 64px;display:grid;gap:22px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+h1{font-size:26px;margin:4px 0 6px;line-height:1.3;text-wrap:balance}
+h2{text-wrap:balance}
+p{margin:0;max-width:70ch;color:var(--muted)}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin-top:6px}
+.bar{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg button{font:inherit;font-size:13.5px;background:transparent;color:var(--muted);border:0;border-right:1px solid var(--line);padding:6px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);margin-bottom:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.legend .d{border-radius:1px;transform:rotate(45deg)}
+.legend .l{width:16px;height:0;border-top:2px dashed var(--faint);border-radius:0}
+.chart{position:relative;height:380px}
+.note{font-size:13.5px;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums;white-space:nowrap}
+th{font-weight:500;color:var(--muted);font-size:12.5px}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+tr.off td{color:var(--muted)}
+td .was{color:var(--faint);font-size:12px;margin-left:4px}
+.btn{font:inherit;font-size:13px;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:5px 12px;cursor:pointer}
+.btn:hover{color:var(--fg)}
+#th input{width:76px;font:inherit;font-size:14px;font-family:var(--mono);text-align:right;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+#th input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+#th td.cnt{font-family:var(--mono)}
+.tag{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:999px;margin-left:6px}
+.tag.p{background:color-mix(in srgb,var(--pass) 20%,transparent);color:var(--fg)}
+.tag.g{background:color-mix(in srgb,var(--goal) 20%,transparent);color:var(--fg)}
+ul.chg{margin:0;padding-left:18px;color:var(--muted);font-size:14px;display:grid;gap:6px;max-width:72ch}
+code{font-family:var(--mono);font-size:.9em}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Morfac · 가격 리서치</div>
+  <h1>GLM·Kimi 가격 대비 운영 품질</h1>
+  <p>OpenRouter 공급사별 에이전트형 단가(공식가 대비 배수)와 출력 속도 · 툴콜 오류율 · 가동률. 점 하나가 공급사 엔드포인트 하나이고, 마우스를 올리면 이름이 보여요.</p>
+  <div class="meta">2026-11-18 조회 · GLM 5.3 엔드포인트 49개 · Kimi K3 28개 (10/1 조회: 39개 · 22개)</div>
+</header>
+
+<div class="bar">
+  <div class="seg" id="sm"><button aria-pressed="true" data-v="glm">GLM 5.3</button><button aria-pressed="false" data-v="kimi">Kimi K3</button></div>
+  <div class="seg" id="sy"><button aria-pressed="true" data-v="tps">출력 속도</button><button aria-pressed="false" data-v="err">툴콜 오류</button><button aria-pressed="false" data-v="up">가동률</button></div>
+</div>
+
+<div class="panel">
+  <div class="legend"><span><i style="background:var(--dot)"></i>공급사</span><span><i class="d" style="background:var(--off)"></i>모델사 공식</span><span><i class="l"></i>시장 중앙값</span><span><i class="l" style="border-top:2px solid var(--pass)"></i>합격선</span><span><i class="l" style="border-top:2px solid var(--goal)"></i>목표선</span><span><i style="background:var(--goalbg);border-radius:2px"></i>목표 영역</span></div>
+  <div class="chart"><canvas id="c" role="img" aria-label="공급사별 단가 배수와 운영 지표 산점도"></canvas></div>
+  <p class="note" id="n" style="margin-top:10px"></p>
+</div>
+
+<section style="display:grid;gap:10px">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px">
+    <h2 style="font-size:18px;margin:0">합격선과 목표선</h2>
+    <button id="reset" class="btn">제안값으로 되돌리기</button>
+  </div>
+  <p>값을 바꾸면 차트의 선과 초록 목표 영역이 바로 바뀌어요. 오른쪽 열은 지금 시장에서 그 기준을 이미 모두 만족하는 공급사 수예요.</p>
+  <div class="tbl"><table id="th">
+    <tr><th>모델 · 기준</th><th>가격 (× 이하)</th><th>출력 속도 (tok/s 이상)</th><th>툴콜 오류 (% 이하)</th><th>가동률 (% 이상)</th><th>이미 만족하는 공급사</th></tr>
+  </table></div>
+  <p class="note">제안값: 합격선은 시장 중앙값(Kimi 가격은 중앙값이 공식가라 0.99×, 가동률은 99%). 목표선은 가격은 할인 무리 중앙값, 출력 속도는 시장 상위 25%, 툴콜 오류는 시장 하위 25%, 가동률 99.9%. 지금 목표선을 모두 만족하는 공급사는 없어요. 바꾼 값은 이 브라우저에만 저장돼요.</p>
+</section>
+
+<section style="display:grid;gap:10px">
+  <h2 style="font-size:18px;margin:0">두 무리로 나눈 중앙값</h2>
+  <p>Kimi는 공급사 절반 이상이 공식가를 그대로 받아서, 사분위로 자르면 경계가 공식가에 걸려요. 그래서 공식가 미만(할인)과 공식가 이상으로 나눠 봐요. 회색 숫자는 10/1 값이에요.</p>
+  <div class="tbl"><table>
+    <tr><th>모델 · 무리</th><th>공급사</th><th>단가 범위 (중앙값)</th><th>출력 속도</th><th>툴콜 오류</th><th>가동률</th></tr>
+    <tr><td>GLM 5.3 · 공식가 미만</td><td>29곳<span class="was">25</span></td><td>0.23~0.91× (0.56×)<span class="was">0.70×</span></td><td>79 tok/s<span class="was">75</span></td><td>0.77%<span class="was">1.21</span></td><td>100%<span class="was">99.7</span></td></tr>
+    <tr><td>GLM 5.3 · 공식가 이상</td><td>19곳<span class="was">13</span></td><td>1.0~1.52× (1.0×)</td><td>94 tok/s<span class="was">111</span></td><td>0.69%<span class="was">1.20</span></td><td>100%<span class="was">99.7</span></td></tr>
+    <tr class="off"><td>GLM 5.3 · 모델사 공식 (Z.ai)</td><td>1곳</td><td>1.0×</td><td>56 tok/s<span class="was">50</span></td><td>1.37%<span class="was">0.49</span></td><td>100%<span class="was">99.7</span></td></tr>
+    <tr><td>Kimi K3 · 공식가 미만</td><td>13곳<span class="was">10</span></td><td>0.47~0.95× (0.75×)<span class="was">0.81×</span></td><td>75 tok/s<span class="was">37</span></td><td>0.24%<span class="was">0.32</span></td><td>100%<span class="was">98.4</span></td></tr>
+    <tr><td>Kimi K3 · 공식가 이상</td><td>14곳<span class="was">11</span></td><td>1.0~1.5× (1.0×)</td><td>58 tok/s<span class="was">59</span></td><td>0.22%<span class="was">0.10</span></td><td>99.5%<span class="was">98.6</span></td></tr>
+    <tr class="off"><td>Kimi K3 · 모델사 공식 (Moonshot)</td><td>1곳</td><td>1.0×</td><td>31 tok/s<span class="was">23</span></td><td>0.04%<span class="was">0.04</span></td><td>99.97%<span class="was">99.4</span></td></tr>
+  </table></div>
+  <p class="note">GLM 사용량 상위: Wafer(0.23×, 85 tok/s) · Decart(0.40×, 105) · Z.ai(공식) · Tenstorrent(0.46×, 108) · Fireworks Spot(0.70×, 87) · inference.net(0.44×, 92). 상위권이 모두 목표 가격 0.56× 아래에 있어요. 목표선에 가장 가까운 곳은 inference.net(0.44×, 오류 0.08%)으로 출력 속도만 4 tok/s 모자라요.</p>
+  <p class="note">Kimi 사용량 상위: Fireworks(1.0×, 44 tok/s) · Together(1.0×, 56) · Wafer(0.47×, 80) · inference.net(0.73×, 76). Kimi도 할인 무리가 공식가 무리보다 빨라졌어요.</p>
+</section>
+
+<section style="display:grid;gap:10px">
+  <h2 style="font-size:18px;margin:0">10/1 대비 달라진 점</h2>
+  <ul class="chg">
+    <li>GLM 할인 무리 중앙값이 0.70×에서 0.56×로 내려갔어요. Decart(0.81×→0.40×), Wafer(1.09×→0.23~0.42×), inference.net(0.75×→0.44×)이 크게 내렸고, 이 세 곳이 사용량 상위예요.</li>
+    <li>GLM 목표 가격을 0.64×에서 0.56×로 낮췄어요. 합격선(시장 중앙값 0.82×)은 그대로예요.</li>
+    <li>Kimi 할인 무리의 출력 속도가 37에서 75 tok/s로 두 배가 됐어요. 목표 속도는 84 tok/s(시장 상위 25%)로 잡았어요.</li>
+    <li>모델사 공식 Z.ai의 툴콜 오류가 0.49%에서 1.37%로 올라 시장 중앙값(0.74%)보다 나빠졌어요. 그래서 오류 목표선을 "모델사 공식만큼"에서 "시장 하위 25%"로 바꿨어요.</li>
+    <li>이상치: GLM AtlasCloud 툴콜 오류 26.5%, Alibaba 7.5%. Kimi Amazon Bedrock 한 엔드포인트 가동률 67.6%.</li>
+    <li>Kimi K3.1 Pro가 10/23에 나왔어요. 이 페이지는 비교를 이어가려고 K3 기준으로 유지했어요.</li>
+  </ul>
+</section>
+
+<section style="display:grid;gap:8px">
+  <h2 style="font-size:18px;margin:0">측정 기준과 출처</h2>
+  <p class="note">에이전트형 단가 = 입력:출력 20:1, 입력 중 90% 캐시 적중으로 계산한 공식가 대비 배수(할인 반영 표시가). 출력 속도 = 일별 p50의 최근 8일 중앙값. 툴콜 오류율 = 최근 8일 평균. 가동률 = 최근 2~3일(판정 시간 가중).</p>
+  <p class="note">10/1에는 출력 속도를 최근 30분 p50, 가동률을 1일 값으로 썼어요. 공개 API에서 속도 값이 비면서(null) 기준을 바꿨기 때문에 10/1 값과는 대략적인 비교만 돼요.</p>
+  <p class="note">출처: OpenRouter 모델 페이지 통계 경로 <code>/api/frontend/v1/stats/*</code> (endpoint · throughput-comparison · tool-call-error-rate · uptime-recent · effective-pricing), 2026-11-18 조회. 수집 스크립트 <code>collect_openrouter.mjs</code>로 다시 받을 수 있어요.</p>
+</section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const D={"glm":[["Decart",0.397,105.0,0.43,100.0,0],["Tenstorrent",0.463,108.0,1.52,100.0,0],["CoreWeave",0.667,96.0,0.7,99.94,0],["DigitalOcean",0.65,96.0,1.13,100.0,0],["Sail Research (1)",0.561,53.0,0.03,99.96,0],["Fireworks Spot",0.7,87.0,3.58,99.63,0],["inference.net (1)",0.437,92.0,0.08,100.0,0],["Cohere",0.53,90.0,1.01,99.58,0],["inference.net (2)",0.437,92.0,0.07,100.0,0],["Inceptron",0.696,97.0,0.15,99.91,0],["Relace",0.487,69.0,0.54,99.87,0],["Fireworks (1)",1.5,141.0,3.24,99.94,0],["Friendli",0.9,79.0,0.0,100.0,0],["Mistral (1)",0.9,84.0,1.18,99.86,0],["Parasail (1)",1.303,121.0,0.69,99.04,0],["Parasail (2)",1.0,120.0,0.37,99.85,0],["Sail Research (2)",0.785,59.0,0.12,100.0,0],["Baseten (fp8) (1)",1.227,156.0,1.46,100.0,0],["Fireworks (2)",1.0,77.0,0.1,100.0,0],["Mistral (2)",0.818,86.0,1.5,99.86,0],["Makora",1.017,88.0,0.06,99.97,0],["GMICloud",0.5,56.0,0.77,99.86,0],["AkashML",0.69,84.0,1.08,100.0,0],["Baseten (fp4) (1)",0.818,77.0,0.61,100.0,0],["Baseten (fp8) (2)",1.227,153.0,1.23,100.0,0],["Morph",0.913,57.0,0.08,100.0,0],["Modal",1.0,91.0,1.03,99.92,0],["SiliconFlow",0.5,57.0,0.9,100.0,0],["SambaNova",0.712,51.0,0.78,100.0,0],["Crusoe",1.0,94.0,1.16,100.0,0],["Nebius Token Factory",1.0,73.0,0.38,100.0,0],["Baseten (fp4) (2)",0.818,75.0,0.54,100.0,0],["Cloudflare",0.5,52.0,1.82,99.92,0],["NovitaAI",0.45,52.0,1.21,100.0,0],["Featherless",1.0,56.0,0.66,95.12,0],["Amazon Bedrock",1.2,108.0,0.16,99.8,0],["Doubleword",1.03,72.0,3.17,100.0,0],["ModelRun [by Modular]",1.515,127.0,0.12,100.0,0],["Wafer (1)",0.234,85.0,0.21,100.0,0],["Alibaba Cloud Int. (1)",1.236,89.0,7.49,100.0,0],["Z.ai",1.0,56.0,1.37,100.0,1],["Alibaba Cloud Int. (2)",0.876,55.0,3.56,100.0,0],["AtlasCloud",1.0,45.0,26.45,100.0,0],["Wafer (2)",0.418,90.0,0.06,100.0,0],["DeepInfra (1)",0.396,63.0,4.18,100.0,0],["DeepInfra (2)",0.495,67.0,1.97,99.37,0],["Baidu Qianfan",1.0,51.0,2.15,null,0],["Together",1.0,94.0,0.44,100.0,0],["Venice",1.0,98.0,0.24,99.18,0]],"kimi":[["Relace",0.553,75.0,0.01,99.91,0],["Wafer (1)",0.473,80.0,0.07,100.0,0],["KT",0.807,84.0,0.69,99.95,0],["Wafer (2)",0.721,75.0,0.13,100.0,0],["inference.net (1)",0.941,83.0,0.27,100.0,0],["inference.net (2)",0.941,84.0,0.44,100.0,0],["Modal",1.0,58.0,0.31,100.0,0],["inference.net (3)",0.725,76.0,0.23,100.0,0],["Amazon Bedrock (1)",1.0,52.0,0.07,100.0,0],["Fireworks (1)",1.0,44.0,0.01,98.78,0],["River",1.0,159.0,null,99.97,0],["DeepInfra",0.95,46.0,0.13,100.0,0],["Moonshot AI",1.0,31.0,0.04,99.97,1],["Fireworks (2)",1.5,76.0,0.04,93.43,0],["DigitalOcean",0.858,36.0,1.93,100.0,0],["Alibaba Cloud Int.",1.0,36.0,0.8,99.58,0],["inference.net (4)",0.725,69.0,0.25,100.0,0],["Chutes",0.626,23.0,null,98.79,0],["Parasail (1)",1.5,97.0,null,98.81,0],["io.net",0.804,54.0,1.95,99.5,0],["Nebius Token Factory",1.0,114.0,1.56,99.96,0],["Amazon Bedrock (2)",1.1,115.0,0.34,67.57,0],["Wafer (3)",0.745,78.0,0.14,100.0,0],["Makora",1.114,51.0,0.03,99.28,0],["Parasail (2)",1.0,58.0,0.45,99.81,0],["Baseten",1.0,107.0,0.13,99.89,0],["Together",1.0,56.0,0.37,99.38,0],["Fireworks (3)",1.5,43.0,0.02,90.21,0]]};
+const YI={tps:2,err:3,up:4},YL={tps:'출력 속도 (tok/s)',err:'툴콜 오류율 (%)',up:'가동률 (%, 최근 2~3일)'};
+const NOTE={glm:{tps:'공식가 미만에도 100 tok/s 넘는 곳이 있음(Decart 0.40× 105, Tenstorrent 0.46× 108). 공식 Z.ai는 56 tok/s로 느린 편. 가장 빠른 곳은 Baseten fp8(1.23×, 156 tok/s).',err:'대부분 2% 아래로 가격과 무관. AtlasCloud 26.5%(1.0×)는 축 밖이라 툴팁으로만 보임. 싸면서 오류가 낮은 곳: inference.net 0.07~0.08%, Wafer 0.06%, Sail Research 0.03%.',up:'거의 모두 99.5% 이상. Featherless 95.1%만 낮음. Baidu는 가동률 데이터 없음.'},kimi:{tps:'할인 무리(1.0× 미만) 중앙값 75 tok/s로 공식가 무리(58)보다 빠름. 공식 Moonshot은 31 tok/s. 가장 빠른 곳은 River(1.0×, 159 tok/s).',err:'대부분 0.5% 아래. DigitalOcean 1.93%, io.net 1.95%, Nebius 1.56%가 이탈.',up:'Amazon Bedrock 한 엔드포인트 67.6%, Fireworks 두 엔드포인트 90~93%가 낮음. 나머지는 98.8% 이상.'}};
+let m='glm',y='tps',ch;
+const css=k=>getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+const DEF={glm:{price:{pass:0.82,goal:0.56},tps:{pass:86,goal:96,dir:1},err:{pass:0.74,goal:0.2,dir:-1},up:{pass:99,goal:99.9,dir:1}},kimi:{price:{pass:0.99,goal:0.75},tps:{pass:75,goal:84,dir:1},err:{pass:0.24,goal:0.07,dir:-1},up:{pass:99,goal:99.9,dir:1}}};
+let TH=JSON.parse(JSON.stringify(DEF));
+try{const v=JSON.parse(localStorage.getItem('th-v2'));if(v&&v.glm&&v.kimi)TH=v;}catch(e){}
+const KEYS=['price','tps','err','up'],NAME={glm:'GLM 5.3',kimi:'Kimi K3'},LV={pass:'합격선',goal:'목표선'};
+function meets(r,t,lv){return r[1]<=t.price[lv]&&r[2]!=null&&r[2]>=t.tps[lv]&&r[3]!=null&&r[3]<=t.err[lv]&&r[4]!=null&&r[4]>=t.up[lv];}
+function buildTable(){const tb=document.getElementById('th');tb.querySelectorAll('tr.row').forEach(r=>r.remove());
+ ['glm','kimi'].forEach(md=>['pass','goal'].forEach(lv=>{const tr=document.createElement('tr');tr.className='row';
+  tr.innerHTML='<td>'+NAME[md]+'<span class="tag '+(lv==='pass'?'p':'g')+'">'+LV[lv]+'</span></td>'+KEYS.map(k=>'<td><input type="number" step="'+(k==='price'||k==='err'?'0.01':(k==='up'?'0.1':'1'))+'" id="in-'+md+'-'+lv+'-'+k+'" aria-label="'+NAME[md]+' '+LV[lv]+' '+k+'" value="'+TH[md][k][lv]+'"></td>').join('')+'<td class="cnt" id="cnt-'+md+'-'+lv+'"></td>';
+  tb.appendChild(tr);}));
+ tb.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>{const [,md,lv,k]=inp.id.split('-');const v=parseFloat(inp.value);if(!isNaN(v)){TH[md][k][lv]=v;try{localStorage.setItem('th-v2',JSON.stringify(TH));}catch(e){}draw();}}));}
+function counts(){['glm','kimi'].forEach(md=>{const P=D[md].filter(r=>!r[5]);['pass','goal'].forEach(lv=>{const n=P.filter(r=>meets(r,TH[md],lv));const el=document.getElementById('cnt-'+md+'-'+lv);el.textContent=n.length+' / '+P.length+'곳';el.title=n.map(r=>r[0]).join(', ')||'없음';});});}
+
+function med(a){a=[...a].sort((p,q)=>p-q);const k=Math.floor(a.length/2);return a.length%2?a[k]:(a[k-1]+a[k])/2}
+const lines={id:'ln',beforeDatasetsDraw(c){const X=c.scales.x,Y=c.scales.y,a=c.chartArea,g=c.ctx,t=TH[m],i=YI[y];
+ const P=D[m].filter(r=>!r[5]&&r[i]!=null),mx=med(P.map(r=>r[1])),my=med(P.map(r=>r[i]));
+ const gx=X.getPixelForValue(t.price.goal),gy=Math.max(a.top,Math.min(a.bottom,Y.getPixelForValue(t[y].goal)));
+ g.save();g.fillStyle=css('--goalbg');
+ if(t[y].dir>0)g.fillRect(a.left,a.top,gx-a.left,gy-a.top);else g.fillRect(a.left,gy,gx-a.left,a.bottom-gy);
+ const V=(v,col,dash,lab)=>{const px=X.getPixelForValue(v);g.setLineDash(dash);g.strokeStyle=col;g.lineWidth=1.5;g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();if(lab){g.setLineDash([]);g.fillStyle=col;g.font='11px IBM Plex Sans KR, sans-serif';g.fillText(lab,px+4,a.top+12+(col===css('--goal')?14:0));}};
+ const H=(v,col,dash,lab)=>{const py=Y.getPixelForValue(v);if(py<a.top||py>a.bottom)return;g.setLineDash(dash);g.strokeStyle=col;g.lineWidth=1.5;g.beginPath();g.moveTo(a.left,py);g.lineTo(a.right,py);g.stroke();if(lab){g.setLineDash([]);g.fillStyle=col;g.font='11px IBM Plex Sans KR, sans-serif';g.textAlign='right';g.fillText(lab,a.right-4,py-4);g.textAlign='left';}};
+ const fm=v=>y==='tps'?Math.round(v)+' tok/s':(Math.round(v*100)/100)+'%';
+ const sx=Math.abs(t.price.pass-mx)<0.02,sy=Math.abs(t[y].pass-my)/Math.max(1,my)<0.03;
+ if(!sx)V(mx,css('--faint'),[4,4],'중앙값 '+mx.toFixed(2)+'×');if(!sy)H(my,css('--faint'),[4,4],'중앙값 '+fm(my));
+ V(t.price.pass,css('--pass'),[],(sx?'중앙값 = 합격 ':'합격 ')+t.price.pass+'×');V(t.price.goal,css('--goal'),[],'목표 '+t.price.goal+'×');
+ H(t[y].pass,css('--pass'),[],(sy?'중앙값 = 합격 ':'합격 ')+fm(t[y].pass));if(t[y].goal!==t[y].pass)H(t[y].goal,css('--goal'),[],'목표 '+fm(t[y].goal));
+ g.restore();}};
+const YMAX={glm:{err:5},kimi:{err:2.5}},YMIN={glm:{up:94.5},kimi:{up:65}};
+function draw(){
+  const i=YI[y],R=D[m].filter(r=>r[i]!=null),muted=css('--faint'),grid=css('--grid');
+  const pts=R.filter(r=>!r[5]).map(r=>({x:r[1],y:r[i],n:r[0]})),off=R.filter(r=>r[5]).map(r=>({x:r[1],y:r[i],n:r[0]}));
+  if(ch)ch.destroy();
+  const ymax=(YMAX[m]||{})[y],ymin=y==='up'?YMIN[m].up:0;
+  ch=new Chart(document.getElementById('c'),{type:'scatter',data:{datasets:[{data:pts.map(p=>({...p,y:ymax!=null?Math.min(p.y,ymax):p.y,raw:p.y})),backgroundColor:css('--dot'),borderColor:css('--surface'),borderWidth:1.5,pointRadius:5.5,pointHoverRadius:8,order:2},{data:off.map(p=>({...p,raw:p.y})),backgroundColor:css('--off'),pointStyle:'rectRot',pointRadius:8,pointHoverRadius:10,borderColor:css('--surface'),borderWidth:1.5,order:1}]},
+  options:{responsive:true,maintainAspectRatio:false,layout:{padding:10},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw.n+' · '+c.raw.x.toFixed(2)+'× · '+(y==='tps'?Math.round(c.raw.raw)+' tok/s':c.raw.raw+'%')+(ymax!=null&&c.raw.raw>ymax?' (축 밖)':'')}}},
+  scales:{x:{min:0,max:m==='glm'?1.7:1.6,title:{display:true,text:'에이전트형 단가 (공식가 대비 배수)',color:muted},ticks:{color:muted,callback:v=>v.toFixed(1)+'×'},grid:{color:grid}},
+  y:{min:ymin,max:ymax!=null?ymax:(y==='up'?100.5:undefined),title:{display:true,text:YL[y],color:muted},ticks:{color:muted},grid:{color:grid}}}},plugins:[lines]});
+  document.getElementById('n').textContent=NOTE[m][y];
+  counts();
+}
+function seg(id,cb){const s=document.getElementById(id);s.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...s.children].forEach(x=>x.setAttribute('aria-pressed',x===b));cb(b.dataset.v);draw();});}
+seg('sm',v=>m=v);seg('sy',v=>y=v);
+buildTable();
+document.getElementById('reset').addEventListener('click',()=>{TH=JSON.parse(JSON.stringify(DEF));try{localStorage.removeItem('th-v2');}catch(e){}buildTable();draw();});
+draw();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+</script>
+</body></html>
